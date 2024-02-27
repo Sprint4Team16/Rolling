@@ -280,7 +280,6 @@ const SelectSection = styled.div`
 
 const SelectTitle = styled.p`
   color: var(--gray900);
-
   /* Font/24 Bold */
   font-family: Pretendard;
   font-size: 24px;
