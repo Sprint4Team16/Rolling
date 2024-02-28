@@ -19,7 +19,7 @@ const colorList = ['beige', 'purple', 'blue', 'green'];
 
 function Post() {
   const [isColor, setIsColor] = useState(true);
-  const [selectColor, setSelectColor] = useState(null);
+  const [selectColor, setSelectColor] = useState(colorList[0]);
   const [background, setBackground] = useState([]);
   const [selectImage, setSelectImage] = useState(null);
   const [inputUser, setInputUser] = useState('');
