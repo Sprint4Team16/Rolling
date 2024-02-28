@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import SelectSection from '../components/post/SelectSection';
+import Header from '../components/common/Header';
+import PostButton from '../components/post/PostButton';
 
 async function getAPI(query) {
   const response = await fetch(`https://rolling-api.vercel.app${query}`);
@@ -64,12 +66,9 @@ function Post() {
     setSelectColor(null);
   };
 
-  const handleSubmit = () => {
-    console.log('버튼 활성화');
-  };
-
   return (
     <PostSection>
+      <Header />
       <PostInput>
         <InputTitle>To.</InputTitle>
         <Input
@@ -190,9 +189,7 @@ function Post() {
           </ImageOption>
         </Select>
       )}
-      <Button onClick={handleSubmit} disabled={btnDisable}>
-        생성하기
-      </Button>
+      <PostButton btnDisable={btnDisable} />
     </PostSection>
   );
 }
@@ -371,33 +368,6 @@ const ImageOption = styled.div`
     width: 154px;
     height: 154px;
     margin: 12px 0;
-  }
-`;
-
-const Button = styled.button`
-  display: flex;
-  width: 720px;
-  padding: 14px 24px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 12px;
-  background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
-
-  color: var(--white);
-  text-align: center;
-  /* Font/18 Bold */
-  font-family: Pretendard;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 28px; /* 155.556% */
-  letter-spacing: -0.18px;
-
-  cursor: ${({ disabled }) => disabled && 'not-allowed'};
-
-  @media (max-width: 768px) {
-    width: 320px;
   }
 `;
 
