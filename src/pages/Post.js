@@ -4,6 +4,8 @@ import Header from '../components/common/Header';
 import SelectSection from '../components/post/postmake/SelectSection';
 import PostButton from '../components/post/postmake/PostButton';
 import PostInputSection from '../components/post/postmake/PostInputSection';
+import ColorSelection from '../components/post/postmake/ColorSelection';
+import ImageSelection from '../components/post/postmake/ImageSelection';
 
 async function getAPI(query) {
   const response = await fetch(`https://rolling-api.vercel.app${query}`);
@@ -93,97 +95,36 @@ function Post() {
         </SelectToggle>
         {isColor ? (
           <Select>
-            <ColorOption
-              color="orange"
-              onClick={() => handleColorChange('beige')}
-              selected={selectColor === 'beige'}
-            >
-              {selectColor === 'beige' && (
-                <CheckIcon>
-                  <img src="img/check.svg" alt="선택" />
-                </CheckIcon>
-              )}
-            </ColorOption>
-            <ColorOption
+            <ColorSelection
+              color="beige"
+              handleFunction={() => handleColorChange('beige')}
+              checkSelected={selectColor === 'beige'}
+            />
+            <ColorSelection
               color="purple"
-              onClick={() => handleColorChange('purple')}
-              selected={selectColor === 'purple'}
-            >
-              {selectColor === 'purple' && (
-                <CheckIcon>
-                  <img src="img/check.svg" alt="선택" />
-                </CheckIcon>
-              )}
-            </ColorOption>
-            <ColorOption
+              handleFunction={() => handleColorChange('purple')}
+              checkSelected={selectColor === 'purple'}
+            />
+            <ColorSelection
               color="blue"
-              onClick={() => handleColorChange('blue')}
-              selected={selectColor === 'blue'}
-            >
-              {selectColor === 'blue' && (
-                <CheckIcon>
-                  <img src="img/check.svg" alt="선택" />
-                </CheckIcon>
-              )}
-            </ColorOption>
-            <ColorOption
+              handleFunction={() => handleColorChange('blue')}
+              checkSelected={selectColor === 'blue'}
+            />
+            <ColorSelection
               color="green"
-              onClick={() => handleColorChange('green')}
-              selected={selectColor === 'green'}
-            >
-              {selectColor === 'green' && (
-                <CheckIcon>
-                  <img src="img/check.svg" alt="선택" />
-                </CheckIcon>
-              )}
-            </ColorOption>
+              handleFunction={() => handleColorChange('green')}
+              checkSelected={selectColor === 'green'}
+            />
           </Select>
         ) : (
           <Select>
-            <ImageOption
-              image={background[0]}
-              onClick={() => handleImageChange(background[0])}
-              selected={selectImage === background[0]}
-            >
-              {selectImage === background[0] && (
-                <CheckIcon>
-                  <img src="img/check.svg" alt="선택" />
-                </CheckIcon>
-              )}
-            </ImageOption>
-            <ImageOption
-              image={background[1]}
-              onClick={() => handleImageChange(background[1])}
-              selected={selectImage === background[1]}
-            >
-              {selectImage === background[1] && (
-                <CheckIcon>
-                  <img src="img/check.svg" alt="선택" />
-                </CheckIcon>
-              )}
-            </ImageOption>
-            <ImageOption
-              image={background[2]}
-              onClick={() => handleImageChange(background[2])}
-              selected={selectImage === background[2]}
-            >
-              {selectImage === background[2] && (
-                <CheckIcon>
-                  <img src="img/check.svg" alt="선택" />
-                </CheckIcon>
-              )}
-            </ImageOption>
-            <ImageOption
-              image={background[3]}
-              onClick={() => handleImageChange(background[3])}
-              selected={selectImage === background[3]}
-            >
-              {selectImage === background[3] && (
-                <CheckIcon>
-                  <img src="img/check.svg" alt="선택" />
-                </CheckIcon>
-              )}
-            </ImageOption>
+            {background.map((image) => (
+              <ImageSelection
+                image={image}
+                handleFunction={() => handleImageChange(image)}
+                checkSelected={selectImage === image}
+              />
+            ))}
           </Select>
         )}
         <PostButton btnDisable={btnDisable} />
@@ -271,57 +212,6 @@ const Select = styled.div`
 
   @media (max-width: 768px) {
     width: 320px;
-  }
-`;
-
-const CheckIcon = styled.div`
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  border-radius: 100px;
-  background: var(--gray500);
-  align-items: center;
-  justify-content: center;
-`;
-
-const ColorOption = styled.div`
-  position: relative;
-  width: 168px;
-  height: 168px;
-  background-color: var(
-    --${(props) => (props.color === 'begie' ? 'orange' : props.color)}200
-  );
-  margin: 5px;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    width: 154px;
-    height: 154px;
-    margin: 12px 0;
-  }
-`;
-
-const ImageOption = styled.div`
-  position: relative;
-  background: url(${(props) => props.image}) lightgray 50% / cover no-repeat;
-  opacity: ${(props) => (props.selected ? '0.5' : '1')};
-  width: 168px;
-  height: 168px;
-  margin: 5px;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    width: 154px;
-    height: 154px;
-    margin: 12px 0;
   }
 `;
 
