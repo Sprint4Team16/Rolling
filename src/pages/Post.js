@@ -14,6 +14,8 @@ async function getAPI(query) {
   return body;
 }
 
+const colorList = ['beige', 'purple', 'blue', 'green'];
+
 function Post() {
   const [isColor, setIsColor] = useState(true);
   const [selectColor, setSelectColor] = useState(null);
@@ -95,26 +97,13 @@ function Post() {
         </SelectToggle>
         {isColor ? (
           <Select>
-            <ColorSelection
-              color="beige"
-              handleFunction={() => handleColorChange('beige')}
-              checkSelected={selectColor === 'beige'}
-            />
-            <ColorSelection
-              color="purple"
-              handleFunction={() => handleColorChange('purple')}
-              checkSelected={selectColor === 'purple'}
-            />
-            <ColorSelection
-              color="blue"
-              handleFunction={() => handleColorChange('blue')}
-              checkSelected={selectColor === 'blue'}
-            />
-            <ColorSelection
-              color="green"
-              handleFunction={() => handleColorChange('green')}
-              checkSelected={selectColor === 'green'}
-            />
+            {colorList.map((color) => (
+              <ColorSelection
+                color={color}
+                handleFunction={() => handleColorChange(color)}
+                checkSelected={selectColor === color}
+              />
+            ))}
           </Select>
         ) : (
           <Select>

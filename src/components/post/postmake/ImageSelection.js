@@ -1,34 +1,13 @@
 import styled from 'styled-components';
+import CheckIcon from '../../common/CheckIcon';
 
 function ImageSelection({ image, handleFunction, checkSelected }) {
   return (
-    <ImageOption
-      image={image}
-      onClick={handleFunction}
-      selected={checkSelected}
-    >
-      {checkSelected && (
-        <CheckIcon>
-          <img src="img/check.svg" alt="선택" />
-        </CheckIcon>
-      )}
+    <ImageOption image={image} onClick={handleFunction} selected={checkSelected}>
+      {checkSelected && <CheckIcon imgSrc="img/check.svg" />}
     </ImageOption>
   );
 }
-
-const CheckIcon = styled.div`
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  border-radius: 100px;
-  background: var(--gray500);
-  align-items: center;
-  justify-content: center;
-`;
 
 const ImageOption = styled.div`
   position: relative;
