@@ -195,10 +195,12 @@ function Post() {
     </PostPage>
   );
 }
+
 const PostPage = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 const PostSection = styled.div`
   display: flex;
   flex-direction: column;
