@@ -67,133 +67,138 @@ function Post() {
   };
 
   return (
-    <PostSection>
+    <PostPage>
       <Header />
-      <PostInput>
-        <InputTitle>To.</InputTitle>
-        <Input
-          placeholder="받는 사람 이름을 입력해 주세요"
-          value={inputUser}
-          onChange={handleInput}
-          onBlur={handleBlur}
-          error={inputError}
-        />
-        {inputError && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}
-      </PostInput>
-      <SelectSection />
-      <SelectToggle onClick={toggleHandler}>
+      <PostSection>
+        <PostInput>
+          <InputTitle>To.</InputTitle>
+          <Input
+            placeholder="받는 사람 이름을 입력해 주세요"
+            value={inputUser}
+            onChange={handleInput}
+            onBlur={handleBlur}
+            error={inputError}
+          />
+          {inputError && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}
+        </PostInput>
+        <SelectSection />
+        <SelectToggle onClick={toggleHandler}>
+          {isColor ? (
+            <>
+              <OnButton>컬러</OnButton>
+              <OffButton>이미지</OffButton>
+            </>
+          ) : (
+            <>
+              <OffButton>컬러</OffButton>
+              <OnButton>이미지</OnButton>
+            </>
+          )}
+        </SelectToggle>
         {isColor ? (
-          <>
-            <OnButton>컬러</OnButton>
-            <OffButton>이미지</OffButton>
-          </>
+          <Select>
+            <ColorOption
+              color="orange"
+              onClick={() => handleColorChange('beige')}
+              selected={selectColor === 'beige'}
+            >
+              {selectColor === 'beige' && (
+                <CheckIcon>
+                  <img src="img/check.svg" alt="선택" />
+                </CheckIcon>
+              )}
+            </ColorOption>
+            <ColorOption
+              color="purple"
+              onClick={() => handleColorChange('purple')}
+              selected={selectColor === 'purple'}
+            >
+              {selectColor === 'purple' && (
+                <CheckIcon>
+                  <img src="img/check.svg" alt="선택" />
+                </CheckIcon>
+              )}
+            </ColorOption>
+            <ColorOption
+              color="blue"
+              onClick={() => handleColorChange('blue')}
+              selected={selectColor === 'blue'}
+            >
+              {selectColor === 'blue' && (
+                <CheckIcon>
+                  <img src="img/check.svg" alt="선택" />
+                </CheckIcon>
+              )}
+            </ColorOption>
+            <ColorOption
+              color="green"
+              onClick={() => handleColorChange('green')}
+              selected={selectColor === 'green'}
+            >
+              {selectColor === 'green' && (
+                <CheckIcon>
+                  <img src="img/check.svg" alt="선택" />
+                </CheckIcon>
+              )}
+            </ColorOption>
+          </Select>
         ) : (
-          <>
-            <OffButton>컬러</OffButton>
-            <OnButton>이미지</OnButton>
-          </>
+          <Select>
+            <ImageOption
+              image={background[0]}
+              onClick={() => handleImageChange(background[0])}
+              selected={selectImage === background[0]}
+            >
+              {selectImage === background[0] && (
+                <CheckIcon>
+                  <img src="img/check.svg" alt="선택" />
+                </CheckIcon>
+              )}
+            </ImageOption>
+            <ImageOption
+              image={background[1]}
+              onClick={() => handleImageChange(background[1])}
+              selected={selectImage === background[1]}
+            >
+              {selectImage === background[1] && (
+                <CheckIcon>
+                  <img src="img/check.svg" alt="선택" />
+                </CheckIcon>
+              )}
+            </ImageOption>
+            <ImageOption
+              image={background[2]}
+              onClick={() => handleImageChange(background[2])}
+              selected={selectImage === background[2]}
+            >
+              {selectImage === background[2] && (
+                <CheckIcon>
+                  <img src="img/check.svg" alt="선택" />
+                </CheckIcon>
+              )}
+            </ImageOption>
+            <ImageOption
+              image={background[3]}
+              onClick={() => handleImageChange(background[3])}
+              selected={selectImage === background[3]}
+            >
+              {selectImage === background[3] && (
+                <CheckIcon>
+                  <img src="img/check.svg" alt="선택" />
+                </CheckIcon>
+              )}
+            </ImageOption>
+          </Select>
         )}
-      </SelectToggle>
-      {isColor ? (
-        <Select>
-          <ColorOption
-            color="orange"
-            onClick={() => handleColorChange('beige')}
-            selected={selectColor === 'beige'}
-          >
-            {selectColor === 'beige' && (
-              <CheckIcon>
-                <img src="img/check.svg" alt="선택" />
-              </CheckIcon>
-            )}
-          </ColorOption>
-          <ColorOption
-            color="purple"
-            onClick={() => handleColorChange('purple')}
-            selected={selectColor === 'purple'}
-          >
-            {selectColor === 'purple' && (
-              <CheckIcon>
-                <img src="img/check.svg" alt="선택" />
-              </CheckIcon>
-            )}
-          </ColorOption>
-          <ColorOption
-            color="blue"
-            onClick={() => handleColorChange('blue')}
-            selected={selectColor === 'blue'}
-          >
-            {selectColor === 'blue' && (
-              <CheckIcon>
-                <img src="img/check.svg" alt="선택" />
-              </CheckIcon>
-            )}
-          </ColorOption>
-          <ColorOption
-            color="green"
-            onClick={() => handleColorChange('green')}
-            selected={selectColor === 'green'}
-          >
-            {selectColor === 'green' && (
-              <CheckIcon>
-                <img src="img/check.svg" alt="선택" />
-              </CheckIcon>
-            )}
-          </ColorOption>
-        </Select>
-      ) : (
-        <Select>
-          <ImageOption
-            image={background[0]}
-            onClick={() => handleImageChange(background[0])}
-            selected={selectImage === background[0]}
-          >
-            {selectImage === background[0] && (
-              <CheckIcon>
-                <img src="img/check.svg" alt="선택" />
-              </CheckIcon>
-            )}
-          </ImageOption>
-          <ImageOption
-            image={background[1]}
-            onClick={() => handleImageChange(background[1])}
-            selected={selectImage === background[1]}
-          >
-            {selectImage === background[1] && (
-              <CheckIcon>
-                <img src="img/check.svg" alt="선택" />
-              </CheckIcon>
-            )}
-          </ImageOption>
-          <ImageOption
-            image={background[2]}
-            onClick={() => handleImageChange(background[2])}
-            selected={selectImage === background[2]}
-          >
-            {selectImage === background[2] && (
-              <CheckIcon>
-                <img src="img/check.svg" alt="선택" />
-              </CheckIcon>
-            )}
-          </ImageOption>
-          <ImageOption
-            image={background[3]}
-            onClick={() => handleImageChange(background[3])}
-            selected={selectImage === background[3]}
-          >
-            {selectImage === background[3] && (
-              <CheckIcon>
-                <img src="img/check.svg" alt="선택" />
-              </CheckIcon>
-            )}
-          </ImageOption>
-        </Select>
-      )}
-      <PostButton btnDisable={btnDisable} />
-    </PostSection>
+        <PostButton btnDisable={btnDisable} />
+      </PostSection>
+    </PostPage>
   );
 }
-
+const PostPage = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const PostSection = styled.div`
   display: flex;
   flex-direction: column;
