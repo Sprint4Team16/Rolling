@@ -4,7 +4,7 @@ import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import '@toast-ui/editor/dist/i18n/ko-kr';
 
-function EditorBox() {
+function EditorBox({ onContentChange }) {
   const editorRef = useRef();
   const WrappingEditor = styled.div`
     width: 720px;
@@ -12,7 +12,7 @@ function EditorBox() {
 
   const onChange = () => {
     const data = editorRef.current.getInstance().getHTML();
-    console.log(data);
+    onContentChange(!!data);
   };
 
   return (

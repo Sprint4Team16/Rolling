@@ -39,6 +39,10 @@ const InputText = styled.input`
   background: var(--white);
 `;
 
+const ErrorMessage = styled.p`
+  color: var(--error);
+`;
+
 const ProfileSelectZone = styled.div`
   display: flex;
   align-items: center;
@@ -89,13 +93,28 @@ const TextAreaDevice = styled.div`
   align-items: center;
 `;
 
-function WritingForm() {
+function WritingForm({ onNameChange, onContentChange, onSubmit }) {
   const imageList = ['img/image43.svg', 'img/image44.svg'];
   const nonProfileImage = ['img/nonSelected.svg'];
   const [name, setName] = useState('');
+  const [nameError, setNameError] = useState(false);
   const [profile, setProfile] = useState(nonProfileImage);
   const [relationship, setRelationship] = useState('');
   const [font, setFont] = useState('');
+  const [content, setContent] = useState('');
+
+  const handleNameChange = (e) => {
+    const { value } = e.target;
+    setName(value);
+
+    if (!value.trim()) {
+      setNameError(true);
+    } else {
+      setNameError(false);
+    }
+
+    onNameChange(e);
+  };
 
   const handleProfileSelect = (prof) => {
     setProfile(prof);
@@ -109,12 +128,18 @@ function WritingForm() {
     setRelationship(relation);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const handleFontChange = (fonts) => {
     setFont(fonts);
+  };
+
+  const handleContentChange = (e) => {
+    setContent(e.target.value);
+    onContentChange(!!e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit({ name, content });
   };
 
   useEffect(() => {
@@ -126,7 +151,14 @@ function WritingForm() {
       <MainForm onSubmit={handleSubmit}>
         <FormSubject>
           <IndexMessage>From.</IndexMessage>
-          <InputText type="text" value={name} placeholder="이름을 입력해 주세요." onChange={(e) => setName(e.target.value)} />
+          <InputText
+            type="text"
+            value={name}
+            placeholder="이름을 입력해 주세요."
+            onChange={handleNameChange}
+            onBlur={() => { if (!name.trim()) setNameError(true); }}
+          />
+          {nameError && <ErrorMessage>값을 입력해주세요.</ErrorMessage>}
         </FormSubject>
 
         <FormSubject>
@@ -164,7 +196,7 @@ function WritingForm() {
         <FormSubject>
           <IndexMessage>내용을 입력해 주세요</IndexMessage>
           <TextAreaDevice>
-            <EditorBox />
+            <EditorBox value={content} onChange={handleContentChange} />
           </TextAreaDevice>
         </FormSubject>
 

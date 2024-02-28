@@ -16,11 +16,12 @@ function App() {
             <Route index element={<List />} />
           </Route>
           <Route path="post">
-            {/* <Route index element={<Post />} /> */}
-            {/* <Route path=":id"> */}
-            <Route index element={<WritingMessage />} />
-            {/* <Route path='/edit' element={} />
-             <Route path='/message' element={} />  */}
+            <Route index element={<Post />} /> 
+            <Route path=":id"> 
+              <Route index element={} />
+              <Route path='/edit' element={} />
+              <Route path='/message' element={<WritingMessage />} />  
+            </Route>
           </Route>
         </Route>
       </Routes>

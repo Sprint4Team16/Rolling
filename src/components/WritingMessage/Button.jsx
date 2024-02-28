@@ -20,9 +20,9 @@ const ButtonContainer = styled.button`
   letter-spacing: -0.18px;
 `;
 
-function Button() {
+function Button({ onClick, disabled }) {
   return (
-    <ButtonContainer>
+    <ButtonContainer onClick={onClick} disabled={disabled}>
       <Link to="/">생성하기</Link>
     </ButtonContainer>
   );
