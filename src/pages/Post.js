@@ -6,6 +6,7 @@ import PostButton from '../components/post/postmake/PostButton';
 import PostInputSection from '../components/post/postmake/PostInputSection';
 import ColorSelection from '../components/post/postmake/ColorSelection';
 import ImageSelection from '../components/post/postmake/ImageSelection';
+import ToggleButton from '../components/post/postmake/ToggleButton';
 
 async function getAPI(query) {
   const response = await fetch(`https://rolling-api.vercel.app${query}`);
@@ -82,19 +83,12 @@ function Post() {
           inputError={inputError}
         />
         <SelectSection />
-        <SelectToggle onClick={toggleHandler}>
-          {isColor ? (
-            <>
-              <OnButton>컬러</OnButton>
-              <OffButton>이미지</OffButton>
-            </>
-          ) : (
-            <>
-              <OffButton>컬러</OffButton>
-              <OnButton>이미지</OnButton>
-            </>
-          )}
-        </SelectToggle>
+        <ToggleButton
+          state={isColor}
+          handler={toggleHandler}
+          text1="컬러"
+          text2="이미지"
+        />
         {isColor ? (
           <Select>
             {colorList.map((color) => (
@@ -140,53 +134,6 @@ const PostSection = styled.div`
   @media (max-width: 768px) {
     width: 320px;
   }
-`;
-
-const SelectToggle = styled.div`
-  display: inline-flex;
-  align-items: flex-start;
-  margin-top: 24px;
-`;
-
-const BtnCommon = styled.button`
-  display: flex;
-  width: 122px;
-  height: 40px;
-  padding: 7px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-`;
-
-const OnButton = styled(BtnCommon)`
-  border-radius: 6px;
-  border: 2px solid var(--purple600);
-  background: var(--white, #fff);
-
-  color: var(--purple700);
-  text-align: center;
-  /* Font/16 Bold */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 26px; /* 162.5% */
-  letter-spacing: -0.16px;
-`;
-
-const OffButton = styled(BtnCommon)`
-  border-radius: 6px;
-  background: var(--gray100);
-
-  color: var(--gray900);
-  text-align: center;
-  /* Font/16 Regular */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px; /* 162.5% */
-  letter-spacing: -0.16px;
 `;
 
 const Select = styled.div`
