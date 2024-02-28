@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import SelectSection from '../components/post/SelectSection';
+import SelectSection from '../components/post/postmake/SelectSection';
 import Header from '../components/common/Header';
-import PostButton from '../components/post/PostButton';
+import PostButton from '../components/post/postmake/PostButton';
 
 async function getAPI(query) {
   const response = await fetch(`https://rolling-api.vercel.app${query}`);
