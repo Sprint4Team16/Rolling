@@ -1,35 +1,66 @@
-import { useRef } from 'react';
-import styled from 'styled-components';
-import { Editor } from '@toast-ui/react-editor';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import '@toast-ui/editor/dist/i18n/ko-kr';
+import React, {
+  useMemo,
+  useState,
+} from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+const formats = [
+  'font',
+  'header',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'align',
+  'color',
+  'background',
+  'size',
+  'h1',
+];
 
 function EditorBox({ onContentChange }) {
-  const editorRef = useRef();
-  const WrappingEditor = styled.div`
-    width: 720px;
-  `;
+  const [values, setValues] = useState('');
 
-  const onChange = () => {
-    const data = editorRef.current.getInstance().getHTML();
-    onContentChange(!!data);
+  const modules = useMemo(() => {
+    return {
+      toolbar: {
+        container: [
+          [{ size: ['small', false, 'large', 'huge'] }],
+          [{ align: [] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          [
+            {
+              color: [],
+            },
+            { background: [] },
+          ],
+        ],
+      },
+    };
+  }, []);
+
+  const handleKeyUp = (content) => {
+    const reValues = content === '<p><br></p>' ? '' : content;
+    setValues(values);
+    onContentChange(reValues);
   };
 
   return (
-    <WrappingEditor>
-      <Editor
-        placeholder="글쓰기"
-        initialValue=" "
-        previewStyle="vertical"
-        height="260px"
-        width="80%"
-        initialEditType="wysiwyg"
-        useCommandShortcut={false}
-        ref={editorRef}
-        onChange={onChange}
-        language="ko-KR"
-      />
-    </WrappingEditor>
+    <ReactQuill
+      theme="snow"
+      style={{ width: '720px', height: '260px' }}
+      modules={modules}
+      formats={formats}
+      onChange={setValues}
+      onKeyUp={handleKeyUp}
+    />
 
   );
 }
