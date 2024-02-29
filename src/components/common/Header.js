@@ -11,7 +11,7 @@ const StyledNav = styled.nav`
 `;
 
 const StyledHeader = styled.div`
-  width: 100%
+  width: 100%;
   height: 64px;
   max-width: 1200px;
   margin: 0 auto;
