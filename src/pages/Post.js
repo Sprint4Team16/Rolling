@@ -8,6 +8,7 @@ import ColorSelection from '../components/post/postmake/ColorSelection';
 import ImageSelection from '../components/post/postmake/ImageSelection';
 import ToggleButton from '../components/post/postmake/ToggleButton';
 
+
 async function getAPI(query) {
   const response = await fetch(`https://rolling-api.vercel.app${query}`);
   const body = await response.json();
