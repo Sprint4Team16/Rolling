@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -48,9 +49,11 @@ function Header({ showButton }) {
           <img src="img/logo.png" alt="로고 사진" />
         </a>
         {showButton && (
-          <ButtonContainer>
-            <button type="button">롤링 페이퍼 만들기</button>
-          </ButtonContainer>
+          <Link to="/post">
+            <ButtonContainer>
+              <button type="button">롤링 페이퍼 만들기</button>
+            </ButtonContainer>
+          </Link>
         )}
       </StyledHeader>
     </StyledNav>
