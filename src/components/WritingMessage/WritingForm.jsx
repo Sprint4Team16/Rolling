@@ -103,9 +103,8 @@ function WritingForm({ isBtnDisabled }) {
   const [isContent, setIsContent] = useState(true);
 
   const handleNameChange = (e) => {
-    const { value } = e.target;
-    setName(value);
-    setNameError(!value.trim());
+    setName(e.target.value);
+    setNameError(!e.target.value.trim());
   };
 
   const handleContentChange = (contents) => {
@@ -137,9 +136,9 @@ function WritingForm({ isBtnDisabled }) {
   }, []);
 
   useEffect(() => {
-    setIsContent(!content || !name);
+    setIsContent(!!content && !!name);
     isBtnDisabled(!!isContent);
-  }, [name, content]);
+  }, [content, name, isContent]);
 
   return (
     <div>

@@ -15,20 +15,14 @@ const FormContainer = styled.div`
 function WritingMessage() {
   const navigate = useNavigate();
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  const handleButtonDisabledChange = (disabled) => {
-    setButtonDisabled(disabled);
-  };
-
-  console.log(buttonDisabled);
-  console.log(!!handleButtonDisabledChange);
 
   return (
     <div>
       <Header />
       <FormContainer>
-        <WritingForm isBtnDisabled={handleButtonDisabledChange} />
+        <WritingForm isBtnDisabled={(isContent) => setButtonDisabled(isContent)} />
       </FormContainer>
-      <Button onClick={() => navigate('/post')} disabled={buttonDisabled} />
+      <Button onClick={() => navigate('/post')} disabled={!buttonDisabled} />
     </div>
   );
 }
