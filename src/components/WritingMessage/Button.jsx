@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 const ButtonContainer = styled.button`
@@ -13,17 +13,19 @@ const ButtonContainer = styled.button`
   gap: 10px;
   border-radius: 12px;
   color: var(--white);
-  background-color: var(--purple600);
+  background-color: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
   font-size: 18px;
   font-weight: 300;
   line-height: 28px;
   letter-spacing: -0.18px;
 `;
 
-function Button({ onClick, disabled }) {
+function Button({ disabled }) {
+  const navigate = useNavigate();
+
   return (
-    <ButtonContainer onClick={onClick} disabled={disabled}>
-      <Link to="/">생성하기</Link>
+    <ButtonContainer onClick={() => navigate('/list')} disabled={disabled}>
+      <p>생성하기</p>
     </ButtonContainer>
   );
 }

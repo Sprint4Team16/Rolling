@@ -46,10 +46,12 @@ function EditorBox({ onContentChange }) {
     };
   }, []);
 
-  const handleKeyUp = (content) => {
-    const reValues = content === '<p><br></p>' ? '' : content;
-    setValues(values);
-    onContentChange(reValues);
+  const handleKeyUp = () => {
+    if (values === '' || values === '<p><br></p>') {
+      onContentChange(false);
+    } else {
+      onContentChange(true);
+    }
   };
 
   return (
