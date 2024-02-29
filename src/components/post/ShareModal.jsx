@@ -28,12 +28,11 @@ const ShareButton = styled.button`
 
 function ShareModal() {
   const [showModal, setShowModal] = useState(false);
-  const [clickValue, setClickValue] = useState('');
+  const [modalType, setModalType] = useState(null);
 
-  const handleShowModal = (e) => {
-    e.preventDefault();
+  const handleShowModal = (type) => {
     setShowModal(true);
-    setClickValue(e.target.textContent);
+    setModalType(type);
   };
 
   // const handleClipBoard = async (text) => {
@@ -49,12 +48,15 @@ function ShareModal() {
   // const handleCopyUrl = () => {
   //   handleClipBoard(`${urlBaseLink}${userId}`);
   // };
+  // 임의로 /post:id 부분은 userId로 작성했습니다! 이후에 API
 
   return (
     <ShareBox>
-      <ShareButton onClick={handleShowModal}>카카오톡 공유</ShareButton>
-      <ShareButton onClick={handleShowModal}>URL 공유</ShareButton>
-      {showModal && clickValue === '카카오톡 공유' ? <KakaoModal /> : null}
+      <ShareButton onClick={() => handleShowModal('kakao')}>
+        카카오톡 공유
+      </ShareButton>
+      <ShareButton onClick={() => handleShowModal('url')}>URL 공유</ShareButton>
+      {showModal && modalType === 'kakao' && <KakaoModal />}
     </ShareBox>
   );
 }
