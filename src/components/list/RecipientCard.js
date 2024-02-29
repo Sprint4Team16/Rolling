@@ -1,30 +1,28 @@
+import React from 'react';
 import styled from 'styled-components';
 
-function RecipientCard({ name = 'Sowon', writerNum = '30' }) {
+function RecipientCard({ recipient }) {
+  if (!recipient) {
+    return <div>ㅜㅅㅜ</div>;
+  }
   return (
     <CardWrapper>
       <CardContent>
         <RecipientInfo>
-          <RecipientText>To.{name}</RecipientText>
-          <WriterProfile />
+          <RecipientText>To. {recipient.name}</RecipientText>
           <WriterText>
-            <WriterNumText>{writerNum}</WriterNumText>명이 작성했어요!
+            <WriterNumText>{recipient.messageCount}</WriterNumText>명이
+            작성했어요!
           </WriterText>
         </RecipientInfo>
         <Division />
         <EmojiGroup>
-          <EmojiCount>
-            <Emoji>👍</Emoji>
-            <span>20</span>
-          </EmojiCount>
-          <EmojiCount>
-            <Emoji>😍</Emoji>
-            <span>12</span>
-          </EmojiCount>
-          <EmojiCount>
-            <Emoji>😢</Emoji>
-            <span>7</span>
-          </EmojiCount>
+          {recipient.topReactions.map((reaction) => (
+            <EmojiCount key={reaction.id}>
+              <Emoji>{reaction.emoji}</Emoji>
+              <span>{reaction.count}</span>
+            </EmojiCount>
+          ))}
         </EmojiGroup>
       </CardContent>
     </CardWrapper>
@@ -32,6 +30,7 @@ function RecipientCard({ name = 'Sowon', writerNum = '30' }) {
 }
 
 export default RecipientCard;
+
 const CardWrapper = styled.div`
   width: 275px;
   height: 260px;
@@ -56,11 +55,6 @@ const RecipientInfo = styled.div`
 const RecipientText = styled.span`
   font-size: 24px;
   font-weight: 700;
-`;
-
-const WriterProfile = styled.div`
-  display: flex;
-  height: 28px;
 `;
 
 const WriterText = styled.span`
