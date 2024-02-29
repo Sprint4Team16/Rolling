@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import EmojiPicker from 'emoji-picker-react';
 import { useState } from 'react';
+import ShareModal from './ShareModal';
 
 const Text = css`
   font-family: Pretendard;
@@ -209,10 +210,18 @@ const EmojiPickerWrapper = styled.div`
   z-index: 9999;
 `;
 
+const ShareWrapper = styled.div`
+  position: absolute;
+  top: 60px;
+  right: 120px;
+  z-index: 9999;
+`;
+
 function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
   const [isOpen, setIsOpen] = useState(false);
   // const [chosenEmoji, setChosenEmoji] = useState(null);
   const [badges, setBadges] = useState([]);
+  const [shareToggle, setShareToggle] = useState(false);
 
   const handleEmojiPicker = () => {
     setIsOpen(!isOpen);
@@ -225,6 +234,11 @@ function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
   // };
   const onEmojiClick = (event, emojiObject) => {
     setBadges([...badges, emojiObject]);
+  };
+
+  const handleClickShare = (e) => {
+    e.preventDefault();
+    setShareToggle(!shareToggle);
   };
 
   return (
@@ -271,9 +285,14 @@ function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
             )}
           </EmojiAddButton>
           <SplitBarVertical2 />
-          <ShareButton>
+          <ShareButton onClick={handleClickShare}>
             <img src="img/shareIcon.svg" alt="" />
           </ShareButton>
+          {shareToggle && (
+            <ShareWrapper>
+              <ShareModal />
+            </ShareWrapper>
+          )}
         </PostIdSetting>
       </SubHeaderContainer>
     </SubHeaderWrapper>
