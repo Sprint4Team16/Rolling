@@ -1,4 +1,5 @@
 const BASE_URL = 'https://rolling-api.vercel.app';
+const TEAM = '/4-16';
 
 async function fetchData(endpoint) {
   const url = `${BASE_URL}${endpoint}`;
@@ -18,4 +19,28 @@ export function getBackground() {
 // 프로필 이미지 데이터 불러오기
 export function getProfile() {
   return fetchData('/profile-images/');
+}
+
+// 롤링페이퍼를 생성 후 POST
+export async function submitPost(data) {
+  try {
+    const response = await fetch(`${BASE_URL}${TEAM}/recipients/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(
+      'There has been a problem with your fetch operation: ',
+      error,
+    );
+    return null;
+  }
 }
