@@ -108,7 +108,8 @@ function Post() {
           onSubmit={() => {
             const data = {
               name: inputUser,
-              backgroundColor: selectColor,
+              backgroundColor: `${selectColor === null ? 'beige' : selectColor}`,
+              backgroundImageURL: selectImage,
             };
             submitPost(data);
           }}
