@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import EmojiPicker from 'emoji-picker-react';
 import { useState, useRef, useEffect } from 'react';
+import EmojiDropDown from './subheader/EmojiDropDown';
 import ShareModal from './ShareModal';
 
 const Text = css`
@@ -29,6 +29,7 @@ const SubHeaderWrapper = styled.div`
   position: sticky;
   top: 62px;
   z-index: 99999;
+
   @media (max-width: 767px) {
     top: 0;
   }
@@ -134,63 +135,6 @@ const SplitBarVertical1 = styled(SplitBarVertical)`
   }
 `;
 
-const EmojiGroup = styled.div`
-  display: flex;
-  gap: 8px;
-`;
-
-const EmojiBadge = styled.div`
-  ${FlexCenter}
-  padding: 8px 12px;
-  gap: 2px;
-  border-radius: 32px;
-  background: rgba(0, 0, 0, 0.54);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 400;
-
-  @media (max-width: 469px) {
-    font-size: 14px;
-    padding: 4px 8px;
-  }
-`;
-
-const Emoji = styled.span`
-  padding: 0 2px;
-  margin-right: 2px;
-`;
-
-const DownArrow = styled.img`
-  width: 24px;
-  height: 24px;
-  box-sizing: border-box;
-  margin: 6px 14px 6px 6px;
-
-  @media (max-width: 470px) {
-    margin-right: 8px;
-  }
-`;
-
-const EmojiAddButton = styled.div`
-  ${Button}
-  position: relative;
-  cursor: pointer;
-
-  color: var(--gray-900, #181818);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-
-  @media (max-width: 470px) {
-    span {
-      display: none;
-    }
-    padding: 6px 8px;
-  }
-`;
-
 const SplitBarVertical2 = styled(SplitBarVertical)`
   margin: 0 13px;
 `;
@@ -203,13 +147,6 @@ const ShareButton = styled.button`
   }
 `;
 
-const EmojiPickerWrapper = styled.div`
-  position: absolute;
-  top: 45px;
-  right: 0;
-  z-index: 9999;
-`;
-
 const ShareWrapper = styled.div`
   position: absolute;
   top: 60px;
@@ -217,10 +154,7 @@ const ShareWrapper = styled.div`
   z-index: 9999;
 `;
 
-function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
-  const [isOpen, setIsOpen] = useState(false);
-  // const [chosenEmoji, setChosenEmoji] = useState(null);
-  const [badges, setBadges] = useState([]);
+function SubHeader({ name = 'Minjoon', peopleNum = 23 }) {
   const [shareToggle, setShareToggle] = useState(false);
   const ref = useRef();
 
@@ -236,19 +170,6 @@ function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
       window.removeEventListener('click', handleOutsideClick);
     };
   }, [shareToggle]);
-
-  const handleEmojiPicker = () => {
-    setIsOpen(!isOpen);
-  };
-  const stopPropagation = (event) => {
-    event.stopPropagation();
-  };
-  // const onEmojiClick = (event, emojiObject) => {
-  //   setChosenEmoji(emojiObject);
-  // };
-  const onEmojiClick = (event, emojiObject) => {
-    setBadges([...badges, emojiObject]);
-  };
 
   const handleClickShare = (e) => {
     e.preventDefault();
@@ -266,38 +187,7 @@ function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
             {peopleNum}명이 작성했어요!
           </WrittenBy>
           <SplitBarVertical1 />
-          <EmojiGroup>
-            {/* {badges.map((badge) => {
-              return
-              (<EmojiBadge key={badge.id}>
-                <Emoji>{badge.emoji}</Emoji>
-                <span>1</span>
-              </EmojiBadge>;)
-            })} */}
-            <EmojiBadge>
-              <Emoji>👍</Emoji>
-              <span>24</span>
-            </EmojiBadge>
-            <EmojiBadge>
-              <Emoji>😍</Emoji>
-              {/* <Emoji>{chosenEmoji ? chosenEmoji.emoji : ''}</Emoji> */}
-              <span>16</span>
-            </EmojiBadge>
-            <EmojiBadge>
-              <Emoji>🎉</Emoji>
-              <span>10</span>
-            </EmojiBadge>
-          </EmojiGroup>
-          <DownArrow src="img/downArrow.svg" alt="" />
-          <EmojiAddButton onClick={handleEmojiPicker}>
-            <img src="img/emojiAdd.svg" alt="" />
-            <span>추가</span>
-            {isOpen && (
-              <EmojiPickerWrapper onClick={stopPropagation}>
-                <EmojiPicker onEmojiClick={onEmojiClick} />
-              </EmojiPickerWrapper>
-            )}
-          </EmojiAddButton>
+          <EmojiDropDown />
           <SplitBarVertical2 />
           <ShareButton ref={ref} onClick={handleClickShare}>
             <img src="img/shareIcon.svg" alt="" />
