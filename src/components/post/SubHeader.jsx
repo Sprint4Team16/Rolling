@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import EmojiPicker from 'emoji-picker-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ShareModal from './ShareModal';
 
 const Text = css`
@@ -222,6 +222,20 @@ function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
   // const [chosenEmoji, setChosenEmoji] = useState(null);
   const [badges, setBadges] = useState([]);
   const [shareToggle, setShareToggle] = useState(false);
+  const ref = useRef();
+
+  const handleOutsideClick = (e) => {
+    if (shareToggle && (!ref.current || !ref.current.contains(e.target))) {
+      setShareToggle(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', handleOutsideClick);
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, [shareToggle]);
 
   const handleEmojiPicker = () => {
     setIsOpen(!isOpen);
@@ -285,7 +299,7 @@ function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
             )}
           </EmojiAddButton>
           <SplitBarVertical2 />
-          <ShareButton onClick={handleClickShare}>
+          <ShareButton ref={ref} onClick={handleClickShare}>
             <img src="img/shareIcon.svg" alt="" />
           </ShareButton>
           {shareToggle && (
