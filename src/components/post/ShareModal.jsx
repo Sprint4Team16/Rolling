@@ -36,6 +36,20 @@ function ShareModal() {
     setClickValue(e.target.textContent);
   };
 
+  // const handleClipBoard = async (text) => {
+  //   try {
+  //     await navigator.clipboard.writeText(text);
+  //     alert('URL이 복사 되었습니다.');
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const urlBaseLink = 'http://localhost:3000/post/';
+  // const handleCopyUrl = () => {
+  //   handleClipBoard(`${urlBaseLink}${userId}`);
+  // };
+
   return (
     <ShareBox>
       <ShareButton onClick={handleShowModal}>카카오톡 공유</ShareButton>
