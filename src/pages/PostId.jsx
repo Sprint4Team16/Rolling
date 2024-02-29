@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
+// eslint-disable-next-line
+import { Link } from 'react-router-dom';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
-// eslint-disable-next-line
 import Card, { CardContentWrapper } from '../components/post/Card';
 
 const HeaderWrapper = styled.div`
@@ -19,7 +19,11 @@ const HeaderWrapper = styled.div`
 const PostIdWrapper = styled.div`
   background-color: ${(props) => props.color || 'var(--orange200)'};
   background-image: url(${(props) => props.image || 'none'});
-  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 `;
 // eslint-disable-next-line
 const CardWrapper = styled.div`
@@ -27,11 +31,15 @@ const CardWrapper = styled.div`
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 127px auto 0px;
-  gap: 24px;
+  gap: 24px 2%;
 
   @media (max-width: 1247px) {
     margin-left: 24px;
     margin-right: 24px;
+  }
+  @media (min-width: 360px) and(max-width: 767px) {
+    margin: 93px 24px 0px;
+    /* align-content: center; */
   }
 `;
 // eslint-disable-next-line
@@ -52,13 +60,13 @@ const PlusIcon = styled.div`
   background: var(--gray500);
 `;
 
-function PostId({ color, image }) {
+function PostId({ color, image, name, peopleNum }) {
   return (
     <PostIdWrapper color={color} image={image}>
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <SubHeader />
+      <SubHeader name={name || 'Minjoon'} peopleNum={peopleNum || 2} />
       <CardWrapper>
         <CardAdd>
           <PlusIcon>
@@ -75,7 +83,7 @@ function PostId({ color, image }) {
         <Card
           src="img/shareIcon.svg"
           name="김동훈"
-          userState="친구"
+          userState="동료"
           cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
           cardCreatedAt="2023.07.08"
         />
@@ -89,7 +97,7 @@ function PostId({ color, image }) {
         <Card
           src="img/shareIcon.svg"
           name="김동훈"
-          userState="동료"
+          userState="지인"
           cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
           cardCreatedAt="2023.07.08"
         />
@@ -103,14 +111,14 @@ function PostId({ color, image }) {
         <Card
           src="img/shareIcon.svg"
           name="김동훈"
-          userState="친구"
+          userState="지인"
           cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
           cardCreatedAt="2023.07.08"
         />
         <Card
           src="img/shareIcon.svg"
           name="김동훈"
-          userState="친구"
+          userState="지인"
           cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
           cardCreatedAt="2023.07.08"
         />
