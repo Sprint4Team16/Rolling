@@ -111,7 +111,7 @@ function Post() {
               backgroundColor: `${selectColor === null ? 'beige' : selectColor}`,
               backgroundImageURL: selectImage,
             };
-            submitPost(data);
+            submitRollingPost(data);
           }}
           btnDisable={btnDisable}
         />
