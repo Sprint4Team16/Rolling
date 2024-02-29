@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-import EmojiPicker from 'emoji-picker-react';
-import { useState } from 'react';
+import EmojiDropDown from './subheader/EmojiDropDown';
 
 const Text = css`
   font-family: Pretendard;
@@ -28,6 +27,7 @@ const SubHeaderWrapper = styled.div`
   position: sticky;
   top: 62px;
   z-index: 99999;
+
   @media (max-width: 767px) {
     top: 0;
   }
@@ -133,84 +133,6 @@ const SplitBarVertical1 = styled(SplitBarVertical)`
   }
 `;
 
-const EmojiGroup = styled.div`
-  display: flex;
-  gap: 8px;
-`;
-// eslint-disable-next-line
-const EmojiBadge = styled.div`
-  ${FlexCenter}
-  padding: 8px 12px;
-  gap: 2px;
-  border-radius: 32px;
-  background: rgba(0, 0, 0, 0.54);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 400;
-
-  @media (max-width: 469px) {
-    font-size: 14px;
-    padding: 4px 8px;
-  }
-`;
-// eslint-disable-next-line
-const Emoji = styled.span`
-  padding: 0 2px;
-  margin-right: 2px;
-`;
-
-const DownArrow = styled.button`
-  width: 24px;
-  height: 24px;
-  box-sizing: border-box;
-  margin: 6px 14px 6px 6px;
-  position: relative;
-
-  @media (max-width: 470px) {
-    margin-right: 8px;
-  }
-`;
-
-const DropDown = styled.div`
-  position: absolute;
-  top: 45px;
-  right: 0;
-  z-index: 9999;
-
-  border-radius: 8px;
-  border: 1px solid #b6b6b6;
-  background: var(--white);
-  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
-
-  /* display: inline-flex; */
-  padding: 24px;
-  /* flex-direction: column; */
-  align-items: flex-start;
-  /* max-width: 264px; */
-  /* flex-wrap: nowrap; */
-  gap: 10px;
-`;
-
-const EmojiAddButton = styled.div`
-  ${Button}
-  position: relative;
-  cursor: pointer;
-
-  color: var(--gray-900, #181818);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-
-  @media (max-width: 470px) {
-    span {
-      display: none;
-    }
-    padding: 6px 8px;
-  }
-`;
-
 const SplitBarVertical2 = styled(SplitBarVertical)`
   margin: 0 13px;
 `;
@@ -223,27 +145,7 @@ const ShareButton = styled.button`
   }
 `;
 
-const EmojiPickerWrapper = styled.div`
-  position: absolute;
-  top: 45px;
-  right: 0;
-  z-index: 9999;
-`;
-
-function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
-  const [isOpen, setIsOpen] = useState(false);
-  // eslint-disable-next-line
-  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-
-  const [badges, setBadges] = useState([]);
-
-  const handleEmojiPicker = () => {
-    setIsOpen(!isOpen);
-  };
-  const stopPropagation = (event) => {
-    event.stopPropagation();
-  };
-
+function SubHeader({ name = 'Minjoon', peopleNum = 23 }) {
   return (
     <SubHeaderWrapper>
       <SubHeaderContainer>
@@ -255,62 +157,7 @@ function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
             {peopleNum}명이 작성했어요!
           </WrittenBy>
           <SplitBarVertical1 />
-          <EmojiGroup>
-            {badges.slice(0, 3).map((badge) => (
-              <EmojiBadge key={badge.unified}>
-                <Emoji>{badge.emoji}</Emoji>
-                <span>{badge.count}</span>
-              </EmojiBadge>
-            ))}
-          </EmojiGroup>
-          <DownArrow
-            src="img/downArrow.svg"
-            alt=""
-            onClick={() => setIsDropDownOpen(true)}
-          >
-            {isDropDownOpen && (
-              <DropDown onClose={() => setIsDropDownOpen(false)}>
-                <EmojiGroup>
-                  {badges.slice(3).map((badge) => (
-                    <EmojiBadge key={badge.unified}>
-                      <Emoji>{badge.emoji}</Emoji>
-                      <span>{badge.count}</span>
-                    </EmojiBadge>
-                  ))}
-                </EmojiGroup>
-              </DropDown>
-            )}
-          </DownArrow>
-          <EmojiAddButton onClick={handleEmojiPicker}>
-            <img src="img/emojiAdd.svg" alt="" />
-            <span>추가</span>
-            {isOpen && (
-              <EmojiPickerWrapper onClick={stopPropagation}>
-                <EmojiPicker
-                  onEmojiClick={(emojiData) => {
-                    setBadges((prevBadges) => {
-                      let newBadges;
-                      const exists = prevBadges.some(
-                        (badge) => badge.emoji === emojiData.emoji,
-                      );
-                      if (exists) {
-                        newBadges = prevBadges.map((badge) =>
-                          badge.emoji === emojiData.emoji
-                            ? { ...badge, count: badge.count + 1 }
-                            : badge,
-                        );
-                      } else {
-                        newBadges = [...prevBadges, { ...emojiData, count: 1 }];
-                      }
-                      newBadges.sort((a, b) => b.count - a.count);
-                      return newBadges;
-                    });
-                    setIsOpen(false);
-                  }}
-                />
-              </EmojiPickerWrapper>
-            )}
-          </EmojiAddButton>
+          <EmojiDropDown />
           <SplitBarVertical2 />
           <ShareButton>
             <img src="img/shareIcon.svg" alt="" />
