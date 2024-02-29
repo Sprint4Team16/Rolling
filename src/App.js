@@ -4,7 +4,7 @@ import React from 'react';
 import Main from './pages/Main';
 import Post from './pages/Post';
 import List from './pages/List';
-import WritingMessage from './components/WritingMessage/WritingMessage';
+// import WritingMessage from './components/WritingMessage/WritingMessage';
 
 function App() {
   return (
@@ -21,7 +21,6 @@ function App() {
               <Route index element={} />
               <Route path='/edit' element={} />
               <Route path='/message' element={<WritingMessage />} />
-
             </Route>
           </Route>
         </Route>
