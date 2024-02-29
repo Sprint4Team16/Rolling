@@ -7,13 +7,7 @@ import PostInputSection from '../components/post/postmake/PostInputSection';
 import ColorSelection from '../components/post/postmake/ColorSelection';
 import ImageSelection from '../components/post/postmake/ImageSelection';
 import ToggleButton from '../components/post/postmake/ToggleButton';
-
-async function getAPI(query) {
-  const response = await fetch(`https://rolling-api.vercel.app${query}`);
-  const body = await response.json();
-
-  return body;
-}
+import { getBackground, submitPost } from '../Api';
 
 const colorList = ['beige', 'purple', 'blue', 'green'];
 
@@ -28,11 +22,11 @@ function Post() {
 
   const handleImageLoad = async () => {
     try {
-      const response = await getAPI('/background-images/');
+      const response = await getBackground();
       const result = response.imageUrls;
       setBackground(result);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -110,7 +104,17 @@ function Post() {
             ))}
           </Select>
         )}
-        <PostButton btnDisable={btnDisable} />
+        <PostButton
+          onSubmit={() => {
+            const data = {
+              name: inputUser,
+              backgroundColor: `${selectColor === null ? 'beige' : selectColor}`,
+              backgroundImageURL: selectImage,
+            };
+            submitPost(data);
+          }}
+          btnDisable={btnDisable}
+        />
       </PostSection>
     </PostPage>
   );

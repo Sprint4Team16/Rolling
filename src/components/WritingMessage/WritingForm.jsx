@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
-import Editor from '@toast-ui/editor';
 import styled from 'styled-components';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import '@toast-ui/editor/dist/i18n/ko-kr';
-// import exampleProfile1 from '../../../public/img/image43.svg';
-// import exampleProfile2 from '../../../public/img/image44.svg';
+import EditorBox from './TextEditor';
 
 const IndexMessage = styled.p`
   color: var(--gray900);
@@ -15,7 +13,7 @@ const IndexMessage = styled.p`
   letter-spacing: -0.24px;
 `;
 
-const Form = styled.form`
+const MainForm = styled.form`
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -39,6 +37,10 @@ const InputText = styled.input`
   border-radius: 8px;
   border: 1px solid var(--gray300);
   background: var(--white);
+`;
+
+const ErrorMessage = styled.p`
+  color: var(--error);
 `;
 
 const ProfileSelectZone = styled.div`
@@ -86,45 +88,33 @@ const TextAreaDevice = styled.div`
   display: flex;
   width: 720px;
   height: 260px;
-  padding: 1px 1px 16px 1px;
+  padding: 16px 1px 16px 1px;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  border: 1px solid var(--gray300);
 `;
 
-// const TextAreaTools = styled.div`
-//   width: 718px;
-//   height: 49px;
-//   flex-shrink: 0;
-//   border-radius: 8px 8px 0px 0px;
-//   background: var(--gray200);
-// `;
-
-// const FontStyleTools = styled.div`
-//   display: inline-flex;
-//   align-items: flex-start;
-//   gap: 14px;
-// `;
-
-// const HandWritingTools = styled.div`
-//   display: flex;
-//   align-items: flex-start;
-//   gap: 2px;
-// `;
-
-function WritingForm() {
+function WritingForm({ onNameChange, onContentChange, onSubmit }) {
   const imageList = ['img/image43.svg', 'img/image44.svg'];
   const nonProfileImage = ['img/nonSelected.svg'];
-  // const WritingTools = ['img/bold.svg', 'img/italic.svg', 'img/underbar.svg'];
   const [name, setName] = useState('');
+  const [nameError, setNameError] = useState(false);
   const [profile, setProfile] = useState(nonProfileImage);
   const [relationship, setRelationship] = useState('');
-  // const [bold, setBold] = useState(false);
-  // const [italic, setItalic] = useState(false);
-  // const [underline, setUnderline] = useState(false);
-  // const [content, setContent] = useState('');
   const [font, setFont] = useState('');
+  const [content, setContent] = useState('');
+
+  const handleNameChange = (e) => {
+    const { value } = e.target;
+    setName(value);
+
+    if (!value.trim()) {
+      setNameError(true);
+    } else {
+      setNameError(false);
+    }
+
+    onNameChange(e);
+  };
 
   const handleProfileSelect = (prof) => {
     setProfile(prof);
@@ -138,28 +128,18 @@ function WritingForm() {
     setRelationship(relation);
   };
 
-  // const handleToggleBold = () => {
-  //   setBold(!bold);
-  // };
+  const handleFontChange = (fonts) => {
+    setFont(fonts);
+  };
 
-  // const handleToggleItalic = () => {
-  //   setItalic(!italic);
-  // };
-
-  // const handleToggleUnderline = () => {
-  //   setUnderline(!underline);
-  // };
-
-  // const handleContentWriting = (contents) => {
-  //   setContent(contents.target.value);
-  // };
+  const handleContentChange = (e) => {
+    setContent(e.target.value);
+    onContentChange(!!e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
-
-  const handleFontChange = (fonts) => {
-    setFont(fonts);
+    onSubmit({ name, content });
   };
 
   useEffect(() => {
@@ -168,10 +148,17 @@ function WritingForm() {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
+      <MainForm onSubmit={handleSubmit}>
         <FormSubject>
           <IndexMessage>From.</IndexMessage>
-          <InputText type="text" value={name} placeholder="이름을 입력해 주세요." onChange={(e) => setName(e.target.value)} />
+          <InputText
+            type="text"
+            value={name}
+            placeholder="이름을 입력해 주세요."
+            onChange={handleNameChange}
+            onBlur={() => { if (!name.trim()) setNameError(true); }}
+          />
+          {nameError && <ErrorMessage>값을 입력해주세요.</ErrorMessage>}
         </FormSubject>
 
         <FormSubject>
@@ -193,7 +180,6 @@ function WritingForm() {
                 </button>
               </div>
             </ImageSelectionList>
-
           </ProfileSelectZone>
         </FormSubject>
 
@@ -210,50 +196,7 @@ function WritingForm() {
         <FormSubject>
           <IndexMessage>내용을 입력해 주세요</IndexMessage>
           <TextAreaDevice>
-            {/* <TextAreaTools>
-              <HandWritingTools>
-                <FontStyleTools>
-                  <button type="button" onClick={handleToggleBold}>
-                    <img src={WritingTools[0]} alt="굵게" />
-                  </button>
-                  <button type="button" onClick={handleToggleItalic}>
-                    <img src={WritingTools[1]} alt="기울이게" />
-                  </button>
-                  <button type="button" onClick={handleToggleUnderline}>
-                    <img src={WritingTools[2]} alt="밑줄" />
-                  </button>
-                </FontStyleTools>
-                <PlacementTools>
-                <button type="button" onClick={handleToggleBold}>
-                    <img src={WritingTools[0]} alt="가운데 정렬" />
-                  </button>
-                  <button type="button" onClick={handleToggleItalic}>
-                    <img src={WritingTools[1]} alt="오른쪽 정렬" />
-                  </button>
-                  <button type="button" onClick={handleToggleUnderline}>
-                    <img src={WritingTools[2]} alt="양쪽 정렬" />
-                </PlacementTools>
-              </HandWritingTools>
-            </TextAreaTools>
-            <textarea
-              value={content}
-              onChange={handleContentWriting}
-              style={{
-                fontWeight: bold ? 'bold' : 'normal',
-                fontStyle: italic ? 'italic' : 'normal',
-                textDecoration: underline ? 'underline' : 'none',
-              }}
-            /> */}
-
-            <Editor
-              initialValue="편지 내용을 입력해 주세요!"
-              previewStyle="vertical"
-              height="243px"
-              width="718px"
-              initialEditType="wysiwyg"
-              useCommandShortcut={false}
-              language="ko-kr"
-            />
+            <EditorBox value={content} onChange={handleContentChange} />
           </TextAreaDevice>
         </FormSubject>
 
@@ -265,7 +208,7 @@ function WritingForm() {
           </RelationSelect>
         </FormSubject>
 
-      </Form>
+      </MainForm>
     </div>
   );
 }

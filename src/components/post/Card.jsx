@@ -60,6 +60,7 @@ const UserState = styled.div`
   ${Text}
   display: flex;
   padding: 1.5px 8px 0;
+  margin-top: 6px;
   width: 41px;
   height: 20px;
   text-align: center;
