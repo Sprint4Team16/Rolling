@@ -93,7 +93,7 @@ const TextAreaDevice = styled.div`
   align-items: center;
 `;
 
-function WritingForm({ onNameChange, onContentChange, onSubmit }) {
+function WritingForm() {
   const imageList = ['img/image43.svg', 'img/image44.svg'];
   const nonProfileImage = ['img/nonSelected.svg'];
   const [name, setName] = useState('');
@@ -101,7 +101,6 @@ function WritingForm({ onNameChange, onContentChange, onSubmit }) {
   const [profile, setProfile] = useState(nonProfileImage);
   const [relationship, setRelationship] = useState('');
   const [font, setFont] = useState('');
-  const [content, setContent] = useState('');
 
   const handleNameChange = (e) => {
     const { value } = e.target;
@@ -112,8 +111,6 @@ function WritingForm({ onNameChange, onContentChange, onSubmit }) {
     } else {
       setNameError(false);
     }
-
-    onNameChange(e);
   };
 
   const handleProfileSelect = (prof) => {
@@ -132,14 +129,8 @@ function WritingForm({ onNameChange, onContentChange, onSubmit }) {
     setFont(fonts);
   };
 
-  const handleContentChange = (e) => {
-    setContent(e.target.value);
-    onContentChange(!!e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ name, content });
   };
 
   useEffect(() => {
@@ -196,7 +187,7 @@ function WritingForm({ onNameChange, onContentChange, onSubmit }) {
         <FormSubject>
           <IndexMessage>내용을 입력해 주세요</IndexMessage>
           <TextAreaDevice>
-            <EditorBox value={content} onChange={handleContentChange} />
+            <EditorBox />
           </TextAreaDevice>
         </FormSubject>
 
