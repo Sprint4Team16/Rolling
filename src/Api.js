@@ -1,6 +1,7 @@
 const BASE_URL = 'https://rolling-api.vercel.app';
 const TEAM = '/4-16';
 
+// data fetch
 async function fetchData(endpoint) {
   const url = `${BASE_URL}${endpoint}`;
   const response = await fetch(url);
@@ -11,20 +12,10 @@ async function fetchData(endpoint) {
   return result;
 }
 
-// 배경 이미지 데이터 불러오기
-export function getBackground() {
-  return fetchData('/background-images/');
-}
-
-// 프로필 이미지 데이터 불러오기
-export function getProfile() {
-  return fetchData('/profile-images/');
-}
-
-// 롤링페이퍼를 생성 후 POST
-export async function submitPost(data) {
+// data POST
+async function postData(endpoint, data) {
   try {
-    const response = await fetch(`${BASE_URL}${TEAM}/recipients/`, {
+    const response = await fetch(`${BASE_URL}${TEAM}${endpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,4 +34,19 @@ export async function submitPost(data) {
     );
     return null;
   }
+}
+
+// 배경 이미지 데이터 불러오기
+export function getBackground() {
+  return fetchData('/background-images/');
+}
+
+// 프로필 이미지 데이터 불러오기
+export function getProfile() {
+  return fetchData('/profile-images/');
+}
+
+// 롤링페이퍼를 생성 후 POST
+export function submitPost(data) {
+  return postData('/recipients/', data);
 }
