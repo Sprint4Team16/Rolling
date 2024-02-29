@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import '@toast-ui/editor/dist/i18n/ko-kr';
 import EditorBox from './TextEditor';
 
 const IndexMessage = styled.p`
@@ -93,7 +91,7 @@ const TextAreaDevice = styled.div`
   align-items: center;
 `;
 
-function WritingForm() {
+function WritingForm({ isBtnDisabled }) {
   const imageList = ['img/image43.svg', 'img/image44.svg'];
   const nonProfileImage = ['img/nonSelected.svg'];
   const [name, setName] = useState('');
@@ -101,16 +99,17 @@ function WritingForm() {
   const [profile, setProfile] = useState(nonProfileImage);
   const [relationship, setRelationship] = useState('');
   const [font, setFont] = useState('');
+  const [content, setContent] = useState('');
+  const [isContent, setIsContent] = useState(true);
 
   const handleNameChange = (e) => {
     const { value } = e.target;
     setName(value);
+    setNameError(!value.trim());
+  };
 
-    if (!value.trim()) {
-      setNameError(true);
-    } else {
-      setNameError(false);
-    }
+  const handleContentChange = (contents) => {
+    setContent(contents);
   };
 
   const handleProfileSelect = (prof) => {
@@ -137,6 +136,11 @@ function WritingForm() {
     handleProfileSelect(nonProfileImage);
   }, []);
 
+  useEffect(() => {
+    setIsContent(!content || !name);
+    isBtnDisabled(!!isContent);
+  }, [name, content]);
+
   return (
     <div>
       <MainForm onSubmit={handleSubmit}>
@@ -147,7 +151,7 @@ function WritingForm() {
             value={name}
             placeholder="이름을 입력해 주세요."
             onChange={handleNameChange}
-            onBlur={() => { if (!name.trim()) setNameError(true); }}
+            onBlur={(e) => { if (!e.target.value.trim()) setNameError(true); }}
           />
           {nameError && <ErrorMessage>값을 입력해주세요.</ErrorMessage>}
         </FormSubject>
@@ -187,7 +191,7 @@ function WritingForm() {
         <FormSubject>
           <IndexMessage>내용을 입력해 주세요</IndexMessage>
           <TextAreaDevice>
-            <EditorBox />
+            <EditorBox onContentChange={handleContentChange} />
           </TextAreaDevice>
         </FormSubject>
 
