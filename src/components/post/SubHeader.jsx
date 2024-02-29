@@ -137,7 +137,7 @@ const EmojiGroup = styled.div`
   display: flex;
   gap: 8px;
 `;
-
+// eslint-disable-next-line
 const EmojiBadge = styled.div`
   ${FlexCenter}
   padding: 8px 12px;
@@ -153,21 +153,42 @@ const EmojiBadge = styled.div`
     padding: 4px 8px;
   }
 `;
-
+// eslint-disable-next-line
 const Emoji = styled.span`
   padding: 0 2px;
   margin-right: 2px;
 `;
 
-const DownArrow = styled.img`
+const DownArrow = styled.button`
   width: 24px;
   height: 24px;
   box-sizing: border-box;
   margin: 6px 14px 6px 6px;
+  position: relative;
 
   @media (max-width: 470px) {
     margin-right: 8px;
   }
+`;
+
+const DropDown = styled.div`
+  position: absolute;
+  top: 45px;
+  right: 0;
+  z-index: 9999;
+
+  border-radius: 8px;
+  border: 1px solid #b6b6b6;
+  background: var(--white);
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+
+  /* display: inline-flex; */
+  padding: 24px;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  /* max-width: 264px; */
+  /* flex-wrap: nowrap; */
+  gap: 10px;
 `;
 
 const EmojiAddButton = styled.div`
@@ -211,7 +232,9 @@ const EmojiPickerWrapper = styled.div`
 
 function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
   const [isOpen, setIsOpen] = useState(false);
-  // const [chosenEmoji, setChosenEmoji] = useState(null);
+  // eslint-disable-next-line
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
   const [badges, setBadges] = useState([]);
 
   const handleEmojiPicker = () => {
@@ -219,12 +242,6 @@ function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
   };
   const stopPropagation = (event) => {
     event.stopPropagation();
-  };
-  // const onEmojiClick = (event, emojiObject) => {
-  //   setChosenEmoji(emojiObject);
-  // };
-  const onEmojiClick = (event, emojiObject) => {
-    setBadges([...badges, emojiObject]);
   };
 
   return (
@@ -239,34 +256,58 @@ function SubHeader({ name = 'Ashley Kim', peopleNum = 23 }) {
           </WrittenBy>
           <SplitBarVertical1 />
           <EmojiGroup>
-            {/* {badges.map((badge) => {
-              return
-              (<EmojiBadge key={badge.id}>
+            {badges.slice(0, 3).map((badge) => (
+              <EmojiBadge key={badge.unified}>
                 <Emoji>{badge.emoji}</Emoji>
-                <span>1</span>
-              </EmojiBadge>;)
-            })} */}
-            <EmojiBadge>
-              <Emoji>👍</Emoji>
-              <span>24</span>
-            </EmojiBadge>
-            <EmojiBadge>
-              <Emoji>😍</Emoji>
-              {/* <Emoji>{chosenEmoji ? chosenEmoji.emoji : ''}</Emoji> */}
-              <span>16</span>
-            </EmojiBadge>
-            <EmojiBadge>
-              <Emoji>🎉</Emoji>
-              <span>10</span>
-            </EmojiBadge>
+                <span>{badge.count}</span>
+              </EmojiBadge>
+            ))}
           </EmojiGroup>
-          <DownArrow src="img/downArrow.svg" alt="" />
+          <DownArrow
+            src="img/downArrow.svg"
+            alt=""
+            onClick={() => setIsDropDownOpen(true)}
+          >
+            {isDropDownOpen && (
+              <DropDown onClose={() => setIsDropDownOpen(false)}>
+                <EmojiGroup>
+                  {badges.slice(3).map((badge) => (
+                    <EmojiBadge key={badge.unified}>
+                      <Emoji>{badge.emoji}</Emoji>
+                      <span>{badge.count}</span>
+                    </EmojiBadge>
+                  ))}
+                </EmojiGroup>
+              </DropDown>
+            )}
+          </DownArrow>
           <EmojiAddButton onClick={handleEmojiPicker}>
             <img src="img/emojiAdd.svg" alt="" />
             <span>추가</span>
             {isOpen && (
               <EmojiPickerWrapper onClick={stopPropagation}>
-                <EmojiPicker onEmojiClick={onEmojiClick} />
+                <EmojiPicker
+                  onEmojiClick={(emojiData) => {
+                    setBadges((prevBadges) => {
+                      let newBadges;
+                      const exists = prevBadges.some(
+                        (badge) => badge.emoji === emojiData.emoji,
+                      );
+                      if (exists) {
+                        newBadges = prevBadges.map((badge) =>
+                          badge.emoji === emojiData.emoji
+                            ? { ...badge, count: badge.count + 1 }
+                            : badge,
+                        );
+                      } else {
+                        newBadges = [...prevBadges, { ...emojiData, count: 1 }];
+                      }
+                      newBadges.sort((a, b) => b.count - a.count);
+                      return newBadges;
+                    });
+                    setIsOpen(false);
+                  }}
+                />
               </EmojiPickerWrapper>
             )}
           </EmojiAddButton>
