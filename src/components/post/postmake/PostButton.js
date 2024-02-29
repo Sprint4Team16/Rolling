@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-function PostButton({ btnDisable }) {
+function PostButton({ onSubmit, btnDisable }) {
   const navigate = useNavigate();
 
   return (
-    <Button onClick={() => navigate('/list')} disabled={btnDisable}>
+    <Button
+      onClick={() => {
+        onSubmit();
+        navigate('/list');
+      }}
+      disabled={btnDisable}
+    >
       생성하기
     </Button>
   );
