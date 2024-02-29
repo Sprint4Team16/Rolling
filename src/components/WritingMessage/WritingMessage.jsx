@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import Header from '../common/Header';
 import WritingForm from './WritingForm';
 import Button from './Button';
@@ -12,43 +13,16 @@ const FormContainer = styled.div`
 `;
 
 function WritingMessage() {
-  const [isNameEntered, setIsNameEntered] = useState(false);
-  const [isContentEntered, setIsContentEntered] = useState(false);
-  const [btnDisable, setBtnDisable] = useState(true);
-
-  const handleNameChange = (e) => {
-    setIsNameEntered(e.target.value.trim() !== '');
-  };
-
-  const handleContentChange = (contentEntered) => {
-    setIsContentEntered(contentEntered);
-  };
-
-  const handleFormSubmit = (formData) => {
-    console.log('제출 완료', formData);
-  };
-
-  const handleButtonClick = () => {
-    setBtnDisable(true);
-    document.getElementById('writingForm').submit();
-  };
-
-  useEffect(() => {
-    setBtnDisable(!(isNameEntered && isContentEntered));
-  }, [isNameEntered, isContentEntered]);
+  const navigate = useNavigate();
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   return (
     <div>
       <Header />
       <FormContainer>
-        <WritingForm
-          onNameChange={handleNameChange}
-          onContentChange={handleContentChange}
-          onSubmit={handleFormSubmit}
-          id="writingForm"
-        />
+        <WritingForm isBtnDisabled={(isContent) => setButtonDisabled(isContent)} />
       </FormContainer>
-      <Button onclick={handleButtonClick} disabled={btnDisable} />
+      <Button onClick={() => navigate('/post')} disabled={!buttonDisabled} />
     </div>
   );
 }

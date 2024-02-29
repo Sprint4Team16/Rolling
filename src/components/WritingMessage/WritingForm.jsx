@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import '@toast-ui/editor/dist/i18n/ko-kr';
 import EditorBox from './TextEditor';
 
 const IndexMessage = styled.p`
@@ -93,7 +91,7 @@ const TextAreaDevice = styled.div`
   align-items: center;
 `;
 
-function WritingForm({ onNameChange, onContentChange, onSubmit }) {
+function WritingForm({ isBtnDisabled }) {
   const imageList = ['img/image43.svg', 'img/image44.svg'];
   const nonProfileImage = ['img/nonSelected.svg'];
   const [name, setName] = useState('');
@@ -102,18 +100,15 @@ function WritingForm({ onNameChange, onContentChange, onSubmit }) {
   const [relationship, setRelationship] = useState('');
   const [font, setFont] = useState('');
   const [content, setContent] = useState('');
+  const [isContent, setIsContent] = useState(true);
 
   const handleNameChange = (e) => {
-    const { value } = e.target;
-    setName(value);
+    setName(e.target.value);
+    setNameError(!e.target.value.trim());
+  };
 
-    if (!value.trim()) {
-      setNameError(true);
-    } else {
-      setNameError(false);
-    }
-
-    onNameChange(e);
+  const handleContentChange = (contents) => {
+    setContent(contents);
   };
 
   const handleProfileSelect = (prof) => {
@@ -132,19 +127,18 @@ function WritingForm({ onNameChange, onContentChange, onSubmit }) {
     setFont(fonts);
   };
 
-  const handleContentChange = (e) => {
-    setContent(e.target.value);
-    onContentChange(!!e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ name, content });
   };
 
   useEffect(() => {
     handleProfileSelect(nonProfileImage);
   }, []);
+
+  useEffect(() => {
+    setIsContent(!!content && !!name);
+    isBtnDisabled(!!isContent);
+  }, [content, name, isContent]);
 
   return (
     <div>
@@ -156,7 +150,7 @@ function WritingForm({ onNameChange, onContentChange, onSubmit }) {
             value={name}
             placeholder="이름을 입력해 주세요."
             onChange={handleNameChange}
-            onBlur={() => { if (!name.trim()) setNameError(true); }}
+            onBlur={(e) => { if (!e.target.value.trim()) setNameError(true); }}
           />
           {nameError && <ErrorMessage>값을 입력해주세요.</ErrorMessage>}
         </FormSubject>
@@ -196,7 +190,7 @@ function WritingForm({ onNameChange, onContentChange, onSubmit }) {
         <FormSubject>
           <IndexMessage>내용을 입력해 주세요</IndexMessage>
           <TextAreaDevice>
-            <EditorBox value={content} onChange={handleContentChange} />
+            <EditorBox onContentChange={handleContentChange} />
           </TextAreaDevice>
         </FormSubject>
 
