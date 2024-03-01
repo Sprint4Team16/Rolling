@@ -27,11 +27,11 @@ const ShareButton = styled.button`
 `;
 
 function ShareModal() {
-  const [showModal, setShowModal] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
 
   const handleShowModal = (type) => {
-    setShowModal(true);
+    setIsOpen(true);
     setModalType(type);
   };
 
@@ -56,7 +56,9 @@ function ShareModal() {
         카카오톡 공유
       </ShareButton>
       <ShareButton onClick={() => handleShowModal('url')}>URL 공유</ShareButton>
-      {showModal && modalType === 'kakao' && <KakaoModal />}
+      {isOpen && modalType === 'kakao' && (
+        <KakaoModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      )}
     </ShareBox>
   );
 }

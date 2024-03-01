@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Modal from 'react-modal';
 // import { useKakaoShare } from './useKakaoShare';
 
 const ModalBox = styled.div`
@@ -9,9 +10,9 @@ const ModalBox = styled.div`
   justify-content: center;
 `;
 
-const ModalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+const ImgContainer = styled.div`
+  width: 24px;
+  height: 24px;
 `;
 
 const ModalContents = styled.p`
@@ -19,16 +20,27 @@ const ModalContents = styled.p`
   cursor: pointer;
 `;
 
-function KakaoModal() {
-  // const { shareKakao } = useKakaoShare(userId);
-  // 임의로 /post:id 부분은 userId로 작성했습니다!
+function KakaoModal({ isOpen, onClose }) {
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      onClose();
+    }
+  };
 
   return (
-    <ModalBox>
-      <ModalContainer>
-        <ModalContents>카카오톡으로 공유하기</ModalContents>
-      </ModalContainer>
-    </ModalBox>
+    <Modal isOpen={isOpen} onRequestClose={onClose}>
+      <ModalBox>
+        <ImgContainer
+          role="button"
+          onClick={onClose}
+          onKeyDown={handleKeyDown}
+          tabIndex="0"
+        >
+          <img src="img/close.png" alt="모달 닫기 버튼" />
+        </ImgContainer>
+        <ModalContents>카카오톡 공유하기</ModalContents>
+      </ModalBox>
+    </Modal>
   );
 }
 
