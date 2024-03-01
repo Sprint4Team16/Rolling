@@ -6,7 +6,23 @@ export async function fetchImages(endpoint) {
   const url = `${BASE_URL}${endpoint}`;
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`${endpoint} 요청 중 오류가 발생했습니다.`);
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const result = await response.json();
+  return result;
+}
+
+export async function fetchRecipients(endpoint) {
+  const url = `${BASE_URL}${TEAM}${endpoint}`;
+  const response = await fetch(url, {
+    headers: {
+      accept: 'application/json',
+      'X-CSRFToken':
+        'fMj2sOIqI9AcFOHzN97CRfUfKEmwG2fzuuVyuBRGtONF3PqIUvMX0XnEOEgXEjSn',
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
   }
   const result = await response.json();
   return result;
@@ -23,7 +39,7 @@ export async function postData(endpoint, data) {
       body: JSON.stringify(data),
     });
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     return response.json();
