@@ -2,9 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 function RecipientCard({ recipient }) {
-  if (!recipient) {
-    return <div>ㅜㅅㅜ</div>;
-  }
   return (
     <CardWrapper>
       <CardContent>

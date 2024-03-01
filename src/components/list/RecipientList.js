@@ -5,18 +5,17 @@ import RecipientCard from './RecipientCard';
 
 function RecipientList() {
   const [recipients, setRecipients] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchRecipients() {
       try {
         const response = await fetch(
-          'https://rolling-api.vercel.app/4-5/recipients/',
+          'https://rolling-api.vercel.app/4-16/recipients/',
           {
             headers: {
               accept: 'application/json',
               'X-CSRFToken':
-                'fMj2sOIqI9AcFOHzN97CRfUfKEmwG2fzuuVyuBRGtONF3PqIUvMX0XnEOEgXEjSn',
+                'kDLwGD7Vu7tIAXJvek2yHOi9PQlW47yOzln2IqgbfMGbYYsElGHTQwLyTQfn2obC',
             },
           },
         );
@@ -27,24 +26,17 @@ function RecipientList() {
         setRecipients(data.results);
       } catch (error) {
         console.error('Fetching recipients failed', error);
-      } finally {
-        setIsLoading(false);
       }
     }
 
     fetchRecipients();
   }, []);
 
-  if (isLoading) {
-    return <div>ㅎㅅㅎ</div>;
-  }
-
   return (
     <div>
-      {recipients.map((recipient) => {
-        console.log(recipient);
-        return <RecipientCard key={recipient.id} recipient={recipient} />;
-      })}
+      {recipients.map((recipient) => (
+        <RecipientCard key={recipient.id} recipient={recipient} />
+      ))}
     </div>
   );
 }
