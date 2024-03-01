@@ -1,9 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 function RecipientCard({ recipient }) {
+  const backgroundColor = recipient.backgroundColor || 'beige';
+  const backgroundImage = recipient.backgroundImageURL;
+
   return (
-    <CardWrapper>
+    <CardWrapper
+      backgroundColor={backgroundColor}
+      backgroundImage={backgroundImage}
+    >
       <CardContent>
         <RecipientInfo>
           <RecipientText>To. {recipient.name}</RecipientText>
@@ -28,13 +34,37 @@ function RecipientCard({ recipient }) {
 
 export default RecipientCard;
 
+const getColor = (backgroundColor) => {
+  switch (backgroundColor) {
+    case 'purple':
+      return 'var(--purple200)';
+    case 'beige':
+      return 'var(--orange200)';
+    case 'blue':
+      return 'var(--blue200)';
+    case 'green':
+      return 'var(--green200)';
+    default:
+      return 'var(--orange200)';
+  }
+};
+
 const CardWrapper = styled.div`
   width: 275px;
   height: 260px;
   padding: 30px 24px 20px 24px;
   border-radius: 16px;
   border: 1px solid #0000001a;
-  background-color: var(--purple200);
+  background-size: cover;
+  ${({ backgroundImage }) =>
+    // eslint-disable-next-line
+    backgroundImage &&
+    css`
+      background-image: url(${backgroundImage});
+    `}
+  ${({ backgroundColor }) => css`
+    background-color: ${getColor(backgroundColor)};
+  `}
 `;
 
 const CardContent = styled.div`
@@ -90,5 +120,6 @@ const EmojiCount = styled.div`
 const Emoji = styled.span`
   padding: 0 2px;
   margin-right: 2px;
+
   font-size: 16px;
 `;

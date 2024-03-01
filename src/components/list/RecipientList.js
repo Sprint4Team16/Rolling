@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line
-// import styled from 'styled-components';
 import RecipientCard from './RecipientCard';
 
 function RecipientList() {
@@ -25,7 +24,7 @@ function RecipientList() {
         const data = await response.json();
         setRecipients(data.results);
       } catch (error) {
-        console.error('Fetching recipients failed', error);
+        console.error(error);
       }
     }
 
