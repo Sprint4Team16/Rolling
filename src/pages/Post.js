@@ -7,7 +7,8 @@ import PostInputSection from '../components/post/postmake/PostInputSection';
 import ColorSelection from '../components/post/postmake/ColorSelection';
 import ImageSelection from '../components/post/postmake/ImageSelection';
 import ToggleButton from '../components/post/postmake/ToggleButton';
-import { getBackground, submitPost } from '../Api';
+import { getBackground } from '../api/GetApi';
+import { submitRollingPost } from '../api/PostApi';
 
 const colorList = ['beige', 'purple', 'blue', 'green'];
 
