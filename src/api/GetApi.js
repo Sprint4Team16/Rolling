@@ -14,3 +14,14 @@ export function getProfile() {
 export function getRecipients() {
   return fetchRecipients('/recipients/');
 }
+
+export async function getRecipientData(findId) {
+  try {
+    const response = await getRecipients();
+    const recipients = response.results;
+    return recipients.find((rec) => rec.id === findId);
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}

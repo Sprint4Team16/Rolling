@@ -106,13 +106,14 @@ function Post() {
           </Select>
         )}
         <PostButton
-          onSubmit={() => {
+          onSubmit={async () => {
             const data = {
               name: inputUser,
               backgroundColor: `${selectColor === null ? 'beige' : selectColor}`,
               backgroundImageURL: selectImage,
             };
-            submitRollingPost(data);
+            const response = await submitRollingPost(data);
+            return response.id;
           }}
           btnDisable={btnDisable}
         />

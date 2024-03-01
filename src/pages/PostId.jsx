@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 // eslint-disable-next-line
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import Card, { CardContentWrapper } from '../components/post/Card';
+import { getRecipientData } from '../api/GetApi';
 
 const HeaderWrapper = styled.div`
   position: sticky;
@@ -61,6 +63,9 @@ const PlusIcon = styled.div`
 `;
 
 function PostId({ color, image, name, peopleNum }) {
+  const { id } = useParams();
+  getRecipientData(id);
+
   return (
     <PostIdWrapper color={color} image={image}>
       <HeaderWrapper>
