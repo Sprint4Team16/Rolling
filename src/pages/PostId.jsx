@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 // eslint-disable-next-line
 import { Link, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import Card, { CardContentWrapper } from '../components/post/Card';
