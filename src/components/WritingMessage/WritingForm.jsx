@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
+import { getProfile } from '../../api/GetApi';
 
 const IndexMessage = styled.p`
   color: var(--gray900);
@@ -50,7 +51,6 @@ const ProfileSelectZone = styled.div`
 
 const YourProfileImage = styled.div`
   display: flex;
-  padding: 24px;
   align-items: flex-start;
   gap: 10px;
 `;
@@ -92,16 +92,34 @@ const TextAreaDevice = styled.div`
   align-items: center;
 `;
 
+const ProfileImageContainer = styled.div`
+  max-width: 560px;
+`;
+
+const ProfileImage = styled.img`
+  display: flex;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 100px;
+  border: 1px solid var(--gray200);
+  background: var(--white);
+`;
+
 function WritingForm({ isBtnDisabled }) {
-  const imageList = ['img/image43.svg', 'img/image44.svg'];
+  // const imageList = ['img/image43.svg', 'img/image44.svg'];
   const nonProfileImage = ['img/nonSelected.svg'];
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
-  const [profile, setProfile] = useState(nonProfileImage);
+  const [profile, setProfile] = useState('');
   // const [relationship, setRelationship] = useState('');
   // const [font, setFont] = useState('');
   const [content, setContent] = useState('');
   const [isContent, setIsContent] = useState(true);
+  const [profileImages, setProfileImages] = useState([]);
+
+
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -116,9 +134,9 @@ function WritingForm({ isBtnDisabled }) {
     setProfile(prof);
   };
 
-  const handleButtonClick = (imageUrl) => {
-    handleProfileSelect(imageUrl);
-  };
+  // const handleButtonClick = (imageUrl) => {
+  //   handleProfileSelect(imageUrl);
+  // };
 
   // const handleRelationshipSelect = (relation) => {
   //   setRelationship(relation);
@@ -131,6 +149,18 @@ function WritingForm({ isBtnDisabled }) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    getProfile().then((data) => {
+      const images = data.imageUrls;
+      setProfileImages(images);
+      if (images.length > 0) {
+        setProfile(images[0]);
+      }
+    }).catch((error) => {
+      console.error('이미지를 불러오지 못했습니다.', error);
+    });
+  }, []);
 
   useEffect(() => {
     handleProfileSelect(nonProfileImage);
@@ -166,14 +196,13 @@ function WritingForm({ isBtnDisabled }) {
             </YourProfileImage>
             <ImageSelectionList>
               <ImageSelectDirection>프로필 이미지를 선택해주세요!</ImageSelectDirection>
-              <div>
-                <button type="button" onClick={() => handleButtonClick(imageList[0])}>
-                  <img src={imageList[0]} alt="예시1" />
-                </button>
-                <button type="button" onClick={() => handleButtonClick(imageList[1])}>
-                  <img src={imageList[1]} alt="예시2" />
-                </button>
-              </div>
+              <ProfileImageContainer>
+                {profileImages.map((image) => (
+                  <button key={image} type="button" onClick={() => handleProfileSelect(image)}>
+                    <ProfileImage src={image} alt={`Profile ${image}`} />
+                  </button>
+                ))}
+              </ProfileImageContainer>
             </ImageSelectionList>
           </ProfileSelectZone>
         </FormSubject>
