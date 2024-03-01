@@ -70,9 +70,8 @@ const Lists = styled.li`
   }
 `;
 
-function Dropdown() {
+function Dropdown({ options, placeholder }) {
   const dropdownImage = ['img/arrow_down.svg', 'img/arrow_top.svg'];
-  const placeholderText = 'placeholder';
 
   const [toggled, setToggled] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -92,7 +91,7 @@ function Dropdown() {
         {selectedItem ? (
           <TextContainer>{selectedItem}</TextContainer>
         ) : (
-          <TextContainer>{placeholderText}</TextContainer>
+          <TextContainer>{placeholder}</TextContainer>
         )}
         <button type="button" onClick={handleListDown}>
           <img src={toggled ? dropdownImage[1] : dropdownImage[0]} alt="화살표" />
@@ -100,15 +99,12 @@ function Dropdown() {
       </DropdownContainer>
       {toggled && (
         <ListContainer>
-          <Lists onClick={() => handleItemClick('예시1')}>
-            <TextContainer>예시1</TextContainer>
-          </Lists>
-          <Lists onClick={() => handleItemClick('예시2')}>
-            <TextContainer>예시2</TextContainer>
-          </Lists>
-          <Lists onClick={() => handleItemClick('예시3')}>
-            <TextContainer>예시3</TextContainer>
-          </Lists>
+          {options.map((option) => (
+            <Lists key={option} onClick={() => handleItemClick(option)}>
+              <TextContainer>{option}</TextContainer>
+            </Lists>
+          ))}
+
 
         </ListContainer>
       )}

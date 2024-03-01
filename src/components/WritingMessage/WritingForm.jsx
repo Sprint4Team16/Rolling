@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import EditorBox from './TextEditor';
+import Dropdown from '../common/Dropdown';
 
 const IndexMessage = styled.p`
   color: var(--gray900);
@@ -71,16 +72,16 @@ const ImageSelectDirection = styled.p`
   letter-spacing: -0.16px;
 `;
 
-const RelationSelect = styled.select`
-  display: flex;
-  width: 320px;
-  height: 50px;
-  padding: 12px 16px;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 8px;
-  border: 1px solid var(--gray300);
-`;
+// const RelationSelect = styled.select`
+//   display: flex;
+//   width: 320px;
+//   height: 50px;
+//   padding: 12px 16px;
+//   justify-content: space-between;
+//   align-items: center;
+//   border-radius: 8px;
+//   border: 1px solid var(--gray300);
+// `;
 
 const TextAreaDevice = styled.div`
   display: flex;
@@ -97,8 +98,8 @@ function WritingForm({ isBtnDisabled }) {
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
   const [profile, setProfile] = useState(nonProfileImage);
-  const [relationship, setRelationship] = useState('');
-  const [font, setFont] = useState('');
+  // const [relationship, setRelationship] = useState('');
+  // const [font, setFont] = useState('');
   const [content, setContent] = useState('');
   const [isContent, setIsContent] = useState(true);
 
@@ -119,13 +120,13 @@ function WritingForm({ isBtnDisabled }) {
     handleProfileSelect(imageUrl);
   };
 
-  const handleRelationshipSelect = (relation) => {
-    setRelationship(relation);
-  };
+  // const handleRelationshipSelect = (relation) => {
+  //   setRelationship(relation);
+  // };
 
-  const handleFontChange = (fonts) => {
-    setFont(fonts);
-  };
+  // const handleFontChange = (fonts) => {
+  //   setFont(fonts);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -179,12 +180,10 @@ function WritingForm({ isBtnDisabled }) {
 
         <FormSubject>
           <IndexMessage>상대와의 관계</IndexMessage>
-          <RelationSelect value={relationship} onChange={handleRelationshipSelect} placeholder="지인">
-            <option value="지인">지인</option>
-            <option value="친구">친구</option>
-            <option value="동료">동료</option>
-            <option value="가족">가족</option>
-          </RelationSelect>
+          <Dropdown
+            options={['지인', '친구', '동료', '가족']}
+            placeholder="지인"
+          />
         </FormSubject>
 
         <FormSubject>
@@ -196,10 +195,10 @@ function WritingForm({ isBtnDisabled }) {
 
         <FormSubject>
           <IndexMessage>폰트 선택</IndexMessage>
-          <RelationSelect value={font} onChange={handleFontChange}>
-            <option value="Noto Sans">Noto Sans</option>
-            <option value="Main">Main</option>
-          </RelationSelect>
+          <Dropdown
+            options={['Noto Sans']}
+            placeholder="Noto Sans"
+          />
         </FormSubject>
 
       </MainForm>
