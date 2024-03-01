@@ -1,8 +1,8 @@
 const BASE_URL = 'https://rolling-api.vercel.app';
 const TEAM = '/4-16';
 
-// data fetch
-export async function fetchData(endpoint) {
+// background, profile image fetch
+export async function fetchImages(endpoint) {
   const url = `${BASE_URL}${endpoint}`;
   const response = await fetch(url);
   if (!response.ok) {
