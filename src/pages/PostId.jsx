@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import Card, { CardContentWrapper } from '../components/post/Card';
-import { getRecipientId } from '../api/GetApi';
+import { getRecipientData } from '../api/GetApi';
 
 const HeaderWrapper = styled.div`
   position: sticky;
@@ -62,12 +62,12 @@ const PlusIcon = styled.div`
   background: var(--gray500);
 `;
 
-function PostId({ color, image, peopleNum }) {
+function PostId({ peopleNum }) {
   const { id } = useParams();
   const [data, setData] = useState({});
   const handleIdData = async () => {
     try {
-      const result = await getRecipientId(id);
+      const result = await getRecipientData(id);
       setData(result);
     } catch (error) {
       // console.error(error);
@@ -79,7 +79,7 @@ function PostId({ color, image, peopleNum }) {
   }, []);
 
   return (
-    <PostIdWrapper color={color} image={image}>
+    <PostIdWrapper color={data.backgroundColor} image={data.backgroundImageURL}>
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
