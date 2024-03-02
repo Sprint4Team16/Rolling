@@ -4,14 +4,13 @@ import { useNavigate } from 'react-router-dom';
 function PostButton({ onSubmit, btnDisable }) {
   const navigate = useNavigate();
 
+  const handleButtonClick = async () => {
+    const recipientId = await onSubmit();
+    navigate(`/post/${recipientId}`);
+  };
+
   return (
-    <Button
-      onClick={() => {
-        onSubmit();
-        navigate('/list');
-      }}
-      disabled={btnDisable}
-    >
+    <Button onClick={handleButtonClick} disabled={btnDisable}>
       생성하기
     </Button>
   );

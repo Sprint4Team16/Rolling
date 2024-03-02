@@ -7,7 +7,8 @@ import PostInputSection from '../components/post/postmake/PostInputSection';
 import ColorSelection from '../components/post/postmake/ColorSelection';
 import ImageSelection from '../components/post/postmake/ImageSelection';
 import ToggleButton from '../components/post/postmake/ToggleButton';
-import { getBackground, submitPost } from '../Api';
+import { getBackground } from '../api/GetApi';
+import { submitRollingPost } from '../api/PostApi';
 
 const colorList = ['beige', 'purple', 'blue', 'green'];
 
@@ -105,13 +106,14 @@ function Post() {
           </Select>
         )}
         <PostButton
-          onSubmit={() => {
+          onSubmit={async () => {
             const data = {
               name: inputUser,
               backgroundColor: `${selectColor === null ? 'beige' : selectColor}`,
               backgroundImageURL: selectImage,
             };
-            submitRollingPost(data);
+            const response = await submitRollingPost(data);
+            return response.id;
           }}
           btnDisable={btnDisable}
         />
