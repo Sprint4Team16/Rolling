@@ -64,11 +64,14 @@ const CardWrapper = styled.div`
   border-radius: 16px;
   border: 1px solid #0000001a;
   background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 2px 12px 0px #00000014;
   ${({ backgroundImage }) =>
     // eslint-disable-next-line
     backgroundImage &&
     css`
-      background-image: url(${backgroundImage});
+      background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url(${backgroundImage});
     `}
   ${({ backgroundColor }) => css`
     background-color: ${getColor(backgroundColor)};
