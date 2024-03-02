@@ -15,11 +15,16 @@ export function getRecipients() {
   return fetchRecipients('/recipients/');
 }
 
-export async function getRecipientData(findId) {
+export function getRecipientData(id) {
+  return fetchRecipients(`/recipients/${id}/`);
+}
+
+export async function getRecipientId(findId) {
   try {
     const response = await getRecipients();
     const recipients = response.results;
-    return recipients.find((rec) => rec.id === findId);
+    console.log(recipients.find((rec) => rec.id === Number(findId)));
+    return recipients.find((rec) => rec.id === Number(findId));
   } catch (error) {
     console.error(error);
     return null;

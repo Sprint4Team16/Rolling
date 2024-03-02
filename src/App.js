@@ -20,8 +20,8 @@ function App() {
             <Route index element={<Post />} />
             <Route path=":id">
               <Route index element={<PostId />} />
-              <Route path='/edit' element={} />
-              <Route path="/message" element={<PostIdMessage />} />
+              <Route path="message" element={<PostIdMessage />} />
+              {/* <Route path='/edit' element={} /> */}
             </Route>
           </Route>
         </Route>

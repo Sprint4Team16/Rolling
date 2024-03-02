@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 // eslint-disable-next-line
 import { Link, useParams } from 'react-router-dom';
-// import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import Card, { CardContentWrapper } from '../components/post/Card';
-import { getRecipientData } from '../api/GetApi';
+import { getRecipientId } from '../api/GetApi';
 
 const HeaderWrapper = styled.div`
   position: sticky;
@@ -62,16 +62,28 @@ const PlusIcon = styled.div`
   background: var(--gray500);
 `;
 
-function PostId({ color, image, name, peopleNum }) {
+function PostId({ color, image, peopleNum }) {
   const { id } = useParams();
-  getRecipientData(id);
+  const [data, setData] = useState({});
+  const handleIdData = async () => {
+    try {
+      const result = await getRecipientId(id);
+      setData(result);
+    } catch (error) {
+      // console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    handleIdData();
+  }, []);
 
   return (
     <PostIdWrapper color={color} image={image}>
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <SubHeader name={name || 'Minjoon'} peopleNum={peopleNum || 2} />
+      <SubHeader name={data ? data.name : 'hello'} peopleNum={peopleNum || 2} />
       <CardWrapper>
         <CardAdd>
           <PlusIcon>
