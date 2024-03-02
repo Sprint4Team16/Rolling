@@ -12,8 +12,10 @@ function RecipientCard({ recipient }) {
     >
       <CardContent>
         <RecipientInfo>
-          <RecipientText>To. {recipient.name}</RecipientText>
-          <WriterText>
+          <RecipientText backgroundImage={backgroundImage}>
+            To. {recipient.name}
+          </RecipientText>
+          <WriterText backgroundImage={backgroundImage}>
             <WriterNumText>{recipient.messageCount}</WriterNumText>명이
             작성했어요!
           </WriterText>
@@ -49,6 +51,12 @@ const getColor = (backgroundColor) => {
   }
 };
 
+const RecipientTextColor = ({ backgroundImage }) =>
+  backgroundImage ? 'var(--white)' : 'var(--gray900)';
+
+const WriterTextColor = ({ backgroundImage }) =>
+  backgroundImage ? 'var(--gray200)' : 'var(--gray700)';
+
 const CardWrapper = styled.div`
   width: 275px;
   height: 260px;
@@ -81,10 +89,12 @@ const RecipientInfo = styled.div`
 
 const RecipientText = styled.span`
   font-size: 24px;
+  color: ${(props) => RecipientTextColor(props)};
   font-weight: 700;
 `;
 
 const WriterText = styled.span`
+  color: ${(props) => WriterTextColor(props)};
   font-size: 16px;
 `;
 
