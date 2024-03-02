@@ -1,4 +1,4 @@
-import { postData } from './DataApi';
+import { postData } from './DataMethodApi';
 
 // 롤링페이퍼를 생성 후 POST
 export function submitRollingPost(data) {
