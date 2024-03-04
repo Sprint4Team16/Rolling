@@ -13,7 +13,7 @@ function RecipientList() {
       const data = response.results;
       setRecipients(data);
     } catch (error) {
-      // console.error(error);
+      throw new Error('롤링페이퍼를 불러오지 못했습니다.', error);
     }
   };
 
