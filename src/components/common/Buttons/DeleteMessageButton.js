@@ -1,43 +1,54 @@
 import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
-import { deleteMessages } from '../../api/DeleteApi';
+// import { deleteMessages } from '../../../api/DeleteApi';
 
-function DeleteRecipientButton() {
+function DeleteMEssageButton() {
   const navigate = useNavigate();
-  const { id: messageID } = useParams();
+  const { id: recipientID } = useParams();
 
-  const handleButtonClick = async () => {
-    await deleteMessages(messageID);
-    navigate('/list');
+  // temp messageID(parameter로 messageID를 받으면 해당 공간에 messageID 넣기)
+  // const handleButtonClick = async () => {
+  //   await deleteMessages(1);
+  //   navigate(`/post/${recipientID}/edit`);
+  // };
+
+  const handleButtonClick = () => {
+    navigate(`/post/${recipientID}`);
   };
 
-  return <Button onClick={handleButtonClick}>message 삭제하기</Button>;
+  return (
+    <Button onClick={handleButtonClick}>
+      <DeleteImg src="/img/deleted.svg" alt="삭제" />
+    </Button>
+  );
 }
 
 const Button = styled.button`
   display: flex;
-  padding: 14px 24px;
+  padding: 6px;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  border-radius: 12px;
-  background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
+  background: var(--white);
+  border-radius: 6px;
+  border: 1px solid var(--gray300);
 
-  color: var(--white);
-  text-align: center;
-  /* Font/18 Bold */
-  font-family: Pretendard;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 28px; /* 155.556% */
-  letter-spacing: -0.18px;
+  &:hover {
+    background: var(--gray300);
+  }
 
-  cursor: ${({ disabled }) => disabled && 'not-allowed'};
+  &:active {
+    background: var(--gray100);
+  }
 
-  @media (max-width: 768px) {
-    width: 320px;
+  &:focus {
+    border: 1px solid var(--gray500);
   }
 `;
 
-export default DeleteRecipientButton;
+const DeleteImg = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
+export default DeleteMEssageButton;
