@@ -116,8 +116,8 @@ function WritingForm({ isBtnDisabled }) {
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
   const [profile, setProfile] = useState('');
-  // const [relationship, setRelationship] = useState('');
-  // const [font, setFont] = useState('');
+  const [relation, setRelation] = useState('');
+  const [fonts, setFonts] = useState('');
   const [content, setContent] = useState('');
   const [isContent, setIsContent] = useState(true);
   const [profileImages, setProfileImages] = useState([]);
@@ -227,6 +227,7 @@ function WritingForm({ isBtnDisabled }) {
           <Dropdown
             options={['지인', '친구', '동료', '가족']}
             placeholder="지인"
+            onSelect={(selectedOption) => setRelation(selectedOption)}
           />
         </FormSubject>
 
@@ -239,7 +240,11 @@ function WritingForm({ isBtnDisabled }) {
 
         <FormSubject>
           <IndexMessage>폰트 선택</IndexMessage>
-          <Dropdown options={['Noto Sans']} placeholder="Noto Sans" />
+          <Dropdown
+            options={['Noto Sans']}
+            placeholder="Noto Sans"
+            onSelect={(selectedOption) => setFonts(selectedOption)}
+          />
         </FormSubject>
         <PostButton
           onSubmit={async () => {
@@ -247,9 +252,9 @@ function WritingForm({ isBtnDisabled }) {
               recipientId: Number(recipientID),
               sender: name,
               profileImageURL: profile,
-              relationship: '지인',
+              relationship: relation,
               content: 'test-content',
-              font: 'Noto Sans',
+              font: fonts,
             };
             const response = await submitMessagePost(recipientID, data);
             return response.recipientId;
