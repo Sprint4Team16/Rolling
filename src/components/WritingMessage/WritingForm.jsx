@@ -5,7 +5,7 @@ import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getProfile } from '../../api/GetApi';
 // import Button from './Button';
-import PostButton from '../common/PostButton';
+import PostButton from '../common/Buttons/PostButton';
 import { submitMessagePost } from '../../api/PostApi';
 
 const IndexMessage = styled.p`
@@ -116,8 +116,8 @@ function WritingForm({ isBtnDisabled }) {
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
   const [profile, setProfile] = useState('');
-  // const [relationship, setRelationship] = useState('');
-  // const [font, setFont] = useState('');
+  const [relation, setRelation] = useState('지인');
+  const [fonts, setFonts] = useState('Noto Sans');
   const [content, setContent] = useState('');
   const [isContent, setIsContent] = useState(true);
   const [profileImages, setProfileImages] = useState([]);
@@ -144,26 +144,28 @@ function WritingForm({ isBtnDisabled }) {
   //   setRelationship(relation);
   // };
 
-  // const handleFontChange = (fonts) => {
-  //   setFont(fonts);
-  // };
+  const handleFontChange = (font) => {
+    setFonts(font);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   useEffect(() => {
-    getProfile()
-      .then((data) => {
-        const images = data.imageUrls;
-        setProfileImages(images);
-        if (images.length > 0) {
-          setProfile(images[0]);
+    const handleImageLoad = async () => {
+      try {
+        const response = await getProfile();
+        const result = response.imageUrls;
+        setProfileImages(result);
+        if (result.length > 0) {
+          setProfile(result[0]);
         }
-      })
-      .catch((error) => {
-        console.error('이미지를 불러오지 못했습니다.', error);
-      });
+      } catch (error) {
+        throw new Error('이미지를 불러오지 못했습니다.', error);
+      }
+    };
+    handleImageLoad();
   }, []);
 
   useEffect(() => {
@@ -227,6 +229,7 @@ function WritingForm({ isBtnDisabled }) {
           <Dropdown
             options={['지인', '친구', '동료', '가족']}
             placeholder="지인"
+            onSelect={(selectedOption) => setRelation(selectedOption)}
           />
         </FormSubject>
 
@@ -239,18 +242,24 @@ function WritingForm({ isBtnDisabled }) {
 
         <FormSubject>
           <IndexMessage>폰트 선택</IndexMessage>
-          <Dropdown options={['Noto Sans']} placeholder="Noto Sans" />
+          <Dropdown
+            options={['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체']}
+            placeholder="Noto Sans"
+            onSelect={(selectedOption) => handleFontChange(selectedOption)}
+          />
         </FormSubject>
         <PostButton
           onSubmit={async () => {
             const data = {
+              team: '16',
               recipientId: Number(recipientID),
               sender: name,
               profileImageURL: profile,
-              relationship: '지인',
+              relationship: relation,
               content: 'test-content',
-              font: 'Noto Sans',
+              font: fonts,
             };
+            console.log(data);
             const response = await submitMessagePost(recipientID, data);
             return response.recipientId;
           }}

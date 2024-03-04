@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
-const DropdownContainer = styled.div`
+const DropdownContainer = styled.button`
+  position: relative;
   display: flex;
   width: 320px;
   padding: 12px 16px;
@@ -53,7 +54,12 @@ const TextContainer = styled.p`
 `;
 
 const ListContainer = styled.div`
+  position: absolute;
+  top: calc(100% + 5px);
+  left: calc(0%);
   display: inline-flex;
+  overflow-y: auto;
+  z-index: 1;
   padding: 10px 1px;
   flex-direction: column;
   align-items: flex-start;
@@ -91,30 +97,31 @@ function Dropdown({ options, placeholder }) {
   };
 
   return (
-    <>
-      <DropdownContainer>
+    <div>
+      <DropdownContainer
+        onClick={handleListDown}
+        type="button"
+      >
         {selectedItem ? (
           <TextContainer>{selectedItem}</TextContainer>
         ) : (
           <TextContainer>{placeholder}</TextContainer>
         )}
-        <button type="button" onClick={handleListDown}>
-          <img
-            src={toggled ? dropdownImage[1] : dropdownImage[0]}
-            alt="화살표"
-          />
-        </button>
+        <img
+          src={toggled ? dropdownImage[1] : dropdownImage[0]}
+          alt="화살표"
+        />
+        {toggled && (
+          <ListContainer>
+            {options.map((option) => (
+              <Lists key={option} onClick={() => handleItemClick(option)}>
+                <TextContainer>{option}</TextContainer>
+              </Lists>
+            ))}
+          </ListContainer>
+        )}
       </DropdownContainer>
-      {toggled && (
-        <ListContainer>
-          {options.map((option) => (
-            <Lists key={option} onClick={() => handleItemClick(option)}>
-              <TextContainer>{option}</TextContainer>
-            </Lists>
-          ))}
-        </ListContainer>
-      )}
-    </>
+    </div>
   );
 }
 

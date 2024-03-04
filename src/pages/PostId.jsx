@@ -6,6 +6,7 @@ import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import Card, { CardContentWrapper } from '../components/post/Card';
 import { getRecipientData } from '../api/GetApi';
+import EditButton from '../components/common/Buttons/EditButton';
 
 const HeaderWrapper = styled.div`
   position: sticky;
@@ -98,6 +99,7 @@ function PostId() {
         name={data ? data.name : 'hello'}
         peopleNum={data ? data.messageCount : 0}
       />
+      <EditButton />
       <CardWrapper>
         <CardAdd>
           <PlusIcon>
