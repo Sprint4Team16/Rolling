@@ -154,7 +154,7 @@ const ShareWrapper = styled.div`
   z-index: 9999;
 `;
 
-function SubHeader({ name = 'Minjoon', peopleNum = 23 }) {
+function SubHeader({ name, peopleNum }) {
   const [shareToggle, setShareToggle] = useState(false);
   const ref = useRef();
 
