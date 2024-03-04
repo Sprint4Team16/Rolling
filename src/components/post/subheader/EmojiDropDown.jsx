@@ -25,6 +25,7 @@ const EmojiGroup = styled.div`
 const EmojiBadge = styled.div`
   ${FlexCenter}
   padding: 8px 12px;
+  width: 63px;
   gap: 2px;
   border-radius: 32px;
   background: rgba(0, 0, 0, 0.54);
@@ -71,9 +72,6 @@ const DropdownMenu = styled.div`
   z-index: 9999;
 
   display: flex;
-  flex-direction: column;
-  /* flex-wrap: wrap; */
-  /* max-width: 312px; */
 
   border-radius: 8px;
   border: 1px solid #b6b6b6;
@@ -84,13 +82,12 @@ const DropdownMenu = styled.div`
 
   align-items: flex-start;
   gap: 10px;
-  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
 `;
 
 const EmojiGroupInDropDown = styled(EmojiGroup)`
-  flex-wrap: wrap;
-  max-width: 312px;
-  width: 312px;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 63px 63px 63px 63px;
 `;
 
 const EmojiAddButton = styled.div`
@@ -147,16 +144,18 @@ function EmojiDropDown() {
           (badges.length > 3 ? (
             <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
               <ArrowImage src="/img/arrow_down.svg" alt="" />
-              <DropdownMenu isOpen={isDropDownOpen}>
-                <EmojiGroupInDropDown>
-                  {badges.slice(3, 11).map((badge) => (
-                    <EmojiBadge key={badge.unified}>
-                      <Emoji>{badge.emoji}</Emoji>
-                      <span>{badge.count}</span>
-                    </EmojiBadge>
-                  ))}
-                </EmojiGroupInDropDown>
-              </DropdownMenu>
+              {isDropDownOpen && (
+                <DropdownMenu>
+                  <EmojiGroupInDropDown>
+                    {badges.slice(3, 11).map((badge) => (
+                      <EmojiBadge key={badge.unified}>
+                        <Emoji>{badge.emoji}</Emoji>
+                        <span>{badge.count}</span>
+                      </EmojiBadge>
+                    ))}
+                  </EmojiGroupInDropDown>
+                </DropdownMenu>
+              )}
             </DownArrow>
           ) : (
             <MarginRight />
