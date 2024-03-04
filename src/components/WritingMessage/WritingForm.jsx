@@ -116,8 +116,8 @@ function WritingForm({ isBtnDisabled }) {
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
   const [profile, setProfile] = useState('');
-  const [relation, setRelation] = useState('');
-  const [fonts, setFonts] = useState('');
+  const [relation, setRelation] = useState('지인');
+  const [fonts, setFonts] = useState('Noto Sans');
   const [content, setContent] = useState('');
   const [isContent, setIsContent] = useState(true);
   const [profileImages, setProfileImages] = useState([]);
@@ -144,9 +144,9 @@ function WritingForm({ isBtnDisabled }) {
   //   setRelationship(relation);
   // };
 
-  // const handleFontChange = (fonts) => {
-  //   setFont(fonts);
-  // };
+  const handleFontChange = (font) => {
+    setFonts(font);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -241,14 +241,15 @@ function WritingForm({ isBtnDisabled }) {
         <FormSubject>
           <IndexMessage>폰트 선택</IndexMessage>
           <Dropdown
-            options={['Noto Sans']}
+            options={['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체']}
             placeholder="Noto Sans"
-            onSelect={(selectedOption) => setFonts(selectedOption)}
+            onSelect={(selectedOption) => handleFontChange(selectedOption)}
           />
         </FormSubject>
         <PostButton
           onSubmit={async () => {
             const data = {
+              team: '16',
               recipientId: Number(recipientID),
               sender: name,
               profileImageURL: profile,
@@ -256,6 +257,7 @@ function WritingForm({ isBtnDisabled }) {
               content: 'test-content',
               font: fonts,
             };
+            console.log(data);
             const response = await submitMessagePost(recipientID, data);
             return response.recipientId;
           }}

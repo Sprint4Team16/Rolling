@@ -20,6 +20,7 @@ function PostButton({ onSubmit, btnDisable }) {
 const Button = styled.button`
   display: flex;
   width: 720px;
+  margin-bottom: 100px;
   padding: 14px 24px;
   justify-content: center;
   align-items: center;
