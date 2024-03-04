@@ -153,17 +153,19 @@ function WritingForm({ isBtnDisabled }) {
   };
 
   useEffect(() => {
-    getProfile()
-      .then((data) => {
-        const images = data.imageUrls;
-        setProfileImages(images);
-        if (images.length > 0) {
-          setProfile(images[0]);
+    const handleImageLoad = async () => {
+      try {
+        const response = await getProfile();
+        const result = response.imageUrls;
+        setProfileImages(result);
+        if (result.length > 0) {
+          setProfile(result[0]);
         }
-      })
-      .catch((error) => {
-        console.error('이미지를 불러오지 못했습니다.', error);
-      });
+      } catch (error) {
+        throw new Error('이미지를 불러오지 못했습니다.', error);
+      }
+    };
+    handleImageLoad();
   }, []);
 
   useEffect(() => {
