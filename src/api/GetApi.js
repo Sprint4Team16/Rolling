@@ -17,11 +17,10 @@ export function getRecipients() {
 
 // parameter로 입력한 id에 해당하는 recipient 데이터 가져오기
 export function getRecipientData(id) {
-  console.log(fetchRecipients(`/recipients/${id}/`));
   return fetchRecipients(`/recipients/${id}/`);
 }
 
 // 롤링페이퍼 대상에게 남긴 메세지 데이터 가져오기
-export function getMessage() {
+export function getMessage(id) {
   return fetchRecipients(`/messages/${id}/`);
 }

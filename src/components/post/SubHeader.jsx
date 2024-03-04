@@ -190,7 +190,7 @@ function SubHeader({ name = 'Minjoon', peopleNum = 23 }) {
           <EmojiDropDown />
           <SplitBarVertical2 />
           <ShareButton ref={ref} onClick={handleClickShare}>
-            <img src="img/shareIcon.svg" alt="" />
+            <img src="/img/shareIcon.svg" alt="" />
           </ShareButton>
           {shareToggle && (
             <ShareWrapper>
