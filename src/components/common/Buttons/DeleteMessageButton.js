@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
 // import { deleteMessages } from '../../../api/DeleteApi';
 
-function DeleteMEssageButton() {
+function DeleteMessageButton() {
   const navigate = useNavigate();
   const { id: recipientID } = useParams();
 
@@ -51,4 +51,4 @@ const DeleteImg = styled.img`
   height: 24px;
 `;
 
-export default DeleteMEssageButton;
+export default DeleteMessageButton;

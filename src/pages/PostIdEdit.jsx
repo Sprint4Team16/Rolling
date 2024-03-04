@@ -1,11 +1,13 @@
-import DeleteMEssageButton from '../components/common/Buttons/DeleteMessageButton';
+import DeleteMessageButton from '../components/common/Buttons/DeleteMessageButton';
+import DeleteRecipientButton from '../components/common/Buttons/DeleteRecipientButton';
 
 function PostIdEdit() {
   return (
     <div>
-      <DeleteMEssageButton />
-      <DeleteMEssageButton />
-      <DeleteMEssageButton />
+      <DeleteMessageButton />
+      <DeleteMessageButton />
+      <DeleteMessageButton />
+      <DeleteRecipientButton />
     </div>
   );
 }
