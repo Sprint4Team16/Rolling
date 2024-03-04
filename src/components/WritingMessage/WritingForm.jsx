@@ -112,7 +112,7 @@ const ProfileImage = styled.img`
 
 function WritingForm({ isBtnDisabled }) {
   // const imageList = ['img/image43.svg', 'img/image44.svg'];
-  const nonProfileImage = ['img/nonSelected.svg'];
+  const nonProfileImage = ['/img/nonSelected.svg'];
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
   const [profile, setProfile] = useState('');

@@ -12,11 +12,12 @@ const DropdownContainer = styled.div`
   justify-content: space-between;
 
   &:focus,
-  &:active { 
+  &:active {
     border: 2px solid var(--gray500);
-    gap: 189px; }
-  
-  &:hover { 
+    gap: 189px;
+  }
+
+  &:hover {
     gap: 189px;
     border: 1px solid var(--gray500);
   }
@@ -42,9 +43,13 @@ const TextContainer = styled.p`
 
   &:focus,
   &:active,
-  &:error { color: var(--gray900); }
+  &:error {
+    color: var(--gray900);
+  }
 
-  &:disabled { color: var(--gray400); }
+  &:disabled {
+    color: var(--gray400);
+  }
 `;
 
 const ListContainer = styled.div`
@@ -66,12 +71,12 @@ const Lists = styled.li`
   gap: 10px;
 
   &:hover {
-    background: var(--gray100); 
+    background: var(--gray100);
   }
 `;
 
 function Dropdown({ options, placeholder }) {
-  const dropdownImage = ['img/arrow_down.svg', 'img/arrow_top.svg'];
+  const dropdownImage = ['/img/arrow_down.svg', '/img/arrow_top.svg'];
 
   const [toggled, setToggled] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -94,7 +99,10 @@ function Dropdown({ options, placeholder }) {
           <TextContainer>{placeholder}</TextContainer>
         )}
         <button type="button" onClick={handleListDown}>
-          <img src={toggled ? dropdownImage[1] : dropdownImage[0]} alt="화살표" />
+          <img
+            src={toggled ? dropdownImage[1] : dropdownImage[0]}
+            alt="화살표"
+          />
         </button>
       </DropdownContainer>
       {toggled && (
@@ -104,12 +112,9 @@ function Dropdown({ options, placeholder }) {
               <TextContainer>{option}</TextContainer>
             </Lists>
           ))}
-
-
         </ListContainer>
       )}
     </>
-
   );
 }
 
