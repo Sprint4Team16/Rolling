@@ -138,8 +138,9 @@ function EmojiDropDown() {
         ))}
       </EmojiGroup>
       {badges.length ? (
+        // badges.length>3?
         <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
-          <ArrowImage src="img/arrow_down.svg" alt="" />
+          <ArrowImage src="/img/arrow_down.svg" alt="" />
           <DropdownMenu isOpen={isDropDownOpen}>
             <EmojiGroupInDropDown>
               {badges.slice(3, 11).map((badge) => (
@@ -156,7 +157,7 @@ function EmojiDropDown() {
       )}
 
       <EmojiAddButton onClick={handleEmojiPicker}>
-        <img src="img/emojiAdd.svg" alt="" />
+        <img src="/img/emojiAdd.svg" alt="" />
         <span>추가</span>
         {isOpen && (
           <EmojiPickerWrapper onClick={stopPropagation}>
