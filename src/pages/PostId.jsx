@@ -43,6 +43,7 @@ const CardWrapper = styled.div`
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 127px auto 0px;
+  padding-bottom: 127px;
   gap: 24px 2%;
 
   @media (max-width: 1247px) {
@@ -72,7 +73,7 @@ const PlusIcon = styled.div`
   background: var(--gray500);
 `;
 
-function PostId({ peopleNum }) {
+function PostId() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const handleIdData = async () => {
@@ -93,7 +94,10 @@ function PostId({ peopleNum }) {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <SubHeader name={data ? data.name : 'hello'} peopleNum={peopleNum} />
+      <SubHeader
+        name={data ? data.name : 'hello'}
+        peopleNum={data ? data.messageCount : 0}
+      />
       <CardWrapper>
         <CardAdd>
           <PlusIcon>
@@ -101,13 +105,23 @@ function PostId({ peopleNum }) {
           </PlusIcon>
         </CardAdd>
         <Card
-          src="/img/shareIcon.svg"
-          name="김동훈"
-          userState="친구"
-          cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
+          src={
+            data && data.recentMessages
+              ? data.recentMessages[0].profileImageURL
+              : ''
+          }
+          name={data ? data.name : ''}
+          userState={
+            data && data.recentMessages
+              ? data.recentMessages[0].relationship
+              : ''
+          }
+          cardContent={
+            data && data.recentMessages ? data.recentMessages[0].content : ''
+          }
           cardCreatedAt="2023.07.08"
         />
-        <Card
+        {/* <Card
           src="/img/shareIcon.svg"
           name="김동훈"
           userState="동료"
@@ -148,7 +162,7 @@ function PostId({ peopleNum }) {
           userState="지인"
           cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
           cardCreatedAt="2023.07.08"
-        />
+        /> */}
       </CardWrapper>
     </PostIdWrapper>
   );
