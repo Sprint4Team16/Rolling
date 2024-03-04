@@ -117,7 +117,7 @@ const CardCreatedAt = styled.div`
 `;
 
 function Card({
-  src = 'img/shareIcon.svg',
+  src = '/img/shareIcon.svg',
   name = '김동훈',
   userState = '친구',
   cardContent = '코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!',

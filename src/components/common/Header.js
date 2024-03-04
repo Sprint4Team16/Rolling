@@ -61,7 +61,7 @@ function Header({ showButton }) {
     <StyledNav>
       <StyledHeader>
         <LogoURL href="/">
-          <img src="img/logo.svg" alt="로고 사진" />
+          <img src="/img/logo.svg" alt="로고 사진" />
           <LogoText>Rolling</LogoText>
         </LogoURL>
         {showButton && (
