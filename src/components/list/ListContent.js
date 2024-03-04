@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import RecipientList from './RecipientList';
+import RecipientList from './RecipientCardList';
 
 function ListContent({ title }) {
   return (
