@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
-import { deleteRecipient } from '../../api/DeleteApi';
+import { deleteMessages } from '../../api/DeleteApi';
 
 function DeleteRecipientButton() {
   const navigate = useNavigate();
-  const { id: recipientID } = useParams();
+  const { id: messageID } = useParams();
 
   const handleButtonClick = async () => {
-    await deleteRecipient(recipientID);
+    await deleteMessages(messageID);
     navigate('/list');
   };
 
-  return <Button onClick={handleButtonClick}>롤링페이퍼 삭제하기</Button>;
+  return <Button onClick={handleButtonClick}>message 삭제하기</Button>;
 }
 
 const Button = styled.button`

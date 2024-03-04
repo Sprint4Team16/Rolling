@@ -5,7 +5,7 @@ import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getProfile } from '../../api/GetApi';
 // import Button from './Button';
-import PostButton from '../common/PostButton';
+import PostButton from '../common/Buttons/PostButton';
 import { submitMessagePost } from '../../api/PostApi';
 
 const IndexMessage = styled.p`

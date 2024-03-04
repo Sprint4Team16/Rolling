@@ -6,7 +6,7 @@ import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import Card, { CardContentWrapper } from '../components/post/Card';
 import { getRecipientData } from '../api/GetApi';
-import DeleteRecipientButton from '../components/common/DeleteRecipientButton';
+import DeleteRecipientButton from '../components/common/Buttons/DeleteRecipientButton';
 
 const HeaderWrapper = styled.div`
   position: sticky;
