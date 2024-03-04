@@ -74,8 +74,13 @@ const UserState = styled.div`
   align-items: center;
 
   border-radius: 4px;
-  background: ${({ state }) => userStateColors[state].background};
-  color: ${({ state }) => userStateColors[state].color};
+  background: ${({ state }) =>
+    userStateColors[state]
+      ? userStateColors[state].background
+      : 'defaultColor'};
+  color: ${({ state }) =>
+    userStateColors[state] ? userStateColors[state].color : 'defaultColor'};
+
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -117,8 +122,8 @@ const CardCreatedAt = styled.div`
 `;
 
 function Card({
-  src = '/img/shareIcon.svg',
-  name = '김동훈',
+  src,
+  name,
   userState = '친구',
   cardContent = '코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!',
   cardCreatedAt = '2023.07.08',
