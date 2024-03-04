@@ -6,6 +6,6 @@ export function submitRollingPost(data) {
 }
 
 // 대상에게 보내는 매세지 생성 후 POST
-export function submitMessagePost(recipientId, data) {
-  return postData(`/${recipientId}/messages/`, data);
+export function submitMessagePost(id, data) {
+  return postData(`/recipients/${id}/messages/`, data);
 }
