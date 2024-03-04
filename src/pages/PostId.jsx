@@ -6,6 +6,7 @@ import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import Card, { CardContentWrapper } from '../components/post/Card';
 import { getRecipientData } from '../api/GetApi';
+import DeleteRecipientButton from '../components/common/DeleteRecipientButton';
 
 const HeaderWrapper = styled.div`
   position: sticky;
@@ -84,6 +85,7 @@ function PostId({ peopleNum }) {
         <Header />
       </HeaderWrapper>
       <SubHeader name={data ? data.name : 'hello'} peopleNum={peopleNum || 2} />
+      <DeleteRecipientButton />
       <CardWrapper>
         <CardAdd>
           <PlusIcon>
