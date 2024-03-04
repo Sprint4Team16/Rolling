@@ -55,6 +55,10 @@ const DownArrow = styled.button`
   }
 `;
 
+const MarginRight = styled.div`
+  margin-right: 28px;
+`;
+
 const ArrowImage = styled.img`
   width: 100%;
   height: 100%;
@@ -68,8 +72,8 @@ const DropdownMenu = styled.div`
 
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  max-width: 312px;
+  /* flex-wrap: wrap; */
+  /* max-width: 312px; */
 
   border-radius: 8px;
   border: 1px solid #b6b6b6;
@@ -80,7 +84,7 @@ const DropdownMenu = styled.div`
 
   align-items: flex-start;
   gap: 10px;
-  display: ${(props) => (props.isOpen ? 'block' : 'none')};
+  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
 `;
 
 const EmojiGroupInDropDown = styled(EmojiGroup)`
@@ -137,24 +141,28 @@ function EmojiDropDown() {
           </EmojiBadge>
         ))}
       </EmojiGroup>
-      {badges.length ? (
-        // badges.length>3?
-        <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
-          <ArrowImage src="/img/arrow_down.svg" alt="" />
-          <DropdownMenu isOpen={isDropDownOpen}>
-            <EmojiGroupInDropDown>
-              {badges.slice(3, 11).map((badge) => (
-                <EmojiBadge key={badge.unified}>
-                  <Emoji>{badge.emoji}</Emoji>
-                  <span>{badge.count}</span>
-                </EmojiBadge>
-              ))}
-            </EmojiGroupInDropDown>
-          </DropdownMenu>
-        </DownArrow>
-      ) : (
-        <div />
-      )}
+      {
+        // eslint-disable-next-line
+        badges.length > 0 &&
+          (badges.length > 3 ? (
+            <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
+              <ArrowImage src="/img/arrow_down.svg" alt="" />
+              <DropdownMenu isOpen={isDropDownOpen}>
+                <EmojiGroupInDropDown>
+                  {badges.slice(3, 11).map((badge) => (
+                    <EmojiBadge key={badge.unified}>
+                      <Emoji>{badge.emoji}</Emoji>
+                      <span>{badge.count}</span>
+                    </EmojiBadge>
+                  ))}
+                </EmojiGroupInDropDown>
+              </DropdownMenu>
+            </DownArrow>
+          ) : (
+            <MarginRight />
+          ))
+      }
+      {badges.length === 0 && <div />}
 
       <EmojiAddButton onClick={handleEmojiPicker}>
         <img src="/img/emojiAdd.svg" alt="" />
