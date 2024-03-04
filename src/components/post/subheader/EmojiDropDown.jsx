@@ -128,6 +128,10 @@ function EmojiDropDown() {
   const stopPropagation = (event) => {
     event.stopPropagation();
   };
+  // list 화면으로 전달
+  // const getTopThreeEmoji(badges){
+  //   return badges.slice(0,3);
+  // }
   return (
     <>
       <EmojiGroup>
