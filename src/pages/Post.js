@@ -28,7 +28,7 @@ function Post() {
         const result = response.imageUrls;
         setBackground(result);
       } catch (error) {
-        // console.error(error);
+        throw new Error('이미지를 불러오지 못했습니다.', error);
       }
     };
     handleImageLoad();
