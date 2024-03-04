@@ -18,8 +18,18 @@ const HeaderWrapper = styled.div`
   }
 `;
 
+const userBackgroundColors = {
+  beige: { background: 'var(--orange200)' },
+  purple: { background: 'var(--purple200)' },
+  green: { background: 'var(--green200)' },
+  blue: { background: 'var(--blue200)' },
+};
+
 const PostIdWrapper = styled.div`
-  background-color: ${(props) => props.color || 'var(--orange200)'};
+  background-color: ${(props) => {
+    const colorInfo = userBackgroundColors[props.color];
+    return colorInfo && colorInfo.background;
+  }};
   background-image: url(${(props) => props.image || 'none'});
   background-attachment: fixed;
   background-size: cover;
@@ -83,7 +93,7 @@ function PostId({ peopleNum }) {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <SubHeader name={data ? data.name : 'hello'} peopleNum={peopleNum || 2} />
+      <SubHeader name={data ? data.name : 'hello'} peopleNum={peopleNum} />
       <CardWrapper>
         <CardAdd>
           <PlusIcon>
