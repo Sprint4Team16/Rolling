@@ -116,8 +116,8 @@ function WritingForm({ isBtnDisabled }) {
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
   const [profile, setProfile] = useState('');
-  // const [relationship, setRelationship] = useState('');
-  // const [font, setFont] = useState('');
+  const [relation, setRelation] = useState('지인');
+  const [fonts, setFonts] = useState('Noto Sans');
   const [content, setContent] = useState('');
   const [isContent, setIsContent] = useState(true);
   const [profileImages, setProfileImages] = useState([]);
@@ -144,9 +144,9 @@ function WritingForm({ isBtnDisabled }) {
   //   setRelationship(relation);
   // };
 
-  // const handleFontChange = (fonts) => {
-  //   setFont(fonts);
-  // };
+  const handleFontChange = (font) => {
+    setFonts(font);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -229,6 +229,7 @@ function WritingForm({ isBtnDisabled }) {
           <Dropdown
             options={['지인', '친구', '동료', '가족']}
             placeholder="지인"
+            onSelect={(selectedOption) => setRelation(selectedOption)}
           />
         </FormSubject>
 
@@ -241,18 +242,24 @@ function WritingForm({ isBtnDisabled }) {
 
         <FormSubject>
           <IndexMessage>폰트 선택</IndexMessage>
-          <Dropdown options={['Noto Sans']} placeholder="Noto Sans" />
+          <Dropdown
+            options={['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체']}
+            placeholder="Noto Sans"
+            onSelect={(selectedOption) => handleFontChange(selectedOption)}
+          />
         </FormSubject>
         <PostButton
           onSubmit={async () => {
             const data = {
+              team: '16',
               recipientId: Number(recipientID),
               sender: name,
               profileImageURL: profile,
-              relationship: '지인',
+              relationship: relation,
               content: 'test-content',
-              font: 'Noto Sans',
+              font: fonts,
             };
+            console.log(data);
             const response = await submitMessagePost(recipientID, data);
             return response.recipientId;
           }}
