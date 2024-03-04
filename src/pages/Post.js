@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
 import SelectSection from '../components/post/postmake/SelectSection';
-import PostButton from '../components/common/PostButton';
+import PostButton from '../components/common/Buttons/PostButton';
 import PostInputSection from '../components/post/postmake/PostInputSection';
 import ColorSelection from '../components/post/postmake/ColorSelection';
 import ImageSelection from '../components/post/postmake/ImageSelection';
@@ -28,7 +28,7 @@ function Post() {
         const result = response.imageUrls;
         setBackground(result);
       } catch (error) {
-        // console.error(error);
+        throw new Error('이미지를 불러오지 못했습니다.', error);
       }
     };
     handleImageLoad();
