@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
 import styled from 'styled-components';
 import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getProfile } from '../../api/GetApi';
+// import Button from './Button';
+import PostButton from '../common/PostButton';
+import { submitMessagePost } from '../../api/PostApi';
 
 const IndexMessage = styled.p`
   color: var(--gray900);
@@ -18,7 +22,6 @@ const MainForm = styled.form`
   flex-direction: column;
   align-items: flex-start;
   gap: 50px;
-  
 `;
 
 const FormSubject = styled.div`
@@ -118,8 +121,7 @@ function WritingForm({ isBtnDisabled }) {
   const [content, setContent] = useState('');
   const [isContent, setIsContent] = useState(true);
   const [profileImages, setProfileImages] = useState([]);
-
-
+  const { id: recipientID } = useParams();
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -151,15 +153,17 @@ function WritingForm({ isBtnDisabled }) {
   };
 
   useEffect(() => {
-    getProfile().then((data) => {
-      const images = data.imageUrls;
-      setProfileImages(images);
-      if (images.length > 0) {
-        setProfile(images[0]);
-      }
-    }).catch((error) => {
-      console.error('이미지를 불러오지 못했습니다.', error);
-    });
+    getProfile()
+      .then((data) => {
+        const images = data.imageUrls;
+        setProfileImages(images);
+        if (images.length > 0) {
+          setProfile(images[0]);
+        }
+      })
+      .catch((error) => {
+        console.error('이미지를 불러오지 못했습니다.', error);
+      });
   }, []);
 
   useEffect(() => {
@@ -181,7 +185,9 @@ function WritingForm({ isBtnDisabled }) {
             value={name}
             placeholder="이름을 입력해 주세요."
             onChange={handleNameChange}
-            onBlur={(e) => { if (!e.target.value.trim()) setNameError(true); }}
+            onBlur={(e) => {
+              if (!e.target.value.trim()) setNameError(true);
+            }}
           />
           {nameError && <ErrorMessage>값을 입력해주세요.</ErrorMessage>}
         </FormSubject>
@@ -190,15 +196,24 @@ function WritingForm({ isBtnDisabled }) {
           <IndexMessage>프로필 이미지</IndexMessage>
           <ProfileSelectZone>
             <YourProfileImage>
-              <button type="button" onClick={() => handleProfileSelect(profile)}>
+              <button
+                type="button"
+                onClick={() => handleProfileSelect(profile)}
+              >
                 <img src={profile} alt="프로필 이미지" />
               </button>
             </YourProfileImage>
             <ImageSelectionList>
-              <ImageSelectDirection>프로필 이미지를 선택해주세요!</ImageSelectDirection>
+              <ImageSelectDirection>
+                프로필 이미지를 선택해주세요!
+              </ImageSelectDirection>
               <ProfileImageContainer>
                 {profileImages.map((image) => (
-                  <button key={image} type="button" onClick={() => handleProfileSelect(image)}>
+                  <button
+                    key={image}
+                    type="button"
+                    onClick={() => handleProfileSelect(image)}
+                  >
                     <ProfileImage src={image} alt={`Profile ${image}`} />
                   </button>
                 ))}
@@ -224,12 +239,23 @@ function WritingForm({ isBtnDisabled }) {
 
         <FormSubject>
           <IndexMessage>폰트 선택</IndexMessage>
-          <Dropdown
-            options={['Noto Sans']}
-            placeholder="Noto Sans"
-          />
+          <Dropdown options={['Noto Sans']} placeholder="Noto Sans" />
         </FormSubject>
-
+        <PostButton
+          onSubmit={async () => {
+            const data = {
+              recipientId: Number(recipientID),
+              sender: name,
+              profileImageURL: profile,
+              relationship: '지인',
+              content: 'test-content',
+              font: 'Noto Sans',
+            };
+            const response = await submitMessagePost(recipientID, data);
+            return response.recipientId;
+          }}
+          btnDisable={!isContent}
+        />
       </MainForm>
     </div>
   );
