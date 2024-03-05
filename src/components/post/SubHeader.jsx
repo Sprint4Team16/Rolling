@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 import EmojiDropDown from './subheader/EmojiDropDown';
-import ShareToggle from './ShareToggle';
-import KakaoModal from './KakaoModal';
-import ModalPortal from './ModalPortal';
+import ShareToggle from '../modal/ShareToggle';
+import KakaoModal from '../modal/KakaoModal';
+import ModalPortal from '../modal/ModalPortal';
 
 const Text = css`
   font-family: Pretendard;
