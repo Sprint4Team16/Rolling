@@ -25,6 +25,7 @@ const EmojiGroup = styled.div`
 const EmojiBadge = styled.div`
   ${FlexCenter}
   padding: 8px 12px;
+  width: 63px;
   gap: 2px;
   border-radius: 32px;
   background: rgba(0, 0, 0, 0.54);
@@ -55,6 +56,10 @@ const DownArrow = styled.button`
   }
 `;
 
+const MarginRight = styled.div`
+  margin-right: 28px;
+`;
+
 const ArrowImage = styled.img`
   width: 100%;
   height: 100%;
@@ -67,9 +72,6 @@ const DropdownMenu = styled.div`
   z-index: 9999;
 
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-width: 312px;
 
   border-radius: 8px;
   border: 1px solid #b6b6b6;
@@ -80,13 +82,12 @@ const DropdownMenu = styled.div`
 
   align-items: flex-start;
   gap: 10px;
-  display: ${(props) => (props.isOpen ? 'block' : 'none')};
 `;
 
 const EmojiGroupInDropDown = styled(EmojiGroup)`
-  flex-wrap: wrap;
-  max-width: 312px;
-  width: 312px;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 63px 63px 63px 63px;
 `;
 
 const EmojiAddButton = styled.div`
@@ -127,6 +128,10 @@ function EmojiDropDown() {
   const stopPropagation = (event) => {
     event.stopPropagation();
   };
+  // list 화면으로 전달
+  // const getTopThreeEmoji(badges){
+  //   return badges.slice(0,3);
+  // }
   return (
     <>
       <EmojiGroup>
@@ -137,24 +142,30 @@ function EmojiDropDown() {
           </EmojiBadge>
         ))}
       </EmojiGroup>
-      {badges.length ? (
-        // badges.length>3?
-        <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
-          <ArrowImage src="/img/arrow_down.svg" alt="" />
-          <DropdownMenu isOpen={isDropDownOpen}>
-            <EmojiGroupInDropDown>
-              {badges.slice(3, 11).map((badge) => (
-                <EmojiBadge key={badge.unified}>
-                  <Emoji>{badge.emoji}</Emoji>
-                  <span>{badge.count}</span>
-                </EmojiBadge>
-              ))}
-            </EmojiGroupInDropDown>
-          </DropdownMenu>
-        </DownArrow>
-      ) : (
-        <div />
-      )}
+      {
+        // eslint-disable-next-line
+        badges.length > 0 &&
+          (badges.length > 3 ? (
+            <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
+              <ArrowImage src="/img/arrow_down.svg" alt="" />
+              {isDropDownOpen && (
+                <DropdownMenu>
+                  <EmojiGroupInDropDown>
+                    {badges.slice(3, 11).map((badge) => (
+                      <EmojiBadge key={badge.unified}>
+                        <Emoji>{badge.emoji}</Emoji>
+                        <span>{badge.count}</span>
+                      </EmojiBadge>
+                    ))}
+                  </EmojiGroupInDropDown>
+                </DropdownMenu>
+              )}
+            </DownArrow>
+          ) : (
+            <MarginRight />
+          ))
+      }
+      {badges.length === 0 && <div />}
 
       <EmojiAddButton onClick={handleEmojiPicker}>
         <img src="/img/emojiAdd.svg" alt="" />
