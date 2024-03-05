@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import DeleteRecipientButton from '../components/common/Buttons/DeleteRecipientButton';
-import { getRecipientData } from '../api/GetApi';
+import { getRecipientData, getAllMessages } from '../api/GetApi';
 import {
   PostIdWrapper,
   HeaderWrapper,
@@ -15,6 +15,8 @@ import CardItems from '../components/post/card/CardItems';
 function PostIdEdit() {
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [messages, setMessages] = useState(null);
+
   const handleIdData = async () => {
     try {
       const result = await getRecipientData(id);
@@ -24,8 +26,18 @@ function PostIdEdit() {
     }
   };
 
+  const handleMessages = async () => {
+    try {
+      const result = await getAllMessages(id);
+      setMessages(result.results);
+    } catch (error) {
+      // console.error(error);
+    }
+  };
+
   useEffect(() => {
     handleIdData();
+    handleMessages(id);
   }, []);
 
   return (
@@ -41,7 +53,7 @@ function PostIdEdit() {
         <DeleteRecipientButton />
       </ButtonSection>
       <CardWrapper>
-        <CardItems data={data} />
+        <CardItems messages={messages} />
       </CardWrapper>
     </PostIdWrapper>
   );
