@@ -132,7 +132,7 @@ function Card({
     <CardContentWrapper>
       <CardContent>
         <UserInfo>
-          <UserPicture src={src} alt="" />
+          <UserPicture src={src} alt="프로필" />
           <UserText>
             From. <UserName>{name}</UserName>
             <UserState state={userState}>{userState}</UserState>

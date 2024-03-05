@@ -106,7 +106,17 @@ function PostId() {
             <img src="/img/plusIcon.svg" alt="" />
           </PlusIcon>
         </CardAdd>
-        <Card
+        {data.recentMessages
+          && data.recentMessages.map((message) => (
+            <Card
+              src={message.profileImageURL}
+              name={message.sender}
+              userState={message.relationship}
+              cardContent={message.content}
+              cardCreatedAt={message.createdAt}
+            />
+          ))}
+        {/* <Card
           src={
             data && data.recentMessages
               ? data.recentMessages[0].profileImageURL
@@ -122,7 +132,7 @@ function PostId() {
             data && data.recentMessages ? data.recentMessages[0].content : ''
           }
           cardCreatedAt="2023.07.08"
-        />
+        /> */}
         {/* <Card
           src="/img/shareIcon.svg"
           name="김동훈"
