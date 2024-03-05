@@ -1,16 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 function RecipientCard({ recipient }) {
-  if (!recipient) {
-    return <div>ㅜㅅㅜ</div>;
-  }
+  const backgroundColor = recipient.backgroundColor || 'beige';
+  const backgroundImage = recipient.backgroundImageURL;
+
   return (
-    <CardWrapper>
+    <CardWrapper
+      backgroundColor={backgroundColor}
+      backgroundImage={backgroundImage}
+    >
       <CardContent>
         <RecipientInfo>
-          <RecipientText>To. {recipient.name}</RecipientText>
-          <WriterText>
+          <RecipientText backgroundImage={backgroundImage}>
+            To. {recipient.name}
+          </RecipientText>
+          <WriterText backgroundImage={backgroundImage}>
             <WriterNumText>{recipient.messageCount}</WriterNumText>명이
             작성했어요!
           </WriterText>
@@ -31,13 +36,43 @@ function RecipientCard({ recipient }) {
 
 export default RecipientCard;
 
+const getColor = (backgroundColor) => {
+  switch (backgroundColor) {
+    case 'purple':
+      return 'var(--purple200)';
+    case 'beige':
+      return 'var(--orange200)';
+    case 'blue':
+      return 'var(--blue200)';
+    case 'green':
+      return 'var(--green200)';
+    default:
+      return 'var(--orange200)';
+  }
+};
+
+const RecipientTextColor = ({ backgroundImage }) =>
+  backgroundImage ? 'var(--white)' : 'var(--gray900)';
+
+const WriterTextColor = ({ backgroundImage }) =>
+  backgroundImage ? 'var(--gray200)' : 'var(--gray700)';
+
 const CardWrapper = styled.div`
   width: 275px;
   height: 260px;
   padding: 30px 24px 20px 24px;
   border-radius: 16px;
   border: 1px solid #0000001a;
-  background-color: var(--purple200);
+  background-size: cover;
+  ${({ backgroundImage }) =>
+    // eslint-disable-next-line
+    backgroundImage &&
+    css`
+      background-image: url(${backgroundImage});
+    `}
+  ${({ backgroundColor }) => css`
+    background-color: ${getColor(backgroundColor)};
+  `}
 `;
 
 const CardContent = styled.div`
@@ -54,10 +89,12 @@ const RecipientInfo = styled.div`
 
 const RecipientText = styled.span`
   font-size: 24px;
+  color: ${(props) => RecipientTextColor(props)};
   font-weight: 700;
 `;
 
 const WriterText = styled.span`
+  color: ${(props) => WriterTextColor(props)};
   font-size: 16px;
 `;
 
@@ -93,5 +130,6 @@ const EmojiCount = styled.div`
 const Emoji = styled.span`
   padding: 0 2px;
   margin-right: 2px;
+
   font-size: 16px;
 `;

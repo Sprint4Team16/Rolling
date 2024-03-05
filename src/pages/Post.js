@@ -21,17 +21,16 @@ function Post() {
   const [inputError, setInputError] = useState(null);
   const [btnDisable, setBtnDisable] = useState(true);
 
-  const handleImageLoad = async () => {
-    try {
-      const response = await getBackground();
-      const result = response.imageUrls;
-      setBackground(result);
-    } catch (error) {
-      // console.error(error);
-    }
-  };
-
   useEffect(() => {
+    const handleImageLoad = async () => {
+      try {
+        const response = await getBackground();
+        const result = response.imageUrls;
+        setBackground(result);
+      } catch (error) {
+        // console.error(error);
+      }
+    };
     handleImageLoad();
   }, []);
 

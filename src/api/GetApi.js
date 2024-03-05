@@ -1,4 +1,4 @@
-import { fetchImages, fetchRecipients } from './DataApi';
+import { fetchImages, fetchRecipients } from './DataMethodApi';
 
 // 배경 이미지 데이터 불러오기
 export function getBackground() {
@@ -15,13 +15,13 @@ export function getRecipients() {
   return fetchRecipients('/recipients/');
 }
 
-export async function getRecipientData(findId) {
-  try {
-    const response = await getRecipients();
-    const recipients = response.results;
-    return recipients.find((rec) => rec.id === findId);
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
+// parameter로 입력한 id에 해당하는 recipient 데이터 가져오기
+export function getRecipientData(id) {
+  console.log(fetchRecipients(`/recipients/${id}/`));
+  return fetchRecipients(`/recipients/${id}/`);
+}
+
+// 롤링페이퍼 대상에게 남긴 메세지 데이터 가져오기
+export function getMessage() {
+  return fetchRecipients(`/messages/${id}/`);
 }

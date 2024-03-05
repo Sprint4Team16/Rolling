@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
+import Toast, { notify } from '../common/Toast';
 import KakaoModal from './KakaoModal';
 
 const ShareBox = styled.div`
@@ -26,14 +29,17 @@ const ShareButton = styled.button`
   }
 `;
 
-function ShareModal() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [modalType, setModalType] = useState(null);
+const ToastBox = styled.div`
+  display: flex;
+`;
 
-  const handleShowModal = (type) => {
-    setIsOpen(true);
-    setModalType(type);
-  };
+function ShareToggle() {
+  const [isKakaoOpen, setIsKakaoOpen] = useState(false);
+  const ref = useRef();
+
+  console.log(isKakaoOpen);
+
+  toast.configure();
 
   // const handleClipBoard = async (text) => {
   //   try {
@@ -52,15 +58,29 @@ function ShareModal() {
 
   return (
     <ShareBox>
-      <ShareButton onClick={() => handleShowModal('kakao')}>
+      <ShareButton
+        ref={ref}
+        onClick={() => {
+          setIsKakaoOpen((prev) => !prev);
+        }}
+      >
         카카오톡 공유
       </ShareButton>
-      <ShareButton onClick={() => handleShowModal('url')}>URL 공유</ShareButton>
-      {isOpen && modalType === 'kakao' && (
-        <KakaoModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      )}
+      {isKakaoOpen === true ? <KakaoModal /> : null}
+      <ToastBox>
+        <ShareButton
+          onClick={() => {
+            notify({
+              text: 'URL을 복사하였습니다..',
+            });
+          }}
+        >
+          URL 공유
+        </ShareButton>
+        <Toast />
+      </ToastBox>
     </ShareBox>
   );
 }
 
-export default ShareModal;
+export default ShareToggle;

@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 import EmojiDropDown from './subheader/EmojiDropDown';
-import ShareModal from './ShareModal';
+import ShareToggle from './ShareToggle';
+import KakaoModal from './KakaoModal';
 
 const Text = css`
   font-family: Pretendard;
@@ -157,12 +158,17 @@ const ShareWrapper = styled.div`
 
 function SubHeader({ name = 'Minjoon', peopleNum = 23 }) {
   const [shareToggle, setShareToggle] = useState(false);
+  const [kakaoToggle, setKakaoToggle] = useState(false);
   const ref = useRef();
 
   const handleOutsideClick = (e) => {
     if (shareToggle && (!ref.current || !ref.current.contains(e.target))) {
       setShareToggle(false);
     }
+  };
+
+  const handleKakaoToggle = (isOpen) => {
+    setKakaoToggle(isOpen);
   };
 
   useEffect(() => {
@@ -195,7 +201,12 @@ function SubHeader({ name = 'Minjoon', peopleNum = 23 }) {
           </ShareButton>
           {shareToggle && (
             <ShareWrapper>
-              <ShareModal />
+              <ShareToggle onKakaoToggle={handleKakaoToggle} />
+              {kakaoToggle && (
+                <ShareWrapper>
+                  <KakaoModal />
+                </ShareWrapper>
+              )}
             </ShareWrapper>
           )}
         </PostIdSetting>
