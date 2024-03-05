@@ -1,12 +1,12 @@
 import Card from '../Card';
 
-function CardItems({ data }) {
+function CardItems({ messages }) {
   return (
     // eslint-disable-next-line
     <>
       {/* refactoring : undefined 처리 최적화 */}
-      {data.recentMessages &&
-        data.recentMessages.map((message) => (
+      {messages &&
+        messages.map((message) => (
           <Card
             key={message.id}
             src={message.profileImageURL}

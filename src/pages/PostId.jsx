@@ -131,7 +131,7 @@ function PostId() {
             <img src="/img/plusIcon.svg" alt="" />
           </PlusIcon>
         </CardAdd>
-        <CardItems data={data} />
+        <CardItems messages={messages} />
       </CardWrapper>
     </PostIdWrapper>
   );
