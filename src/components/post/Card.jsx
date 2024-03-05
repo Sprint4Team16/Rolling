@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import '../../assets/color.css';
 // import { useState } from 'react';
 
 const Text = css`
@@ -65,7 +66,6 @@ const UserName = styled.span`
 `;
 
 const UserState = styled.div`
-  ${Text}
   display: flex;
   padding: 1.5px 8px 0;
   margin-top: 6px;
@@ -97,9 +97,13 @@ const SplitHorizontal = styled.div`
 
 const CardContentText = styled.div`
   ${Text}
-  overflow: hidden;
-  color: var(--gray600);
+  overflow: scroll;
+  overflow-wrap:break-word;
+  white-space: nowrap;
   text-overflow: ellipsis;
+  color: var(--gray600);
+  max-height: calc(100%);
+  width: 312px;
 
   font-size: 18px;
   font-weight: 400;
@@ -160,7 +164,12 @@ function Card({
           </UserText>
         </UserInfo>
         <SplitHorizontal />
-        <CardContentText className={font}>{cardContent}</CardContentText>
+        <CardContentText
+          // dangerouslySetInnerHTML={{ __html: cardContent }}
+          className={font}
+        >
+          {cardContent}
+        </CardContentText>
         <CardCreatedAt>
           {`${createdDays.getFullYear()}. ${
             createdDays.getMonth() + 1

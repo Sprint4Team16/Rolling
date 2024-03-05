@@ -213,12 +213,7 @@ function WritingForm({ isBtnDisabled }) {
           <IndexMessage>프로필 이미지</IndexMessage>
           <ProfileSelectZone>
             <YourProfileImage>
-              <button
-                type="button"
-                onClick={() => handleProfileSelect(profile)}
-              >
-                <ProfileZone src={profile} alt="프로필 이미지" />
-              </button>
+              <ProfileZone src={profile} alt="프로필 이미지" />
             </YourProfileImage>
             <ImageSelectionList>
               <ImageSelectDirection>
