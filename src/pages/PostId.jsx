@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-// eslint-disable-next-line
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
-import Card, { CardContentWrapper } from '../components/post/Card';
+import { CardContentWrapper } from '../components/post/Card';
 import { getAllMessages, getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
+import CardItems from '../components/post/card/CardItems';
 
-const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.div`
   position: sticky;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@ const userBackgroundColors = {
   blue: { background: 'var(--blue200)' },
 };
 
-const PostIdWrapper = styled.div`
+export const PostIdWrapper = styled.div`
   background-color: ${(props) => {
     const colorInfo = userBackgroundColors[props.color];
     return colorInfo && colorInfo.background;
@@ -39,15 +39,17 @@ const PostIdWrapper = styled.div`
   min-height: 100vh;
 `;
 
-const ButtonSection = styled.div`
+export const ButtonSection = styled.div`
   display: flex;
   margin: 63px auto 11px;
+  max-width: 1200px;
+  gap: 10px;
   justify-content: end;
   align-items: center;
 `;
 
 // eslint-disable-next-line
-const CardWrapper = styled.div`
+export const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
@@ -83,6 +85,7 @@ const PlusIcon = styled.div`
 `;
 
 function PostId() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState({});
   const [messages, setMessages] = useState(null);
@@ -123,21 +126,12 @@ function PostId() {
         <EditButton />
       </ButtonSection>
       <CardWrapper>
-        <CardAdd>
+        <CardAdd onClick={() => navigate(`/post/${data.id}/message`)}>
           <PlusIcon>
             <img src="/img/plusIcon.svg" alt="" />
           </PlusIcon>
         </CardAdd>
-        {messages &&
-          messages.map((message) => (
-            <Card
-              src={message.profileImageURL}
-              name={message.sender}
-              userState={message.relationship}
-              cardContent={message.content}
-              cardCreatedAt={message.createdAt}
-            />
-          ))}
+        <CardItems data={data} />
       </CardWrapper>
     </PostIdWrapper>
   );
