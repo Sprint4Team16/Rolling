@@ -52,6 +52,11 @@ const ProfileSelectZone = styled.div`
   gap: 32px;
 `;
 
+const ProfileZone = styled.img`
+  border-radius: 100px;
+  width: 100px;
+`;
+
 const YourProfileImage = styled.div`
   display: flex;
   align-items: flex-start;
@@ -202,7 +207,7 @@ function WritingForm({ isBtnDisabled }) {
                 type="button"
                 onClick={() => handleProfileSelect(profile)}
               >
-                <img src={profile} alt="프로필 이미지" />
+                <ProfileZone src={profile} alt="프로필 이미지" />
               </button>
             </YourProfileImage>
             <ImageSelectionList>
