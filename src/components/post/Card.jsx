@@ -95,15 +95,22 @@ const SplitHorizontal = styled.div`
   margin: 15px auto;
 `;
 
+const CardContentTextContainer = styled.div`
+  height: 112px;
+  width: 312px;
+`;
+
 const CardContentText = styled.div`
-  ${Text}
-  overflow: scroll;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
   overflow-wrap:break-word;
-  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
   color: var(--gray600);
-  max-height: calc(100%);
-  width: 312px;
+  width: 100%;
+  /* max-height: 112px; */
+  /* max-width: 312px; */
 
   font-size: 18px;
   font-weight: 400;
@@ -164,12 +171,13 @@ function Card({
           </UserText>
         </UserInfo>
         <SplitHorizontal />
-        <CardContentText
-          // dangerouslySetInnerHTML={{ __html: cardContent }}
-          className={font}
-        >
-          {cardContent}
-        </CardContentText>
+        <CardContentTextContainer>
+          <CardContentText
+            dangerouslySetInnerHTML={{ __html: cardContent }}
+            className={font}
+          />
+        </CardContentTextContainer>
+
         <CardCreatedAt>
           {`${createdDays.getFullYear()}. ${
             createdDays.getMonth() + 1
