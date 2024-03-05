@@ -7,15 +7,15 @@ function RecipientCard({ recipient }) {
 
   return (
     <CardWrapper
-      backgroundColor={backgroundColor}
-      backgroundImage={backgroundImage}
+      $backgroundColor={backgroundColor}
+      $backgroundImage={backgroundImage}
     >
       <CardContent>
         <RecipientInfo>
-          <RecipientText backgroundImage={backgroundImage}>
+          <RecipientText $backgroundImage={backgroundImage}>
             To. {recipient.name}
           </RecipientText>
-          <WriterText backgroundImage={backgroundImage}>
+          <WriterText $backgroundImage={backgroundImage}>
             <WriterNumText>{recipient.messageCount}</WriterNumText>명이
             작성했어요!
           </WriterText>
@@ -83,11 +83,11 @@ const CardWrapper = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: 0px 2px 12px 0px #00000014;
-  background-color: ${({ backgroundColor }) => getColor(backgroundColor)};
-  ${({ backgroundImage, backgroundColor }) =>
-    backgroundImage
+  background-color: ${({ $backgroundColor }) => getColor($backgroundColor)};
+  ${({ $backgroundImage, $backgroundColor }) =>
+    $backgroundImage
       ? css`
-          background-image: url(${backgroundImage});
+          background-image: url(${$backgroundImage});
           background-size: cover;
           background-repeat: no-repeat;
         `
@@ -99,7 +99,7 @@ const CardWrapper = styled.div`
             height: 142px;
             top: 118px;
             left: 133px;
-            background-image: url(${getPatternImage(backgroundColor)});
+            background-image: url(${getPatternImage($backgroundColor)});
             background-size: cover;
             background-repeat: no-repeat;
           }
@@ -120,12 +120,14 @@ const RecipientInfo = styled.div`
 
 const RecipientText = styled.span`
   font-size: 24px;
-  color: ${(props) => RecipientTextColor(props)};
+  color: ${({ $backgroundImage }) =>
+    RecipientTextColor({ backgroundImage: $backgroundImage })};
   font-weight: 700;
 `;
 
 const WriterText = styled.span`
-  color: ${(props) => WriterTextColor(props)};
+  color: ${({ $backgroundImage }) =>
+    WriterTextColor({ backgroundImage: $backgroundImage })};
   font-size: 16px;
 `;
 

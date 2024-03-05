@@ -55,6 +55,7 @@ export default RecipientList;
 const CarouselContainer = styled.div`
   display: flex;
   position: relative;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -78,9 +79,6 @@ const Button = styled.button`
   border: 1px solid #dadcdf;
   box-shadow: 0px 4px 8px 0px #00000014;
   cursor: pointer;
-  &:focus {
-    outline: none;
-  }
 `;
 
 const LeftButton = styled(Button)`
