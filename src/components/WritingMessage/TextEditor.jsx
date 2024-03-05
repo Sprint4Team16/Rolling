@@ -47,8 +47,9 @@ function EditorBox({ onContentChange }) {
     if (values === '' || values === '<p><br></p>') {
       onContentChange(false);
     } else {
-      onContentChange(true);
+      onContentChange(values);
     }
+    console.log(values);
   };
 
   return (
