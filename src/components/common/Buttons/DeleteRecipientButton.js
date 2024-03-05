@@ -8,7 +8,7 @@ function DeleteRecipientButton() {
 
   const handleButtonClick = async () => {
     await deleteRecipient(recipientID);
-    navigate('/list');
+    navigate('/list', { replace: true });
   };
 
   return <Button onClick={handleButtonClick}>롤링페이퍼 삭제하기</Button>;

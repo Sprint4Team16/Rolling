@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import EmojiDropDown from './subheader/EmojiDropDown';
-import ShareToggle from './ShareToggle';
-import KakaoModal from './KakaoModal';
-import ModalPortal from './ModalPortal';
+import ShareToggle from '../modal/ShareToggle';
+import KakaoModal from '../modal/KakaoModal';
+import ModalPortal from '../modal/ModalPortal';
 import Toast from '../common/Toast';
 
 const Text = css`
