@@ -1,45 +1,46 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 // import { useKakaoShare } from './useKakaoShare';
-import './KakaoModal.css';
 
-// const ModalBox = styled.div`
-//   display: inline-flex;
-//   flex-direction: column;
-//   padding: 40px 20px;
-//   border-radius: 8px;
-//   border: 1px solid #ccc;
-//   background: #fff;
-//   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
-//   z-index: 9999;
-// `;
+const Mask = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+`;
 
-// const ModalContents = styled.button`
-//   width: 400px;
-//   padding: 12px 16px;
-//   align-items: center;
-//   color: #181818;
-//   font-size: 16px;
-//   line-height: 26px;
-//   letter-spacing: -0.16px;
+const ModalBody = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 
-//   &:hover {
-//     background: #f6f6f6;
-//   }
-// `;
+const ModalContents = styled.button`
+  background: white;
+  padding: 1rem;
+  width: 400px;
+  height: auto;
+
+  &:hover {
+    background: #f6f6f6;
+  }
+`;
 
 function KakaoModal() {
   console.log('호출됏니?');
 
   return (
     <div className="MyModal">
-      <div className="Mask" />
-      <div className="Modal-body">
-        <div className="content">
+      <Mask />
+      <ModalBody>
+        <ModalContents>
           <h3>모달 타이틀</h3>
           <p>모달 텍스트 입니다.</p>
           <button type="submit">닫기</button>
-        </div>
-      </div>
+        </ModalContents>
+      </ModalBody>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
@@ -36,20 +37,19 @@ function ShareToggle() {
 
   console.log(isKakaoOpen);
 
-  // const handleClipBoard = async (text) => {
-  //   try {
-  //     await navigator.clipboard.writeText(text);
-  //     alert('URL이 복사 되었습니다.');
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const handleClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('URL이 복사 되었습니다.');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // const urlBaseLink = 'http://localhost:3000/post/';
-  // const handleCopyUrl = () => {
-  //   handleClipBoard(`${urlBaseLink}${userId}`);
-  // };
-  // 임의로 /post:id 부분은 userId로 작성했습니다! 이후에 API
+  const location = useLocation();
+  const baseUrl = 'http://localhost:3000';
+
+  console.log(location);
 
   return (
     <ShareBox>
@@ -62,7 +62,11 @@ function ShareToggle() {
         카카오톡 공유
       </ShareButton>
       <ModalPortal>{isKakaoOpen === true ? <KakaoModal /> : null}</ModalPortal>
-      <ShareButton>URL 공유</ShareButton>
+      <ShareButton
+        onClick={() => handleClipBoard(`${baseUrl}${location.pathname}`)}
+      >
+        URL 공유
+      </ShareButton>
     </ShareBox>
   );
 }
