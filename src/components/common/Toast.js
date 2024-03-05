@@ -1,7 +1,7 @@
 import { toast, ToastContainer } from 'react-toastify';
 
-export function notify({ text }) {
-  toast.success(text);
+export function notify() {
+  toast.success('URL이 복사되었습니다.');
 }
 
 function Toast() {
@@ -11,7 +11,7 @@ function Toast() {
       limit={1}
       closeButton={false}
       autoClose={5000}
-      hideProgressBar
+      hideProgressBar="true"
     />
   );
 }
