@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-import '../../assets/color.css';
-// import { useState } from 'react';
+import DeleteMessageButton from '../common/Buttons/DeleteMessageButton';
 
 const Text = css`
   font-family: Pretendard;
@@ -55,6 +54,7 @@ const UserPicture = styled.img`
 const UserText = styled.div`
   ${Text}
   display: block;
+  position: relative;
   color: #000;
   font-size: 20px;
   font-weight: 400;
@@ -169,6 +169,7 @@ function Card({
             From. <UserName>{name}</UserName>
             <UserState state={userState}>{userState}</UserState>
           </UserText>
+          <DeleteMessageButton />
         </UserInfo>
         <SplitHorizontal />
         <CardContentTextContainer>
