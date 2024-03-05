@@ -9,6 +9,7 @@ const StyledNav = styled.nav`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 999;
 `;
 
 const StyledHeader = styled.div`
@@ -51,9 +52,7 @@ const LogoText = styled.div`
   /* padding-top: 3px; */
   /* font-family: Poppins; */
   font-size: 19.971px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
 `;
 
 function Header({ showButton }) {
