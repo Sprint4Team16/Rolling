@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 import EmojiDropDown from './subheader/EmojiDropDown';
-import ShareModal from './ShareModal';
+import ShareToggle from './ShareToggle';
 
 const Text = css`
   font-family: Pretendard;
@@ -91,6 +91,7 @@ const SplitBarHorizontal = styled.div`
 const PostIdSetting = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
 
   @media (max-width: 767px) {
     margin-left: 24px;
@@ -149,8 +150,8 @@ const ShareButton = styled.button`
 
 const ShareWrapper = styled.div`
   position: absolute;
-  top: 60px;
-  right: 120px;
+  top: 45px;
+  right: 2px;
   z-index: 9999;
 `;
 
@@ -194,7 +195,7 @@ function SubHeader({ name, peopleNum }) {
           </ShareButton>
           {shareToggle && (
             <ShareWrapper>
-              <ShareModal />
+              <ShareToggle />
             </ShareWrapper>
           )}
         </PostIdSetting>
