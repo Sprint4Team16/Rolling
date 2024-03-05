@@ -29,3 +29,8 @@ export function getMessage(id) {
 export function getAllMessages(recipientID) {
   return fetchRecipients(`/recipients/${recipientID}/messages/`);
 }
+
+// id에 해당하는 이모티콘 데이터 가져오기
+export function getEmojiData(id) {
+  return fetchRecipients(`/recipients/${id}/reactions/`);
+}
