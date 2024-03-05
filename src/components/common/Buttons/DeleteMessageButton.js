@@ -15,7 +15,7 @@ function DeleteMessageButton() {
   // };
 
   const handleButtonClick = () => {
-    navigate(`/post/${recipientID}`);
+    navigate(`/post/${recipientID}`, { replace: true });
   };
 
   return (

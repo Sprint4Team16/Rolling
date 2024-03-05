@@ -7,7 +7,7 @@ function PostButton({ onSubmit, btnDisable }) {
   const handleButtonClick = async () => {
     const recipientId = await onSubmit();
     console.log(recipientId);
-    navigate(`/post/${recipientId}`);
+    navigate(`/post/${recipientId}`, { replace: true });
   };
 
   return (
