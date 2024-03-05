@@ -106,65 +106,16 @@ function PostId() {
             <img src="/img/plusIcon.svg" alt="" />
           </PlusIcon>
         </CardAdd>
-        <Card
-          src={
-            data && data.recentMessages
-              ? data.recentMessages[0].profileImageURL
-              : ''
-          }
-          name={data ? data.name : ''}
-          userState={
-            data && data.recentMessages
-              ? data.recentMessages[0].relationship
-              : ''
-          }
-          cardContent={
-            data && data.recentMessages ? data.recentMessages[0].content : ''
-          }
-          cardCreatedAt="2023.07.08"
-        />
-        {/* <Card
-          src="/img/shareIcon.svg"
-          name="김동훈"
-          userState="동료"
-          cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
-          cardCreatedAt="2023.07.08"
-        />
-        <Card
-          src="/img/shareIcon.svg"
-          name="김동훈"
-          userState="가족"
-          cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
-          cardCreatedAt="2023.07.08"
-        />
-        <Card
-          src="/img/shareIcon.svg"
-          name="김동훈"
-          userState="지인"
-          cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
-          cardCreatedAt="2023.07.08"
-        />
-        <Card
-          src="/img/shareIcon.svg"
-          name="김동훈"
-          userState="지인"
-          cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
-          cardCreatedAt="2023.07.08"
-        />
-        <Card
-          src="/img/shareIcon.svg"
-          name="김동훈"
-          userState="지인"
-          cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
-          cardCreatedAt="2023.07.08"
-        />
-        <Card
-          src="/img/shareIcon.svg"
-          name="김동훈"
-          userState="지인"
-          cardContent="코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!"
-          cardCreatedAt="2023.07.08"
-        /> */}
+        {data.recentMessages
+          && data.recentMessages.map((message) => (
+            <Card
+              src={message.profileImageURL}
+              name={message.sender}
+              userState={message.relationship}
+              cardContent={message.content}
+              cardCreatedAt={message.createdAt}
+            />
+          ))}
       </CardWrapper>
     </PostIdWrapper>
   );

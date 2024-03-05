@@ -128,11 +128,12 @@ function Card({
   cardContent = '코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!',
   cardCreatedAt = '2023.07.08',
 }) {
+  const createdDays = new Date(cardCreatedAt);
   return (
     <CardContentWrapper>
       <CardContent>
         <UserInfo>
-          <UserPicture src={src} alt="" />
+          <UserPicture src={src} alt="프로필" />
           <UserText>
             From. <UserName>{name}</UserName>
             <UserState state={userState}>{userState}</UserState>
@@ -140,7 +141,11 @@ function Card({
         </UserInfo>
         <SplitHorizontal />
         <CardContentText>{cardContent}</CardContentText>
-        <CardCreatedAt>{cardCreatedAt}</CardCreatedAt>
+        <CardCreatedAt>
+          {`${createdDays.getFullYear()}. ${
+            createdDays.getMonth() + 1
+          }. ${createdDays.getDate()}`}
+        </CardCreatedAt>
       </CardContent>
     </CardContentWrapper>
   );
