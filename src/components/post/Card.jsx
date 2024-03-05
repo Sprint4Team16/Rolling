@@ -76,12 +76,12 @@ const UserState = styled.div`
   align-items: center;
 
   border-radius: 4px;
-  background: ${({ state }) =>
-    userStateColors[state]
-      ? userStateColors[state].background
+  background: ${({ $state }) =>
+    userStateColors[$state]
+      ? userStateColors[$state].background
       : 'defaultColor'};
-  color: ${({ state }) =>
-    userStateColors[state] ? userStateColors[state].color : 'defaultColor'};
+  color: ${({ $state }) =>
+    userStateColors[$state] ? userStateColors[$state].color : 'defaultColor'};
 
   font-size: 14px;
   font-weight: 400;
@@ -138,7 +138,7 @@ function Card({
           <UserPicture src={src} alt="프로필" />
           <UserText>
             From. <UserName>{name}</UserName>
-            <UserState state={userState}>{userState}</UserState>
+            <UserState $state={userState}>{userState}</UserState>
           </UserText>
           <DeleteMessageButton />
         </UserInfo>

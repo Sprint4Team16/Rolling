@@ -19,7 +19,7 @@ function DeleteMessageButton() {
   };
 
   return (
-    <Button onClick={handleButtonClick} isDisplay={isEditRoute}>
+    <Button onClick={handleButtonClick} $isDisplay={isEditRoute}>
       <DeleteImg src="/img/deleted.svg" alt="삭제" />
     </Button>
   );
@@ -28,7 +28,7 @@ function DeleteMessageButton() {
 const Button = styled.button`
   position: absolute;
   right: 24px;
-  display: ${({ isDisplay }) => (isDisplay ? 'block' : 'none')};
+  display: ${({ $isDisplay }) => ($isDisplay ? 'block' : 'none')};
   /* display: flex; */
   padding: 6px;
   justify-content: center;
