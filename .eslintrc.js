@@ -36,5 +36,6 @@ module.exports = {
     'no-confusing-arrow': 'off',
     'function-paren-newline': 'off',
     'object-curly-newline': 'off',
+    'react/no-children-prop': 'off',
   },
 };
