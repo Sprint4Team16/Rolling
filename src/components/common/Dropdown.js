@@ -81,7 +81,7 @@ const Lists = styled.li`
   }
 `;
 
-function Dropdown({ options, placeholder }) {
+function Dropdown({ options, placeholder, onChange }) {
   const dropdownImage = ['/img/arrow_down.svg', '/img/arrow_top.svg'];
 
   const [toggled, setToggled] = useState(false);
@@ -94,6 +94,7 @@ function Dropdown({ options, placeholder }) {
   const handleItemClick = (itemText) => {
     setSelectedItem(itemText);
     setToggled(false);
+    onChange(itemText);
   };
 
   return (

@@ -244,7 +244,7 @@ function WritingForm({ isBtnDisabled }) {
           <Dropdown
             options={['지인', '친구', '동료', '가족']}
             placeholder="지인"
-            onSelect={(selectedOption) => setRelation(selectedOption)}
+            onChange={(selectedOption) => setRelation(selectedOption)}
           />
         </FormSubject>
 
@@ -260,7 +260,7 @@ function WritingForm({ isBtnDisabled }) {
           <Dropdown
             options={['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체']}
             placeholder="Noto Sans"
-            onSelect={(selectedOption) => handleFontChange(selectedOption)}
+            onChange={(selectedOption) => handleFontChange(selectedOption)}
           />
         </FormSubject>
         <PostButton

@@ -121,6 +121,7 @@ function PostId() {
             <Card
               src={message.profileImageURL}
               name={message.sender}
+              cardFont={message.font}
               userState={message.relationship}
               cardContent={message.content}
               cardCreatedAt={message.createdAt}

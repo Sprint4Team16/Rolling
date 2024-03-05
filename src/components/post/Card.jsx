@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+// import { useState } from 'react';
 
 const Text = css`
   font-family: Pretendard;
@@ -124,11 +125,30 @@ const CardCreatedAt = styled.div`
 function Card({
   src,
   name,
+  cardFont,
   userState = '친구',
   cardContent = '코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!',
   cardCreatedAt = '2023.07.08',
 }) {
+  // const [cardFont, setCardFonts] = useState('');
+
   const createdDays = new Date(cardCreatedAt);
+
+  // const handleCardFontChange = (fonts) => {
+  //   setCardFonts(fonts);
+
+  //   console.log(cardFont);
+  // };
+
+  const fontClass = {
+    'Noto Sans': 'noto-sans',
+    Pretendard: 'pretendard',
+    나눔명조: 'nanum-gothic',
+    '나눔손글씨 손편지체': 'nanum-myeongjo',
+  };
+
+  const font = fontClass[cardFont] || '';
+
   return (
     <CardContentWrapper>
       <CardContent>
@@ -140,7 +160,7 @@ function Card({
           </UserText>
         </UserInfo>
         <SplitHorizontal />
-        <CardContentText>{cardContent}</CardContentText>
+        <CardContentText className={font}>{cardContent}</CardContentText>
         <CardCreatedAt>
           {`${createdDays.getFullYear()}. ${
             createdDays.getMonth() + 1
