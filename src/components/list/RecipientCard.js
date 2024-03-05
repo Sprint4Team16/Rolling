@@ -1,12 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 function RecipientCard({ recipient }) {
   const backgroundColor = recipient.backgroundColor || 'beige';
   const backgroundImage = recipient.backgroundImageURL;
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/post/${recipient.id}`);
+  };
 
   return (
     <CardWrapper
+      onClick={handleCardClick}
       $backgroundColor={backgroundColor}
       $backgroundImage={backgroundImage}
     >
@@ -72,7 +79,7 @@ const RecipientTextColor = ({ backgroundImage }) =>
 const WriterTextColor = ({ backgroundImage }) =>
   backgroundImage ? 'var(--gray200)' : 'var(--gray700)';
 
-const CardWrapper = styled.div`
+const CardWrapper = styled.a`
   position: relative;
   width: 275px;
   height: 260px;
