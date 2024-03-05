@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
 import styled from 'styled-components';
 import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getProfile } from '../../api/GetApi';
+// import Button from './Button';
+import PostButton from '../common/Buttons/PostButton';
+import { submitMessagePost } from '../../api/PostApi';
 
 const IndexMessage = styled.p`
   color: var(--gray900);
@@ -18,7 +22,6 @@ const MainForm = styled.form`
   flex-direction: column;
   align-items: flex-start;
   gap: 50px;
-  
 `;
 
 const FormSubject = styled.div`
@@ -47,6 +50,11 @@ const ProfileSelectZone = styled.div`
   display: flex;
   align-items: center;
   gap: 32px;
+`;
+
+const ProfileZone = styled.img`
+  border-radius: 100px;
+  width: 100px;
 `;
 
 const YourProfileImage = styled.div`
@@ -109,25 +117,24 @@ const ProfileImage = styled.img`
 
 function WritingForm({ isBtnDisabled }) {
   // const imageList = ['img/image43.svg', 'img/image44.svg'];
-  const nonProfileImage = ['img/nonSelected.svg'];
+  const nonProfileImage = ['/img/nonSelected.svg'];
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
   const [profile, setProfile] = useState('');
-  // const [relationship, setRelationship] = useState('');
-  // const [font, setFont] = useState('');
-  const [content, setContent] = useState('');
+  const [relation, setRelation] = useState('지인');
+  const [fonts, setFonts] = useState('Noto Sans');
+  const [contents, setContents] = useState('');
   const [isContent, setIsContent] = useState(true);
   const [profileImages, setProfileImages] = useState([]);
-
-
+  const { id: recipientID } = useParams();
 
   const handleNameChange = (e) => {
     setName(e.target.value);
     setNameError(!e.target.value.trim());
   };
 
-  const handleContentChange = (contents) => {
-    setContent(contents);
+  const handleContentChange = (content) => {
+    setContents(content);
   };
 
   const handleProfileSelect = (prof) => {
@@ -142,24 +149,28 @@ function WritingForm({ isBtnDisabled }) {
   //   setRelationship(relation);
   // };
 
-  // const handleFontChange = (fonts) => {
-  //   setFont(fonts);
-  // };
+  const handleFontChange = (font) => {
+    setFonts(font);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   useEffect(() => {
-    getProfile().then((data) => {
-      const images = data.imageUrls;
-      setProfileImages(images);
-      if (images.length > 0) {
-        setProfile(images[0]);
+    const handleImageLoad = async () => {
+      try {
+        const response = await getProfile();
+        const result = response.imageUrls;
+        setProfileImages(result);
+        if (result.length > 0) {
+          setProfile(result[0]);
+        }
+      } catch (error) {
+        throw new Error('이미지를 불러오지 못했습니다.', error);
       }
-    }).catch((error) => {
-      console.error('이미지를 불러오지 못했습니다.', error);
-    });
+    };
+    handleImageLoad();
   }, []);
 
   useEffect(() => {
@@ -167,9 +178,9 @@ function WritingForm({ isBtnDisabled }) {
   }, []);
 
   useEffect(() => {
-    setIsContent(!!content && !!name);
+    setIsContent(!!contents && !!name);
     isBtnDisabled(!!isContent);
-  }, [content, name, isContent]);
+  }, [contents, name, isContent]);
 
   return (
     <div>
@@ -181,7 +192,9 @@ function WritingForm({ isBtnDisabled }) {
             value={name}
             placeholder="이름을 입력해 주세요."
             onChange={handleNameChange}
-            onBlur={(e) => { if (!e.target.value.trim()) setNameError(true); }}
+            onBlur={(e) => {
+              if (!e.target.value.trim()) setNameError(true);
+            }}
           />
           {nameError && <ErrorMessage>값을 입력해주세요.</ErrorMessage>}
         </FormSubject>
@@ -190,15 +203,24 @@ function WritingForm({ isBtnDisabled }) {
           <IndexMessage>프로필 이미지</IndexMessage>
           <ProfileSelectZone>
             <YourProfileImage>
-              <button type="button" onClick={() => handleProfileSelect(profile)}>
-                <img src={profile} alt="프로필 이미지" />
+              <button
+                type="button"
+                onClick={() => handleProfileSelect(profile)}
+              >
+                <ProfileZone src={profile} alt="프로필 이미지" />
               </button>
             </YourProfileImage>
             <ImageSelectionList>
-              <ImageSelectDirection>프로필 이미지를 선택해주세요!</ImageSelectDirection>
+              <ImageSelectDirection>
+                프로필 이미지를 선택해주세요!
+              </ImageSelectDirection>
               <ProfileImageContainer>
                 {profileImages.map((image) => (
-                  <button key={image} type="button" onClick={() => handleProfileSelect(image)}>
+                  <button
+                    key={image}
+                    type="button"
+                    onClick={() => handleProfileSelect(image)}
+                  >
                     <ProfileImage src={image} alt={`Profile ${image}`} />
                   </button>
                 ))}
@@ -212,6 +234,7 @@ function WritingForm({ isBtnDisabled }) {
           <Dropdown
             options={['지인', '친구', '동료', '가족']}
             placeholder="지인"
+            onSelect={(selectedOption) => setRelation(selectedOption)}
           />
         </FormSubject>
 
@@ -225,11 +248,28 @@ function WritingForm({ isBtnDisabled }) {
         <FormSubject>
           <IndexMessage>폰트 선택</IndexMessage>
           <Dropdown
-            options={['Noto Sans']}
+            options={['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체']}
             placeholder="Noto Sans"
+            onSelect={(selectedOption) => handleFontChange(selectedOption)}
           />
         </FormSubject>
-
+        <PostButton
+          onSubmit={async () => {
+            const data = {
+              team: '16',
+              recipientId: Number(recipientID),
+              sender: name,
+              profileImageURL: profile,
+              relationship: relation,
+              content: contents,
+              font: fonts,
+            };
+            console.log(data);
+            const response = await submitMessagePost(recipientID, data);
+            return response.recipientId;
+          }}
+          btnDisable={!isContent}
+        />
       </MainForm>
     </div>
   );

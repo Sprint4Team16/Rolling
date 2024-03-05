@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import DeleteMessageButton from '../common/Buttons/DeleteMessageButton';
 
 const Text = css`
   font-family: Pretendard;
@@ -53,6 +54,7 @@ const UserPicture = styled.img`
 const UserText = styled.div`
   ${Text}
   display: block;
+  position: relative;
   color: #000;
   font-size: 20px;
   font-weight: 400;
@@ -74,8 +76,13 @@ const UserState = styled.div`
   align-items: center;
 
   border-radius: 4px;
-  background: ${({ state }) => userStateColors[state].background};
-  color: ${({ state }) => userStateColors[state].color};
+  background: ${({ state }) =>
+    userStateColors[state]
+      ? userStateColors[state].background
+      : 'defaultColor'};
+  color: ${({ state }) =>
+    userStateColors[state] ? userStateColors[state].color : 'defaultColor'};
+
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -117,25 +124,31 @@ const CardCreatedAt = styled.div`
 `;
 
 function Card({
-  src = 'img/shareIcon.svg',
-  name = '김동훈',
+  src,
+  name,
   userState = '친구',
   cardContent = '코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!',
   cardCreatedAt = '2023.07.08',
 }) {
+  const createdDays = new Date(cardCreatedAt);
   return (
     <CardContentWrapper>
       <CardContent>
         <UserInfo>
-          <UserPicture src={src} alt="" />
+          <UserPicture src={src} alt="프로필" />
           <UserText>
             From. <UserName>{name}</UserName>
             <UserState state={userState}>{userState}</UserState>
           </UserText>
+          <DeleteMessageButton />
         </UserInfo>
         <SplitHorizontal />
         <CardContentText>{cardContent}</CardContentText>
-        <CardCreatedAt>{cardCreatedAt}</CardCreatedAt>
+        <CardCreatedAt>
+          {`${createdDays.getFullYear()}. ${
+            createdDays.getMonth() + 1
+          }. ${createdDays.getDate()}`}
+        </CardCreatedAt>
       </CardContent>
     </CardContentWrapper>
   );

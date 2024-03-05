@@ -1,7 +1,4 @@
-import React, {
-  useMemo,
-  useState,
-} from 'react';
+import React, { useMemo, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -50,8 +47,9 @@ function EditorBox({ onContentChange }) {
     if (values === '' || values === '<p><br></p>') {
       onContentChange(false);
     } else {
-      onContentChange(true);
+      onContentChange(values);
     }
+    console.log(values);
   };
 
   return (
@@ -63,7 +61,6 @@ function EditorBox({ onContentChange }) {
       onChange={setValues}
       onKeyUp={handleKeyUp}
     />
-
   );
 }
 export default EditorBox;

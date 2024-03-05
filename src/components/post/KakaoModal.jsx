@@ -1,5 +1,6 @@
 // import styled from 'styled-components';
 // import { useKakaoShare } from './useKakaoShare';
+import './KakaoModal.css';
 
 // const ModalBox = styled.div`
 //   display: inline-flex;
@@ -29,7 +30,18 @@
 function KakaoModal() {
   console.log('호출됏니?');
 
-  return <button type="submit">제발 보여줘</button>;
+  return (
+    <div className="MyModal">
+      <div className="Mask" />
+      <div className="Modal-body">
+        <div className="content">
+          <h3>모달 타이틀</h3>
+          <p>모달 텍스트 입니다.</p>
+          <button type="submit">닫기</button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default KakaoModal;

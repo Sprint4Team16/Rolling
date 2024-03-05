@@ -1,9 +1,10 @@
 import { useState, useRef } from 'react';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
-import Toast, { notify } from '../common/Toast';
+// import Toast, { notify } from '../common/Toast';
 import KakaoModal from './KakaoModal';
+import ModalPortal from './ModalPortal';
 
 const ShareBox = styled.div`
   display: inline-flex;
@@ -29,17 +30,11 @@ const ShareButton = styled.button`
   }
 `;
 
-const ToastBox = styled.div`
-  display: flex;
-`;
-
 function ShareToggle() {
   const [isKakaoOpen, setIsKakaoOpen] = useState(false);
   const ref = useRef();
 
   console.log(isKakaoOpen);
-
-  toast.configure();
 
   // const handleClipBoard = async (text) => {
   //   try {
@@ -66,19 +61,8 @@ function ShareToggle() {
       >
         카카오톡 공유
       </ShareButton>
-      {isKakaoOpen === true ? <KakaoModal /> : null}
-      <ToastBox>
-        <ShareButton
-          onClick={() => {
-            notify({
-              text: 'URL을 복사하였습니다..',
-            });
-          }}
-        >
-          URL 공유
-        </ShareButton>
-        <Toast />
-      </ToastBox>
+      <ModalPortal>{isKakaoOpen === true ? <KakaoModal /> : null}</ModalPortal>
+      <ShareButton>URL 공유</ShareButton>
     </ShareBox>
   );
 }

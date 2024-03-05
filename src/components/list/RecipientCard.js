@@ -51,6 +51,21 @@ const getColor = (backgroundColor) => {
   }
 };
 
+const getPatternImage = (backgroundColor) => {
+  switch (backgroundColor) {
+    case 'purple':
+      return '/img/pattern_purple.svg';
+    case 'beige':
+      return '/img/pattern_orange.svg';
+    case 'blue':
+      return '/img/pattern_blue.svg';
+    case 'green':
+      return '/img/pattern_green.svg';
+    default:
+      return '';
+  }
+};
+
 const RecipientTextColor = ({ backgroundImage }) =>
   backgroundImage ? 'var(--white)' : 'var(--gray900)';
 
@@ -58,21 +73,37 @@ const WriterTextColor = ({ backgroundImage }) =>
   backgroundImage ? 'var(--gray200)' : 'var(--gray700)';
 
 const CardWrapper = styled.div`
+  position: relative;
   width: 275px;
   height: 260px;
   padding: 30px 24px 20px 24px;
   border-radius: 16px;
   border: 1px solid #0000001a;
+  overflow: hidden;
   background-size: cover;
-  ${({ backgroundImage }) =>
-    // eslint-disable-next-line
-    backgroundImage &&
-    css`
-      background-image: url(${backgroundImage});
-    `}
-  ${({ backgroundColor }) => css`
-    background-color: ${getColor(backgroundColor)};
-  `}
+  background-repeat: no-repeat;
+  box-shadow: 0px 2px 12px 0px #00000014;
+  background-color: ${({ backgroundColor }) => getColor(backgroundColor)};
+  ${({ backgroundImage, backgroundColor }) =>
+    backgroundImage
+      ? css`
+          background-image: url(${backgroundImage});
+          background-size: cover;
+          background-repeat: no-repeat;
+        `
+      : css`
+          &::before {
+            content: '';
+            position: absolute;
+            width: 142px;
+            height: 142px;
+            top: 118px;
+            left: 133px;
+            background-image: url(${getPatternImage(backgroundColor)});
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+        `}
 `;
 
 const CardContent = styled.div`
@@ -103,7 +134,9 @@ const WriterNumText = styled.span`
 `;
 
 const Division = styled.hr`
+  position: relative;
   width: 227px;
+  z-index: 1;
   border: 1px solid #0000001f;
 `;
 
