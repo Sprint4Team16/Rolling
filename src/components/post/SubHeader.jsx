@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 import EmojiDropDown from './subheader/EmojiDropDown';
 import ShareToggle from './ShareToggle';
+import KakaoModal from './KakaoModal';
+import ModalPortal from './ModalPortal';
 
 const Text = css`
   font-family: Pretendard;
@@ -157,6 +159,7 @@ const ShareWrapper = styled.div`
 
 function SubHeader({ name, peopleNum }) {
   const [shareToggle, setShareToggle] = useState(false);
+  const [isKakaoOpen, setIsKakaoOpen] = useState(false);
   const ref = useRef();
 
   const handleOutsideClick = (e) => {
@@ -195,8 +198,13 @@ function SubHeader({ name, peopleNum }) {
           </ShareButton>
           {shareToggle && (
             <ShareWrapper>
-              <ShareToggle />
+              <ShareToggle setIsKakaoOpen={setIsKakaoOpen} />
             </ShareWrapper>
+          )}
+          {isKakaoOpen && (
+            <ModalPortal>
+              <KakaoModal ref={ref} />
+            </ModalPortal>
           )}
         </PostIdSetting>
       </SubHeaderContainer>
