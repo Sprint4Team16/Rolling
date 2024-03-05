@@ -29,6 +29,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-one-expression-per-line': 'off',
     camelcase: 'off',
+    'operator-linebreak': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-multiple-empty-lines': 'off',
     'implicit-arrow-linebreak': 'off',
