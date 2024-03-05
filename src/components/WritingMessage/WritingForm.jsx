@@ -31,6 +31,10 @@ const FormSubject = styled.div`
   gap: 12px;
 `;
 
+const InputTextContainer = styled.div`
+  position: relative;
+`;
+
 const InputText = styled.input`
   display: flex;
   width: 720px;
@@ -38,11 +42,14 @@ const InputText = styled.input`
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  border: 1px solid var(--gray300);
+  border: 1px solid ${(props) => (props.isError ? 'var(--error)' : 'var(--gray300)')};
   background: var(--white);
 `;
 
 const ErrorMessage = styled.p`
+  position: absolute;
+  top: calc(100% + 5px);
+  left: calc(2%);
   color: var(--error);
 `;
 
@@ -187,28 +194,26 @@ function WritingForm({ isBtnDisabled }) {
       <MainForm onSubmit={handleSubmit}>
         <FormSubject>
           <IndexMessage>From.</IndexMessage>
-          <InputText
-            type="text"
-            value={name}
-            placeholder="이름을 입력해 주세요."
-            onChange={handleNameChange}
-            onBlur={(e) => {
-              if (!e.target.value.trim()) setNameError(true);
-            }}
-          />
-          {nameError && <ErrorMessage>값을 입력해주세요.</ErrorMessage>}
+          <InputTextContainer>
+            <InputText
+              type="text"
+              value={name}
+              placeholder="이름을 입력해 주세요."
+              onChange={handleNameChange}
+              onBlur={(e) => {
+                if (!e.target.value.trim()) setNameError(true);
+              }}
+              isError={nameError}
+            />
+            {nameError && <ErrorMessage>값을 입력해주세요.</ErrorMessage>}
+          </InputTextContainer>
         </FormSubject>
 
         <FormSubject>
           <IndexMessage>프로필 이미지</IndexMessage>
           <ProfileSelectZone>
             <YourProfileImage>
-              <button
-                type="button"
-                onClick={() => handleProfileSelect(profile)}
-              >
-                <ProfileZone src={profile} alt="프로필 이미지" />
-              </button>
+              <ProfileZone src={profile} alt="프로필 이미지" />
             </YourProfileImage>
             <ImageSelectionList>
               <ImageSelectDirection>
@@ -234,7 +239,7 @@ function WritingForm({ isBtnDisabled }) {
           <Dropdown
             options={['지인', '친구', '동료', '가족']}
             placeholder="지인"
-            onSelect={(selectedOption) => setRelation(selectedOption)}
+            onChange={(selectedOption) => setRelation(selectedOption)}
           />
         </FormSubject>
 
@@ -250,7 +255,7 @@ function WritingForm({ isBtnDisabled }) {
           <Dropdown
             options={['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체']}
             placeholder="Noto Sans"
-            onSelect={(selectedOption) => handleFontChange(selectedOption)}
+            onChange={(selectedOption) => handleFontChange(selectedOption)}
           />
         </FormSubject>
         <PostButton

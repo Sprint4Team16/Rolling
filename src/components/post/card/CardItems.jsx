@@ -11,6 +11,7 @@ function CardItems({ messages }) {
             key={message.id}
             src={message.profileImageURL}
             name={message.sender}
+            cardFont={message.font}
             userState={message.relationship}
             cardContent={message.content}
             cardCreatedAt={message.createdAt}
