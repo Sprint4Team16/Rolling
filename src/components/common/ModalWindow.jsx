@@ -28,7 +28,6 @@ const ModalBody = styled.div`
 const CloseBtn = styled.button`
   width: 120px;
   padding: 7px 16px;
-  justify-content: center;
   align-items: center;
   border-radius: 6px;
   background: var(--Purple-600, #9935ff);

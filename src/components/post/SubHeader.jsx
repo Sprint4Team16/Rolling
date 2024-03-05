@@ -164,7 +164,6 @@ const Container = styled(ToastContainer)`
     font-size: 16px;
     padding: 19px 30px;
     color: #fff;
-    background: #000;
   }
 
   .Toastify__toast-icon {
