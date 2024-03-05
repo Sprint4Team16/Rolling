@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import Card, { CardContentWrapper } from '../components/post/Card';
-import { getRecipientData } from '../api/GetApi';
+import { getAllMessages, getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
 
 const HeaderWrapper = styled.div`
@@ -85,6 +85,8 @@ const PlusIcon = styled.div`
 function PostId() {
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [messages, setMessages] = useState(null);
+
   const handleIdData = async () => {
     try {
       const result = await getRecipientData(id);
@@ -94,8 +96,18 @@ function PostId() {
     }
   };
 
+  const handleMessages = async () => {
+    try {
+      const result = await getAllMessages(id);
+      setMessages(result.results);
+    } catch (error) {
+      // console.error(error);
+    }
+  };
+
   useEffect(() => {
     handleIdData();
+    handleMessages(id);
   }, []);
 
   return (
@@ -116,8 +128,8 @@ function PostId() {
             <img src="/img/plusIcon.svg" alt="" />
           </PlusIcon>
         </CardAdd>
-        {data.recentMessages &&
-          data.recentMessages.map((message) => (
+        {messages &&
+          messages.map((message) => (
             <Card
               src={message.profileImageURL}
               name={message.sender}
