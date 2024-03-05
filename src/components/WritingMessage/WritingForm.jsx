@@ -52,6 +52,11 @@ const ProfileSelectZone = styled.div`
   gap: 32px;
 `;
 
+const ProfileZone = styled.img`
+  border-radius: 100px;
+  width: 100px;
+`;
+
 const YourProfileImage = styled.div`
   display: flex;
   align-items: flex-start;
@@ -118,7 +123,7 @@ function WritingForm({ isBtnDisabled }) {
   const [profile, setProfile] = useState('');
   const [relation, setRelation] = useState('지인');
   const [fonts, setFonts] = useState('Noto Sans');
-  const [content, setContent] = useState('');
+  const [contents, setContents] = useState('');
   const [isContent, setIsContent] = useState(true);
   const [profileImages, setProfileImages] = useState([]);
   const { id: recipientID } = useParams();
@@ -128,8 +133,8 @@ function WritingForm({ isBtnDisabled }) {
     setNameError(!e.target.value.trim());
   };
 
-  const handleContentChange = (contents) => {
-    setContent(contents);
+  const handleContentChange = (content) => {
+    setContents(content);
   };
 
   const handleProfileSelect = (prof) => {
@@ -173,9 +178,9 @@ function WritingForm({ isBtnDisabled }) {
   }, []);
 
   useEffect(() => {
-    setIsContent(!!content && !!name);
+    setIsContent(!!contents && !!name);
     isBtnDisabled(!!isContent);
-  }, [content, name, isContent]);
+  }, [contents, name, isContent]);
 
   return (
     <div>
@@ -202,7 +207,7 @@ function WritingForm({ isBtnDisabled }) {
                 type="button"
                 onClick={() => handleProfileSelect(profile)}
               >
-                <img src={profile} alt="프로필 이미지" />
+                <ProfileZone src={profile} alt="프로필 이미지" />
               </button>
             </YourProfileImage>
             <ImageSelectionList>
@@ -256,7 +261,7 @@ function WritingForm({ isBtnDisabled }) {
               sender: name,
               profileImageURL: profile,
               relationship: relation,
-              content: 'test-content',
+              content: contents,
               font: fonts,
             };
             console.log(data);
