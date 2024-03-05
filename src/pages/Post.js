@@ -96,8 +96,9 @@ function Post() {
           </Select>
         ) : (
           <Select>
-            {background.map((image) => (
+            {background.map((image, index) => (
               <ImageSelection
+                key={`${image}${index + 1}`}
                 image={image}
                 handleFunction={() => handleImageChange(image)}
                 checkSelected={selectImage === image}
