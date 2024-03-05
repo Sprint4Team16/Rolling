@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
 import EmojiDropDown from './subheader/EmojiDropDown';
 import ShareToggle from '../modal/ShareToggle';
 import KakaoModal from '../modal/KakaoModal';
 import ModalPortal from '../modal/ModalPortal';
+import Toast from '../common/Toast';
 
 const Text = css`
   font-family: Pretendard;
@@ -157,9 +159,27 @@ const ShareWrapper = styled.div`
   z-index: 9999;
 `;
 
+const Container = styled(ToastContainer)`
+  .Toastify__toast {
+    font-size: 16px;
+    padding: 19px 30px;
+    color: #fff;
+  }
+
+  .Toastify__toast-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .Toastify__toast--success {
+    background: #000;
+  }
+`;
+
 function SubHeader({ name, peopleNum }) {
   const [shareToggle, setShareToggle] = useState(false);
   const [isKakaoOpen, setIsKakaoOpen] = useState(false);
+  const [isUrlCopy, setIsUrlCopy] = useState(false);
   const ref = useRef();
 
   const handleOutsideClick = (e) => {
@@ -198,12 +218,21 @@ function SubHeader({ name, peopleNum }) {
           </ShareButton>
           {shareToggle && (
             <ShareWrapper>
-              <ShareToggle setIsKakaoOpen={setIsKakaoOpen} />
+              <ShareToggle
+                setIsKakaoOpen={setIsKakaoOpen}
+                setIsUrlCopy={setIsUrlCopy}
+              />
             </ShareWrapper>
           )}
           {isKakaoOpen && (
             <ModalPortal>
               <KakaoModal ref={ref} />
+            </ModalPortal>
+          )}
+          {isUrlCopy && (
+            <ModalPortal>
+              <Container limit={1} />
+              <Toast />
             </ModalPortal>
           )}
         </PostIdSetting>
