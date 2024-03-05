@@ -42,6 +42,8 @@ export const PostIdWrapper = styled.div`
 export const ButtonSection = styled.div`
   display: flex;
   margin: 63px auto 11px;
+  max-width: 1200px;
+  gap: 10px;
   justify-content: end;
   align-items: center;
 `;
