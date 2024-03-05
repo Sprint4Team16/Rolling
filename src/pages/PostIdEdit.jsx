@@ -41,7 +41,10 @@ function PostIdEdit() {
   }, []);
 
   return (
-    <PostIdWrapper color={data.backgroundColor} image={data.backgroundImageURL}>
+    <PostIdWrapper
+      color={data.backgroundColor}
+      $image={data.backgroundImageURL}
+    >
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>

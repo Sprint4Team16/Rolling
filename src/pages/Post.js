@@ -85,8 +85,9 @@ function Post() {
         />
         {isColor ? (
           <Select>
-            {colorList.map((color) => (
+            {colorList.map((color, index) => (
               <ColorSelection
+                key={`${color}${index + 1}`}
                 color={color}
                 handleFunction={() => handleColorChange(color)}
                 checkSelected={selectColor === color}
@@ -95,8 +96,9 @@ function Post() {
           </Select>
         ) : (
           <Select>
-            {background.map((image) => (
+            {background.map((image, index) => (
               <ImageSelection
+                key={`${image}${index + 1}`}
                 image={image}
                 handleFunction={() => handleImageChange(image)}
                 checkSelected={selectImage === image}
