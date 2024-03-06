@@ -53,10 +53,9 @@ const ModalContents = styled.div`
 `;
 
 function ModalWindow({ children }) {
-  console.log('호출됏니?');
   const [modal, setModal] = useState(true);
 
-  const handleClickBtn = async (e) => {
+  const handleClickBtn = (e) => {
     e.preventDefault();
     setModal((prev) => !prev);
   };
