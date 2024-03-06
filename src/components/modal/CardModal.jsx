@@ -139,7 +139,12 @@ const CardContentTextContainer = styled.div`
 `;
 
 const CardContentText = styled.div`
-  display: -webkit-box;
+  /* display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; */
+  overflow-wrap: break-word;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
   color: var(--gray600);
   width: 520px;
   height: 240px;
