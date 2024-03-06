@@ -153,6 +153,7 @@ const EmojiGroup = styled.div`
   display: flex;
   gap: 8px;
   margin-top: 16px;
+  z-index: 1;
 `;
 
 const EmojiCount = styled.div`
