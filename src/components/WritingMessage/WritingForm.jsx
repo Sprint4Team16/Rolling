@@ -8,6 +8,19 @@ import { getProfile } from '../../api/GetApi';
 import PostButton from '../common/Buttons/PostButton';
 import { submitMessagePost } from '../../api/PostApi';
 
+const FormPage = styled.div`
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 767px) {
+    max-width: calc(100% - 32px);
+  }
+`;
+
 const IndexMessage = styled.p`
   color: var(--gray900);
   font-size: 24px;
@@ -20,12 +33,14 @@ const IndexMessage = styled.p`
 const MainForm = styled.form`
   display: inline-flex;
   flex-direction: column;
+  max-width: 720px;
   align-items: flex-start;
   gap: 50px;
 `;
 
 const FormSubject = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
@@ -33,6 +48,11 @@ const FormSubject = styled.div`
 
 const InputTextContainer = styled.div`
   position: relative;
+
+  @media (max-width: 767px) {
+    min-width: 320px;
+    width: 100%;
+  }
 `;
 
 const InputText = styled.input`
@@ -44,6 +64,11 @@ const InputText = styled.input`
   border-radius: 8px;
   border: 1px solid ${(props) => (props.isError ? 'var(--error)' : 'var(--gray300)')};
   background: var(--white);
+
+  @media (max-width: 767px) {
+    min-width: 320px;
+    width: 100%;
+  }
 `;
 
 const ErrorMessage = styled.p`
@@ -55,13 +80,19 @@ const ErrorMessage = styled.p`
 
 const ProfileSelectZone = styled.div`
   display: flex;
+  width: 100%;
   align-items: center;
   gap: 32px;
 `;
 
 const ProfileZone = styled.img`
   border-radius: 100px;
+  flex-wrap: wrap;
   width: 100px;
+
+  @media (max-width: 767px) {
+    width: 80px;
+  }
 `;
 
 const YourProfileImage = styled.div`
@@ -98,16 +129,17 @@ const ImageSelectDirection = styled.p`
 //   border: 1px solid var(--gray300);
 // `;
 
-const TextAreaDevice = styled.div`
-  display: flex;
-  width: 720px;
-  height: 260px;
-  padding: 16px 1px 16px 1px;
-  justify-content: center;
-  align-items: center;
-`;
+// const TextAreaDevice = styled.div`
+//   display: flex;
+//   max-width: 720px;
+//   height: 260px;
+//   padding: 16px 1px 16px 1px;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
 const ProfileImageContainer = styled.div`
+  flex-wrap: wrap;
   max-width: 560px;
 `;
 
@@ -120,6 +152,11 @@ const ProfileImage = styled.img`
   border-radius: 100px;
   border: 1px solid var(--gray200);
   background: var(--white);
+
+  @media (max-width: 767px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 function WritingForm({ isBtnDisabled }) {
@@ -190,7 +227,7 @@ function WritingForm({ isBtnDisabled }) {
   }, [contents, name, isContent]);
 
   return (
-    <div>
+    <FormPage>
       <MainForm onSubmit={handleSubmit}>
         <FormSubject>
           <IndexMessage>From.</IndexMessage>
@@ -237,6 +274,7 @@ function WritingForm({ isBtnDisabled }) {
         <FormSubject>
           <IndexMessage>상대와의 관계</IndexMessage>
           <Dropdown
+            $state="0"
             options={['지인', '친구', '동료', '가족']}
             placeholder="지인"
             onChange={(selectedOption) => setRelation(selectedOption)}
@@ -245,14 +283,15 @@ function WritingForm({ isBtnDisabled }) {
 
         <FormSubject>
           <IndexMessage>내용을 입력해 주세요</IndexMessage>
-          <TextAreaDevice>
-            <EditorBox onContentChange={handleContentChange} />
-          </TextAreaDevice>
+          {/* <TextAreaDevice> */}
+          <EditorBox onContentChange={handleContentChange} />
+          {/* </TextAreaDevice> */}
         </FormSubject>
 
         <FormSubject>
           <IndexMessage>폰트 선택</IndexMessage>
           <Dropdown
+            $state="1"
             options={['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체']}
             placeholder="Noto Sans"
             onChange={(selectedOption) => handleFontChange(selectedOption)}
@@ -276,7 +315,7 @@ function WritingForm({ isBtnDisabled }) {
           btnDisable={!isContent}
         />
       </MainForm>
-    </div>
+    </FormPage>
   );
 }
 

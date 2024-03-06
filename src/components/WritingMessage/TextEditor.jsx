@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+// import styled from 'styled-components';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -20,6 +21,13 @@ const formats = [
   'size',
   'h1',
 ];
+
+// const StyledReactQuill = styled(ReactQuill)`
+//   /* display: flex; */
+//   padding: 16px 1px 16px 1px;
+//   /* justify-content: center; */
+//   /* align-items: center; */
+// `;
 
 function EditorBox({ onContentChange }) {
   const [values, setValues] = useState('');
@@ -55,7 +63,15 @@ function EditorBox({ onContentChange }) {
   return (
     <ReactQuill
       theme="snow"
-      style={{ width: '720px', height: '260px' }}
+      style={{
+        width: '100%',
+        minWidth: '320px',
+        height: '250px',
+        minHeight: '200px',
+        padding: '16px 1px 16px 1px',
+        marginBottom: '50px',
+        borderRadius: 'lpx',
+      }}
       modules={modules}
       formats={formats}
       onChange={setValues}

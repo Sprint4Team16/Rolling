@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
+const statePosition = {
+  0: { position: 'absolute' },
+  1: { position: 'relative' },
+};
+
 const DropdownContainer = styled.button`
   position: relative;
   display: flex;
@@ -55,9 +60,11 @@ const TextContainer = styled.p`
 `;
 
 const ListContainer = styled.div`
-  position: absolute;
-  top: calc(100% + 5px);
-  left: calc(0%);
+  position: ${({ $state }) => statePosition[$state]
+    ? statePosition[$state].position
+    : 'absolute'};
+  /* position: absolute; */
+  top: calc(50% + 75px);
   display: inline-flex;
   overflow-y: auto;
   z-index: 1;
@@ -82,7 +89,7 @@ const Lists = styled.li`
   }
 `;
 
-function Dropdown({ options, placeholder, onChange }) {
+function Dropdown({ options, placeholder, onChange, $state }) {
   const dropdownImage = ['/img/arrow_down.svg', '/img/arrow_top.svg'];
 
   const [toggled, setToggled] = useState(false);
@@ -113,16 +120,16 @@ function Dropdown({ options, placeholder, onChange }) {
           src={toggled ? dropdownImage[1] : dropdownImage[0]}
           alt="화살표"
         />
-        {toggled && (
-          <ListContainer>
-            {options.map((option) => (
-              <Lists key={option} onClick={() => handleItemClick(option)}>
-                <TextContainer>{option}</TextContainer>
-              </Lists>
-            ))}
-          </ListContainer>
-        )}
       </DropdownContainer>
+      {toggled && (
+        <ListContainer $state={$state}>
+          {options.map((option) => (
+            <Lists key={option} onClick={() => handleItemClick(option)}>
+              <TextContainer>{option}</TextContainer>
+            </Lists>
+          ))}
+        </ListContainer>
+      )}
     </div>
   );
 }
