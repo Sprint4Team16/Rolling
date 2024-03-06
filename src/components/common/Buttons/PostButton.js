@@ -41,7 +41,8 @@ const Button = styled.button`
   cursor: ${({ disabled }) => disabled && 'not-allowed'};
 
   @media (max-width: 768px) {
-    width: 320px;
+    min-width: 320px;
+    width: 100%;
   }
 `;
 
