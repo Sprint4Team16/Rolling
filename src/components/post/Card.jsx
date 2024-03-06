@@ -23,6 +23,8 @@ export const CardContentWrapper = styled.div`
   background: var(--white);
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
 
+  cursor: pointer;
+
   @media (max-width: 1023px) {
     width: 50%;
   }
@@ -104,7 +106,7 @@ const CardContentText = styled.div`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-  overflow-wrap:break-word;
+  overflow-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--gray600);

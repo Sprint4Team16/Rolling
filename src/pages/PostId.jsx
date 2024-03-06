@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import { CardContentWrapper } from '../components/post/Card';
 import { getAllMessages, getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
+import ModalPortal from '../components/modal/ModalPortal';
+// import CardModal from '../components/modal/CardModal';
+import KakaoModal from '../components/modal/KakaoModal';
 
 export const HeaderWrapper = styled.div`
   position: sticky;
@@ -89,6 +92,8 @@ function PostId() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [messages, setMessages] = useState(null);
+  const [isCardOpen, setIsCardOpen] = useState(true);
+  const ref = useRef();
 
   const handleIdData = async () => {
     try {
@@ -113,6 +118,25 @@ function PostId() {
     handleMessages(id);
   }, []);
 
+  const handleOutsideClick = (e) => {
+    if (isCardOpen && (!ref.current || !ref.current.contains(e.target))) {
+      setIsCardOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', handleOutsideClick);
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, [isCardOpen]);
+
+  const handleClickCard = (e) => {
+    e.preventDefault();
+    setIsCardOpen(!isCardOpen);
+    console.log(isCardOpen);
+  };
+
   return (
     <PostIdWrapper
       color={data.backgroundColor}
@@ -134,7 +158,12 @@ function PostId() {
             <img src="/img/plusIcon.svg" alt="" />
           </PlusIcon>
         </CardAdd>
-        <CardItems messages={messages} />
+        <CardItems ref={ref} onClick={handleClickCard} messages={messages} />
+        {isCardOpen && (
+          <ModalPortal>
+            <KakaoModal ref={ref} />
+          </ModalPortal>
+        )}
       </CardWrapper>
     </PostIdWrapper>
   );
