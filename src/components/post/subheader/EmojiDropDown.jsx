@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 import EmojiPicker from 'emoji-picker-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { submitEmojiPost } from '../../../api/PostApi';
+import { getEmojiData } from '../../../api/GetApi';
 
 const FlexCenter = css`
   display: flex;
@@ -121,6 +124,7 @@ function EmojiDropDown() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [badges, setBadges] = useState([]);
+  const { id: recipient_id } = useParams();
 
   const handleEmojiPicker = () => {
     setIsOpen(!isOpen);
@@ -128,10 +132,25 @@ function EmojiDropDown() {
   const stopPropagation = (event) => {
     event.stopPropagation();
   };
-  // list 화면으로 전달
-  // const getTopThreeEmoji(badges){
-  //   return badges.slice(0,3);
-  // }
+
+  const handleEmojiData = async () => {
+    try {
+      const response = await getEmojiData(recipient_id);
+      const data = response.results.map((item) => ({
+        unified: item.id,
+        emoji: item.emoji,
+        count: item.count,
+      }));
+      setBadges(data);
+    } catch (error) {
+      console.error('Failed to fetch data', error);
+    }
+  };
+
+  useEffect(() => {
+    handleEmojiData();
+  }, []);
+
   return (
     <>
       <EmojiGroup>
@@ -174,24 +193,43 @@ function EmojiDropDown() {
           <EmojiPickerWrapper onClick={stopPropagation}>
             <EmojiPicker
               onEmojiClick={(emojiData) => {
-                setBadges((prevBadges) => {
-                  let newBadges;
-                  const exists = prevBadges.some(
-                    (badge) => badge.emoji === emojiData.emoji,
-                  );
-                  if (exists) {
-                    newBadges = prevBadges.map((badge) =>
-                      badge.emoji === emojiData.emoji
-                        ? { ...badge, count: badge.count + 1 }
-                        : badge,
+                const updateBadges = async () => {
+                  let newCount = 0;
+
+                  setBadges((prevBadges) => {
+                    let newBadges;
+                    const exists = prevBadges.some(
+                      (badge) => badge.emoji === emojiData.emoji,
                     );
-                  } else {
-                    newBadges = [...prevBadges, { ...emojiData, count: 1 }];
-                  }
-                  newBadges.sort((a, b) => b.count - a.count);
-                  return newBadges;
+                    if (exists) {
+                      newBadges = prevBadges.map((badge) => {
+                        if (badge.emoji === emojiData.emoji) {
+                          newCount = badge.count + 1;
+                          return { ...badge, count: newCount };
+                        }
+                        return badge;
+                      });
+                    } else {
+                      newCount = 1;
+                      newBadges = [
+                        ...prevBadges,
+                        { ...emojiData, count: newCount },
+                      ];
+                    }
+                    newBadges.sort((a, b) => b.count - a.count);
+                    return newBadges;
+                  });
+                  const data = {
+                    emoji: emojiData.emoji,
+                    type: 'increase',
+                  };
+
+                  await submitEmojiPost(recipient_id, data);
+                };
+
+                updateBadges().then(() => {
+                  setIsOpen(false);
                 });
-                setIsOpen(false);
               }}
             />
           </EmojiPickerWrapper>

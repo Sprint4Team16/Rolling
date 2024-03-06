@@ -231,7 +231,7 @@ function SubHeader({ name, peopleNum }) {
           )}
           {isKakaoOpen && (
             <ModalPortal>
-              <KakaoModal ref={ref} />
+              <KakaoModal />
             </ModalPortal>
           )}
           {isUrlCopy && (

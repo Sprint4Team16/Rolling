@@ -27,11 +27,11 @@ const userBackgroundColors = {
 };
 
 export const PostIdWrapper = styled.div`
-  background-color: ${($props) => {
-    const colorInfo = userBackgroundColors[$props.color];
+  background-color: ${(props) => {
+    const colorInfo = userBackgroundColors[props.color];
     return colorInfo && colorInfo.background;
   }};
-  background-image: url(${($props) => $props.image || 'none'});
+  background-image: url(${(props) => props.$image || 'none'});
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
