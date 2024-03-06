@@ -164,6 +164,11 @@ const Container = styled(ToastContainer)`
     font-size: 16px;
     padding: 19px 30px;
     color: #fff;
+    align-items: center;
+    justify-content: center;
+    width: 524px;
+    margin: 0 auto;
+    right: 33%;
   }
 
   .Toastify__toast-icon {
