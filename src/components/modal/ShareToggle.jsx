@@ -27,7 +27,7 @@ const ShareButton = styled.button`
 `;
 
 function ShareToggle({ setIsKakaoOpen, setIsUrlCopy }) {
-  const handleClickKakao = (e) => {
+  const handleClickKakao = async (e) => {
     e.preventDefault();
     setIsKakaoOpen((prev) => !prev);
   };
