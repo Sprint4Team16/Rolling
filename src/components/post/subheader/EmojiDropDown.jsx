@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components';
 import EmojiPicker from 'emoji-picker-react';
-// import { useEffect, useState } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { submitEmojiPost } from '../../../api/PostApi';
-// import { getEmojiData } from '../../../api/GetApi';
+import { getEmojiData } from '../../../api/GetApi';
 
 const FlexCenter = css`
   display: flex;
@@ -134,6 +133,24 @@ function EmojiDropDown() {
     event.stopPropagation();
   };
 
+  const handleEmojiData = async () => {
+    try {
+      const response = await getEmojiData(recipient_id);
+      const data = response.results.map((item) => ({
+        unified: item.id,
+        emoji: item.emoji,
+        count: item.count,
+      }));
+      setBadges(data);
+    } catch (error) {
+      console.error('Failed to fetch data', error);
+    }
+  };
+
+  useEffect(() => {
+    handleEmojiData();
+  }, []);
+
   return (
     <>
       <EmojiGroup>
@@ -200,7 +217,6 @@ function EmojiDropDown() {
                       ];
                     }
                     newBadges.sort((a, b) => b.count - a.count);
-                    // console.log(badges);
                     return newBadges;
                   });
                   const data = {
@@ -209,8 +225,6 @@ function EmojiDropDown() {
                   };
 
                   await submitEmojiPost(recipient_id, data);
-                  // const response = await submitEmojiPost(recipient_id, data);
-                  // console.log(response);
                 };
 
                 updateBadges().then(() => {
