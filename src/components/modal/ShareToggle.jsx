@@ -1,8 +1,6 @@
 import { useLocation } from 'react-router-dom';
-// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
-// import Toast from '../common/Toast';
 
 const ShareBox = styled.div`
   display: inline-flex;
@@ -28,7 +26,7 @@ const ShareButton = styled.button`
   }
 `;
 
-function ShareToggle({ setIsKakaoOpen }) {
+function ShareToggle({ setIsKakaoOpen, setIsUrlCopy }) {
   const handleClickKakao = (e) => {
     e.preventDefault();
     setIsKakaoOpen((prev) => !prev);
@@ -37,10 +35,16 @@ function ShareToggle({ setIsKakaoOpen }) {
   const handleClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
-      alert('URL이 복사되었습니다.');
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleClickUrl = () => {
+    setIsUrlCopy((prev) => !prev);
+    setTimeout(() => {
+      setIsUrlCopy(false);
+    }, 5000);
   };
 
   const location = useLocation();
@@ -50,7 +54,10 @@ function ShareToggle({ setIsKakaoOpen }) {
     <ShareBox>
       <ShareButton onClick={handleClickKakao}>카카오톡 공유</ShareButton>
       <ShareButton
-        onClick={() => handleClipBoard(`${baseUrl}${location.pathname}`)}
+        onClick={() => {
+          handleClipBoard(`${baseUrl}${location.pathname}`);
+          handleClickUrl();
+        }}
       >
         URL 공유
       </ShareButton>

@@ -22,13 +22,12 @@ const ModalBody = styled.div`
   left: 50%;
   width: 30%;
   height: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -30%);
 `;
 
 const CloseBtn = styled.button`
   width: 120px;
   padding: 7px 16px;
-  justify-content: center;
   align-items: center;
   border-radius: 6px;
   background: var(--Purple-600, #9935ff);
