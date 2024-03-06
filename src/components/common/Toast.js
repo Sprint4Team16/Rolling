@@ -1,19 +1,14 @@
-import { toast, ToastContainer } from 'react-toastify';
-
-export function notify({ text }) {
-  toast.success(text);
-}
+import { toast } from 'react-toastify';
 
 function Toast() {
-  return (
-    <ToastContainer
-      position="bottom-center"
-      limit={1}
-      closeButton={false}
-      autoClose={5000}
-      hideProgressBar
-    />
-  );
+  toast.success('URL이 복사되었습니다.', {
+    limit: 1,
+    position: 'bottom-center',
+    autoClose: 5000,
+    hideProgressBar: true,
+    progress: undefined,
+    closeButton: false,
+  });
 }
 
 export default Toast;

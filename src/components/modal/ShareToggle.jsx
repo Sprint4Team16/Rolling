@@ -1,11 +1,6 @@
-import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
-// import Toast, { notify } from '../common/Toast';
-import KakaoModal from './KakaoModal';
-import ModalPortal from './ModalPortal';
 
 const ShareBox = styled.div`
   display: inline-flex;
@@ -31,39 +26,38 @@ const ShareButton = styled.button`
   }
 `;
 
-function ShareToggle() {
-  const [isKakaoOpen, setIsKakaoOpen] = useState(false);
-  const ref = useRef();
-
-  console.log(isKakaoOpen);
+function ShareToggle({ setIsKakaoOpen, setIsUrlCopy }) {
+  const handleClickKakao = (e) => {
+    e.preventDefault();
+    setIsKakaoOpen((prev) => !prev);
+  };
 
   const handleClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
-      alert('URL이 복사 되었습니다.');
     } catch (error) {
       console.log(error);
     }
   };
 
+  const handleClickUrl = () => {
+    setIsUrlCopy((prev) => !prev);
+    setTimeout(() => {
+      setIsUrlCopy(false);
+    }, 5000);
+  };
+
   const location = useLocation();
   const baseUrl = 'http://localhost:3000';
 
-  console.log(location);
-
   return (
     <ShareBox>
+      <ShareButton onClick={handleClickKakao}>카카오톡 공유</ShareButton>
       <ShareButton
-        ref={ref}
         onClick={() => {
-          setIsKakaoOpen((prev) => !prev);
+          handleClipBoard(`${baseUrl}${location.pathname}`);
+          handleClickUrl();
         }}
-      >
-        카카오톡 공유
-      </ShareButton>
-      <ModalPortal>{isKakaoOpen === true ? <KakaoModal /> : null}</ModalPortal>
-      <ShareButton
-        onClick={() => handleClipBoard(`${baseUrl}${location.pathname}`)}
       >
         URL 공유
       </ShareButton>
