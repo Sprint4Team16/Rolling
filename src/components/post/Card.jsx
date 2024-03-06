@@ -210,6 +210,7 @@ function Card({
       {isCardOpen && (
         <ModalPortal>
           <CardModal
+            onClick={(e) => e.stopPropagation()}
             src={src}
             name={name}
             cardFont={cardFont}

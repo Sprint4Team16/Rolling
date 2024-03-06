@@ -32,7 +32,7 @@ function CardModal({
   const font = fontClass[cardFont] || '';
 
   const Card = (
-    <ShareContainer>
+    <Container>
       <CardContent>
         <UserInfo>
           <UserPicture src={src} alt="프로필" />
@@ -55,18 +55,26 @@ function CardModal({
           />
         </CardContentTextContainer>
       </CardContent>
-    </ShareContainer>
+    </Container>
   );
 
   return <ModalWindow children={Card} />;
 }
 
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
 const CardContent = styled.div`
-  margin: 28px 24px 24px;
+  margin: 20px 40px;
 `;
 
 const UserInfo = styled.div`
   display: flex;
+  margin-top: 40px;
+  margin-bottom: 20px;
   gap: 14px;
 `;
 
@@ -119,26 +127,33 @@ const UserState = styled.div`
 `;
 
 const SplitHorizontal = styled.div`
-  width: 100%;
+  width: 520px;
   height: 1px;
   background: var(--gray200);
   margin: 15px auto;
 `;
 
 const CardContentTextContainer = styled.div`
-  height: 112px;
-  width: 312px;
+  height: 100%;
+  width: 520px;
 `;
 
 const CardContentText = styled.div`
   display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow-wrap: break-word;
-  overflow: hidden;
-  text-overflow: ellipsis;
   color: var(--gray600);
-  width: 100%;
+  width: 520px;
+  height: 240px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 20px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-clip: padding-box;
+    border: 9px solid transparent;
+    background-color: var(--gray300);
+  }
+
   /* max-height: 112px; */
   /* max-width: 312px; */
 
@@ -153,19 +168,14 @@ const CardContentText = styled.div`
 const CardCreatedAt = styled.div`
   ${Text}
   position: absolute;
-  left: 24px;
-  bottom: 24px;
+  top: 56px;
+  right: 45px;
 
   color: var(--gray400);
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -0.06px;
-`;
-const ShareContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
 `;
 
 export default CardModal;
