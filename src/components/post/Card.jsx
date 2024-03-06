@@ -1,5 +1,8 @@
 import styled, { css } from 'styled-components';
+import { useRef, useEffect, useState } from 'react';
 import DeleteMessageButton from '../common/Buttons/DeleteMessageButton';
+import ModalPortal from '../modal/ModalPortal';
+import CardModal from '../modal/CardModal';
 
 const Text = css`
   font-family: Pretendard;
@@ -22,6 +25,8 @@ export const CardContentWrapper = styled.div`
   border-radius: 16px;
   background: var(--white);
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+
+  cursor: pointer;
 
   @media (max-width: 1023px) {
     width: 50%;
@@ -104,7 +109,7 @@ const CardContentText = styled.div`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-  overflow-wrap:break-word;
+  overflow-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--gray600);
@@ -141,15 +146,29 @@ function Card({
   cardContent = '코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!',
   cardCreatedAt = '2023.07.08',
 }) {
-  // const [cardFont, setCardFonts] = useState('');
+  const [isCardOpen, setIsCardOpen] = useState(false);
+  const ref = useRef();
+
+  const handleOutsideClick = (e) => {
+    if (isCardOpen && (!ref.current || !ref.current.contains(e.target))) {
+      setIsCardOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', handleOutsideClick);
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, [isCardOpen]);
+
+  const handleClickCard = (e) => {
+    e.preventDefault();
+    console.log(isCardOpen);
+    setIsCardOpen(!isCardOpen);
+  };
 
   const createdDays = new Date(cardCreatedAt);
-
-  // const handleCardFontChange = (fonts) => {
-  //   setCardFonts(fonts);
-
-  //   console.log(cardFont);
-  // };
 
   const fontClass = {
     'Noto Sans': 'noto-sans',
@@ -161,7 +180,7 @@ function Card({
   const font = fontClass[cardFont] || '';
 
   return (
-    <CardContentWrapper>
+    <CardContentWrapper ref={ref} onClick={handleClickCard}>
       <CardContent>
         <UserInfo>
           <UserPicture src={src} alt="프로필" />
@@ -185,6 +204,18 @@ function Card({
           }. ${createdDays.getDate()}`}
         </CardCreatedAt>
       </CardContent>
+      {isCardOpen && (
+        <ModalPortal>
+          <CardModal
+            src={src}
+            name={name}
+            cardFont={cardFont}
+            userState={userState}
+            cardContent={cardContent}
+            cardCreatedAt={cardCreatedAt}
+          />
+        </ModalPortal>
+      )}
     </CardContentWrapper>
   );
 }
