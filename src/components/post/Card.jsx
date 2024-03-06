@@ -139,6 +139,7 @@ const CardCreatedAt = styled.div`
 `;
 
 function Card({
+  id,
   src,
   name,
   cardFont,
@@ -188,7 +189,7 @@ function Card({
             From. <UserName>{name}</UserName>
             <UserState $state={userState}>{userState}</UserState>
           </UserText>
-          <DeleteMessageButton />
+          <DeleteMessageButton id={id} />
         </UserInfo>
         <SplitHorizontal />
         <CardContentTextContainer>
