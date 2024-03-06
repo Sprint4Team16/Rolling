@@ -11,6 +11,7 @@ import {
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import CardItems from '../components/post/card/CardItems';
+import BackToPostButton from '../components/common/Buttons/BackToPostButton';
 
 function PostIdEdit() {
   const { id } = useParams();
@@ -53,6 +54,7 @@ function PostIdEdit() {
         peopleNum={data ? data.messageCount : 0}
       />
       <ButtonSection>
+        <BackToPostButton />
         <DeleteRecipientButton />
       </ButtonSection>
       <CardWrapper>
