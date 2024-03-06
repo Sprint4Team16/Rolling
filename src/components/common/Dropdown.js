@@ -7,7 +7,7 @@ const DropdownContainer = styled.button`
   width: 320px;
   padding: 12px 16px;
   align-items: center;
-  gap: 192px;
+  /* gap: 192px; */
   border-radius: 8px;
   border: 1px solid var(--gray300);
   justify-content: space-between;
@@ -15,11 +15,11 @@ const DropdownContainer = styled.button`
   &:focus,
   &:active {
     border: 2px solid var(--gray500);
-    gap: 189px;
+    /* gap: 189px; */
   }
 
   &:hover {
-    gap: 189px;
+    /* gap: 189px; */
     border: 1px solid var(--gray500);
   }
 
@@ -41,6 +41,7 @@ const TextContainer = styled.p`
   font-weight: 400;
   line-height: 26px;
   letter-spacing: -0.16px;
+  white-space: nowrap;
 
   &:focus,
   &:active,
