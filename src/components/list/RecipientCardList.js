@@ -6,6 +6,8 @@ import { getRecipients } from '../../api/GetApi';
 function RecipientList() {
   const [recipients, setRecipients] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
 
   const handleRecipientsLoad = async () => {
     try {
@@ -29,6 +31,37 @@ function RecipientList() {
     setCurrentIndex((prev) => Math.min(prev + 4, recipients.length - 4));
   };
 
+  // 터치 시작점 기록
+  const onTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+    setTouchEndX(0);
+
+    const startX = e.touches[0].clientX;
+    setTouchStartX(startX);
+    console.log('터치시작', startX);
+  };
+
+  // 터치 끝점 기록
+  const onTouchMove = (e) => {
+    setTouchEndX(e.touches[0].clientX);
+
+    const moveX = e.touches[0].clientX;
+    setTouchEndX(moveX);
+    console.log('끝', moveX);
+  };
+
+  // 터치 끝났을 때 슬라이드 이동 방향 결정
+  const onTouchEnd = () => {
+    // 다음카드로
+    if (touchStartX - touchEndX > 50) {
+      handleRightButton();
+    }
+    // 이전카드로
+    if (touchEndX - touchStartX > 50) {
+      handleLeftButton();
+    }
+  };
+
   return (
     <CarouselContainer>
       {currentIndex > 0 && (
@@ -36,7 +69,11 @@ function RecipientList() {
           <img src="/img/arrow_left.svg" alt="arrow_left" />
         </LeftButton>
       )}
-      <CardsContainer>
+      <CardsContainer
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         {recipients.slice(currentIndex, currentIndex + 4).map((recipient) => (
           <RecipientCard key={recipient.id} recipient={recipient} />
         ))}
@@ -63,6 +100,7 @@ const CardsContainer = styled.div`
   display: flex;
   position: relative;
   gap: 20px;
+  // overflow: scroll;
 `;
 
 const Button = styled.button`
