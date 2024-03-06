@@ -64,7 +64,9 @@ const ListContainer = styled.div`
     ? statePosition[$state].position
     : 'absolute'};
   /* position: absolute; */
-  top: calc(50% + 75px);
+  /* top: ${({ $state }) => statePosition[$state]
+    ? '0'
+    : statePosition[$state].top}; */
   display: inline-flex;
   overflow-y: auto;
   z-index: 1;
