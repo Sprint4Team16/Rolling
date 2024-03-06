@@ -1,6 +1,6 @@
 import Card from '../Card';
 
-function CardItems({ messages }) {
+function CardItems({ messages, onDelete }) {
   return (
     // eslint-disable-next-line
     <>
@@ -16,6 +16,7 @@ function CardItems({ messages }) {
             userState={message.relationship}
             cardContent={message.content}
             cardCreatedAt={message.createdAt}
+            onDelete={onDelete}
           />
         ))}
     </>

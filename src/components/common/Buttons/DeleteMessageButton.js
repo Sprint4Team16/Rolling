@@ -1,17 +1,13 @@
 import styled from 'styled-components';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { deleteMessages } from '../../../api/DeleteApi';
+import { useLocation } from 'react-router-dom';
 
-function DeleteMessageButton({ id }) {
-  const navigate = useNavigate();
-  const { id: recipientID } = useParams();
+function DeleteMessageButton({ id, onDelete }) {
   const location = useLocation();
   const isEditRoute = location.pathname.includes('/edit');
 
-  // temp messageID(parameter로 messageID를 받으면 해당 공간에 messageID 넣기)
   const handleButtonClick = async () => {
-    await deleteMessages(id);
-    navigate(`/post/${recipientID}/edit`, { replace: true });
+    onDelete(id);
+    // navigate(`/post/${recipientID}/edit`, { replace: true });
   };
 
   return (

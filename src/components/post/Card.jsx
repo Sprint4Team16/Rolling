@@ -146,6 +146,7 @@ function Card({
   userState = '친구',
   cardContent = '코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 조심하세요!',
   cardCreatedAt = '2023.07.08',
+  onDelete,
 }) {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const ref = useRef();
@@ -189,7 +190,8 @@ function Card({
             From. <UserName>{name}</UserName>
             <UserState $state={userState}>{userState}</UserState>
           </UserText>
-          <DeleteMessageButton id={id} />
+          {/* <DeleteMessageButton id={id} /> */}
+          <DeleteMessageButton id={id} onDelete={onDelete} />
         </UserInfo>
         <SplitHorizontal />
         <CardContentTextContainer>

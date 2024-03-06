@@ -12,6 +12,7 @@ import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import CardItems from '../components/post/card/CardItems';
 import BackToPostButton from '../components/common/Buttons/BackToPostButton';
+import { deleteMessages } from '../api/DeleteApi';
 
 function PostIdEdit() {
   const { id } = useParams();
@@ -36,10 +37,19 @@ function PostIdEdit() {
     }
   };
 
+  const handleDeleteMessage = async (messageId) => {
+    try {
+      await deleteMessages(messageId);
+      handleMessages(id);
+    } catch (error) {
+      console.error('메세지 삭제에 실패했습니다.', error);
+    }
+  };
+
   useEffect(() => {
     handleIdData();
     handleMessages(id);
-  }, []);
+  }, [id]);
 
   return (
     <PostIdWrapper
@@ -58,7 +68,7 @@ function PostIdEdit() {
         <DeleteRecipientButton />
       </ButtonSection>
       <CardWrapper>
-        <CardItems messages={messages} />
+        <CardItems messages={messages} onDelete={handleDeleteMessage} />
       </CardWrapper>
     </PostIdWrapper>
   );
