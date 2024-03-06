@@ -126,17 +126,17 @@ const SplitHorizontal = styled.div`
 `;
 
 const CardContentTextContainer = styled.div`
-  height: 112px;
-  width: 312px;
+  height: 100%;
+  width: 100%;
 `;
 
 const CardContentText = styled.div`
-  display: -webkit-box;
+  /* display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 4; */
   overflow-wrap: break-word;
   overflow: hidden;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
   color: var(--gray600);
   width: 100%;
   /* max-height: 112px; */
