@@ -9,14 +9,18 @@ function KakaoModal() {
   `;
 
   const KakaoImg = styled.div`
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    top: 30%;
-    left: 40%;
+    width: 100%;
+    height: 100%;
+    top: 20%;
+    align-items: center;
     cursor: pointer;
 
     img {
-      width: 50px;
-      height: 50px;
+      width: 40%;
+      height: 40%;
       margin-bottom: 20px;
     }
 
