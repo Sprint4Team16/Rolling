@@ -58,15 +58,14 @@ export default RecipientList;
 
 const CardsContainer = styled.div`
   display: flex;
-  overflow-x: auto;
+  overflow-x: auto; 
   gap: 20px;
   scroll-behavior: smooth;
   & > * {
     flex-shrink: 0;
   }
   &::-webkit-scrollbar {
-    display: none;
-  }
+    display: none; 
 `;
 
 const CarouselContainer = styled.div`
@@ -76,6 +75,10 @@ const CarouselContainer = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1160px;
+
+  @media (max-width: 780px) {
+    width: calc(100% - 48px);
+  }
 `;
 
 const Button = styled.button`
