@@ -47,11 +47,15 @@ function CardModal({
             From. <UserName>{name}</UserName>
             <UserState $state={userState}>{userState}</UserState>
           </UserText>
-          <CardCreatedAt>
-            {`${createdDays.getFullYear()}. ${
-              createdDays.getMonth() + 1
-            }. ${createdDays.getDate()}`}
-          </CardCreatedAt>
+          {isEditRoute ? (
+            <EditMessageButton messageID={id} />
+          ) : (
+            <CardCreatedAt>
+              {`${createdDays.getFullYear()}. ${
+                createdDays.getMonth() + 1
+              }. ${createdDays.getDate()}`}
+            </CardCreatedAt>
+          )}
         </UserInfo>
         <SplitHorizontal />
         <CardContentTextContainer>
@@ -61,7 +65,6 @@ function CardModal({
           />
         </CardContentTextContainer>
       </CardContent>
-      {isEditRoute ? <EditMessageButton messageID={id} /> : ''}
     </Container>
   );
 

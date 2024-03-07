@@ -20,6 +20,9 @@ const Button = styled.button`
   gap: 10px;
   border-radius: 12px;
   background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
+  position: absolute;
+  top: 36px;
+  right: 36px;
 
   color: var(--white);
   text-align: center;

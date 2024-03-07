@@ -54,24 +54,6 @@ const ModalContents = styled.div`
 
 function ModalWindow({ children }) {
   const [modal, setModal] = useState(true);
-  // const ref = useRef();
-
-  // const handleOutsideClick = (e) => {
-  //   if (modal && (!ref.current || !ref.current.contains(e.target))) {
-  //     setModal(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (modal) {
-  //     window.addEventListener('click', handleOutsideClick);
-  //   } else {
-  //     window.removeEventListener('click', handleOutsideClick);
-  //   }
-  //   return () => {
-  //     window.removeEventListener('click', handleOutsideClick);
-  //   };
-  // }, [modal]);
 
   const handleClickBtn = (e) => {
     e.preventDefault();
