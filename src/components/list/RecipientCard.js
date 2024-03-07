@@ -79,6 +79,7 @@ const RecipientTextColor = ({ backgroundImage }) =>
 const WriterTextColor = ({ backgroundImage }) =>
   backgroundImage ? 'var(--gray200)' : 'var(--gray700)';
 
+/* eslint-disable */
 const CardWrapper = styled.a`
   position: relative;
   width: 275px;
@@ -111,7 +112,34 @@ const CardWrapper = styled.a`
             background-repeat: no-repeat;
           }
         `}
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    width: 208px;
+    height: 232px;
+    background-color: ${({ $backgroundColor }) => getColor($backgroundColor)};
+    ${({ $backgroundImage, $backgroundColor }) =>
+      $backgroundImage
+        ? css`
+            background-image: url(${$backgroundImage});
+            background-size: cover;
+            background-repeat: no-repeat;
+          `
+        : css`
+            &::before {
+              content: '';
+              position: absolute;
+              width: 107.4px;
+              height: 142px;
+              top: 118px;
+              left: 100.6px;
+              background-image: url(${getPatternImage($backgroundColor)});
+              background-size: cover;
+              background-repeat: no-repeat;
+            }
+          `}
+  }
 `;
+/* eslint-enable */
 
 const CardContent = styled.div`
   display: flex;
@@ -123,6 +151,10 @@ const RecipientInfo = styled.div`
   flex-direction: column;
   gap: 12px;
   margin-bottom: 43px;
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    margin-bottom: 33px;
+  }
 `;
 
 const RecipientText = styled.span`
@@ -130,12 +162,20 @@ const RecipientText = styled.span`
   color: ${({ $backgroundImage }) =>
     RecipientTextColor({ backgroundImage: $backgroundImage })};
   font-weight: 700;
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    font-size: 18px;
+  }
 `;
 
 const WriterText = styled.span`
   color: ${({ $backgroundImage }) =>
     WriterTextColor({ backgroundImage: $backgroundImage })};
   font-size: 16px;
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 
 const WriterNumText = styled.span`
@@ -147,6 +187,10 @@ const Division = styled.hr`
   width: 227px;
   z-index: 1;
   border: 1px solid #0000001f;
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    width: 162px;
+  }
 `;
 
 const EmojiGroup = styled.div`
@@ -161,18 +205,22 @@ const EmojiCount = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 65px;
+  width: auto;
   height: 36px;
   padding: 8px 12px;
   border-radius: 32px;
   background: rgba(0, 0, 0, 0.54);
   color: var(--white);
   font-size: 16px;
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
 `;
 
 const Emoji = styled.span`
   padding: 0 2px;
   margin-right: 2px;
-
   font-size: 16px;
 `;

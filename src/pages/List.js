@@ -42,6 +42,7 @@ const StyledBtn = styled(Link)`
   text-align: center;
   color: var(--white);
   background-color: var(--purple600);
+
   @media (min-width: 768px) and (max-width: 1199px) {
     width: 720px;
   }
