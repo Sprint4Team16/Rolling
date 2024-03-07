@@ -1,23 +1,6 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-// import ButtonStyle from './ButtonStyle';
 
-function PostButton({ onSubmit, btnDisable }) {
-  const navigate = useNavigate();
-
-  const handleButtonClick = async () => {
-    const recipientId = await onSubmit();
-    navigate(`/post/${recipientId}`, { replace: true });
-  };
-
-  return (
-    <Button onClick={handleButtonClick} disabled={btnDisable}>
-      생성하기
-    </Button>
-  );
-}
-
-const Button = styled.button`
+const ButtonStyle = styled.button`
   display: flex;
   width: 720px;
   margin-bottom: 100px;
@@ -46,4 +29,4 @@ const Button = styled.button`
   }
 `;
 
-export default PostButton;
+export default ButtonStyle;
