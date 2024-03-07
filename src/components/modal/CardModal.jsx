@@ -14,6 +14,7 @@ const userStateColors = {
 };
 
 function CardModal({
+  id,
   src,
   name,
   cardFont,
@@ -30,9 +31,9 @@ function CardModal({
   };
 
   const font = fontClass[cardFont] || '';
-
+  console.log(id);
   const Card = (
-    <Container>
+    <Container onClick={(e) => e.stopPropagation()}>
       <CardContent>
         <UserInfo>
           <UserPicture src={src} alt="프로필" />
@@ -46,7 +47,6 @@ function CardModal({
             }. ${createdDays.getDate()}`}
           </CardCreatedAt>
         </UserInfo>
-
         <SplitHorizontal />
         <CardContentTextContainer>
           <CardContentText
@@ -139,12 +139,8 @@ const CardContentTextContainer = styled.div`
 `;
 
 const CardContentText = styled.div`
-  /* display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4; */
   overflow-wrap: break-word;
   overflow: hidden;
-  /* text-overflow: ellipsis; */
   color: var(--gray600);
   width: 520px;
   height: 240px;
