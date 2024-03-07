@@ -1,6 +1,6 @@
 import Card from '../Card';
 
-function CardItems({ messages }) {
+function CardItems({ messages, onDelete }) {
   return (
     // eslint-disable-next-line
     <>
@@ -9,12 +9,14 @@ function CardItems({ messages }) {
         messages.map((message) => (
           <Card
             key={message.id}
+            id={message.id}
             src={message.profileImageURL}
             name={message.sender}
             cardFont={message.font}
             userState={message.relationship}
             cardContent={message.content}
             cardCreatedAt={message.createdAt}
+            onDelete={onDelete}
           />
         ))}
     </>

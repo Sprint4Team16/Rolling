@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 // import { useKakaoShare } from './useKakaoShare';
 
@@ -59,6 +59,8 @@ function ModalWindow({ children }) {
     e.preventDefault();
     setModal((prev) => !prev);
   };
+
+  useEffect(() => {}, [modal]);
 
   return (
     modal && (
