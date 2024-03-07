@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import ModalWindow from '../common/ModalWindow';
+import EditMessageButton from '../common/Buttons/EditMessageButton';
 
 const Text = css`
   font-family: Pretendard;
@@ -14,6 +16,7 @@ const userStateColors = {
 };
 
 function CardModal({
+  id,
   src,
   name,
   cardFont,
@@ -21,6 +24,10 @@ function CardModal({
   cardContent,
   cardCreatedAt,
 }) {
+  const location = useLocation();
+  const isEditRoute = location.pathname.includes('/edit');
+  console.log(id, isEditRoute);
+
   const createdDays = new Date(cardCreatedAt);
   const fontClass = {
     'Noto Sans': 'noto-sans',
@@ -32,7 +39,7 @@ function CardModal({
   const font = fontClass[cardFont] || '';
 
   const Card = (
-    <Container>
+    <Container onClick={(e) => e.stopPropagation()}>
       <CardContent>
         <UserInfo>
           <UserPicture src={src} alt="프로필" />
@@ -46,7 +53,6 @@ function CardModal({
             }. ${createdDays.getDate()}`}
           </CardCreatedAt>
         </UserInfo>
-
         <SplitHorizontal />
         <CardContentTextContainer>
           <CardContentText
@@ -55,6 +61,7 @@ function CardModal({
           />
         </CardContentTextContainer>
       </CardContent>
+      {isEditRoute ? <EditMessageButton messageID={id} /> : ''}
     </Container>
   );
 
@@ -93,7 +100,7 @@ const UserText = styled.div`
   ${Text}
   display: block;
   position: relative;
-  color: #000;
+  color: var(--black);
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
@@ -139,12 +146,8 @@ const CardContentTextContainer = styled.div`
 `;
 
 const CardContentText = styled.div`
-  /* display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4; */
   overflow-wrap: break-word;
   overflow: hidden;
-  /* text-overflow: ellipsis; */
   color: var(--gray600);
   width: 520px;
   height: 240px;

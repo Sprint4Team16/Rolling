@@ -32,7 +32,7 @@ const CloseBtn = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  background: var(--Purple-600, #9935ff);
+  background: var(--purple600);
   color: #fff;
   font-size: 16px;
   line-height: 26px; /* 162.5% */
@@ -54,6 +54,24 @@ const ModalContents = styled.div`
 
 function ModalWindow({ children }) {
   const [modal, setModal] = useState(true);
+  // const ref = useRef();
+
+  // const handleOutsideClick = (e) => {
+  //   if (modal && (!ref.current || !ref.current.contains(e.target))) {
+  //     setModal(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (modal) {
+  //     window.addEventListener('click', handleOutsideClick);
+  //   } else {
+  //     window.removeEventListener('click', handleOutsideClick);
+  //   }
+  //   return () => {
+  //     window.removeEventListener('click', handleOutsideClick);
+  //   };
+  // }, [modal]);
 
   const handleClickBtn = (e) => {
     e.preventDefault();
