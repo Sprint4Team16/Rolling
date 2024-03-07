@@ -3,11 +3,10 @@ import styled from 'styled-components';
 // import { useKakaoShare } from './useKakaoShare';
 
 const ModalBox = styled.div`
-  padding: 50px 20px;
   border-radius: 10px;
 `;
 
-const Mask = styled.div`
+const BlackBackground = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -17,25 +16,27 @@ const Mask = styled.div`
 `;
 
 const ModalBody = styled.div`
+  display: flex;
+  justify-content: center;
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 30%;
-  height: 50%;
+  width: 100%;
   transform: translate(-50%, -30%);
 `;
 
 const CloseBtn = styled.button`
+  display: flex;
   width: 120px;
   padding: 7px 16px;
   align-items: center;
+  justify-content: center;
   border-radius: 6px;
   background: var(--Purple-600, #9935ff);
   color: #fff;
   font-size: 16px;
   line-height: 26px; /* 162.5% */
   letter-spacing: -0.16px;
-  cursor: pointer;
   position: absolute;
   bottom: 40px;
 `;
@@ -46,17 +47,15 @@ const ModalContents = styled.div`
   align-items: center;
   justify-content: center;
   background: white;
-  padding: 10px;
-  width: 100%;
-  height: 100%;
+  width: 600px;
+  height: 476px;
   border-radius: 20px;
 `;
 
 function ModalWindow({ children }) {
-  console.log('호출됏니?');
   const [modal, setModal] = useState(true);
 
-  const handleClickBtn = async (e) => {
+  const handleClickBtn = (e) => {
     e.preventDefault();
     setModal((prev) => !prev);
   };
@@ -64,12 +63,10 @@ function ModalWindow({ children }) {
   return (
     modal && (
       <ModalBox>
-        <Mask />
+        <BlackBackground />
         <ModalBody>
-          <ModalContents>
-            {children}
-            <CloseBtn onClick={handleClickBtn}>확인</CloseBtn>
-          </ModalContents>
+          <ModalContents>{children}</ModalContents>
+          <CloseBtn onClick={handleClickBtn}>확인</CloseBtn>
         </ModalBody>
       </ModalBox>
     )

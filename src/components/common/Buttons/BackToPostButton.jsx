@@ -1,26 +1,17 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function PostButton({ onSubmit, btnDisable }) {
+function BackToPostButton() {
   const navigate = useNavigate();
-
-  const handleButtonClick = async () => {
-    const recipientId = await onSubmit();
-    console.log(recipientId);
-    navigate(`/post/${recipientId}`, { replace: true });
-  };
+  const { id: recipientID } = useParams();
 
   return (
-    <Button onClick={handleButtonClick} disabled={btnDisable}>
-      생성하기
-    </Button>
+    <Button onClick={() => navigate(`/post/${recipientID}`)}>뒤로가기</Button>
   );
 }
 
 const Button = styled.button`
   display: flex;
-  width: 720px;
-  margin-bottom: 100px;
   padding: 14px 24px;
   justify-content: center;
   align-items: center;
@@ -41,9 +32,8 @@ const Button = styled.button`
   cursor: ${({ disabled }) => disabled && 'not-allowed'};
 
   @media (max-width: 768px) {
-    min-width: 320px;
-    width: 100%;
+    width: 320px;
   }
 `;
 
-export default PostButton;
+export default BackToPostButton;
