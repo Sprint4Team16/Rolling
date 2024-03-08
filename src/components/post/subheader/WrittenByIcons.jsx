@@ -10,7 +10,6 @@ function WrittenByIcons({ messages, peopleNum }) {
 
   return (
     <>
-      {/* {으앙~} */}
       {limitedUsers.map((userId, index) => {
         const userMessages = messages.filter(
           (message) => message.id === userId,

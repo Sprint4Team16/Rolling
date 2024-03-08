@@ -26,8 +26,10 @@ export function getMessage(id) {
 }
 
 // 롤링페이퍼 대상이 받은 모든 메세지 데이터 가져오기
-export function getAllMessages(recipientID) {
-  return fetchRecipients(`/recipients/${recipientID}/messages/`);
+export function getAllMessages(recipientID, offset) {
+  return fetchRecipients(
+    `/recipients/${recipientID}/messages/?limit=8&offset=${offset}`,
+  );
 }
 
 // id에 해당하는 이모티콘 데이터 가져오기
