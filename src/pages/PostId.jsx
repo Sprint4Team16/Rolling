@@ -27,11 +27,11 @@ const userBackgroundColors = {
 };
 
 export const PostIdWrapper = styled.div`
-  background-color: ${(props) => {
-    const colorInfo = userBackgroundColors[props.color];
+  background-color: ${($props) => {
+    const colorInfo = userBackgroundColors[$props.color];
     return colorInfo && colorInfo.background;
   }};
-  background-image: url(${(props) => props.$image || 'none'});
+  background-image: url(${($props) => $props.image || 'none'});
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -70,6 +70,10 @@ export const CardWrapper = styled.div`
 const CardAdd = styled(CardContentWrapper)`
   justify-content: center;
   position: relative;
+  transition: all 0.5s ease-out;
+  &:hover {
+    transform: translateY(-1.2rem);
+  }
 `;
 // eslint-disable-next-line
 const PlusIcon = styled.div`

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Secondary } from '../../../styles/ButtonStyle';
 
 function ToggleButton({ state, handler, text1, text2 }) {
   return state ? (
@@ -20,7 +21,7 @@ const SelectToggle = styled.div`
   margin-top: 24px;
 `;
 
-const BtnCommon = styled.button`
+const BtnCommon = styled(Secondary)`
   display: flex;
   width: 122px;
   height: 40px;

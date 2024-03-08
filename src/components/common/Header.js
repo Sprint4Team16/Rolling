@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Outlined40 } from '../../styles/ButtonStyle';
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -25,20 +26,8 @@ const StyledHeader = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
-  button {
-    height: 40px;
-    border-radius: 6px;
-    padding: 8px 16px;
-    border: 1px solid #ccc;
-    background: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    line-height: 26px;
-    letter-spacing: -0.16px;
-    text-align: center;
-  }
-`;
+const Button = styled(Outlined40)``;
+
 const LogoURL = styled.a`
   display: flex;
   padding: 6px 0;
@@ -65,9 +54,7 @@ function Header({ showButton }) {
         </LogoURL>
         {showButton && (
           <Link to="/post">
-            <ButtonContainer>
-              <button type="button">롤링 페이퍼 만들기</button>
-            </ButtonContainer>
+            <Button>롤링 페이퍼 만들기</Button>
           </Link>
         )}
       </StyledHeader>
