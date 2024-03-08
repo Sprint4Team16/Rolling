@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import EmojiDropDown from './subheader/EmojiDropDown';
+import WrittenByIcons from './subheader/WrittenByIcons';
 import ShareToggle from '../modal/ShareToggle';
 import KakaoModal from '../modal/KakaoModal';
 import ModalPortal from '../modal/ModalPortal';
 import Toast from '../common/Toast';
 import { Outlined36 } from '../../styles/ButtonStyle';
+import { getAllMessages } from '../../api/GetApi';
 
 const Text = css`
   font-family: Pretendard;
@@ -111,11 +114,11 @@ const WrittenBy = styled.div`
   }
 `;
 
-const WrittenByIcons = styled.span`
-  width: 76px;
-  height: 30px;
-  border: 1px solid black;
-`;
+// const WrittenByIcons = styled.span`
+//   width: 76px;
+//   height: 30px;
+//   border: 1px solid black;
+// `;
 
 const SplitBarVertical = styled.div`
   width: 1px;
@@ -175,7 +178,18 @@ function SubHeader({ name, peopleNum }) {
   const [shareToggle, setShareToggle] = useState(false);
   const [isKakaoOpen, setIsKakaoOpen] = useState(false);
   const [isUrlCopy, setIsUrlCopy] = useState(false);
+  const [messages, setMessages] = useState(null);
+  const { id } = useParams();
   const ref = useRef();
+
+  const handleMessages = async () => {
+    try {
+      const result = await getAllMessages(id);
+      setMessages(result.results);
+    } catch (error) {
+      // console.error(error);
+    }
+  };
 
   const handleOutsideClick = (e) => {
     if (shareToggle && (!ref.current || !ref.current.contains(e.target))) {
@@ -190,6 +204,10 @@ function SubHeader({ name, peopleNum }) {
     };
   }, [shareToggle]);
 
+  useEffect(() => {
+    handleMessages(id);
+  }, []);
+
   const handleClickShare = (e) => {
     e.preventDefault();
     setShareToggle(!shareToggle);
@@ -202,7 +220,7 @@ function SubHeader({ name, peopleNum }) {
         <SplitBarHorizontal />
         <PostIdSetting>
           <WrittenBy>
-            <WrittenByIcons />
+            <WrittenByIcons messages={messages} peopleNum={peopleNum} />
             {peopleNum}명이 작성했어요!
           </WrittenBy>
           <SplitBarVertical1 />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Primary40 } from '../../styles/ButtonStyle';
 // import { useKakaoShare } from './useKakaoShare';
@@ -30,6 +30,10 @@ const CloseBtn = styled(Primary40)`
   width: 120px;
   position: absolute;
   bottom: 40px;
+
+  &:hover {
+    background: var(--Purple-700, #861dee);
+  }
 `;
 
 const ModalContents = styled.div`
@@ -50,6 +54,8 @@ function ModalWindow({ children }) {
     e.preventDefault();
     setModal((prev) => !prev);
   };
+
+  useEffect(() => {}, [modal]);
 
   return (
     modal && (
