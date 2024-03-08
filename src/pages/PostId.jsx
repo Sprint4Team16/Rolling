@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
-import { CardContentWrapper } from '../components/post/Card';
-import { getAllMessages, getRecipientData } from '../api/GetApi';
+// import { getAllMessages, getRecipientData } from '../api/GetApi';
+import { getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
 
@@ -66,29 +66,11 @@ export const CardWrapper = styled.div`
     /* align-content: center; */
   }
 `;
-// eslint-disable-next-line
-const CardAdd = styled(CardContentWrapper)`
-  justify-content: center;
-  position: relative;
-`;
-// eslint-disable-next-line
-const PlusIcon = styled.div`
-  width: 56px;
-  height: 56px;
-  padding: 16px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 100px;
-  background: var(--gray500);
-`;
 
 function PostId() {
-  const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [messages, setMessages] = useState(null);
+  // const [messages, setMessages] = useState(null);
 
   const handleIdData = async () => {
     try {
@@ -99,18 +81,18 @@ function PostId() {
     }
   };
 
-  const handleMessages = async () => {
-    try {
-      const result = await getAllMessages(id);
-      setMessages(result.results);
-    } catch (error) {
-      // console.error(error);
-    }
-  };
+  // const handleMessages = async () => {
+  //   try {
+  //     const result = await getAllMessages(id);
+  //     setMessages(result.results);
+  //   } catch (error) {
+  //     // console.error(error);
+  //   }
+  // };
 
   useEffect(() => {
     handleIdData();
-    handleMessages(id);
+    // handleMessages(id);
   }, []);
 
   return (
@@ -118,24 +100,21 @@ function PostId() {
       color={data.backgroundColor}
       $image={data.backgroundImageURL}
     >
+      {/* {console.log(id)} */}
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
       <SubHeader
-        name={data ? data.name : 'hello'}
+        name={data ? data.name : ''}
         peopleNum={data ? data.messageCount : 0}
       />
       <ButtonSection>
         <EditButton />
       </ButtonSection>
-      <CardWrapper>
-        <CardAdd onClick={() => navigate(`/post/${data.id}/message`)}>
-          <PlusIcon>
-            <img src="/img/plusIcon.svg" alt="" />
-          </PlusIcon>
-        </CardAdd>
-        <CardItems messages={messages} />
-      </CardWrapper>
+      {/* <CardWrapper> */}
+      {/* <CardItems messages={messages} data={data} /> */}
+      <CardItems data={data} />
+      {/* </CardWrapper> */}
     </PostIdWrapper>
   );
 }
