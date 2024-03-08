@@ -38,6 +38,8 @@ function CardModal({
 
   const font = fontClass[cardFont] || '';
 
+  const newCardContent = cardContent.replace(/ql-/g, '');
+
   const Card = (
     <Container onClick={(e) => e.stopPropagation()}>
       <CardContent>
@@ -60,7 +62,7 @@ function CardModal({
         <SplitHorizontal />
         <CardContentTextContainer>
           <CardContentText
-            dangerouslySetInnerHTML={{ __html: cardContent }}
+            dangerouslySetInnerHTML={{ __html: newCardContent }}
             className={font}
           />
         </CardContentTextContainer>
