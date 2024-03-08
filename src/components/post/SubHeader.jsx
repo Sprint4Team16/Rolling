@@ -10,11 +10,7 @@ import ModalPortal from '../modal/ModalPortal';
 import Toast from '../common/Toast';
 import { Outlined36 } from '../../styles/ButtonStyle';
 import { getAllMessages } from '../../api/GetApi';
-
-const Text = css`
-  font-family: Pretendard;
-  font-style: normal;
-`;
+import { bold18, bold28 } from '../../styles/fontStyle';
 
 const FlexCenter = css`
   display: flex;
@@ -53,12 +49,8 @@ const SubHeaderContainer = styled.div`
 `;
 
 const Name = styled.div`
-  ${Text}
   color: var(--gray800);
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 42px;
-  letter-spacing: -0.28px;
+  ${bold28}
 
   @media (min-width: 470px) and (max-width: 767px) {
     padding: 12px 20px;
@@ -67,12 +59,7 @@ const Name = styled.div`
     padding: 12px 20px;
     color: var(--gray-800, #2b2b2b);
 
-    font-family: Pretendard;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 28px;
-    letter-spacing: -0.18px;
+    ${bold18}
   }
 `;
 
@@ -105,9 +92,7 @@ const WrittenBy = styled.div`
   ${FlexCenter}
   gap: 11px;
   color: var(--gray900);
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 27px;
+  ${bold18}
 
   @media (max-width: 1023px) {
     display: none;

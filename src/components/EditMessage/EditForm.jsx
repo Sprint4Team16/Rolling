@@ -7,6 +7,7 @@ import { getMessage, getProfile } from '../../api/GetApi';
 // import Button from './Button';
 import PutPatchButton from '../common/Buttons/PutPatchButton';
 import { patchMessage, putMessage } from '../../api/PutPatchApi';
+import { bold24, regular16 } from '../../styles/fontStyle';
 
 const FormPage = styled.div`
   max-width: 720px;
@@ -23,11 +24,7 @@ const FormPage = styled.div`
 
 const IndexMessage = styled.p`
   color: var(--gray900);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 36px;
-  letter-spacing: -0.24px;
+  ${bold24}
 `;
 
 const MainForm = styled.form`
@@ -111,12 +108,7 @@ const ImageSelectionList = styled.div`
 
 const ImageSelectDirection = styled.p`
   color: var(--gray500);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px;
-  letter-spacing: -0.16px;
+  ${regular16}
 `;
 
 const ProfileImageContainer = styled.div`

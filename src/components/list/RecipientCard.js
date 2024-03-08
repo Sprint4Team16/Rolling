@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import WrittenByIcons from '../post/subheader/WrittenByIcons';
 import { getAllMessages } from '../../api/GetApi';
+import { bold18, bold24, regular14, regular16 } from '../../styles/fontStyle';
 
 function RecipientCard({ recipient }) {
   const backgroundColor = recipient.backgroundColor || 'beige';
@@ -181,13 +182,12 @@ const RecipientInfo = styled.div`
 `;
 
 const RecipientText = styled.span`
-  font-size: 24px;
   color: ${({ $backgroundImage }) =>
     RecipientTextColor({ backgroundImage: $backgroundImage })};
-  font-weight: 700;
+  ${bold24}
 
   @media (min-width: 375px) and (max-width: 767px) {
-    font-size: 18px;
+    ${bold18}
   }
 `;
 
@@ -208,10 +208,10 @@ const WrittenBy = styled.div`
 const WriterText = styled.span`
   color: ${({ $backgroundImage }) =>
     WriterTextColor({ backgroundImage: $backgroundImage })};
-  font-size: 16px;
+  ${regular16}
 
   @media (min-width: 375px) and (max-width: 767px) {
-    font-size: 14px;
+    ${regular14}
   }
 `;
 
@@ -252,11 +252,11 @@ const EmojiCount = styled.div`
   border-radius: 32px;
   background: rgba(0, 0, 0, 0.54);
   color: var(--white);
-  font-size: 16px;
+  ${regular16}
 
   @media (min-width: 375px) and (max-width: 767px) {
     padding: 6px 8px;
-    font-size: 14px;
+    ${regular14}
   }
 `;
 

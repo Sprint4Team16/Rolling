@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { submitEmojiPost } from '../../../api/PostApi';
 import { getEmojiData } from '../../../api/GetApi';
 import { Outlined36 } from '../../../styles/ButtonStyle';
+import { regular16 } from '../../../styles/fontStyle';
 
 const FlexCenter = css`
   display: flex;
@@ -25,8 +26,7 @@ const EmojiBadge = styled.div`
   border-radius: 32px;
   background: rgba(0, 0, 0, 0.54);
   color: #fff;
-  font-size: 16px;
-  font-weight: 400;
+  ${regular16}
 
   @media (max-width: 469px) {
     font-size: 14px;
