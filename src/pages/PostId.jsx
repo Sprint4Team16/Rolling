@@ -70,6 +70,10 @@ export const CardWrapper = styled.div`
 const CardAdd = styled(CardContentWrapper)`
   justify-content: center;
   position: relative;
+  transition: all 0.5s ease-out;
+  &:hover {
+    transform: translateY(-1.2rem);
+  }
 `;
 // eslint-disable-next-line
 const PlusIcon = styled.div`

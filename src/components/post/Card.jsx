@@ -27,6 +27,10 @@ export const CardContentWrapper = styled.div`
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
 
   cursor: pointer;
+  transition: all 0.5s ease-out;
+  &:hover {
+    transform: translateY(-1.2rem);
+  }
 
   @media (max-width: 1023px) {
     width: 50%;
