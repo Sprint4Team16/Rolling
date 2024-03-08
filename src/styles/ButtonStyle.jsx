@@ -97,3 +97,29 @@ export const Outlined36 = styled(ButtonCommon)`
     border: 1px solid var(--gray500);
   }
 `;
+
+export const Outlined40 = styled(ButtonCommon)`
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.6rem;
+  background: var(--${({ disabled }) => (disabled ? 'gray300' : 'white')});
+  color: var(--${({ disabled }) => (disabled ? 'white' : 'gray900')});
+  border: 1px solid var(--gray300);
+  /* Font/16 Regular */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+
+  &:hover:enabled {
+    background: var(--gray100);
+  }
+
+  &:active:enabled {
+    background: var(--gray100);
+  }
+
+  &:focus:enabled {
+    border: 1px solid var(--gray500);
+  }
+`;
