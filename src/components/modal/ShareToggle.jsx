@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
+import { bold16 } from '../../styles/fontStyle';
 
 const ShareBox = styled.div`
   display: inline-flex;
@@ -17,9 +18,7 @@ const ShareButton = styled.button`
   padding: 12px 16px;
   align-items: center;
   color: var(--gray900);
-  font-size: 16px;
-  line-height: 26px;
-  letter-spacing: -0.16px;
+  ${bold16}
 
   &:hover {
     background: var(--gray100);

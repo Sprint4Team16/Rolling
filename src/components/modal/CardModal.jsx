@@ -1,12 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import ModalWindow from '../common/ModalWindow';
 import EditMessageButton from '../common/Buttons/EditMessageButton';
-
-const Text = css`
-  font-family: Pretendard;
-  font-style: normal;
-`;
+import { bold20, regular12, regular14, regular18, regular20 } from '../../styles/fontStyle';
 
 const userStateColors = {
   가족: { background: 'var(--green100)', color: 'var(--green500)' },
@@ -101,17 +97,14 @@ const UserPicture = styled.img`
 `;
 
 const UserText = styled.div`
-  ${Text}
   display: block;
   position: relative;
   color: var(--black);
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 24px;
+  ${regular20}
 `;
 
 const UserName = styled.span`
-  font-weight: 700;
+  ${bold20}
 `;
 
 const UserState = styled.div`
@@ -131,10 +124,7 @@ const UserState = styled.div`
   color: ${({ $state }) =>
     userStateColors[$state] ? userStateColors[$state].color : 'defaultColor'};
 
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.07px;
+  ${regular14}
 `;
 
 const SplitHorizontal = styled.div`
@@ -173,10 +163,7 @@ const CardContentText = styled.div`
   /* max-height: 112px; */
   /* max-width: 312px; */
 
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 28px;
-  letter-spacing: -0.18px;
+  ${regular18}
 
   flex-wrap: wrap;
 `;
@@ -188,10 +175,7 @@ const CardCreatedAt = styled.div`
   right: 45px;
 
   color: var(--gray400);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: -0.06px;
+  ${regular12}
 `;
 
 export default CardModal;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { bold24, regular12, regular16 } from '../../../styles/fontStyle';
 
 function PostInputSection({
   user,
@@ -30,13 +31,8 @@ const InputSection = styled.div`
 `;
 
 const InputTitle = styled.p`
-  color: var(--gray-900, #181818);
-  font-family: Pretendard;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 42px; /* 175% */
-  letter-spacing: -0.24px;
+  color: var(--gray-900);
+  ${bold24}
 `;
 
 const Input = styled.input`
@@ -52,12 +48,7 @@ const Input = styled.input`
 
   &::placeholder {
     color: var(--gray500);
-    font-family: Pretendard;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 26px;
-    letter-spacing: -0.16px;
+    ${regular16}
   }
 
   @media (max-width: 768px) {
@@ -67,7 +58,7 @@ const Input = styled.input`
 
 const ErrorMessage = styled.div`
   color: red;
-  font-size: 12px;
+  ${regular12}
 `;
 
 export default PostInputSection;

@@ -65,6 +65,23 @@ const reset = css`
   .size-small {
     font-size: 0.75em;
   }
+
+  .noto-sans {
+  font-family: 'Noto Sans', sans-serif !important;
+  }
+
+  .pretendard {
+    font-family: 'Pretendard', sans-serif !important;
+  }
+
+  .nanum-gothic {
+    font-family: 'Nanum Gothic', sans-serif !important;
+  }
+
+  .nanum-myeongjo {
+    font-family: 'Nanum Myeongjo', serif !important;
+  }
+
 `;
 
 export default reset;

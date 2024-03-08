@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import RecipientCardList from './RecipientCardList';
+import { bold24 } from '../../styles/fontStyle';
 
 function ListContent({ title, recipients }) {
   return (
@@ -42,9 +43,7 @@ const SectionContainer = styled.div``;
 const Title = styled.h2`
   display: flex;
   margin-bottom: 16px;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 36px;
+  ${bold24}
 
   @media (min-width: 375px) and (max-width: 767px) {
     font-size: 20px;
