@@ -2,12 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import DeleteRecipientButton from '../components/common/Buttons/DeleteRecipientButton';
 import { getRecipientData, getAllMessages } from '../api/GetApi';
-import {
-  PostIdWrapper,
-  HeaderWrapper,
-  ButtonSection,
-  CardWrapper,
-} from './PostId';
+import { PostIdWrapper, HeaderWrapper, ButtonSection } from './PostId';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import CardItems from '../components/post/card/CardItems';
@@ -67,9 +62,8 @@ function PostIdEdit() {
         <BackToPostButton moveLink={`/post/${id}`} btnName="뒤로가기" />
         <DeleteRecipientButton />
       </ButtonSection>
-      <CardWrapper>
-        <CardItems messages={messages} onDelete={handleDeleteMessage} />
-      </CardWrapper>
+
+      <CardItems messages={messages} onDelete={handleDeleteMessage} />
     </PostIdWrapper>
   );
 }
