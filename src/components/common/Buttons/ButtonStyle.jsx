@@ -10,7 +10,8 @@ export const ButtonCommon = styled.button`
 `;
 
 const PrimaryBtn = styled(ButtonCommon)`
-  padding: 1.4rem 2.4rem;
+  background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
+  color: var(--white);
 
   // active 여부
   &:hover:enabled {
@@ -30,9 +31,6 @@ const PrimaryBtn = styled(ButtonCommon)`
 export const Primary56 = styled(PrimaryBtn)`
   padding: 1.4rem 2.4rem;
   border-radius: 1.2rem;
-  background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
-  /* Font/18 Bold */
-  color: var(--white);
 
   /* Font/18 Bold */
   font-family: Pretendard;
@@ -44,9 +42,14 @@ export const Primary56 = styled(PrimaryBtn)`
 `;
 
 export const Primary40 = styled(PrimaryBtn)`
+  padding: 0.7rem 1.6rem;
   border-radius: 0.6rem;
-  background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
   /* Font/16 Regular */
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  line-height: 2.6rem; /* 162.5% */
+  letter-spacing: -0.16px;
 `;
 
 export const Secondary = styled(ButtonCommon)`
