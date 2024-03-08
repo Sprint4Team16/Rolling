@@ -38,6 +38,10 @@ const CloseBtn = styled.button`
   cursor: pointer;
   position: absolute;
   bottom: 40px;
+
+  &:hover {
+    background: var(--Purple-700, #861dee);
+  }
 `;
 
 const ModalContents = styled.div`
