@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Primary56 } from './ButtonStyle';
+import { Primary56 } from '../../../styles/ButtonStyle';
 
 function PostButton({ onSubmit, btnDisable }) {
   const navigate = useNavigate();
