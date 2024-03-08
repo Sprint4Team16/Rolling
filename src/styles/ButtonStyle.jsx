@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { bold18, regular16 } from './fontStyle';
 
 export const ButtonCommon = styled.button`
   display: flex;
@@ -32,24 +33,13 @@ export const Primary56 = styled(PrimaryBtn)`
   padding: 1.4rem 2.4rem;
   border-radius: 1.2rem;
 
-  /* Font/18 Bold */
-  font-family: Pretendard;
-  font-size: 1.8rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.8rem; /* 155.556% */
-  letter-spacing: -0.18px;
+  ${bold18}
 `;
 
 export const Primary40 = styled(PrimaryBtn)`
   padding: 0.7rem 1.6rem;
   border-radius: 0.6rem;
-  /* Font/16 Regular */
-  font-family: Pretendard;
-  font-size: 1.6rem;
-  font-style: normal;
-  line-height: 2.6rem; /* 162.5% */
-  letter-spacing: -0.16px;
+  ${regular16}
 `;
 
 export const Secondary = styled(ButtonCommon)`
@@ -72,12 +62,7 @@ export const Outlined36 = styled(ButtonCommon)`
   background: var(--${({ disabled }) => (disabled ? 'gray300' : 'white')});
   color: var(--${({ disabled }) => (disabled ? 'white' : 'gray900')});
   border: 1px solid var(--gray300);
-  /* Font/16 Regular */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
+  ${regular16}
 
   &:hover:enabled {
     background: var(--gray100);
@@ -98,12 +83,7 @@ export const Outlined40 = styled(ButtonCommon)`
   background: var(--${({ disabled }) => (disabled ? 'gray300' : 'white')});
   color: var(--${({ disabled }) => (disabled ? 'white' : 'gray900')});
   border: 1px solid var(--gray300);
-  /* Font/16 Regular */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
+  ${regular16}
 
   &:hover:enabled {
     background: var(--gray100);

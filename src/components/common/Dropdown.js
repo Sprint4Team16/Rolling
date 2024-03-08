@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { regular16 } from '../../styles/fontStyle';
 
 const statePosition = {
   0: { position: 'absolute' },
@@ -41,11 +42,7 @@ const DropdownContainer = styled.button`
 
 const TextContainer = styled.p`
   color: var(--gray500);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px;
-  letter-spacing: -0.16px;
+  ${regular16}
   white-space: nowrap;
 
   &:focus,

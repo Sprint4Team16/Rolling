@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Secondary } from '../../../styles/ButtonStyle';
+import { bold16, regular16 } from '../../../styles/fontStyle';
 
 function ToggleButton({ state, handler, text1, text2 }) {
   return state ? (
@@ -38,13 +39,7 @@ const OnButton = styled(BtnCommon)`
 
   color: var(--purple700);
   text-align: center;
-  /* Font/16 Bold */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 26px; /* 162.5% */
-  letter-spacing: -0.16px;
+  ${bold16}
   cursor: default;
 `;
 
@@ -54,13 +49,7 @@ const OffButton = styled(BtnCommon)`
 
   color: var(--gray900);
   text-align: center;
-  /* Font/16 Regular */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px; /* 162.5% */
-  letter-spacing: -0.16px;
+  ${regular16}
 `;
 
 export default ToggleButton;
