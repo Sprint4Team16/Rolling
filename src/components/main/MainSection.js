@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import MovePageButton from '../common/Buttons/movePageButton';
 
 const StyledSection = styled.section`
   display: flex;
@@ -122,28 +122,6 @@ const BtnContainer = styled.div`
   }
 `;
 
-const StyledBtn = styled(Link)`
-  width: 280px;
-  padding: 14px 24px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  border: none;
-  background: #9935ff;
-  font-size: 18px;
-  line-height: 28px;
-  letter-spacing: -0.18px;
-  color: #fff;
-  margin: 24px 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-
-  @media (max-width: 1248px) {
-    width: 100%;
-  }
-`;
-
 function MainSection() {
   return (
     <>
@@ -172,7 +150,7 @@ function MainSection() {
         </SecondSectionContainer>
       </StyledSection>
       <BtnContainer>
-        <StyledBtn to="/list">구경해보기</StyledBtn>
+        <MovePageButton moveLink="/list" btnName="구경해보기" />
       </BtnContainer>
     </>
   );

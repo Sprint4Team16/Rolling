@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { Primary56 } from './ButtonStyle';
 
-function BackToPostButton({ moveLink, btnName }) {
+function MovePageButton({ moveLink, btnName }) {
   const navigate = useNavigate();
   const handleClickButton = () => {
     navigate(moveLink);
@@ -11,11 +11,12 @@ function BackToPostButton({ moveLink, btnName }) {
   return <Button onClick={handleClickButton}>{btnName}</Button>;
 }
 const Button = styled(Primary56)`
-  margin: 24px 24px;
+  width: 28rem;
+  margin: 2.4rem 2.4rem;
   cursor: pointer;
 
   @media (max-width: 1248px) {
     width: 100%;
   }
 `;
-export default BackToPostButton;
+export default MovePageButton;
