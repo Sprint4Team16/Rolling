@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import RecipientCardList from './RecipientCardList';
 
-function ListContent({ title }) {
+function ListContent({ title, recipients }) {
   return (
     <Section>
       <SectionContainer>
         <Title>{title}</Title>
-        <RecipientCardList />
+        <RecipientCardList recipients={recipients} />
       </SectionContainer>
     </Section>
   );
