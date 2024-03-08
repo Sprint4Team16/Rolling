@@ -3,24 +3,25 @@ import styled from 'styled-components';
 export const ButtonCommon = styled.button`
   display: flex;
   justify-content: center;
+  text-align: center;
   gap: 1rem;
   background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
-  text-align: center;
+  cursor: ${({ disabled }) => disabled && 'not-allowed'};
 `;
 
 const PrimaryBtn = styled(ButtonCommon)`
   padding: 1.4rem 2.4rem;
 
   // active 여부
-  &:hover {
+  &:hover:enabled {
     background: var(--purple700);
   }
 
-  &:active {
+  &:active:enabled {
     background: var(--purple800);
   }
 
-  &:focus {
+  &:focus:enabled {
     /* border: 2px solid var(--purple900); */
     background: var(--purple800);
   }
