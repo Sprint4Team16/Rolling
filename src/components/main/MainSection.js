@@ -13,12 +13,8 @@ const StyledSection = styled.section`
     margin: 49px 24px;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     margin: 42px 24px 37px;
-  }
-
-  @media (max-width: 360px) {
-    margin: 32px 16px; // Adjust the margin for smaller screens
   }
 `;
 
@@ -35,7 +31,7 @@ const SectionContainer = styled.div`
     gap: 36px;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     gap: 48px;
   }
 `;
@@ -44,7 +40,7 @@ const FirstSectionContainer = styled(SectionContainer)`
   padding: 60px 0 60px 60px;
   margin-bottom: 30px;
 
-  @media (max-width: 1248px) {
+  @media (min-width: 360px) and (max-width: 1248px) {
     padding: 0;
   }
 `;
@@ -53,7 +49,7 @@ const SecondSectionContainer = styled(SectionContainer)`
   padding: 60px 60px 60px 0;
   margin-top: 0;
 
-  @media (max-width: 1248px) {
+  @media (min-width: 360px) and (max-width: 1248px) {
     padding: 0;
     flex-direction: column-reverse;
   }
@@ -95,7 +91,7 @@ const ArticleContainer = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     padding: 24px;
   }
 `;
@@ -121,7 +117,7 @@ const BtnContainer = styled.div`
   justify-content: center;
   margin-bottom: 150px;
 
-  @media (max-width: 1248px) {
+  @media (min-width: 360px) and (max-width: 1248px) {
     width: 100%;
   }
 `;
