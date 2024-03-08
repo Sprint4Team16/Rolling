@@ -5,7 +5,7 @@ export const ButtonCommon = styled.button`
   justify-content: center;
   text-align: center;
   gap: 1rem;
-  background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
+
   cursor: ${({ disabled }) => disabled && 'not-allowed'};
 `;
 
@@ -54,16 +54,46 @@ export const Primary40 = styled(PrimaryBtn)`
 
 export const Secondary = styled(ButtonCommon)`
   padding: 0.7rem 1.6rem;
+  border-radius: 0.6rem;
+  color: var(--${({ disabled }) => (disabled ? 'white' : 'purple700')});
+  border: 1px solid var(--purple600);
 
-  &:hover {
-    background: var(--gray300);
+  &:hover:enabled {
+    background: var(--purple700);
   }
 
-  &:active {
+  &:active:enabled {
+    background: var(--purple800);
+  }
+
+  &:focus:enabled {
+    /* border: 2px solid var(--purple900); */
+    background: var(--purple800);
+  }
+`;
+
+export const Outlined36 = styled(ButtonCommon)`
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.6rem;
+  background: var(--${({ disabled }) => (disabled ? 'gray300' : 'white')});
+  color: var(--${({ disabled }) => (disabled ? 'white' : 'gray900')});
+  border: 1px solid var(--gray300);
+  /* Font/16 Regular */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+
+  &:hover:enabled {
     background: var(--gray100);
   }
 
-  &:focus {
+  &:active:enabled {
+    background: var(--gray100);
+  }
+
+  &:focus:enabled {
     border: 1px solid var(--gray500);
   }
 `;

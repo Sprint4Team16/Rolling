@@ -6,6 +6,7 @@ import ShareToggle from '../modal/ShareToggle';
 import KakaoModal from '../modal/KakaoModal';
 import ModalPortal from '../modal/ModalPortal';
 import Toast from '../common/Toast';
+import { Outlined36 } from '../../styles/ButtonStyle';
 
 const Text = css`
   font-family: Pretendard;
@@ -16,15 +17,6 @@ const FlexCenter = css`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Button = css`
-  ${FlexCenter}
-  padding: 6px 16px;
-  border-radius: 6px;
-  border: 1px solid var(--gray300);
-  background: var(--white);
-  gap: 10px;
 `;
 
 const SubHeaderWrapper = styled.div`
@@ -144,9 +136,7 @@ const SplitBarVertical2 = styled(SplitBarVertical)`
   margin: 0 13px;
 `;
 
-const ShareButton = styled.button`
-  ${Button}
-
+const ShareButton = styled(Outlined36)`
   @media (max-width: 470px) {
     padding: 6px 8px;
   }
