@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/common/Header';
 import ListContent from '../components/list/ListContent';
 import MovePageButton from '../components/common/Buttons/movePageButton';
 import { getRecipients } from '../api/GetApi';
-
 
 function List() {
   const [popularRecipients, setPopularRecipients] = useState([]);
