@@ -116,6 +116,7 @@ const CardWrapper = styled.a`
   @media (min-width: 375px) and (max-width: 767px) {
     width: 208px;
     height: 232px;
+    padding: 30px 22px 20px 24px;
     background-color: ${({ $backgroundColor }) => getColor($backgroundColor)};
     ${({ $backgroundImage, $backgroundColor }) =>
       $backgroundImage
@@ -198,6 +199,10 @@ const EmojiGroup = styled.div`
   gap: 8px;
   margin-top: 16px;
   z-index: 1;
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    gap: 4px;
+  }
 `;
 
 const EmojiCount = styled.div`
@@ -223,4 +228,8 @@ const Emoji = styled.span`
   padding: 0 2px;
   margin-right: 2px;
   font-size: 16px;
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    margin-right: 0;
+  }
 `;

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import RecipientCardList from './RecipientCardList';
 
-function ListContent({ title }) {
+function ListContent({ title, recipients }) {
   return (
     <Section>
       <SectionContainer>
         <Title>{title}</Title>
-        <RecipientCardList />
+        <RecipientCardList recipients={recipients} />
       </SectionContainer>
     </Section>
   );
@@ -23,11 +23,17 @@ const Section = styled.section`
 
   @media (min-width: 768px) and (max-width: 1199px) {
     max-width: calc(100% - 48px);
-    overflow: hidden;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   @media (min-width: 375px) and (max-width: 767px) {
     max-width: calc(100% - 20px);
-    overflow: hidden;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 

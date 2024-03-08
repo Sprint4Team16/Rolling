@@ -1,25 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import RecipientCard from './RecipientCard';
-import { getRecipients } from '../../api/GetApi';
 
-function RecipientList() {
-  const [recipients, setRecipients] = useState([]);
+function RecipientList({ recipients }) {
   const containerRef = useRef(null);
-
-  const handleRecipientsLoad = async () => {
-    try {
-      const response = await getRecipients();
-      const data = response.results;
-      setRecipients(data);
-    } catch (error) {
-      console.error('롤링페이퍼를 불러오지 못했습니다.', error);
-    }
-  };
-
-  useEffect(() => {
-    handleRecipientsLoad();
-  }, []);
 
   const handleLeftButton = () => {
     if (containerRef.current) {
@@ -35,21 +19,21 @@ function RecipientList() {
 
   return (
     <CarouselContainer>
-      {recipients.length > 4 && (
-        <LeftButton onClick={handleLeftButton}>
-          <img src="/img/arrow_left.svg" alt="arrow_left" />
-        </LeftButton>
+      {recipients && recipients.length > 4 && (
+        <>
+          <LeftButton onClick={handleLeftButton}>
+            <img src="/img/arrow_left.svg" alt="arrow_left" />
+          </LeftButton>
+          <RightButton onClick={handleRightButton}>
+            <img src="/img/arrow_right.svg" alt="arrow_right" />
+          </RightButton>
+        </>
       )}
       <CardsContainer ref={containerRef}>
         {recipients.map((recipient) => (
           <RecipientCard key={recipient.id} recipient={recipient} />
         ))}
       </CardsContainer>
-      {recipients.length > 4 && (
-        <RightButton onClick={handleRightButton}>
-          <img src="/img/arrow_right.svg" alt="arrow_right" />
-        </RightButton>
-      )}
     </CarouselContainer>
   );
 }
@@ -58,14 +42,15 @@ export default RecipientList;
 
 const CardsContainer = styled.div`
   display: flex;
-  overflow-x: auto; 
+  overflow-x: auto;
   gap: 20px;
   scroll-behavior: smooth;
   & > * {
     flex-shrink: 0;
   }
   &::-webkit-scrollbar {
-    display: none; 
+    display: none;
+  }
 `;
 
 const CarouselContainer = styled.div`
@@ -75,10 +60,6 @@ const CarouselContainer = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1160px;
-
-  @media (max-width: 780px) {
-    width: calc(100% - 48px);
-  }
 `;
 
 const Button = styled.button`

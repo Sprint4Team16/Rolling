@@ -22,7 +22,10 @@ const ImageOption = styled.div`
   height: 168px;
   margin: 5px;
   cursor: pointer;
-
+  transition: all 0.4s ease-out;
+  &:hover {
+    transform: translateY(-1.2rem);
+  }
   @media (max-width: 768px) {
     width: 154px;
     height: 154px;

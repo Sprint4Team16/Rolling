@@ -4,20 +4,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { submitEmojiPost } from '../../../api/PostApi';
 import { getEmojiData } from '../../../api/GetApi';
+import { Outlined36 } from '../../../styles/ButtonStyle';
 
 const FlexCenter = css`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Button = css`
-  ${FlexCenter}
-  padding: 6px 16px;
-  border-radius: 6px;
-  border: 1px solid var(--gray300);
-  background: var(--white);
-  gap: 10px;
 `;
 
 const EmojiGroup = styled.div`
@@ -93,17 +85,9 @@ const EmojiGroupInDropDown = styled(EmojiGroup)`
   grid-template-columns: 63px 63px 63px 63px;
 `;
 
-const EmojiAddButton = styled.div`
-  ${Button}
+const EmojiAddButton = styled(Outlined36)`
   position: relative;
-  cursor: pointer;
-
-  color: var(--gray-900, #181818);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
+  padding: 0.6rem 1.6rem;
 
   @media (max-width: 470px) {
     span {

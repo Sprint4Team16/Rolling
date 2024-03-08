@@ -26,7 +26,6 @@ function CardModal({
 }) {
   const location = useLocation();
   const isEditRoute = location.pathname.includes('/edit');
-  console.log(id, isEditRoute);
 
   const createdDays = new Date(cardCreatedAt);
   const fontClass = {
