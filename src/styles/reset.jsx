@@ -41,31 +41,30 @@ const reset = css`
   input[type='search']::-webkit-search-results-decoration {
     display: none;
   }
-
   
-.align-right {
-  text-align: right;
-}
+  .align-right {
+    text-align: right;
+  }
 
-.align-center {
-  text-align: center;
-}
+  .align-center {
+    text-align: center;
+  }
 
-.align-justify {
-  text-align: justify;
-}
+  .align-justify {
+    text-align: justify;
+  }
 
-.size-huge {
-  font-size: 2.5em;
-}
+  .size-huge {
+    font-size: 2.5em;
+  }
 
-.size-large {
-  font-size: 1.5em;
-}
+  .size-large {
+    font-size: 1.5em;
+  }
 
-.size-small {
-  font-size: 0.75em;
-}
+  .size-small {
+    font-size: 0.75em;
+  }
 `;
 
 export default reset;

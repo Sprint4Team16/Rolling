@@ -166,6 +166,10 @@ const CardContentText = styled.div`
     border: 9px solid transparent;
     background-color: var(--gray300);
   }
+  
+  p {
+    padding-top: 1px;
+  }
 
   /* max-height: 112px; */
   /* max-width: 312px; */
