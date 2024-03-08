@@ -56,19 +56,14 @@ export const Secondary = styled(ButtonCommon)`
   padding: 0.7rem 1.6rem;
   border-radius: 0.6rem;
   color: var(--${({ disabled }) => (disabled ? 'white' : 'purple700')});
-  border: 1px solid var(--purple600);
 
   &:hover:enabled {
-    background: var(--purple700);
+    background: var(--purple100);
+    color: var(--purple700);
   }
 
   &:active:enabled {
-    background: var(--purple800);
-  }
-
-  &:focus:enabled {
-    /* border: 2px solid var(--purple900); */
-    background: var(--purple800);
+    background: var(--purple100);
   }
 `;
 
