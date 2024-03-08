@@ -2,7 +2,13 @@ import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import ModalWindow from '../common/ModalWindow';
 import EditMessageButton from '../common/Buttons/EditMessageButton';
-import { bold20, regular12, regular14, regular18, regular20 } from '../../styles/fontStyle';
+import {
+  bold20,
+  regular12,
+  regular14,
+  regular18,
+  regular20,
+} from '../../styles/fontStyle';
 
 const userStateColors = {
   가족: { background: 'var(--green100)', color: 'var(--green500)' },
@@ -155,7 +161,7 @@ const CardContentText = styled.div`
     border: 9px solid transparent;
     background-color: var(--gray300);
   }
-  
+
   p {
     padding-top: 1px;
   }
@@ -169,7 +175,6 @@ const CardContentText = styled.div`
 `;
 
 const CardCreatedAt = styled.div`
-  ${Text}
   position: absolute;
   top: 56px;
   right: 45px;
