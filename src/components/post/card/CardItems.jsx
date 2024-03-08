@@ -51,23 +51,31 @@ function CardItems({ onDelete, data }) {
 
   const [messages, setMessages] = useState([]);
   const [target, setTarget] = useState(null);
-  // eslint-disable-next-line
-  let offset = 0;
+  const [offset, setOffset] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+
   const handleMessages = async () => {
     try {
-      const result = await getAllMessages(id);
+      if (!hasMore) {
+        return;
+      }
+      const result = await getAllMessages(id, offset);
+      const counts = result.count;
+      if (counts < offset) {
+        setHasMore(false);
+      }
+      setOffset((prev) => prev + 8);
+      setMessages((prev) => [...prev, ...result.results]);
 
-      setMessages((prev) => prev.concat(result.results));
-      offset += 8;
       // setMessages(result.results);
     } catch (error) {
       console.error(error);
     }
   };
 
-  useEffect(() => {
-    handleMessages(id);
-  }, []);
+  // useEffect(() => {
+  //   handleMessages(id);
+  // }, []);
 
   useEffect(() => {
     let observer;
@@ -75,7 +83,7 @@ function CardItems({ onDelete, data }) {
       const onIntersect = async ([entry]) => {
         if (entry.isIntersecting) {
           observer.unobserve(entry.target);
-          await handleMessages(id);
+          await handleMessages(id, offset);
           observer.observe(entry.target);
         }
       };
@@ -83,7 +91,7 @@ function CardItems({ onDelete, data }) {
       observer.observe(target);
     }
     return () => observer && observer.disconnect();
-  }, [target]);
+  }, [offset, target]);
 
   return (
     // eslint-disable-next-line

@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
-// import { getAllMessages, getRecipientData } from '../api/GetApi';
 import { getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
@@ -63,14 +62,12 @@ export const CardWrapper = styled.div`
   }
   @media (min-width: 360px) and(max-width: 767px) {
     margin: 93px 24px 0px;
-    /* align-content: center; */
   }
 `;
 
 function PostId() {
   const { id } = useParams();
   const [data, setData] = useState({});
-  // const [messages, setMessages] = useState(null);
 
   const handleIdData = async () => {
     try {
@@ -81,18 +78,8 @@ function PostId() {
     }
   };
 
-  // const handleMessages = async () => {
-  //   try {
-  //     const result = await getAllMessages(id);
-  //     setMessages(result.results);
-  //   } catch (error) {
-  //     // console.error(error);
-  //   }
-  // };
-
   useEffect(() => {
     handleIdData();
-    // handleMessages(id);
   }, []);
 
   return (
@@ -100,7 +87,6 @@ function PostId() {
       color={data.backgroundColor}
       $image={data.backgroundImageURL}
     >
-      {/* {console.log(id)} */}
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
@@ -111,10 +97,7 @@ function PostId() {
       <ButtonSection>
         <EditButton />
       </ButtonSection>
-      {/* <CardWrapper> */}
-      {/* <CardItems messages={messages} data={data} /> */}
       <CardItems data={data} />
-      {/* </CardWrapper> */}
     </PostIdWrapper>
   );
 }

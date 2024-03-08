@@ -62,7 +62,6 @@ function PostIdEdit() {
         <BackToPostButton moveLink={`/post/${id}`} btnName="뒤로가기" />
         <DeleteRecipientButton />
       </ButtonSection>
-
       <CardItems messages={messages} onDelete={handleDeleteMessage} />
     </PostIdWrapper>
   );
