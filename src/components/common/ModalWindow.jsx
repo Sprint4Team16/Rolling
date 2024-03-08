@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Primary40 } from '../../styles/ButtonStyle';
 // import { useKakaoShare } from './useKakaoShare';
 
 const ModalBox = styled.div`
@@ -25,20 +26,14 @@ const ModalBody = styled.div`
   transform: translate(-50%, -30%);
 `;
 
-const CloseBtn = styled.button`
-  display: flex;
+const CloseBtn = styled(Primary40)`
   width: 120px;
-  padding: 7px 16px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  background: var(--purple600);
-  color: #fff;
-  font-size: 16px;
-  line-height: 26px; /* 162.5% */
-  letter-spacing: -0.16px;
   position: absolute;
   bottom: 40px;
+
+  &:hover {
+    background: var(--Purple-700, #861dee);
+  }
 `;
 
 const ModalContents = styled.div`
@@ -59,6 +54,8 @@ function ModalWindow({ children }) {
     e.preventDefault();
     setModal((prev) => !prev);
   };
+
+  useEffect(() => {}, [modal]);
 
   return (
     modal && (

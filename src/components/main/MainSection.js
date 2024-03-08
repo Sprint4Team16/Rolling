@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import MovePageButton from '../common/Buttons/movePageButton';
 
 const StyledSection = styled.section`
   display: flex;
@@ -13,7 +13,7 @@ const StyledSection = styled.section`
     margin: 49px 24px;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     margin: 42px 24px 37px;
   }
 `;
@@ -31,7 +31,7 @@ const SectionContainer = styled.div`
     gap: 36px;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     gap: 48px;
   }
 `;
@@ -40,7 +40,7 @@ const FirstSectionContainer = styled(SectionContainer)`
   padding: 60px 0 60px 60px;
   margin-bottom: 30px;
 
-  @media (max-width: 1248px) {
+  @media (min-width: 360px) and (max-width: 1248px) {
     padding: 0;
   }
 `;
@@ -49,7 +49,7 @@ const SecondSectionContainer = styled(SectionContainer)`
   padding: 60px 60px 60px 0;
   margin-top: 0;
 
-  @media (max-width: 1248px) {
+  @media (min-width: 360px) and (max-width: 1248px) {
     padding: 0;
     flex-direction: column-reverse;
   }
@@ -91,7 +91,7 @@ const ArticleContainer = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 360px) and (max-width: 768px) {
     padding: 24px;
   }
 `;
@@ -117,29 +117,7 @@ const BtnContainer = styled.div`
   justify-content: center;
   margin-bottom: 150px;
 
-  @media (max-width: 1248px) {
-    width: 100%;
-  }
-`;
-
-const StyledBtn = styled(Link)`
-  width: 280px;
-  padding: 14px 24px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  border: none;
-  background: #9935ff;
-  font-size: 18px;
-  line-height: 28px;
-  letter-spacing: -0.18px;
-  color: #fff;
-  margin: 24px 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-
-  @media (max-width: 1248px) {
+  @media (min-width: 360px) and (max-width: 1248px) {
     width: 100%;
   }
 `;
@@ -157,10 +135,10 @@ function MainSection() {
             </h2>
             <p>로그인 없이 자유롭게 만들어요.</p>
           </ArticleContainer>
-          <img src="/img/img_01.png" alt="롤링페이퍼 예시 사진" />
+          <img src="/img/img_01.svg" alt="롤링페이퍼 예시 사진" />
         </FirstSectionContainer>
         <SecondSectionContainer>
-          <img src="/img/img_02.png" alt="이모지 예시 사진" />
+          <img src="/img/img_02.svg" alt="이모지 예시 사진" />
           <ArticleContainer>
             <StyledPointBtn>Point. 02</StyledPointBtn>
             <h2>
@@ -172,7 +150,7 @@ function MainSection() {
         </SecondSectionContainer>
       </StyledSection>
       <BtnContainer>
-        <StyledBtn to="/list">구경해보기</StyledBtn>
+        <MovePageButton moveLink="/list" btnName="구경해보기" />
       </BtnContainer>
     </>
   );

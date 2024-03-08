@@ -6,8 +6,8 @@ import { PostIdWrapper, HeaderWrapper, ButtonSection } from './PostId';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import CardItems from '../components/post/card/CardItems';
-import BackToPostButton from '../components/common/Buttons/BackToPostButton';
 import { deleteMessages } from '../api/DeleteApi';
+import BackToPostButton from '../components/common/Buttons/BackToPostButton';
 
 function PostIdEdit() {
   const { id } = useParams();
@@ -59,7 +59,7 @@ function PostIdEdit() {
         peopleNum={data ? data.messageCount : 0}
       />
       <ButtonSection>
-        <BackToPostButton />
+        <BackToPostButton moveLink={`/post/${id}`} btnName="뒤로가기" />
         <DeleteRecipientButton />
       </ButtonSection>
 
