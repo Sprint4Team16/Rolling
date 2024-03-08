@@ -1,13 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { useRef, useEffect, useState } from 'react';
 import DeleteMessageButton from '../common/Buttons/DeleteMessageButton';
 import ModalPortal from '../modal/ModalPortal';
 import CardModal from '../modal/CardModal';
+import { regular12, regular14, regular18, regular20 } from '../../styles/fontStyle';
 
-const Text = css`
-  font-family: Pretendard;
-  font-style: normal;
-`;
 const userStateColors = {
   가족: { background: 'var(--green100)', color: 'var(--green500)' },
   동료: { background: 'var(--purple100)', color: 'var(--purple600)' },
@@ -61,13 +58,10 @@ const UserPicture = styled.img`
 `;
 
 const UserText = styled.div`
-  ${Text}
   display: block;
   position: relative;
   color: var(--black);
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 24px;
+  ${regular20}
 `;
 
 const UserName = styled.span`
@@ -91,10 +85,7 @@ const UserState = styled.div`
   color: ${({ $state }) =>
     userStateColors[$state] ? userStateColors[$state].color : 'defaultColor'};
 
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.07px;
+  ${regular14}
 `;
 
 const SplitHorizontal = styled.div`
@@ -121,25 +112,18 @@ const CardContentText = styled.div`
   /* max-height: 112px; */
   /* max-width: 312px; */
 
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 28px;
-  letter-spacing: -0.18px;
+  ${regular18}
 
   flex-wrap: wrap;
 `;
 
 const CardCreatedAt = styled.div`
-  ${Text}
   position: absolute;
   left: 24px;
   bottom: 24px;
 
   color: var(--gray400);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: -0.06px;
+  ${regular12}
 `;
 
 function Card({

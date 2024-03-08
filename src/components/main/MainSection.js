@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import MovePageButton from '../common/Buttons/movePageButton';
+import { bold14, bold24, regular18 } from '../../styles/fontStyle';
 
 const StyledSection = styled.section`
   display: flex;
@@ -64,17 +65,12 @@ const ArticleContainer = styled.div`
   margin-right: 152px;
 
   h2 {
-    font-size: 24px;
-    line-height: 36px;
-    letter-spacing: -0.24px;
-    margin: 0;
+    ${bold24}
   }
 
   p {
     color: #555;
-    font-size: 18px;
-    line-height: 28px;
-    letter-spacing: -0.18px;
+    ${regular18}
     margin: 0;
   }
 
@@ -103,10 +99,7 @@ const StyledPointBtn = styled.button`
   border-radius: 50px;
   background: #9935ff;
   border: none;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: -0.07px;
+  ${bold14}
   text-align: center;
   color: #fff;
 `;

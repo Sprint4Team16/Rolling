@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { bold24, regular16 } from '../../../styles/fontStyle';
 
 function SelectSection() {
   return (
@@ -24,24 +25,11 @@ const Section = styled.div`
 
 const Title = styled.p`
   color: var(--gray900);
-  /* Font/24 Bold */
-  font-family: Pretendard;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 36px; /* 150% */
-  letter-spacing: -0.24px;
+  ${bold24}
 `;
 const Content = styled.p`
-  color: var(--grat500);
-
-  /* Font/16 Regular */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px; /* 162.5% */
-  letter-spacing: -0.16px;
+  color: var(--gray500);
+  ${regular16}
 `;
 
 export default SelectSection;

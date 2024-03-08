@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getProfile } from '../../api/GetApi';
-// import Button from './Button';
 import PostButton from '../common/Buttons/PostButton';
 import { submitMessagePost } from '../../api/PostApi';
+import { bold24, regular16 } from '../../styles/fontStyle';
 
 const FormPage = styled.div`
   max-width: 720px;
@@ -23,11 +23,7 @@ const FormPage = styled.div`
 
 const IndexMessage = styled.p`
   color: var(--gray900);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 36px;
-  letter-spacing: -0.24px;
+  ${bold24}
 `;
 
 const MainForm = styled.form`
@@ -110,33 +106,8 @@ const ImageSelectionList = styled.div`
 
 const ImageSelectDirection = styled.p`
   color: var(--gray500);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px;
-  letter-spacing: -0.16px;
+  ${regular16}
 `;
-
-// const RelationSelect = styled.select`
-//   display: flex;
-//   width: 320px;
-//   height: 50px;
-//   padding: 12px 16px;
-//   justify-content: space-between;
-//   align-items: center;
-//   border-radius: 8px;
-//   border: 1px solid var(--gray300);
-// `;
-
-// const TextAreaDevice = styled.div`
-//   display: flex;
-//   max-width: 720px;
-//   height: 260px;
-//   padding: 16px 1px 16px 1px;
-//   justify-content: center;
-//   align-items: center;
-// `;
 
 const ProfileImageContainer = styled.div`
   flex-wrap: wrap;
@@ -160,7 +131,6 @@ const ProfileImage = styled.img`
 `;
 
 function WritingForm({ isBtnDisabled }) {
-  // const imageList = ['img/image43.svg', 'img/image44.svg'];
   const nonProfileImage = ['/img/nonSelected.svg'];
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
@@ -184,14 +154,6 @@ function WritingForm({ isBtnDisabled }) {
   const handleProfileSelect = (prof) => {
     setProfile(prof);
   };
-
-  // const handleButtonClick = (imageUrl) => {
-  //   handleProfileSelect(imageUrl);
-  // };
-
-  // const handleRelationshipSelect = (relation) => {
-  //   setRelationship(relation);
-  // };
 
   const handleFontChange = (font) => {
     setFonts(font);
