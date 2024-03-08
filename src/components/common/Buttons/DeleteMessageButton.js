@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
+import { Outlined36 } from '../../../styles/ButtonStyle';
 
 function DeleteMessageButton({ id, onDelete }) {
   const location = useLocation();
@@ -8,7 +9,6 @@ function DeleteMessageButton({ id, onDelete }) {
   const handleButtonClick = async (e) => {
     e.stopPropagation();
     onDelete(id);
-    // navigate(`/post/${recipientID}/edit`, { replace: true });
   };
 
   return (
@@ -18,30 +18,12 @@ function DeleteMessageButton({ id, onDelete }) {
   );
 }
 
-const Button = styled.button`
+const Button = styled(Outlined36)`
   position: absolute;
   right: 24px;
   display: ${({ $isDisplay }) => ($isDisplay ? 'block' : 'none')};
-  /* display: flex; */
-  padding: 6px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  background: var(--white);
-  border-radius: 6px;
-  border: 1px solid var(--gray300);
-
-  &:hover {
-    background: var(--gray300);
-  }
-
-  &:active {
-    background: var(--gray100);
-  }
-
-  &:focus {
-    border: 1px solid var(--gray500);
-  }
+  padding: 0.6rem;
+  line-height: 0;
 `;
 
 const DeleteImg = styled.img`

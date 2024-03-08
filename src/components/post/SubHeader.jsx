@@ -137,6 +137,7 @@ const SplitBarVertical2 = styled(SplitBarVertical)`
 `;
 
 const ShareButton = styled(Outlined36)`
+  padding: 0.6rem 1.6rem;
   @media (max-width: 470px) {
     padding: 6px 8px;
   }

@@ -68,7 +68,6 @@ export const Secondary = styled(ButtonCommon)`
 `;
 
 export const Outlined36 = styled(ButtonCommon)`
-  padding: 0.6rem 1.6rem;
   border-radius: 0.6rem;
   background: var(--${({ disabled }) => (disabled ? 'gray300' : 'white')});
   color: var(--${({ disabled }) => (disabled ? 'white' : 'gray900')});

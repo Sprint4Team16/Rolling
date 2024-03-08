@@ -87,6 +87,7 @@ const EmojiGroupInDropDown = styled(EmojiGroup)`
 
 const EmojiAddButton = styled(Outlined36)`
   position: relative;
+  padding: 0.6rem 1.6rem;
 
   @media (max-width: 470px) {
     span {
