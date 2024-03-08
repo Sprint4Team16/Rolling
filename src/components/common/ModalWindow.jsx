@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Primary40 } from './Buttons/ButtonStyle';
+import { Primary40 } from '../../styles/ButtonStyle';
 // import { useKakaoShare } from './useKakaoShare';
 
 const ModalBox = styled.div`
