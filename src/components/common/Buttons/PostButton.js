@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { Primary56 } from './ButtonStyle';
-// import ButtonStyle from './ButtonStyle';
 
 function PostButton({ onSubmit, btnDisable }) {
   const navigate = useNavigate();
@@ -19,9 +18,9 @@ function PostButton({ onSubmit, btnDisable }) {
 }
 
 const Button = styled(Primary56)`
-  width: 720px;
+  width: 72rem;
   @media (max-width: 768px) {
-    min-width: 320px;
+    min-width: 32rem;
     width: 100%;
   }
 `;
