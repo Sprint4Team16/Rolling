@@ -230,7 +230,7 @@ function SubHeader({ name, peopleNum }) {
         <SplitBarHorizontal />
         <PostIdSetting>
           <WrittenBy>
-            <WrittenByIcons messages={messages} />
+            <WrittenByIcons messages={messages} peopleNum={peopleNum} />
             {peopleNum}명이 작성했어요!
           </WrittenBy>
           <SplitBarVertical1 />

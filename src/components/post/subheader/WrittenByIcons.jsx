@@ -1,6 +1,6 @@
 import ProfileUser from './ProfileUser';
 
-function WrittenByIcons({ messages }) {
+function WrittenByIcons({ messages, peopleNum }) {
   if (!messages || messages.length === 0) {
     return null; // Return early if messages are null or empty
   }
@@ -22,6 +22,7 @@ function WrittenByIcons({ messages }) {
             key={userId}
             id={userId}
             src={userMessages[0].profileImageURL}
+            peopleNum={last ? `+${peopleNum - 3}` : null}
             last={last}
           />
         );
