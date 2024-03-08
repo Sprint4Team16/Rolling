@@ -60,7 +60,7 @@ const UserText = styled.div`
   ${Text}
   display: block;
   position: relative;
-  color: #000;
+  color: var(--black);
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
@@ -166,7 +166,6 @@ function Card({
 
   const handleClickCard = (e) => {
     e.preventDefault();
-    console.log(isCardOpen);
     setIsCardOpen(!isCardOpen);
   };
 
@@ -190,7 +189,6 @@ function Card({
             From. <UserName>{name}</UserName>
             <UserState $state={userState}>{userState}</UserState>
           </UserText>
-          {/* <DeleteMessageButton id={id} /> */}
           <DeleteMessageButton id={id} onDelete={onDelete} />
         </UserInfo>
         <SplitHorizontal />
@@ -210,6 +208,8 @@ function Card({
       {isCardOpen && (
         <ModalPortal>
           <CardModal
+            onClick={(e) => handleOutsideClick(e)}
+            id={id}
             src={src}
             name={name}
             cardFont={cardFont}

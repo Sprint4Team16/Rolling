@@ -7,8 +7,8 @@ const ShareBox = styled.div`
   flex-direction: column;
   padding: 10px 1px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  background: #fff;
+  border: 1px solid var(--gray300);
+  background: var(--white);
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
 `;
 
@@ -16,13 +16,13 @@ const ShareButton = styled.button`
   width: 138px;
   padding: 12px 16px;
   align-items: center;
-  color: #181818;
+  color: var(--gray900);
   font-size: 16px;
   line-height: 26px;
   letter-spacing: -0.16px;
 
   &:hover {
-    background: #f6f6f6;
+    background: var(--gray100);
   }
 `;
 

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import RecipientCard from './RecipientCard';
 import { getRecipients } from '../../api/GetApi';
 
 function RecipientList() {
   const [recipients, setRecipients] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const containerRef = useRef(null);
 
   const handleRecipientsLoad = async () => {
     try {
@@ -13,7 +13,7 @@ function RecipientList() {
       const data = response.results;
       setRecipients(data);
     } catch (error) {
-      throw new Error('롤링페이퍼를 불러오지 못했습니다.', error);
+      console.error('롤링페이퍼를 불러오지 못했습니다.', error);
     }
   };
 
@@ -22,26 +22,30 @@ function RecipientList() {
   }, []);
 
   const handleLeftButton = () => {
-    setCurrentIndex((prev) => Math.max(prev - 4, 0));
+    if (containerRef.current) {
+      containerRef.current.scrollLeft -= containerRef.current.clientWidth;
+    }
   };
 
   const handleRightButton = () => {
-    setCurrentIndex((prev) => Math.min(prev + 4, recipients.length - 4));
+    if (containerRef.current) {
+      containerRef.current.scrollLeft += containerRef.current.clientWidth;
+    }
   };
 
   return (
     <CarouselContainer>
-      {currentIndex > 0 && (
+      {recipients.length > 4 && (
         <LeftButton onClick={handleLeftButton}>
           <img src="/img/arrow_left.svg" alt="arrow_left" />
         </LeftButton>
       )}
-      <CardsContainer>
-        {recipients.slice(currentIndex, currentIndex + 4).map((recipient) => (
+      <CardsContainer ref={containerRef}>
+        {recipients.map((recipient) => (
           <RecipientCard key={recipient.id} recipient={recipient} />
         ))}
       </CardsContainer>
-      {currentIndex < recipients.length - 4 && (
+      {recipients.length > 4 && (
         <RightButton onClick={handleRightButton}>
           <img src="/img/arrow_right.svg" alt="arrow_right" />
         </RightButton>
@@ -52,17 +56,30 @@ function RecipientList() {
 
 export default RecipientList;
 
+const CardsContainer = styled.div`
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-behavior: smooth;
+  & > * {
+    flex-shrink: 0;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 const CarouselContainer = styled.div`
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
-`;
+  width: 100%;
+  max-width: 1160px;
 
-const CardsContainer = styled.div`
-  display: flex;
-  position: relative;
-  gap: 20px;
+  // @media (max-width: 780px) {
+  //   width: calc(100% - 48px);
+  // }
 `;
 
 const Button = styled.button`
@@ -79,6 +96,10 @@ const Button = styled.button`
   border: 1px solid #dadcdf;
   box-shadow: 0px 4px 8px 0px #00000014;
   cursor: pointer;
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
 `;
 
 const LeftButton = styled(Button)`

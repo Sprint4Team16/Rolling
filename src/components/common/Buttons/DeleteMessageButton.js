@@ -5,13 +5,14 @@ function DeleteMessageButton({ id, onDelete }) {
   const location = useLocation();
   const isEditRoute = location.pathname.includes('/edit');
 
-  const handleButtonClick = async () => {
+  const handleButtonClick = async (e) => {
+    e.stopPropagation();
     onDelete(id);
     // navigate(`/post/${recipientID}/edit`, { replace: true });
   };
 
   return (
-    <Button onClick={handleButtonClick} $isDisplay={isEditRoute}>
+    <Button onClick={(e) => handleButtonClick(e)} $isDisplay={isEditRoute}>
       <DeleteImg src="/img/deleted.svg" alt="삭제" />
     </Button>
   );
