@@ -48,7 +48,7 @@ function ShareToggle({ setIsKakaoOpen, setIsUrlCopy }) {
   };
 
   const location = useLocation();
-  const baseUrl = 'http://localhost:3000';
+  const baseUrl = 'https://testrollingforteam.netlify.app';
 
   return (
     <ShareBox>
