@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Card, { CardContentWrapper } from '../Card';
 import { getAllMessages } from '../../../api/GetApi';
 import { DISPLAY_SIZE } from '../../../constants/DISPLAY_SIZE';
+import { deleteMessages } from '../../../api/DeleteApi';
 
 const CardContainer = styled.div`
   display: flex;
@@ -44,7 +45,7 @@ const PlusIcon = styled.div`
   background: var(--gray500);
 `;
 
-function CardItems({ onDelete, data }) {
+function CardItems({ data }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -62,7 +63,7 @@ function CardItems({ onDelete, data }) {
       }
       const result = await getAllMessages(id, offset);
       const counts = result.count;
-      if (counts < offset) {
+      if (counts < offset || result.next === null) {
         setHasMore(false);
       }
       setOffset((prev) => prev + 8);
@@ -72,9 +73,18 @@ function CardItems({ onDelete, data }) {
     }
   };
 
-  useEffect(() => {
-    handleMessages(id);
-  }, [id]);
+  const handleDeleteMessage = async (messageId) => {
+    try {
+      await deleteMessages(messageId);
+      handleMessages(id);
+    } catch (error) {
+      throw new Error('메세지 삭제에 실패했습니다.', error);
+    }
+  };
+
+  // useEffect(() => {
+  //   handleMessages(id);
+  // }, []);
 
   useEffect(() => {
     let observer;
@@ -86,7 +96,7 @@ function CardItems({ onDelete, data }) {
           observer.observe(entry.target);
         }
       };
-      observer = new IntersectionObserver(onIntersect, { threshold: 1 });
+      observer = new IntersectionObserver(onIntersect, { threshold: 0.1 });
       observer.observe(target);
     }
     return () => observer && observer.disconnect();
@@ -115,10 +125,10 @@ function CardItems({ onDelete, data }) {
             userState={message.relationship}
             cardContent={message.content}
             cardCreatedAt={message.createdAt}
-            onDelete={onDelete}
+            onDelete={handleDeleteMessage}
           />
         ))}
-      <div ref={setTarget} style={{ width: '100%', height: 30 }} />
+      <div ref={setTarget} style={{ width: '100%', height: '1rem' }} />
     </CardContainer>
   );
 }
