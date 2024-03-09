@@ -47,7 +47,7 @@ function ShareToggle({ setIsKakaoOpen, setIsUrlCopy }) {
   };
 
   const location = useLocation();
-  const baseUrl = 'https://testrollingforteam.netlify.app';
+  const baseUrl = 'https://sp4-team16-rolling.netlify.app';
 
   return (
     <ShareBox>
