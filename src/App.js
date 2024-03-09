@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import React from 'react';
+import Main from './pages/Main';
+import Post from './pages/Post';
+import List from './pages/List';
+import PostId from './pages/PostId';
+import PostIdMessage from './pages/PostIdMessage';
+import PostIdEdit from './pages/PostIdEdit';
+import MessageEdit from './pages/MessageEdit';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Main />} />
+          <Route path="list">
+            <Route index element={<List />} />
+          </Route>
+          <Route path="post">
+            <Route index element={<Post />} />
+            <Route path=":id">
+              <Route index element={<PostId />} />
+              <Route path="message" element={<PostIdMessage />} />
+              <Route path="edit">
+                <Route index element={<PostIdEdit />} />
+                <Route path=":messageid" element={<MessageEdit />} />
+              </Route>
+            </Route>
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
