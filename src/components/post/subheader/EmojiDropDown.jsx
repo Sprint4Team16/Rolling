@@ -15,44 +15,44 @@ const FlexCenter = css`
 
 const EmojiGroup = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 0.8rem;
 `;
 
 const EmojiBadge = styled.div`
   ${FlexCenter}
-  padding: 8px 12px;
-  width: 63px;
-  gap: 2px;
-  border-radius: 32px;
+  padding: 0.8rem 1.2rem;
+  width: 6.3rem;
+  gap: 0.2rem;
+  border-radius: 3.2rem;
   background: rgba(0, 0, 0, 0.54);
-  color: #fff;
+  color: var(--white);
   ${regular16}
 
-  @media (max-width: 469px) {
-    font-size: 14px;
-    padding: 4px 8px;
+  @media (max-width: 470px) {
+    font-size: 1.4rem;
+    padding: 0.4rem 0.8rem;
   }
 `;
 
 const Emoji = styled.span`
-  padding: 0 2px;
-  margin-right: 2px;
+  padding: 0 0.2rem;
+  margin-right: 0.2rem;
 `;
 
 const DownArrow = styled.button`
-  width: 24px;
-  height: 24px;
+  width: 2.4rem;
+  height: 2.4rem;
   box-sizing: border-box;
-  margin: 6px 14px 6px 6px;
+  margin: 0.6rem 1.4rem 0.6rem 0.6rem;
   position: relative;
 
   @media (max-width: 470px) {
-    margin-right: 8px;
+    margin-right: 0.8rem;
   }
 `;
 
 const MarginRight = styled.div`
-  margin-right: 28px;
+  margin-right: 2.8rem;
 `;
 
 const ArrowImage = styled.img`
@@ -62,27 +62,27 @@ const ArrowImage = styled.img`
 
 const DropdownMenu = styled.div`
   position: absolute;
-  top: 45px;
+  top: 4.5rem;
   right: 0;
   z-index: 9999;
 
   display: flex;
 
-  border-radius: 8px;
-  border: 1px solid #b6b6b6;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #b6b6b6;
   background: var(--white);
-  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
 
-  padding: 24px;
+  padding: 2.4rem;
 
   align-items: flex-start;
-  gap: 10px;
+  gap: 1rem;
 `;
 
 const EmojiGroupInDropDown = styled(EmojiGroup)`
   display: grid;
-  grid-gap: 8px;
-  grid-template-columns: 63px 63px 63px 63px;
+  grid-gap: 0.8rem;
+  grid-template-columns: 6.3rem 6.3rem 6.3rem 6.3rem;
 `;
 
 const EmojiAddButton = styled(Outlined36)`
@@ -93,13 +93,13 @@ const EmojiAddButton = styled(Outlined36)`
     span {
       display: none;
     }
-    padding: 6px 8px;
+    padding: 0.6rem 0.8rem;
   }
 `;
 
 const EmojiPickerWrapper = styled.div`
   position: absolute;
-  top: 45px;
+  top: 4.5rem;
   right: 0;
   z-index: 9999;
 `;

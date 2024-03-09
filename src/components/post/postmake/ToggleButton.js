@@ -19,23 +19,23 @@ function ToggleButton({ state, handler, text1, text2 }) {
 const SelectToggle = styled.div`
   display: inline-flex;
   align-items: flex-start;
-  margin-top: 24px;
+  margin-top: 2.4rem;
 `;
 
 const BtnCommon = styled(Secondary)`
   display: flex;
-  width: 122px;
-  height: 40px;
-  padding: 7px 16px;
+  width: 12.2rem;
+  height: 4rem;
+  padding: 0.7rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 `;
 
 const OnButton = styled(BtnCommon)`
   border-radius: 6px;
-  border: 2px solid var(--purple600);
-  background: var(--white, #fff);
+  border: 0.2rem solid var(--purple600);
+  background: var(--white);
 
   color: var(--purple700);
   text-align: center;
@@ -44,7 +44,7 @@ const OnButton = styled(BtnCommon)`
 `;
 
 const OffButton = styled(BtnCommon)`
-  border-radius: 6px;
+  border-radius: 0.6rem;
   background: var(--gray100);
 
   color: var(--gray900);
