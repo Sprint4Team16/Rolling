@@ -90,26 +90,12 @@ URL:
 
 ![KakaoTalk_Image_2023-12-22-05-27-54_001](https://github.com/Rolling-Project-Team-9/rolling/assets/148737398/2bd87d33-4134-4568-a74e-a8cb4d7a12a8)
 
-![KakaoTalk_Image_2023-12-22-05-27-55_002](https://github.com/Rolling-Project-Team-9/rolling/assets/148737398/f25e3aea-07ee-4264-a6d6-add04d710d1a)
-
 ### 롤링페이퍼 리스트 페이지
-
-![KakaoTalk_Image_2023-12-22-05-29-13](https://github.com/Rolling-Project-Team-9/rolling/assets/148737398/190a605d-58ab-436a-8350-a5cbc158ec4a)
 
 ### 롤링페이퍼 만들기 페이지
 
-![KakaoTalk_Image_2023-12-22-05-29-22](https://github.com/Rolling-Project-Team-9/rolling/assets/148737398/03596032-4794-442e-9e11-4bbcd2814435)
-
 ### 롤링페이퍼 페이지
-
-![KakaoTalk_Image_2023-12-22-05-29-49_002](https://github.com/Rolling-Project-Team-9/rolling/assets/148737398/11038a00-a71d-4688-b2f4-04ab51e91483)
-
-![KakaoTalk_Image_2023-12-22-05-29-49_001](https://github.com/Rolling-Project-Team-9/rolling/assets/148737398/b01b5804-dda8-4709-b634-8840c9973a6a)
 
 ### 롤링페이퍼 수정 페이지
 
-![KakaoTalk_Image_2023-12-22-05-29-50_003](https://github.com/Rolling-Project-Team-9/rolling/assets/148737398/d3f7c4a0-dadc-4674-b3bb-d4cbff697834)
-
 ### 롤링페이퍼 메세지 페이지
-
-![KakaoTalk_Image_2023-12-22-05-43-53](https://github.com/Rolling-Project-Team-9/rolling/assets/148737398/a9516546-004a-48d2-a6f3-6fab95652050)
