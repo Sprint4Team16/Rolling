@@ -22,11 +22,11 @@ function KakaoModal() {
     img {
       width: 40%;
       height: 40%;
-      margin-bottom: 20px;
+      margin-bottom: 2rem;
     }
 
     h2 {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
   `;
 
