@@ -4,7 +4,7 @@ import Header from '../common/Header';
 import EditForm from './EditForm';
 
 const FormContainer = styled.div`
-  margin-top: 47px;
+  margin-top: 4.7rem;
   display: flex;
   justify-content: center;
   align-items: center;

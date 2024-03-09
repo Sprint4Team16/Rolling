@@ -59,14 +59,7 @@ export default List;
 
 const ButtonContainer = styled.div`
   display: flex;
-  margin-top: 40px;
+  margin-top: 4rem;
   align-items: center;
   justify-content: center;
-
-  @media (min-width: 768px) and (max-width: 1199px) {
-    width: 100%;
-  }
-  @media (min-width: 375px) and (max-width: 767px) {
-    width: 100%;
-  }
 `;

@@ -20,15 +20,15 @@ function DeleteMessageButton({ id, onDelete }) {
 
 const Button = styled(Outlined36)`
   position: absolute;
-  right: 24px;
+  right: 2.4rem;
   display: ${({ $isDisplay }) => ($isDisplay ? 'block' : 'none')};
   padding: 0.6rem;
   line-height: 0;
 `;
 
 const DeleteImg = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 2.4rem;
+  height: 2.4rem;
 `;
 
 export default DeleteMessageButton;

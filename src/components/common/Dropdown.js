@@ -10,33 +10,33 @@ const statePosition = {
 const DropdownContainer = styled.button`
   position: relative;
   display: flex;
-  width: 320px;
-  padding: 12px 16px;
+  width: 32rem;
+  padding: 1.2rem 1.6rem;
   align-items: center;
-  /* gap: 192px; */
-  border-radius: 8px;
-  border: 1px solid var(--gray300);
+  /* gap: 19.2rem; */
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--gray300);
   justify-content: space-between;
 
   &:focus,
   &:active {
-    border: 2px solid var(--gray500);
-    /* gap: 189px; */
+    border: 0.2rem solid var(--gray500);
+    /* gap: 18.9rem; */
   }
 
   &:hover {
-    /* gap: 189px; */
-    border: 1px solid var(--gray500);
+    /* gap: 18.9rem; */
+    border: 0.1rem solid var(--gray500);
   }
 
   &:disabled {
-    gap: 189px;
+    gap: 18.9rem;
     background: var(--gray100);
   }
 
   &:error {
-    gap: 189px;
-    border: 1px solid var(--error);
+    gap: 18.9rem;
+    border: 0.1rem solid var(--error);
   }
 `;
 
@@ -57,31 +57,29 @@ const TextContainer = styled.p`
 `;
 
 const ListContainer = styled.div`
-  position: ${({ $state }) => statePosition[$state]
-    ? statePosition[$state].position
-    : 'absolute'};
+  position: ${({ $state }) =>
+    statePosition[$state] ? statePosition[$state].position : 'absolute'};
   /* position: absolute; */
-  /* top: ${({ $state }) => statePosition[$state]
-    ? '0'
-    : statePosition[$state].top}; */
+  /* top: ${({ $state }) =>
+    statePosition[$state] ? '0' : statePosition[$state].top}; */
   display: inline-flex;
   overflow-y: auto;
   z-index: 1;
-  padding: 10px 1px;
+  padding: 1rem 0.1rem;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 8px;
-  border: 1px solid var(--gray300);
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--gray300);
   background: var(--white);
-  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
 `;
 
 const Lists = styled.li`
   display: flex;
-  width: 316px;
-  padding: 12px 16px;
+  width: 31.6rem;
+  padding: 1.2rem 1.6rem;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 
   &:hover {
     background: var(--gray100);
@@ -106,19 +104,13 @@ function Dropdown({ options, placeholder, onChange, $state }) {
 
   return (
     <div>
-      <DropdownContainer
-        onClick={handleListDown}
-        type="button"
-      >
+      <DropdownContainer onClick={handleListDown} type="button">
         {selectedItem ? (
           <TextContainer>{selectedItem}</TextContainer>
         ) : (
           <TextContainer>{placeholder}</TextContainer>
         )}
-        <img
-          src={toggled ? dropdownImage[1] : dropdownImage[0]}
-          alt="화살표"
-        />
+        <img src={toggled ? dropdownImage[1] : dropdownImage[0]} alt="화살표" />
       </DropdownContainer>
       {toggled && (
         <ListContainer $state={$state}>

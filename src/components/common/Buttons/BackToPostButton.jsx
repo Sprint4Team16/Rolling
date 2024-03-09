@@ -11,11 +11,7 @@ function BackToPostButton({ moveLink, btnName }) {
   return <Button onClick={handleClickButton}>{btnName}</Button>;
 }
 const Button = styled(Primary56)`
-  margin: 24px 24px;
+  margin: 2.4rem 2.4rem;
   cursor: pointer;
-
-  @media (max-width: 1248px) {
-    width: 100%;
-  }
 `;
 export default BackToPostButton;

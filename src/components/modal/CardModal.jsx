@@ -81,24 +81,24 @@ const Container = styled.div`
 `;
 
 const CardContent = styled.div`
-  margin: 20px 40px;
+  margin: 2rem 4rem;
 `;
 
 const UserInfo = styled.div`
   display: flex;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  gap: 14px;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  gap: 1.4rem;
 `;
 
 const UserPicture = styled.img`
   display: flex;
-  width: 56px;
-  height: 56px;
+  width: 5.6rem;
+  height: 5.6rem;
   align-items: center;
 
-  border-radius: 100px;
-  border: 1px solid var(--gray200);
+  border-radius: 10rem;
+  border: 0.1rem solid var(--gray200);
   background: var(--white);
 `;
 
@@ -115,14 +115,14 @@ const UserName = styled.span`
 
 const UserState = styled.div`
   display: flex;
-  padding: 1.5px 8px 0;
-  margin-top: 6px;
-  width: 41px;
-  height: 20px;
+  padding: 0.15rem 0.8rem 0;
+  margin-top: 0.6rem;
+  width: 4.1rem;
+  height: 2rem;
   text-align: center;
   align-items: center;
 
-  border-radius: 4px;
+  border-radius: 0.4rem;
   background: ${({ $state }) =>
     userStateColors[$state]
       ? userStateColors[$state].background
@@ -134,40 +134,37 @@ const UserState = styled.div`
 `;
 
 const SplitHorizontal = styled.div`
-  width: 520px;
-  height: 1px;
+  width: 52rem;
+  height: 0.1rem;
   background: var(--gray200);
-  margin: 15px auto;
+  margin: 1.5rem auto;
 `;
 
 const CardContentTextContainer = styled.div`
   height: 100%;
-  width: 520px;
+  width: 52rem;
 `;
 
 const CardContentText = styled.div`
   overflow-wrap: break-word;
   overflow: hidden;
   color: var(--gray600);
-  width: 520px;
-  height: 240px;
+  width: 52rem;
+  height: 24rem;
   overflow-y: auto;
   &::-webkit-scrollbar {
-    width: 20px;
+    width: 2rem;
   }
   &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
+    border-radius: 0.8rem;
     background-clip: padding-box;
-    border: 9px solid transparent;
+    border: 0.9rem solid transparent;
     background-color: var(--gray300);
   }
 
   p {
-    padding-top: 1px;
+    padding-top: 0.1rem;
   }
-
-  /* max-height: 112px; */
-  /* max-width: 312px; */
 
   ${regular18}
 
@@ -176,8 +173,8 @@ const CardContentText = styled.div`
 
 const CardCreatedAt = styled.div`
   position: absolute;
-  top: 56px;
-  right: 45px;
+  top: 5.6rem;
+  right: 4.5rem;
 
   color: var(--gray400);
   ${regular12}

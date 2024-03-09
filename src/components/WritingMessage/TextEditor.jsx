@@ -54,7 +54,6 @@ function EditorBox({ content = '', onContentChange }) {
     } else {
       onContentChange(values);
     }
-    console.log(values);
   };
 
   return (

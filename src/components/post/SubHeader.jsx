@@ -11,6 +11,7 @@ import Toast from '../common/Toast';
 import { Outlined36 } from '../../styles/ButtonStyle';
 import { getAllMessages } from '../../api/GetApi';
 import { bold18, bold28 } from '../../styles/fontStyle';
+import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
 const FlexCenter = css`
   display: flex;
@@ -22,10 +23,10 @@ const SubHeaderWrapper = styled.div`
   width: 100%;
   background-color: var(--white);
   position: sticky;
-  top: 62px;
+  top: 6.2rem;
   z-index: 99999;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     top: 0;
   }
 `;
@@ -33,16 +34,16 @@ const SubHeaderWrapper = styled.div`
 const SubHeaderContainer = styled.div`
   box-sizing: border-box;
   display: flex;
-  max-width: 1200px;
+  max-width: 120rem;
   margin: 0 auto;
-  padding: 13px 0;
+  padding: 1.3rem 0;
   justify-content: space-between;
   align-items: center;
 
-  @media (min-width: 768px) and (max-width: 1247px) {
-    margin: 0 24px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_TABLET}px) and (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
+    margin: 0 2.4rem;
   }
-  @media (max-width: 767px) {
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     display: block;
     padding: 0;
   }
@@ -52,11 +53,11 @@ const Name = styled.div`
   color: var(--gray800);
   ${bold28}
 
-  @media (min-width: 470px) and (max-width: 767px) {
-    padding: 12px 20px;
+  @media (min-width: 470px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    padding: 1.2rem 2rem;
   }
   @media (max-width: 469px) {
-    padding: 12px 20px;
+    padding: 1.2rem 2rem;
     color: var(--gray-800, #2b2b2b);
 
     ${bold18}
@@ -66,10 +67,10 @@ const Name = styled.div`
 const SplitBarHorizontal = styled.div`
   display: none;
   width: 100%;
-  height: 1px;
+  height: 0.1rem;
   background-color: var(--gray200);
 
-  @media (max-width: 767px) {
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     display: block;
   }
 `;
@@ -79,18 +80,18 @@ const PostIdSetting = styled.div`
   align-items: center;
   position: relative;
 
-  @media (max-width: 767px) {
-    margin-left: 24px;
-    padding: 8px 0px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    margin-left: 2.4rem;
+    padding: 0.8rem 0rem;
   }
   @media (max-width: 469px) {
-    margin-left: 20px;
+    margin-left: 2rem;
   }
 `;
 
 const WrittenBy = styled.div`
   ${FlexCenter}
-  gap: 11px;
+  gap: 1.1rem;
   color: var(--gray900);
   ${bold18}
 
@@ -99,21 +100,15 @@ const WrittenBy = styled.div`
   }
 `;
 
-// const WrittenByIcons = styled.span`
-//   width: 76px;
-//   height: 30px;
-//   border: 1px solid black;
-// `;
-
 const SplitBarVertical = styled.div`
-  width: 1px;
-  height: 28px;
+  width: 0.1rem;
+  height: 2.8rem;
   background-color: var(--gray200);
   line-height: 27px;
 `;
 
 const SplitBarVertical1 = styled(SplitBarVertical)`
-  margin: 0 28px;
+  margin: 0 2.8rem;
 
   @media (max-width: 1023px) {
     display: none;
@@ -121,42 +116,42 @@ const SplitBarVertical1 = styled(SplitBarVertical)`
 `;
 
 const SplitBarVertical2 = styled(SplitBarVertical)`
-  margin: 0 13px;
+  margin: 0 1.3rem;
 `;
 
 const ShareButton = styled(Outlined36)`
   padding: 0.6rem 1.6rem;
   @media (max-width: 470px) {
-    padding: 6px 8px;
+    padding: 0.6rem 0.8rem;
   }
 `;
 
 const ShareWrapper = styled.div`
   position: absolute;
-  top: 45px;
-  right: 2px;
+  top: 4.5rem;
+  right: 0.2rem;
   z-index: 9999;
 `;
 
 const Container = styled(ToastContainer)`
   .Toastify__toast {
-    font-size: 16px;
-    padding: 19px 30px;
-    color: #fff;
+    font-size: 1.6rem;
+    padding: 1.9rem 3rem;
+    color: var(--white);
     align-items: center;
     justify-content: center;
-    width: 524px;
+    width: 52.4rem;
     margin: 0 auto;
     right: 33%;
   }
 
   .Toastify__toast-icon {
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   .Toastify__toast--success {
-    background: #000;
+    background: var(--black);
   }
 `;
 
@@ -173,7 +168,7 @@ function SubHeader({ name, peopleNum }) {
       const result = await getAllMessages(id);
       setMessages(result.results);
     } catch (error) {
-      // console.error(error);
+      throw new Error('데이터를 불러오지 못했습니다.', error);
     }
   };
 

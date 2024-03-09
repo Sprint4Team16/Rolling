@@ -19,7 +19,7 @@ function PutPatchButton({ onSubmit, btnDisable }) {
 
 const Button = styled(Primary56)`
   width: 72rem;
-  @media (max-width: 768px) {
+  @media (max-width: 76.8rem) {
     min-width: 32rem;
     width: 100%;
   }

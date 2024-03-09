@@ -19,7 +19,7 @@ function PostIdEdit() {
       const result = await getRecipientData(id);
       setData(result);
     } catch (error) {
-      // console.error(error);
+      throw new Error('데이터를 불러오지 못했습니다.', error);
     }
   };
 
@@ -28,7 +28,7 @@ function PostIdEdit() {
       const result = await getAllMessages(id);
       setMessages(result.results);
     } catch (error) {
-      // console.error(error);
+      throw new Error('데이터를 불러오지 못했습니다.', error);
     }
   };
 
@@ -37,7 +37,7 @@ function PostIdEdit() {
       await deleteMessages(messageId);
       handleMessages(id);
     } catch (error) {
-      console.error('메세지 삭제에 실패했습니다.', error);
+      throw new Error('메세지 삭제에 실패했습니다.', error);
     }
   };
 

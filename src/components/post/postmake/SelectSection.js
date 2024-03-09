@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { bold24, regular16 } from '../../../styles/fontStyle';
+import { DISPLAY_SIZE } from '../../../constants/DISPLAY_SIZE';
 
 function SelectSection() {
   return (
@@ -11,15 +12,15 @@ function SelectSection() {
 }
 
 const Section = styled.div`
-  width: 720px;
+  width: 72rem;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
-  margin-top: 50px;
+  gap: 0.4rem;
+  margin-top: 5rem;
 
-  @media (max-width: 768px) {
-    width: 320px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 32rem;
   }
 `;
 

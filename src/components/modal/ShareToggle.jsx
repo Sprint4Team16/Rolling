@@ -6,16 +6,16 @@ import { bold16 } from '../../styles/fontStyle';
 const ShareBox = styled.div`
   display: inline-flex;
   flex-direction: column;
-  padding: 10px 1px;
-  border-radius: 8px;
+  padding: 1rem 0.1rem;
+  border-radius: 0.8rem;
   border: 1px solid var(--gray300);
   background: var(--white);
-  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
 `;
 
 const ShareButton = styled.button`
-  width: 138px;
-  padding: 12px 16px;
+  width: 13.8rem;
+  padding: 1.2rem 1.6rem;
   align-items: center;
   color: var(--gray900);
   ${bold16}

@@ -3,43 +3,43 @@ import styled from 'styled-components';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Card, { CardContentWrapper } from '../Card';
 import { getAllMessages } from '../../../api/GetApi';
+import { DISPLAY_SIZE } from '../../../constants/DISPLAY_SIZE';
 
 const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0px auto 0px;
-  padding-bottom: 127px;
-  gap: 24px 2%;
+  max-width: 120rem;
+  margin: 0rem auto 0rem;
+  padding-bottom: 12.7rem;
+  gap: 2.4rem 2%;
 
-  @media (max-width: 1247px) {
-    margin-left: 24px;
-    margin-right: 24px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
+    margin-left: 2.4rem;
+    margin-right: 2.4rem;
   }
-  @media (min-width: 360px) and(max-width: 767px) {
-    margin: 93px 24px 0px;
-    /* align-content: center; */
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and(max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    margin: 9.3rem 2.4rem 0rem;
   }
 `;
 // eslint-disable-next-line
 const CardAdd = styled(CardContentWrapper)`
   justify-content: center;
   position: relative;
-  transition: all 0.5s ease-out;
+  transition: all 0.4s ease-out;
   &:hover {
     transform: translateY(-1.2rem);
   }
 `;
 // eslint-disable-next-line
 const PlusIcon = styled.div`
-  width: 56px;
-  height: 56px;
-  padding: 16px;
+  width: 5.6rem;
+  height: 5.6rem;
+  padding: 1.6rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 100px;
+  border-radius: 10rem;
   background: var(--gray500);
 `;
 
@@ -66,10 +66,8 @@ function CardItems({ onDelete, data }) {
       }
       setOffset((prev) => prev + 8);
       setMessages((prev) => [...prev, ...result.results]);
-
-      // setMessages(result.results);
     } catch (error) {
-      console.error(error);
+      throw new Error('데이터를 불러오지 못했습니다.', error);
     }
   };
 
@@ -120,7 +118,6 @@ function CardItems({ onDelete, data }) {
           />
         ))}
       <div ref={setTarget} style={{ width: '100%', height: 30 }} />
-      {/* {isLoading && <p>Loading...</p>} */}
     </CardContainer>
   );
 }

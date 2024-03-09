@@ -1,128 +1,127 @@
 import { css } from 'styled-components';
 
 export const bold28 = css`
-    font-family: Pretendard;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 42px; /* 150% */
-    letter-spacing: -0.28px;
-  `;
+  font-family: Pretendard;
+  font-size: 2.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 4.2rem; /* 150% */
+  letter-spacing: -0.028rem;
+`;
 
 export const bold24 = css`
-    font-family: Pretendard;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 42px; /* 150% */
-    letter-spacing: -0.28px;
-  `;
+  font-family: Pretendard;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 4.2rem; /* 150% */
+  letter-spacing: -0.028rem;
+`;
 
 export const regular24 = css`
-    font-family: Pretendard;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 36px; /* 150% */
-    letter-spacing: -0.24px;
-  `;
+  font-family: Pretendard;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.6rem; /* 150% */
+  letter-spacing: -0.024rem;
+`;
 
 export const bold20 = css`
-    font-family: Pretendard;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 30px; /* 150% */
-    letter-spacing: -0.2px;
-  `;
+  font-family: Pretendard;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3rem; /* 150% */
+  letter-spacing: -0.02rem;
+`;
 
 export const regular20 = css`
-    font-family: Pretendard;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 30px; /* 150% */
-    letter-spacing: -0.2px;
-  `;
+  font-family: Pretendard;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3rem; /* 150% */
+  letter-spacing: -0.02rem;
+`;
 
 export const bold18 = css`
-    font-family: Pretendard;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 28px; /* 150% */
-    letter-spacing: -0.18px;
-  `;
+  font-family: Pretendard;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.8rem; /* 150% */
+  letter-spacing: -0.018rem;
+`;
 
 export const regular18 = css`
-    font-family: Pretendard;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px; /* 150% */
-    letter-spacing: -0.18px;
-  `;
+  font-family: Pretendard;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.8rem; /* 150% */
+  letter-spacing: -0.018rem;
+`;
 
 export const bold16 = css`
-    font-family: Pretendard;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 26px; /* 150% */
-    letter-spacing: -0.16px;
-  `;
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.6rem; /* 150% */
+  letter-spacing: -0.016rem;
+`;
 
 export const regular16 = css`
-    font-family: Pretendard;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 26px; /* 150% */
-    letter-spacing: -0.16px;
-  `;
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.6rem; /* 150% */
+  letter-spacing: -0.016rem;
+`;
 
 export const regular15 = css`
-    font-family: Pretendard;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px; /* 150% */
-    letter-spacing: -0.15px;
-  `;
+  font-family: Pretendard;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.2rem; /* 150% */
+  letter-spacing: -0.015rem;
+`;
 
 export const bold15 = css`
-    font-family: Pretendard;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 22px; /* 150% */
-    letter-spacing: -0.15px;
-  `;
+  font-family: Pretendard;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.2rem; /* 150% */
+  letter-spacing: -0.015rem;
+`;
 
 export const regular14 = css`
-    font-family: Pretendard;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 150% */
-    letter-spacing: -0.07px;
-  `;
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem; /* 150% */
+  letter-spacing: -0.007rem;
+`;
 
 export const bold14 = css`
-    font-family: Pretendard;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px; /* 150% */
-    letter-spacing: -0.07px;
-  `;
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2rem; /* 150% */
+  letter-spacing: -0.007rem;
+`;
 
 export const regular12 = css`
-    font-family: Pretendard;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 18px; /* 150% */
-    letter-spacing: -0.06px;
-  `;
-
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8rem; /* 150% */
+  letter-spacing: -0.006rem;
+`;

@@ -1,116 +1,117 @@
 import styled from 'styled-components';
 import MovePageButton from '../common/Buttons/movePageButton';
 import { bold14, bold24, regular18 } from '../../styles/fontStyle';
+import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #fff;
-  margin: 60px auto 24px;
+  background: var(--white);
+  margin: 6rem auto 2.4rem;
 
-  @media (max-width: 1248px) {
-    margin: 49px 24px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
+    margin: 4.9rem 2.4rem;
   }
 
-  @media (min-width: 360px) and (max-width: 768px) {
-    margin: 42px 24px 37px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    margin: 4.2rem 2.4rem 3.7rem;
   }
 `;
 
 const SectionContainer = styled.div`
   display: flex;
   justify-content: center;
-  max-width: 1200px;
-  border-radius: 16px;
+  max-width: 120rem;
+  border-radius: 1.6rem;
   background: #f6f8ff;
 
-  @media (max-width: 1248px) {
+  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
     width: 100%;
     flex-direction: column;
-    gap: 36px;
+    gap: 3.6rem;
   }
 
-  @media (min-width: 360px) and (max-width: 768px) {
-    gap: 48px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    gap: 4.8rem;
   }
 `;
 
 const FirstSectionContainer = styled(SectionContainer)`
-  padding: 60px 0 60px 60px;
-  margin-bottom: 30px;
+  padding: 6rem 0 6rem 6rem;
+  margin-bottom: 3rem;
 
-  @media (min-width: 360px) and (max-width: 1248px) {
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
     padding: 0;
   }
 `;
 
 const SecondSectionContainer = styled(SectionContainer)`
-  padding: 60px 60px 60px 0;
+  padding: 6rem 6rem 6rem 0;
   margin-top: 0;
 
-  @media (min-width: 360px) and (max-width: 1248px) {
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
     padding: 0;
     flex-direction: column-reverse;
   }
 `;
 
 const ArticleContainer = styled.div`
-  height: 158px;
+  height: 15.8rem;
   grid-area: article;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-right: 152px;
+  gap: 1.6rem;
+  margin-right: 15.2rem;
 
   h2 {
     ${bold24}
   }
 
   p {
-    color: #555;
+    color: var(--gray500);
     ${regular18}
     margin: 0;
   }
 
-  @media (max-width: 1248px) {
-    height: 120px;
-    margin-bottom: 40px;
-    padding: 40px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
+    height: 12rem;
+    margin-bottom: 4rem;
+    padding: 4rem;
     margin-right: 0;
 
     br {
       display: inline-block;
       content: ' ';
-      padding: 0 2px;
+      padding: 0 0.2rem;
     }
   }
 
-  @media (min-width: 360px) and (max-width: 768px) {
-    padding: 24px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    padding: 2.4rem;
   }
 `;
 
 const StyledPointBtn = styled.button`
-  width: 82px;
-  height: 32px;
-  padding: 6px 12px;
-  border-radius: 50px;
-  background: #9935ff;
+  width: 8.2rem;
+  height: 3.2rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5rem;
+  background: var(--purple600);
   border: none;
   ${bold14}
   text-align: center;
-  color: #fff;
+  color: var(--white);
 `;
 
 const BtnContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 150px;
+  margin-bottom: 15rem;
 
-  @media (min-width: 360px) and (max-width: 1248px) {
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
     width: 100%;
   }
 `;
