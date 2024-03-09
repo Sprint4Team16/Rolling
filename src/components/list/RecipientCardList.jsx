@@ -8,13 +8,13 @@ function RecipientList({ recipients }) {
 
   const handleLeftButton = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft -= containerRef.current.clientWidth;
+      containerRef.current.scrollLeft -= containerRef.current.clientWidth + 20;
     }
   };
 
   const handleRightButton = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft += containerRef.current.clientWidth;
+      containerRef.current.scrollLeft += containerRef.current.clientWidth + 20;
     }
   };
 
