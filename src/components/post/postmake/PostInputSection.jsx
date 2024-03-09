@@ -23,6 +23,7 @@ const InputSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  position: relative;
   gap: 1.2rem;
 `;
 
@@ -52,8 +53,11 @@ const Input = styled.input`
   }
 `;
 
-const ErrorMessage = styled.div`
-  color: red;
+const ErrorMessage = styled.p`
+  position: absolute;
+  top: calc(100% + 5px);
+  left: calc(2%);
+  color: var(--error);
   ${regular12}
 `;
 
