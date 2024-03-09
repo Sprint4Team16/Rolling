@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import ModalWindow from '../common/ModalWindow';
+import ModalWindow from './ModalWindow';
 import EditMessageButton from '../common/Buttons/EditMessageButton';
 import {
   bold20,
