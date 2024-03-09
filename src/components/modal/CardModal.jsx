@@ -169,14 +169,6 @@ const CardContentText = styled.div`
     padding-top: 0.1rem;
   }
 
-  p:has(span.size-huge) {
-    padding-top: 0.5rem;
-  }
-
-  span.size-huge {
-    line-height: 3.5rem;
-  }
-
   ${regular18}
 
   flex-wrap: wrap;
