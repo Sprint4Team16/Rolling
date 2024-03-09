@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Outlined40 } from '../../styles/ButtonStyle';
+import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -21,7 +22,7 @@ const StyledHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 1.1rem 0rem;
-  @media (max-width: 1247px) {
+  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
     margin: 0 2.4rem;
   }
 `;
