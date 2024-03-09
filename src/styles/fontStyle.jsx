@@ -14,7 +14,7 @@ export const bold24 = css`
   font-size: 2.4rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 4.2rem; /* 150% */
+  line-height: 3.6rem; /* 150% */
   letter-spacing: -0.028rem;
 `;
 

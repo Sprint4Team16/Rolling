@@ -30,7 +30,7 @@ const Section = styled.section`
       display: none;
     }
   }
-  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MIN_MOBILE}px) {
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     max-width: calc(100% - 20px);
     overflow-x: auto;
     &::-webkit-scrollbar {
