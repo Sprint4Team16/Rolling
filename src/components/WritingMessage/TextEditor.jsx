@@ -33,7 +33,7 @@ function EditorBox({ content = '', onContentChange }) {
     return {
       toolbar: {
         container: [
-          [{ size: ['small', false, 'large', 'huge'] }],
+          [{ size: ['small', false, 'large'] }],
           [{ align: [] }],
           ['bold', 'italic', 'underline', 'strike'],
           [{ list: 'ordered' }, { list: 'bullet' }],

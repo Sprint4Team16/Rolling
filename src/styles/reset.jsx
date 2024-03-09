@@ -54,10 +54,6 @@ const reset = css`
     text-align: justify;
   }
 
-  .size-huge {
-    font-size: 2.5em;
-  }
-
   .size-large {
     font-size: 1.5em;
   }
