@@ -6,7 +6,7 @@ import { PostIdWrapper, HeaderWrapper, ButtonSection } from './PostId';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
 import CardItems from '../components/post/card/CardItems';
-import { deleteMessages } from '../api/DeleteApi';
+// import { deleteMessages } from '../api/DeleteApi';
 import BackToPostButton from '../components/common/Buttons/BackToPostButton';
 
 function PostIdEdit() {
@@ -32,14 +32,14 @@ function PostIdEdit() {
   //   }
   // };
 
-  const handleDeleteMessage = async (messageId) => {
-    try {
-      await deleteMessages(messageId);
-      // handleMessages(id);
-    } catch (error) {
-      throw new Error('메세지 삭제에 실패했습니다.', error);
-    }
-  };
+  // const handleDeleteMessage = async (messageId) => {
+  //   try {
+  //     await deleteMessages(messageId);
+  //     // handleMessages(id);
+  //   } catch (error) {
+  //     throw new Error('메세지 삭제에 실패했습니다.', error);
+  //   }
+  // };
 
   useEffect(() => {
     handleIdData();
@@ -59,7 +59,8 @@ function PostIdEdit() {
         <BackToPostButton moveLink={`/post/${id}`} btnName="뒤로가기" />
         <DeleteRecipientButton />
       </ButtonSection>
-      <CardItems messages={data} onDelete={handleDeleteMessage} />
+      {/* <CardItems messages={data} onDelete={handleDeleteMessage} /> */}
+      <CardItems messages={data} />
     </PostIdWrapper>
   );
 }

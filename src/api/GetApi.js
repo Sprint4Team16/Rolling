@@ -27,8 +27,9 @@ export function getMessage(id) {
 
 // 롤링페이퍼 대상이 받은 모든 메세지 데이터 가져오기
 export function getAllMessages(recipientID, offset) {
+  const effectiveOffset = offset ?? 0;
   return fetchRecipients(
-    `/recipients/${recipientID}/messages/?limit=8&offset=${offset}`,
+    `/recipients/${recipientID}/messages/?limit=8&offset=${effectiveOffset}`,
   );
 }
 
