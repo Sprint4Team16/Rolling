@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ModalWindow from '../common/ModalWindow';
+import ModalWindow from './ModalWindow';
 
 function KakaoModal() {
   const ShareContainer = styled.div`
