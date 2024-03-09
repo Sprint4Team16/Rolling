@@ -6,6 +6,7 @@ import SubHeader from '../components/post/SubHeader';
 import { getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
+import { DISPLAY_SIZE } from '../constants/DISPLAY_SIZE';
 
 export const HeaderWrapper = styled.div`
   position: sticky;
@@ -13,7 +14,7 @@ export const HeaderWrapper = styled.div`
   left: 0;
   right: 0;
   z-index: 99999;
-  @media (max-width: 767px) {
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     display: none;
   }
 `;
@@ -40,28 +41,30 @@ export const PostIdWrapper = styled.div`
 
 export const ButtonSection = styled.div`
   display: flex;
-  margin: 63px auto 11px;
-  max-width: 1200px;
-  gap: 10px;
+  margin: 6.3rem auto 1rem;
+  max-width: 120rem;
   justify-content: end;
   align-items: center;
+
+  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
+    margin: 6.3rem 2.4rem 1.5rem;
+  }
 `;
 
 // eslint-disable-next-line
 export const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0px auto 0px;
-  padding-bottom: 127px;
-  gap: 24px 2%;
+  max-width: 120rem;
+  margin: 0rem auto 0rem;
+  padding-bottom: 12.7rem;
+  gap: 2.4rem 2%;
 
-  @media (max-width: 1247px) {
-    margin-left: 24px;
-    margin-right: 24px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
+    margin: 9.3rem 2.4rem 2rem;
   }
-  @media (min-width: 360px) and(max-width: 767px) {
-    margin: 93px 24px 0px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    margin: 9.3rem 2.4rem 0rem;
   }
 `;
 

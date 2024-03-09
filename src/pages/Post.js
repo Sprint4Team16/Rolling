@@ -9,6 +9,7 @@ import ImageSelection from '../components/post/postmake/ImageSelection';
 import ToggleButton from '../components/post/postmake/ToggleButton';
 import { getBackground } from '../api/GetApi';
 import { submitRollingPost } from '../api/PostApi';
+import { DISPLAY_SIZE } from '../constants/DISPLAY_SIZE';
 
 const colorList = ['beige', 'purple', 'blue', 'green'];
 
@@ -134,27 +135,27 @@ const PostSection = styled.div`
   align-items: flex-start;
   justify-content: left;
   background: var(--white);
-  margin: 57px auto;
-  width: 720px;
+  margin: 5.7rem auto;
+  width: 72rem;
   text-align: left;
 
-  @media (max-width: 768px) {
-    width: 320px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 32rem;
   }
 `;
 
 const Select = styled.div`
-  width: 720px;
+  width: 72rem;
   display: flex;
   justify-content: space-between;
-  margin-top: 45px;
-  margin-bottom: 45px;
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
   flex-wrap: wrap;
   flex-direction: row;
   flex-shrink: 0;
 
-  @media (max-width: 768px) {
-    width: 320px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 32rem;
   }
 `;
 
