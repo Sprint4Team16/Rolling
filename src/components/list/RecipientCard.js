@@ -199,6 +199,7 @@ const FlexCenter = css`
 
 const WrittenBy = styled.div`
   ${FlexCenter}
+  height: 2.8rem;
   gap: 11px;
   color: var(--gray900);
   font-size: 18px;
