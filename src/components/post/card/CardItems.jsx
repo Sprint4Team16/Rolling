@@ -23,6 +23,7 @@ const CardContainer = styled.div`
 `;
 // eslint-disable-next-line
 const CardAdd = styled(CardContentWrapper)`
+  display: ${({ $isDisplay }) => ($isDisplay ? ' none' : 'block')};
   justify-content: center;
   position: relative;
   transition: all 0.4s ease-out;
@@ -71,9 +72,9 @@ function CardItems({ onDelete, data }) {
     }
   };
 
-  // useEffect(() => {
-  //   handleMessages(id);
-  // }, []);
+  useEffect(() => {
+    handleMessages(id);
+  }, [id]);
 
   useEffect(() => {
     let observer;

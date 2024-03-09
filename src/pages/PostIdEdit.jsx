@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import DeleteRecipientButton from '../components/common/Buttons/DeleteRecipientButton';
-import { getRecipientData, getAllMessages } from '../api/GetApi';
+import { getRecipientData } from '../api/GetApi';
 import { PostIdWrapper, HeaderWrapper, ButtonSection } from './PostId';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/SubHeader';
@@ -12,7 +12,7 @@ import BackToPostButton from '../components/common/Buttons/BackToPostButton';
 function PostIdEdit() {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [messages, setMessages] = useState(null);
+  // const [messages, setMessages] = useState(null);
 
   const handleIdData = async () => {
     try {
@@ -23,19 +23,19 @@ function PostIdEdit() {
     }
   };
 
-  const handleMessages = async () => {
-    try {
-      const result = await getAllMessages(id);
-      setMessages(result.results);
-    } catch (error) {
-      throw new Error('데이터를 불러오지 못했습니다.', error);
-    }
-  };
+  // const handleMessages = async () => {
+  //   try {
+  //     const result = await getAllMessages(id);
+  //     setMessages(result.results);
+  //   } catch (error) {
+  //     throw new Error('데이터를 불러오지 못했습니다.', error);
+  //   }
+  // };
 
   const handleDeleteMessage = async (messageId) => {
     try {
       await deleteMessages(messageId);
-      handleMessages(id);
+      // handleMessages(id);
     } catch (error) {
       throw new Error('메세지 삭제에 실패했습니다.', error);
     }
@@ -43,7 +43,7 @@ function PostIdEdit() {
 
   useEffect(() => {
     handleIdData();
-    handleMessages(id);
+    // handleMessages(id);
   }, [id]);
 
   return (
@@ -59,7 +59,7 @@ function PostIdEdit() {
         <BackToPostButton moveLink={`/post/${id}`} btnName="뒤로가기" />
         <DeleteRecipientButton />
       </ButtonSection>
-      <CardItems messages={messages} onDelete={handleDeleteMessage} />
+      <CardItems messages={data} onDelete={handleDeleteMessage} />
     </PostIdWrapper>
   );
 }
