@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import EditorBox from '../WritingMessage/TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getMessage, getProfile } from '../../api/GetApi';
-// import Button from './Button';
 import PutPatchButton from '../common/Buttons/PutPatchButton';
 import { patchMessage, putMessage } from '../../api/PutPatchApi';
 import { bold24, regular16 } from '../../styles/fontStyle';
+import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
 const FormPage = styled.div`
   max-width: 720px;
@@ -17,7 +17,7 @@ const FormPage = styled.div`
   display: flex;
   justify-content: center;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     max-width: calc(100% - 32px);
   }
 `;
@@ -30,9 +30,9 @@ const IndexMessage = styled.p`
 const MainForm = styled.form`
   display: inline-flex;
   flex-direction: column;
-  max-width: 720px;
+  max-width: 72rem;
   align-items: flex-start;
-  gap: 50px;
+  gap: 5rem;
 `;
 
 const FormSubject = styled.div`
@@ -40,31 +40,31 @@ const FormSubject = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: 1.2rem;
 `;
 
 const InputTextContainer = styled.div`
   position: relative;
 
-  @media (max-width: 767px) {
-    min-width: 320px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    min-width: 32rem;
     width: 100%;
   }
 `;
 
 const InputText = styled.input`
   display: flex;
-  width: 720px;
-  padding: 12px 16px;
+  width: 72rem;
+  padding: 1.2rem 1.6rem;
   align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  border: 1px solid
+  gap: 1rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid
     ${(props) => (props.isError ? 'var(--error)' : 'var(--gray300)')};
   background: var(--white);
 
-  @media (max-width: 767px) {
-    min-width: 320px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    min-width: 32rem;
     width: 100%;
   }
 `;
@@ -80,30 +80,30 @@ const ProfileSelectZone = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  gap: 32px;
+  gap: 3.2rem;
 `;
 
 const ProfileZone = styled.img`
-  border-radius: 100px;
+  border-radius: 10rem;
   flex-wrap: wrap;
-  width: 100px;
+  width: 10rem;
 
-  @media (max-width: 767px) {
-    width: 80px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 8rem;
   }
 `;
 
 const YourProfileImage = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 1rem;
 `;
 
 const ImageSelectionList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-center;
-  gap: 12px;
+  gap: 1.2rem;
 `;
 
 const ImageSelectDirection = styled.p`
@@ -113,27 +113,26 @@ const ImageSelectDirection = styled.p`
 
 const ProfileImageContainer = styled.div`
   flex-wrap: wrap;
-  max-width: 560px;
+  max-width: 56rem;
 `;
 
 const ProfileImage = styled.img`
   display: flex;
-  width: 56px;
-  height: 56px;
+  width: 5.6rem;
+  height: 5.6rem;
   align-items: center;
   flex-shrink: 0;
-  border-radius: 100px;
+  border-radius: 10rem;
   border: 1px solid var(--gray200);
   background: var(--white);
 
-  @media (max-width: 767px) {
-    width: 40px;
-    height: 40px;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 4rem;
+    height: 4rem;
   }
 `;
 
 function EditForm({ isBtnDisabled }) {
-  // const imageList = ['img/image43.svg', 'img/image44.svg'];
   const nonProfileImage = ['/img/nonSelected.svg'];
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
