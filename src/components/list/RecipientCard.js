@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import WrittenByIcons from '../post/subheader/WrittenByIcons';
+import { getAllMessages } from '../../api/GetApi';
 import { bold18, bold24, regular14, regular16 } from '../../styles/fontStyle';
 import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
@@ -8,10 +10,24 @@ function RecipientCard({ recipient }) {
   const backgroundColor = recipient.backgroundColor || 'beige';
   const backgroundImage = recipient.backgroundImageURL;
   const navigate = useNavigate();
+  const [messages, setMessages] = useState(null);
 
   const handleCardClick = () => {
     navigate(`/post/${recipient.id}`);
   };
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const result = await getAllMessages(recipient.id);
+        setMessages(result.results);
+      } catch (error) {
+        console.error('메시지를 불러오는데 실패했습니다:', error);
+      }
+    };
+
+    fetchMessages();
+  }, [recipient.id]);
 
   return (
     <CardWrapper
@@ -24,6 +40,12 @@ function RecipientCard({ recipient }) {
           <RecipientText $backgroundImage={backgroundImage}>
             To. {recipient.name}
           </RecipientText>
+          <WrittenBy>
+            <WrittenByIcons
+              messages={messages}
+              peopleNum={recipient.messageCount}
+            />
+          </WrittenBy>
           <WriterText $backgroundImage={backgroundImage}>
             <WriterNumText>{recipient.messageCount}</WriterNumText>명이
             작성했어요!
@@ -168,6 +190,20 @@ const RecipientText = styled.span`
   @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     ${bold18}
   }
+`;
+
+const FlexCenter = css`
+  display: flex;
+  align-items: center;
+`;
+
+const WrittenBy = styled.div`
+  ${FlexCenter}
+  gap: 11px;
+  color: var(--gray900);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
 `;
 
 const WriterText = styled.span`
