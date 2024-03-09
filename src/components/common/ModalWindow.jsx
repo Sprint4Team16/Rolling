@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Primary40 } from '../../styles/ButtonStyle';
-// import { useKakaoShare } from './useKakaoShare';
 
 const ModalBox = styled.div`
-  border-radius: 10px;
+  border-radius: 1rem;
 `;
 
 const BlackBackground = styled.div`
@@ -27,12 +26,12 @@ const ModalBody = styled.div`
 `;
 
 const CloseBtn = styled(Primary40)`
-  width: 120px;
+  width: 12rem;
   position: absolute;
-  bottom: 40px;
+  bottom: 4rem;
 
   &:hover {
-    background: var(--Purple-700, #861dee);
+    background: var(--purple700);
   }
 `;
 
@@ -42,9 +41,9 @@ const ModalContents = styled.div`
   align-items: center;
   justify-content: center;
   background: white;
-  width: 600px;
-  height: 476px;
-  border-radius: 20px;
+  width: 60rem;
+  height: 47.6rem;
+  border-radius: 2rem;
 `;
 
 function ModalWindow({ children }) {

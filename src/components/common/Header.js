@@ -6,7 +6,7 @@ const StyledNav = styled.nav`
   width: 100%;
   background: #fff;
   position: sticky;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 0.1rem solid #ccc;
   top: 0;
   left: 0;
   right: 0;
@@ -14,15 +14,15 @@ const StyledNav = styled.nav`
 `;
 
 const StyledHeader = styled.div`
-  max-height: 64px;
-  max-width: 1200px;
+  max-height: 6.4rem;
+  max-width: 120rem;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 11px 0px;
+  padding: 1.1rem 0rem;
   @media (max-width: 1247px) {
-    margin: 0 24px;
+    margin: 0 2.4rem;
   }
 `;
 
@@ -30,17 +30,13 @@ const Button = styled(Outlined40)``;
 
 const LogoURL = styled.a`
   display: flex;
-  padding: 6px 0;
-  gap: 8px;
+  padding: 0.6rem 0;
+  gap: 0.8rem;
   align-items: center;
 `;
 const LogoText = styled.div`
   color: var(--gray-light-gray-90, #4a494f);
-  /* text-align: center; */
-
-  /* padding-top: 3px; */
-  /* font-family: Poppins; */
-  font-size: 19.971px;
+  font-size: 2rem;
   font-weight: 700;
 `;
 
