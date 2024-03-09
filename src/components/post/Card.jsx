@@ -75,7 +75,13 @@ const UserName = styled.span`
 `;
 
 const UserState = styled.div`
-  display: flex;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* display: flex; */
   padding: 0.15rem 0.8rem 0;
   margin-top: 0.6rem;
   width: 4.1rem;
@@ -114,7 +120,7 @@ const CardContentText = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--gray600);
-  width: 100%;
+  width: 95%;
 
   ${regular18}
 

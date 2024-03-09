@@ -143,14 +143,16 @@ const SplitHorizontal = styled.div`
 const CardContentTextContainer = styled.div`
   height: 100%;
   width: 52rem;
+  padding: 1rem;
 `;
 
 const CardContentText = styled.div`
   overflow-wrap: break-word;
   overflow: hidden;
   color: var(--gray600);
+  line-height: normal;
   width: 52rem;
-  height: 24rem;
+  min-height: 24rem;
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 2rem;
@@ -163,7 +165,16 @@ const CardContentText = styled.div`
   }
 
   p {
+    overflow: auto;
     padding-top: 0.1rem;
+  }
+
+  p:has(span.size-huge) {
+    padding-top: 0.5rem;
+  }
+
+  span.size-huge {
+    line-height: 3.5rem;
   }
 
   ${regular18}
