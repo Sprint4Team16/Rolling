@@ -132,7 +132,7 @@ function MainSection() {
           <img src="/img/img_01.svg" alt="롤링페이퍼 예시 사진" />
         </FirstSectionContainer>
         <SecondSectionContainer>
-          <img src="/img/img_02.svg" alt="이모지 예시 사진" />
+          <img src="/img/img_02.png" alt="이모지 예시 사진" />
           <ArticleContainer>
             <StyledPointBtn>Point. 02</StyledPointBtn>
             <h2>
