@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { bold18, bold24, regular14, regular16 } from '../../styles/fontStyle';
+import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
 function RecipientCard({ recipient }) {
   const backgroundColor = recipient.backgroundColor || 'beige';
@@ -83,15 +84,15 @@ const WriterTextColor = ({ backgroundImage }) =>
 /* eslint-disable */
 const CardWrapper = styled.a`
   position: relative;
-  width: 275px;
-  height: 260px;
-  padding: 30px 24px 20px 24px;
-  border-radius: 16px;
-  border: 1px solid #0000001a;
+  width: 27.5rem;
+  height: 26rem;
+  padding: 3rem 2.4rem 2rem 2.4rem;
+  border-radius: 1.6rem;
+  border: 0.1rem solid #0000001a;
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
-  box-shadow: 0px 2px 12px 0px #00000014;
+  box-shadow: 0rem 0.2rem 1.2rem 0rem #00000014;
   background-color: ${({ $backgroundColor }) => getColor($backgroundColor)};
   ${({ $backgroundImage, $backgroundColor }) =>
     $backgroundImage
@@ -104,20 +105,20 @@ const CardWrapper = styled.a`
           &::before {
             content: '';
             position: absolute;
-            width: 142px;
-            height: 142px;
-            top: 118px;
-            left: 133px;
+            width: 14.2rem;
+            height: 14.2rem;
+            top: 11.8rem;
+            left: 13.3rem;
             background-image: url(${getPatternImage($backgroundColor)});
             background-size: cover;
             background-repeat: no-repeat;
           }
         `}
 
-  @media (min-width: 375px) and (max-width: 767px) {
-    width: 208px;
-    height: 232px;
-    padding: 30px 22px 20px 24px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 20.8rem;
+    height: 23.2rem;
+    padding: 3rem 2.2rem 2rem 2.4rem;
     background-color: ${({ $backgroundColor }) => getColor($backgroundColor)};
     ${({ $backgroundImage, $backgroundColor }) =>
       $backgroundImage
@@ -130,10 +131,10 @@ const CardWrapper = styled.a`
             &::before {
               content: '';
               position: absolute;
-              width: 107.4px;
-              height: 142px;
-              top: 118px;
-              left: 100.6px;
+              width: 10.74rem;
+              height: 14.2rem;
+              top: 11.8rem;
+              left: 10.06rem;
               background-image: url(${getPatternImage($backgroundColor)});
               background-size: cover;
               background-repeat: no-repeat;
@@ -151,11 +152,11 @@ const CardContent = styled.div`
 const RecipientInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 43px;
+  gap: 1.2rem;
+  margin-bottom: 4.3rem;
 
-  @media (min-width: 375px) and (max-width: 767px) {
-    margin-bottom: 33px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    margin-bottom: 3.3rem;
   }
 `;
 
@@ -164,7 +165,7 @@ const RecipientText = styled.span`
     RecipientTextColor({ backgroundImage: $backgroundImage })};
   ${bold24}
 
-  @media (min-width: 375px) and (max-width: 767px) {
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     ${bold18}
   }
 `;
@@ -174,7 +175,7 @@ const WriterText = styled.span`
     WriterTextColor({ backgroundImage: $backgroundImage })};
   ${regular16}
 
-  @media (min-width: 375px) and (max-width: 767px) {
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     ${regular14}
   }
 `;
@@ -185,23 +186,23 @@ const WriterNumText = styled.span`
 
 const Division = styled.hr`
   position: relative;
-  width: 227px;
+  width: 22.7rem;
   z-index: 1;
-  border: 1px solid #0000001f;
+  border: 0.1rem solid #0000001f;
 
-  @media (min-width: 375px) and (max-width: 767px) {
-    width: 162px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 16.2rem;
   }
 `;
 
 const EmojiGroup = styled.div`
   display: flex;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
   z-index: 1;
 
-  @media (min-width: 375px) and (max-width: 767px) {
-    gap: 4px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    gap: 0.4rem;
   }
 `;
 
@@ -211,25 +212,25 @@ const EmojiCount = styled.div`
   align-items: center;
   text-align: center;
   width: auto;
-  height: 36px;
-  padding: 8px 12px;
-  border-radius: 32px;
+  height: 3.6rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 3.2rem;
   background: rgba(0, 0, 0, 0.54);
   color: var(--white);
   ${regular16}
 
-  @media (min-width: 375px) and (max-width: 767px) {
-    padding: 6px 8px;
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    padding: 0.6rem 0.8rem;
     ${regular14}
   }
 `;
 
 const Emoji = styled.span`
-  padding: 0 2px;
-  margin-right: 2px;
-  font-size: 16px;
+  padding: 0 0.2rem;
+  margin-right: 0.2rem;
+  font-size: 1.6rem;
 
-  @media (min-width: 375px) and (max-width: 767px) {
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     margin-right: 0;
   }
 `;

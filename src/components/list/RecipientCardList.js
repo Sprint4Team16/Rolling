@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import RecipientCard from './RecipientCard';
+import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
 function RecipientList({ recipients }) {
   const containerRef = useRef(null);
@@ -43,7 +44,7 @@ export default RecipientList;
 const CardsContainer = styled.div`
   display: flex;
   overflow-x: auto;
-  gap: 20px;
+  gap: 2rem;
   scroll-behavior: smooth;
   & > * {
     flex-shrink: 0;
@@ -59,7 +60,7 @@ const CarouselContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 1160px;
+  max-width: 116rem;
 `;
 
 const Button = styled.button`
@@ -69,25 +70,25 @@ const Button = styled.button`
   align-items: center;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   background: #ffffffe5;
-  border-radius: 50px;
-  border: 1px solid #dadcdf;
-  box-shadow: 0px 4px 8px 0px #00000014;
+  border-radius: 5rem;
+  border: 0.1rem solid #dadcdf;
+  box-shadow: 0rem 0.4rem 0.8rem 0rem #00000014;
   cursor: pointer;
 
-  @media (max-width: 1199px) {
+  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}) {
     display: none;
   }
 `;
 
 const LeftButton = styled(Button)`
-  left: -20px;
+  left: -2rem;
   z-index: 1;
 `;
 
 const RightButton = styled(Button)`
-  right: -20px;
+  right: -2rem;
   z-index: 1;
 `;
