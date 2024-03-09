@@ -78,7 +78,7 @@ const Button = styled.button`
   box-shadow: 0rem 0.4rem 0.8rem 0rem #00000014;
   cursor: pointer;
 
-  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}) {
+  @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
     display: none;
   }
 `;
