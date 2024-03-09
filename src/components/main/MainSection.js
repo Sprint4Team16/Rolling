@@ -50,6 +50,10 @@ const FirstSectionContainer = styled(SectionContainer)`
 const SecondSectionContainer = styled(SectionContainer)`
   padding: 6rem 6rem 6rem 0;
   margin-top: 0;
+  img {
+    width: 72rem;
+    height: 20.4rem;
+  }
 
   @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
     padding: 0;
