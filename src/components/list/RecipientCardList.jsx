@@ -1,20 +1,20 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import RecipientCard from './RecipientCard';
-import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 function RecipientList({ recipients }) {
   const containerRef = useRef(null);
 
   const handleLeftButton = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft -= containerRef.current.clientWidth;
+      containerRef.current.scrollLeft -= containerRef.current.clientWidth + 20;
     }
   };
 
   const handleRightButton = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft += containerRef.current.clientWidth;
+      containerRef.current.scrollLeft += containerRef.current.clientWidth + 20;
     }
   };
 

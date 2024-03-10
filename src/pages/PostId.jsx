@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
-import SubHeader from '../components/post/SubHeader';
+import SubHeader from '../components/post/subheader/SubHeader';
 import { getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
-import { DISPLAY_SIZE } from '../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../constants/SIZE_SET';
+import { BACKGROUND_COLOR } from '../constants/COLOR_SET';
 
 export const HeaderWrapper = styled.div`
   position: sticky;
@@ -19,16 +20,9 @@ export const HeaderWrapper = styled.div`
   }
 `;
 
-const userBackgroundColors = {
-  beige: { background: 'var(--orange200)' },
-  purple: { background: 'var(--purple200)' },
-  green: { background: 'var(--green200)' },
-  blue: { background: 'var(--blue200)' },
-};
-
 export const PostIdWrapper = styled.div`
   background-color: ${($props) => {
-    const colorInfo = userBackgroundColors[$props.color];
+    const colorInfo = BACKGROUND_COLOR[$props.color];
     return colorInfo && colorInfo.background;
   }};
   background-image: url(${($props) => $props.image || 'none'});
@@ -41,7 +35,7 @@ export const PostIdWrapper = styled.div`
 
 export const ButtonSection = styled.div`
   display: flex;
-  margin: 6.3rem auto 1rem;
+  margin: 6.3rem auto 2.5rem;
   max-width: 120rem;
   justify-content: end;
   align-items: center;
@@ -77,7 +71,7 @@ function PostId() {
       const result = await getRecipientData(id);
       setData(result);
     } catch (error) {
-      // console.error(error);
+      throw new Error('데이터를 불러오지 못했습니다.', error);
     }
   };
 

@@ -5,4 +5,4 @@ export const DISPLAY_SIZE = Object.freeze({
   MIN_MOBILE: 360,
 });
 
-export default DISPLAY_SIZE;
+export const SIZE = Object.freeze({});

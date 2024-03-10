@@ -1,22 +1,17 @@
 import styled from 'styled-components';
 import { useRef, useEffect, useState } from 'react';
-import DeleteMessageButton from '../common/Buttons/DeleteMessageButton';
-import ModalPortal from '../modal/ModalPortal';
-import CardModal from '../modal/CardModal';
+import DeleteMessageButton from '../../common/Buttons/DeleteMessageButton';
+import ModalPortal from '../../modal/ModalPortal';
+import CardModal from '../../modal/CardModal';
 import {
   regular12,
   regular14,
   regular18,
   regular20,
-} from '../../styles/fontStyle';
-import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
+} from '../../../styles/fontStyle';
+import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
+import { USER_STATE } from '../../../constants/COLOR_SET';
 
-const userStateColors = {
-  가족: { background: 'var(--green100)', color: 'var(--green500)' },
-  동료: { background: 'var(--purple100)', color: 'var(--purple600)' },
-  지인: { background: 'var(--orange100)', color: 'var(--orange500)' },
-  친구: { background: 'var(--blue100)', color: 'var(--blue500)' },
-};
 export const CardContentWrapper = styled.div`
   position: relative;
   max-width: 38.4rem;
@@ -91,11 +86,9 @@ const UserState = styled.div`
 
   border-radius: 0.4rem;
   background: ${({ $state }) =>
-    userStateColors[$state]
-      ? userStateColors[$state].background
-      : 'defaultColor'};
+    USER_STATE[$state] ? USER_STATE[$state].background : 'defaultColor'};
   color: ${({ $state }) =>
-    userStateColors[$state] ? userStateColors[$state].color : 'defaultColor'};
+    USER_STATE[$state] ? USER_STATE[$state].color : 'defaultColor'};
 
   ${regular14}
 `;
@@ -108,8 +101,8 @@ const SplitHorizontal = styled.div`
 `;
 
 const CardContentTextContainer = styled.div`
-  height: 11.2rem;
-  width: 31.2rem;
+  height: 100%;
+  width: 100%;
 `;
 
 const CardContentText = styled.div`
@@ -120,7 +113,7 @@ const CardContentText = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--gray600);
-  width: 95%;
+  width: 100%;
 
   ${regular18}
 

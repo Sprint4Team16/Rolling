@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/common/Header';
 import ListContent from '../components/list/ListContent';
-import MovePageButton from '../components/common/Buttons/movePageButton';
 import { getRecipients } from '../api/GetApi';
+import MovePageButton from '../components/common/Buttons/MovePageButton';
 
 function List() {
   const [popularRecipients, setPopularRecipients] = useState([]);
@@ -34,7 +34,7 @@ function List() {
         setPopularRecipients(sortedByPopularity);
         setRecentRecipients(sortedByRecent);
       } catch (error) {
-        console.error('롤링페이퍼를 불러오지 못했습니다.', error);
+        throw new Error('롤링페이퍼를 불러오지 못했습니다.', error);
       }
     };
 

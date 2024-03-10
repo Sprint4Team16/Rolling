@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import styled, { css } from 'styled-components';
 import WrittenByIcons from '../post/subheader/WrittenByIcons';
 import { getAllMessages } from '../../api/GetApi';
 import { bold18, bold24, regular14, regular16 } from '../../styles/fontStyle';
-import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 function RecipientCard({ recipient }) {
   const backgroundColor = recipient.backgroundColor || 'beige';
@@ -22,7 +23,7 @@ function RecipientCard({ recipient }) {
         const result = await getAllMessages(recipient.id);
         setMessages(result.results);
       } catch (error) {
-        console.error('메시지를 불러오는데 실패했습니다:', error);
+        throw new Error('메시지를 불러오는데 실패했습니다:', error);
       }
     };
 
