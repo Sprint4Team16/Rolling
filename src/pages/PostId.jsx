@@ -79,6 +79,13 @@ function PostId() {
     handleIdData();
   }, []);
 
+  let profileUrl = [];
+
+  if (data && data.recentMessages?.length > 0) {
+    profileUrl = data.recentMessages.map((message) => message.profileImageURL);
+    console.log(profileUrl);
+  }
+
   return (
     <PostIdWrapper color={data.backgroundColor} image={data.backgroundImageURL}>
       <HeaderWrapper>
@@ -87,6 +94,7 @@ function PostId() {
       <SubHeader
         name={data ? data.name : ''}
         peopleNum={data ? data.messageCount : 0}
+        profileUrl={profileUrl}
       />
       <ButtonSection>
         <EditButton />
