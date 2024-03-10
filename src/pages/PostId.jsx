@@ -41,7 +41,7 @@ export const ButtonSection = styled.div`
   align-items: center;
 
   @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
-    margin: 6.3rem 2.4rem 1.5rem;
+    margin: 6.3rem 2.4rem 2.5rem;
   }
 `;
 
