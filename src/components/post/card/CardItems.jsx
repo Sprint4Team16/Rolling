@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import Card, { CardContentWrapper } from '../Card';
+import Card, { CardContentWrapper } from './Card';
 import { getAllMessages } from '../../../api/GetApi';
 import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 import { deleteMessages } from '../../../api/DeleteApi';
@@ -81,10 +81,6 @@ function CardItems({ data }) {
       throw new Error('메세지 삭제에 실패했습니다.', error);
     }
   };
-
-  // useEffect(() => {
-  //   handleMessages(id);
-  // }, []);
 
   useEffect(() => {
     let observer;
