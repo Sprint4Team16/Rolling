@@ -10,7 +10,7 @@ import {
   regular20,
 } from '../../styles/fontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
-import { FONTS } from '../../constants/FONT_SET';
+import { FONTS } from '../../constants/TEXT_SET';
 
 const userStateColors = {
   가족: { background: 'var(--green100)', color: 'var(--green500)' },

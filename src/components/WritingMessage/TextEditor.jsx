@@ -2,25 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 // import styled from 'styled-components';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
-const formats = [
-  'font',
-  'header',
-  'bold',
-  'italic',
-  'underline',
-  'strike',
-  'blockquote',
-  'list',
-  'bullet',
-  'indent',
-  'link',
-  'align',
-  'color',
-  'background',
-  'size',
-  'h1',
-];
+import { TEXT_FORMAT } from '../../constants/TEXT_SET';
 
 function EditorBox({ content = '', onContentChange }) {
   const [values, setValues] = useState(content);
@@ -69,7 +51,7 @@ function EditorBox({ content = '', onContentChange }) {
         borderRadius: 'lpx',
       }}
       modules={modules}
-      formats={formats}
+      formats={TEXT_FORMAT}
       value={values}
       onChange={setValues}
       onKeyUp={handleKeyUp}
