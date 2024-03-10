@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import WrittenByIcons from '../post/subheader/WrittenByIcons';
-import { getAllMessages } from '../../api/GetApi';
 import { bold18, bold24, regular14, regular16 } from '../../styles/fontStyle';
 import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
@@ -10,24 +9,10 @@ function RecipientCard({ recipient }) {
   const backgroundColor = recipient.backgroundColor || 'beige';
   const backgroundImage = recipient.backgroundImageURL;
   const navigate = useNavigate();
-  const [messages, setMessages] = useState(null);
 
   const handleCardClick = () => {
     navigate(`/post/${recipient.id}`);
   };
-
-  useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const result = await getAllMessages(recipient.id);
-        setMessages(result.results);
-      } catch (error) {
-        console.error('메시지를 불러오는데 실패했습니다:', error);
-      }
-    };
-
-    fetchMessages();
-  }, [recipient.id]);
 
   return (
     <CardWrapper
@@ -42,7 +27,7 @@ function RecipientCard({ recipient }) {
           </RecipientText>
           <WrittenBy>
             <WrittenByIcons
-              messages={messages}
+              messages={recipient.recentMessages}
               peopleNum={recipient.messageCount}
             />
           </WrittenBy>
