@@ -1,26 +1,18 @@
 import ProfileUser from './ProfileUser';
 
-function WrittenByIcons({ messages, peopleNum }) {
-  if (!messages || messages.length === 0) {
-    return null; // Return early if messages are null or empty
-  }
-
-  const uniqueUsers = [...new Set(messages.map((message) => message.id))];
-  const limitedUsers = uniqueUsers.slice(0, 3);
+function WrittenByIcons({ profileUrl, peopleNum }) {
+  // profileUrl이 없거나 비어있으면 빈 배열을 반환
+  const urls = profileUrl || [];
 
   return (
     <>
-      {limitedUsers.map((userId, index) => {
-        const userMessages = messages.filter(
-          (message) => message.id === userId,
-        );
-        const last = index === limitedUsers.length - 1;
+      {urls.map((userUrl, index) => {
+        const last = index === urls.length - 1;
 
         return (
           <ProfileUser
-            key={userId}
-            id={userId}
-            src={userMessages[0].profileImageURL}
+            key={userUrl} // 사용하는 곳에서 key prop이 필요
+            src={userUrl}
             peopleNum={last ? `+${peopleNum - 3}` : null}
             last={last}
           />
