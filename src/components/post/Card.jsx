@@ -101,8 +101,8 @@ const SplitHorizontal = styled.div`
 `;
 
 const CardContentTextContainer = styled.div`
-  height: 11.2rem;
-  width: 31.2rem;
+  height: 100%;
+  width: 100%;
 `;
 
 const CardContentText = styled.div`
@@ -113,7 +113,7 @@ const CardContentText = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--gray600);
-  width: 95%;
+  width: 100%;
 
   ${regular18}
 
