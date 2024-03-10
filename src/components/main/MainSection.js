@@ -58,6 +58,10 @@ const SecondSectionContainer = styled(SectionContainer)`
   @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
     padding: 0;
     flex-direction: column-reverse;
+    img {
+      width: auto;
+      height: auto;
+    }
   }
 `;
 
