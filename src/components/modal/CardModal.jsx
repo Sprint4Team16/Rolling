@@ -9,6 +9,7 @@ import {
   regular18,
   regular20,
 } from '../../styles/fontStyle';
+import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
 const userStateColors = {
   가족: { background: 'var(--green100)', color: 'var(--green500)' },
@@ -82,6 +83,9 @@ const Container = styled.div`
 
 const CardContent = styled.div`
   margin: 2rem 4rem;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 80%;
+  }
 `;
 
 const UserInfo = styled.div`
@@ -138,12 +142,21 @@ const SplitHorizontal = styled.div`
   height: 0.1rem;
   background: var(--gray200);
   margin: 1.5rem auto;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    max-width: 52rem;
+    margin: 1.5rem 0;
+    width: 90%;
+  }
 `;
 
 const CardContentTextContainer = styled.div`
   height: 100%;
   width: 52rem;
   padding: 1rem;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    max-width: 52rem;
+    width: 100%;
+  }
 `;
 
 const CardContentText = styled.div`
@@ -172,6 +185,10 @@ const CardContentText = styled.div`
   ${regular18}
 
   flex-wrap: wrap;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    max-width: 52rem;
+    width: 100%;
+  }
 `;
 
 const CardCreatedAt = styled.div`

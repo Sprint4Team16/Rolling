@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Primary40 } from '../../styles/ButtonStyle';
+import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
 
 const ModalBox = styled.div`
   border-radius: 1rem;
@@ -44,6 +45,11 @@ const ModalContents = styled.div`
   width: 60rem;
   height: 47.6rem;
   border-radius: 2rem;
+
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    max-width: 52rem;
+    width: 90%;
+  }
 `;
 
 function ModalWindow({ children }) {
