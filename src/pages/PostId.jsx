@@ -45,7 +45,6 @@ export const ButtonSection = styled.div`
   }
 `;
 
-// eslint-disable-next-line
 export const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;

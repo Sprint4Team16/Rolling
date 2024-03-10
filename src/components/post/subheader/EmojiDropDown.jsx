@@ -145,29 +145,26 @@ function EmojiDropDown() {
           </EmojiBadge>
         ))}
       </EmojiGroup>
-      {
-        // eslint-disable-next-line
-        badges.length > 0 &&
-          (badges.length > 3 ? (
-            <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
-              <ArrowImage src="/img/arrow_down.svg" alt="" />
-              {isDropDownOpen && (
-                <DropdownMenu>
-                  <EmojiGroupInDropDown>
-                    {badges.slice(3, 11).map((badge) => (
-                      <EmojiBadge key={badge.unified}>
-                        <Emoji>{badge.emoji}</Emoji>
-                        <span>{badge.count}</span>
-                      </EmojiBadge>
-                    ))}
-                  </EmojiGroupInDropDown>
-                </DropdownMenu>
-              )}
-            </DownArrow>
-          ) : (
-            <MarginRight />
-          ))
-      }
+      {badges.length > 0 &&
+        (badges.length > 3 ? (
+          <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
+            <ArrowImage src="/img/arrow_down.svg" alt="" />
+            {isDropDownOpen && (
+              <DropdownMenu>
+                <EmojiGroupInDropDown>
+                  {badges.slice(3, 11).map((badge) => (
+                    <EmojiBadge key={badge.unified}>
+                      <Emoji>{badge.emoji}</Emoji>
+                      <span>{badge.count}</span>
+                    </EmojiBadge>
+                  ))}
+                </EmojiGroupInDropDown>
+              </DropdownMenu>
+            )}
+          </DownArrow>
+        ) : (
+          <MarginRight />
+        ))}
       {badges.length === 0 && <div />}
 
       <EmojiAddButton onClick={handleEmojiPicker}>
