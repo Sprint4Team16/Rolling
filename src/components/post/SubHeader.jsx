@@ -11,7 +11,7 @@ import Toast from '../common/Toast';
 import { Outlined36 } from '../../styles/ButtonStyle';
 import { getAllMessages } from '../../api/GetApi';
 import { bold18, bold28 } from '../../styles/fontStyle';
-import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 const FlexCenter = css`
   display: flex;

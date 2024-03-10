@@ -6,7 +6,8 @@ import SubHeader from '../components/post/SubHeader';
 import { getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
-import { DISPLAY_SIZE } from '../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../constants/SIZE_SET';
+import { BACKGROUND_COLOR } from '../constants/COLOR_SET';
 
 export const HeaderWrapper = styled.div`
   position: sticky;
@@ -19,16 +20,9 @@ export const HeaderWrapper = styled.div`
   }
 `;
 
-const userBackgroundColors = {
-  beige: { background: 'var(--orange200)' },
-  purple: { background: 'var(--purple200)' },
-  green: { background: 'var(--green200)' },
-  blue: { background: 'var(--blue200)' },
-};
-
 export const PostIdWrapper = styled.div`
   background-color: ${($props) => {
-    const colorInfo = userBackgroundColors[$props.color];
+    const colorInfo = BACKGROUND_COLOR[$props.color];
     return colorInfo && colorInfo.background;
   }};
   background-image: url(${($props) => $props.image || 'none'});
