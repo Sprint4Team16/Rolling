@@ -10,6 +10,7 @@ import {
   regular20,
 } from '../../styles/fontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
+import { FONTS } from '../../constants/FONT_SET';
 
 const userStateColors = {
   가족: { background: 'var(--green100)', color: 'var(--green500)' },
@@ -31,14 +32,8 @@ function CardModal({
   const isEditRoute = location.pathname.includes('/edit');
 
   const createdDays = new Date(cardCreatedAt);
-  const fontClass = {
-    'Noto Sans': 'noto-sans',
-    Pretendard: 'pretendard',
-    나눔명조: 'nanum-gothic',
-    '나눔손글씨 손편지체': 'nanum-myeongjo',
-  };
 
-  const font = fontClass[cardFont] || '';
+  const font = FONTS[cardFont] || '';
 
   const newCardContent = cardContent.replace(/ql-/g, '');
 
