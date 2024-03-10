@@ -10,12 +10,11 @@ import ToggleButton from '../components/post/postmake/ToggleButton';
 import { getBackground } from '../api/GetApi';
 import { submitRollingPost } from '../api/PostApi';
 import { DISPLAY_SIZE } from '../constants/SIZE_SET';
-
-const colorList = ['beige', 'purple', 'blue', 'green'];
+import { COLOR_SELECT } from '../constants/COLOR_SET';
 
 function Post() {
   const [isColor, setIsColor] = useState(true);
-  const [selectColor, setSelectColor] = useState(colorList[0]);
+  const [selectColor, setSelectColor] = useState(COLOR_SELECT[0]);
   const [background, setBackground] = useState([]);
   const [selectImage, setSelectImage] = useState(null);
   const [inputUser, setInputUser] = useState('');
@@ -86,7 +85,7 @@ function Post() {
         />
         {isColor ? (
           <Select>
-            {colorList.map((color, index) => (
+            {COLOR_SELECT.map((color, index) => (
               <ColorSelection
                 key={`${color}${index + 1}`}
                 color={color}

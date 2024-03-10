@@ -1,4 +1,4 @@
-export const COLOR = Object.freeze({});
+export const COLOR_SELECT = ['beige', 'purple', 'blue', 'green'];
 
 export const USER_STATE = Object.freeze({
   가족: { background: 'var(--green100)', color: 'var(--green500)' },
