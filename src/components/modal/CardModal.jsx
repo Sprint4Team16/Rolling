@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import ModalWindow from '../common/ModalWindow';
+import ModalWindow from './ModalWindow';
 import EditMessageButton from '../common/Buttons/EditMessageButton';
 import {
   bold20,
@@ -9,13 +9,9 @@ import {
   regular18,
   regular20,
 } from '../../styles/fontStyle';
-
-const userStateColors = {
-  가족: { background: 'var(--green100)', color: 'var(--green500)' },
-  동료: { background: 'var(--purple100)', color: 'var(--purple600)' },
-  지인: { background: 'var(--orange100)', color: 'var(--orange500)' },
-  친구: { background: 'var(--blue100)', color: 'var(--blue500)' },
-};
+import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
+import { FONTS } from '../../constants/TEXT_SET';
+import { USER_STATE } from '../../constants/COLOR_SET';
 
 function CardModal({
   id,
@@ -30,14 +26,8 @@ function CardModal({
   const isEditRoute = location.pathname.includes('/edit');
 
   const createdDays = new Date(cardCreatedAt);
-  const fontClass = {
-    'Noto Sans': 'noto-sans',
-    Pretendard: 'pretendard',
-    나눔명조: 'nanum-gothic',
-    '나눔손글씨 손편지체': 'nanum-myeongjo',
-  };
 
-  const font = fontClass[cardFont] || '';
+  const font = FONTS[cardFont] || '';
 
   const newCardContent = cardContent.replace(/ql-/g, '');
 
@@ -82,6 +72,9 @@ const Container = styled.div`
 
 const CardContent = styled.div`
   margin: 2rem 4rem;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 80%;
+  }
 `;
 
 const UserInfo = styled.div`
@@ -124,11 +117,9 @@ const UserState = styled.div`
 
   border-radius: 0.4rem;
   background: ${({ $state }) =>
-    userStateColors[$state]
-      ? userStateColors[$state].background
-      : 'defaultColor'};
+    USER_STATE[$state] ? USER_STATE[$state].background : 'defaultColor'};
   color: ${({ $state }) =>
-    userStateColors[$state] ? userStateColors[$state].color : 'defaultColor'};
+    USER_STATE[$state] ? USER_STATE[$state].color : 'defaultColor'};
 
   ${regular14}
 `;
@@ -138,19 +129,30 @@ const SplitHorizontal = styled.div`
   height: 0.1rem;
   background: var(--gray200);
   margin: 1.5rem auto;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    max-width: 52rem;
+    margin: 1.5rem 0;
+    width: 90%;
+  }
 `;
 
 const CardContentTextContainer = styled.div`
   height: 100%;
   width: 52rem;
+  padding: 1rem;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    max-width: 52rem;
+    width: 100%;
+  }
 `;
 
 const CardContentText = styled.div`
   overflow-wrap: break-word;
   overflow: hidden;
   color: var(--gray600);
+  line-height: normal;
   width: 52rem;
-  height: 24rem;
+  min-height: 24rem;
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 2rem;
@@ -163,12 +165,17 @@ const CardContentText = styled.div`
   }
 
   p {
+    overflow: auto;
     padding-top: 0.1rem;
   }
 
   ${regular18}
 
   flex-wrap: wrap;
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    max-width: 52rem;
+    width: 100%;
+  }
 `;
 
 const CardCreatedAt = styled.div`

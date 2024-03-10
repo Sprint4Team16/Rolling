@@ -2,16 +2,16 @@ import styled, { css } from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import EmojiDropDown from './subheader/EmojiDropDown';
-import WrittenByIcons from './subheader/WrittenByIcons';
-import ShareToggle from '../modal/ShareToggle';
-import KakaoModal from '../modal/KakaoModal';
-import ModalPortal from '../modal/ModalPortal';
-import Toast from '../common/Toast';
-import { Outlined36 } from '../../styles/ButtonStyle';
-import { getAllMessages } from '../../api/GetApi';
-import { bold18, bold28 } from '../../styles/fontStyle';
-import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
+import EmojiDropDown from './EmojiDropDown';
+import WrittenByIcons from './WrittenByIcons';
+import ShareToggle from '../../modal/ShareToggle';
+import KakaoModal from '../../modal/KakaoModal';
+import ModalPortal from '../../modal/ModalPortal';
+import Toast from '../../common/Toast';
+import { Outlined36 } from '../../../styles/ButtonStyle';
+import { getAllMessages } from '../../../api/GetApi';
+import { bold18, bold28 } from '../../../styles/fontStyle';
+import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 
 const FlexCenter = css`
   display: flex;

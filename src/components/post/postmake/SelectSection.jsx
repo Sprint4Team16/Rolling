@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { bold24, regular16 } from '../../../styles/fontStyle';
-import { DISPLAY_SIZE } from '../../../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 
 function SelectSection() {
   return (

@@ -12,7 +12,6 @@ const FormContainer = styled.div`
 
 function WritingMessage() {
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  console.log(buttonDisabled);
 
   return (
     <div>
@@ -20,6 +19,7 @@ function WritingMessage() {
       <FormContainer>
         <WritingForm
           isBtnDisabled={(isContent) => setButtonDisabled(isContent)}
+          disabled={buttonDisabled}
         />
       </FormContainer>
     </div>

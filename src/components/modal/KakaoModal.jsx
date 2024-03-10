@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ModalWindow from '../common/ModalWindow';
+import ModalWindow from './ModalWindow';
 
 function KakaoModal() {
   const ShareContainer = styled.div`
@@ -44,7 +44,7 @@ function KakaoModal() {
           title: 'Rolling',
           description: '추억의 롤링 페이퍼를 웹 상에서도 즐길 수 있는 플랫폼',
           imageUrl:
-            'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+            'https://cdn.pixabay.com/photo/2016/11/22/19/25/adult-1850177_1280.jpg',
           link: {
             mobileWebUrl: 'https://developers.kakao.com',
             webUrl: 'https://developers.kakao.com',
@@ -53,13 +53,6 @@ function KakaoModal() {
         buttons: [
           {
             title: '웹으로 보기',
-            link: {
-              mobileWebUrl: 'https://developers.kakao.com',
-              webUrl: 'https://developers.kakao.com',
-            },
-          },
-          {
-            title: '앱으로 보기',
             link: {
               mobileWebUrl: 'https://developers.kakao.com',
               webUrl: 'https://developers.kakao.com',
