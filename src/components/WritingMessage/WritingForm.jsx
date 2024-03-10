@@ -7,7 +7,7 @@ import { getProfile } from '../../api/GetApi';
 import PostButton from '../common/Buttons/PostButton';
 import { submitMessagePost } from '../../api/PostApi';
 import { bold24, regular16 } from '../../styles/fontStyle';
-import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 const FormPage = styled.div`
   max-width: 72rem;

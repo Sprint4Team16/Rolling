@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import CheckIcon from '../../common/CheckIcon';
-import { DISPLAY_SIZE } from '../../../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 
 function ImageSelection({ image, handleFunction, checkSelected }) {
   return (

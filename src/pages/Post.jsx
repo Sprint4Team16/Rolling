@@ -9,7 +9,7 @@ import ImageSelection from '../components/post/postmake/ImageSelection';
 import ToggleButton from '../components/post/postmake/ToggleButton';
 import { getBackground } from '../api/GetApi';
 import { submitRollingPost } from '../api/PostApi';
-import { DISPLAY_SIZE } from '../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../constants/SIZE_SET';
 
 const colorList = ['beige', 'purple', 'blue', 'green'];
 

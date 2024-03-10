@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Primary40 } from '../../styles/ButtonStyle';
-import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 const ModalBox = styled.div`
   border-radius: 1rem;

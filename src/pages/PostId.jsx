@@ -6,7 +6,7 @@ import SubHeader from '../components/post/SubHeader';
 import { getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
-import { DISPLAY_SIZE } from '../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../constants/SIZE_SET';
 
 export const HeaderWrapper = styled.div`
   position: sticky;
