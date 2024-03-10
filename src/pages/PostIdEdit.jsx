@@ -25,6 +25,13 @@ function PostIdEdit() {
     handleIdData();
   }, [id]);
 
+  let profileUrl = [];
+
+  if (data && data.recentMessages?.length > 0) {
+    profileUrl = data.recentMessages.map((message) => message.profileImageURL);
+    console.log(profileUrl);
+  }
+
   return (
     <PostIdWrapper color={data.backgroundColor} image={data.backgroundImageURL}>
       <HeaderWrapper>
@@ -33,6 +40,7 @@ function PostIdEdit() {
       <SubHeader
         name={data ? data.name : ''}
         peopleNum={data ? data.messageCount : 0}
+        profileUrl={profileUrl}
       />
       <ButtonSection>
         <BackToPostButton moveLink={`/post/${id}`} btnName="뒤로가기" />
