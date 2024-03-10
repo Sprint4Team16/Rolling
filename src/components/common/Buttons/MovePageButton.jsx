@@ -11,6 +11,7 @@ function MovePageButton({ moveLink, btnName }) {
 
   return <Button onClick={handleClickButton}>{btnName}</Button>;
 }
+
 const Button = styled(Primary56)`
   width: 28rem;
   margin: 2.4rem 2.4rem;
@@ -20,4 +21,5 @@ const Button = styled(Primary56)`
     width: 100%;
   }
 `;
+
 export default MovePageButton;
