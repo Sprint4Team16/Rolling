@@ -273,7 +273,6 @@ function WritingForm({ isBtnDisabled }) {
               content: contents,
               font: fonts,
             };
-            console.log(data);
             const response = await submitMessagePost(recipientID, data);
             return response.recipientId;
           }}

@@ -12,13 +12,15 @@ const FormContainer = styled.div`
 
 function EditMessage() {
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  console.log(buttonDisabled);
 
   return (
     <div>
       <Header />
       <FormContainer>
-        <EditForm isBtnDisabled={(isContent) => setButtonDisabled(isContent)} />
+        <EditForm
+          isBtnDisabled={(isContent) => setButtonDisabled(isContent)}
+          disabled={buttonDisabled}
+        />
       </FormContainer>
     </div>
   );

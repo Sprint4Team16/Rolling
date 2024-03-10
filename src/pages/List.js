@@ -34,7 +34,7 @@ function List() {
         setPopularRecipients(sortedByPopularity);
         setRecentRecipients(sortedByRecent);
       } catch (error) {
-        console.error('롤링페이퍼를 불러오지 못했습니다.', error);
+        throw new Error('롤링페이퍼를 불러오지 못했습니다.', error);
       }
     };
 
