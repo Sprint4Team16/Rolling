@@ -71,7 +71,7 @@ function PostId() {
       const result = await getRecipientData(id);
       setData(result);
     } catch (error) {
-      // console.error(error);
+      throw new Error('데이터를 불러오지 못했습니다.', error);
     }
   };
 
