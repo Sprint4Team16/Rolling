@@ -11,13 +11,7 @@ import {
 } from '../../styles/fontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 import { FONTS } from '../../constants/TEXT_SET';
-
-const userStateColors = {
-  가족: { background: 'var(--green100)', color: 'var(--green500)' },
-  동료: { background: 'var(--purple100)', color: 'var(--purple600)' },
-  지인: { background: 'var(--orange100)', color: 'var(--orange500)' },
-  친구: { background: 'var(--blue100)', color: 'var(--blue500)' },
-};
+import { USER_STATE } from '../../constants/COLOR_SET';
 
 function CardModal({
   id,
@@ -123,11 +117,9 @@ const UserState = styled.div`
 
   border-radius: 0.4rem;
   background: ${({ $state }) =>
-    userStateColors[$state]
-      ? userStateColors[$state].background
-      : 'defaultColor'};
+    USER_STATE[$state] ? USER_STATE[$state].background : 'defaultColor'};
   color: ${({ $state }) =>
-    userStateColors[$state] ? userStateColors[$state].color : 'defaultColor'};
+    USER_STATE[$state] ? USER_STATE[$state].color : 'defaultColor'};
 
   ${regular14}
 `;
