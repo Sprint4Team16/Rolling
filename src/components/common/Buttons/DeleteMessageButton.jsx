@@ -1,17 +1,14 @@
 import styled from 'styled-components';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Outlined36 } from '../../../styles/ButtonStyle';
 
 function DeleteMessageButton({ id, onDelete }) {
-  const navigate = useNavigate();
   const location = useLocation();
   const isEditRoute = location.pathname.includes('/edit');
 
   const handleButtonClick = async (e) => {
     e.stopPropagation();
     await onDelete(id);
-    // navigate('/post/4210/edit');
-    navigate(0);
   };
 
   return (
