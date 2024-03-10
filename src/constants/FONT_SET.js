@@ -4,5 +4,3 @@ export const FONTS = Object.freeze({
   나눔명조: 'nanum-gothic',
   '나눔손글씨 손편지체': 'nanum-myeongjo',
 });
-
-export const test = {};

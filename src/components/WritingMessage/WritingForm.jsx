@@ -8,6 +8,7 @@ import PostButton from '../common/Buttons/PostButton';
 import { submitMessagePost } from '../../api/PostApi';
 import { bold24, regular16 } from '../../styles/fontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
+import { FONT_LIST, RELATION_LIST } from '../../constants/OPTION_SET';
 
 const FormPage = styled.div`
   max-width: 72rem;
@@ -239,8 +240,8 @@ function WritingForm({ isBtnDisabled }) {
           <IndexMessage>상대와의 관계</IndexMessage>
           <Dropdown
             $state="0"
-            options={['지인', '친구', '동료', '가족']}
-            placeholder="지인"
+            options={RELATION_LIST}
+            placeholder={RELATION_LIST[0]}
             onChange={(selectedOption) => setRelation(selectedOption)}
           />
         </FormSubject>
@@ -256,13 +257,8 @@ function WritingForm({ isBtnDisabled }) {
           <IndexMessage>폰트 선택</IndexMessage>
           <Dropdown
             $state="1"
-            options={[
-              'Noto Sans',
-              'Pretendard',
-              '나눔명조',
-              '나눔손글씨 손편지체',
-            ]}
-            placeholder="Noto Sans"
+            options={FONT_LIST}
+            placeholder={FONT_LIST[0]}
             onChange={(selectedOption) => handleFontChange(selectedOption)}
           />
         </FormSubject>
