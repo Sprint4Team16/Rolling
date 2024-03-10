@@ -7,7 +7,7 @@ import { getMessage, getProfile } from '../../api/GetApi';
 import PutPatchButton from '../common/Buttons/PutPatchButton';
 import { patchMessage, putMessage } from '../../api/PutPatchApi';
 import { bold24, regular16 } from '../../styles/fontStyle';
-import { DISPLAY_SIZE } from '../../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 const FormPage = styled.div`
   max-width: 720px;

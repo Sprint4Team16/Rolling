@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Card, { CardContentWrapper } from '../Card';
 import { getAllMessages } from '../../../api/GetApi';
-import { DISPLAY_SIZE } from '../../../constants/DISPLAY_SIZE';
+import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 import { deleteMessages } from '../../../api/DeleteApi';
 
 const CardContainer = styled.div`
