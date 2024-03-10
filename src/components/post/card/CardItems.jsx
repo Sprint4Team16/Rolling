@@ -22,7 +22,7 @@ const CardContainer = styled.div`
     margin: 9.3rem 2.4rem 0rem;
   }
 `;
-// eslint-disable-next-line
+
 const CardAdd = styled(CardContentWrapper)`
   display: ${({ $isDisplay }) => ($isDisplay ? ' none' : 'block')};
   justify-content: center;
@@ -32,7 +32,7 @@ const CardAdd = styled(CardContentWrapper)`
     transform: translateY(-1.2rem);
   }
 `;
-// eslint-disable-next-line
+
 const PlusIcon = styled.div`
   width: 5.6rem;
   height: 5.6rem;
@@ -76,7 +76,11 @@ function CardItems({ data }) {
   const handleDeleteMessage = async (messageId) => {
     try {
       await deleteMessages(messageId);
-      handleMessages(id);
+      const deletedId = messageId;
+      const newMessageList = messages.filter(
+        (message) => message.id !== deletedId,
+      );
+      setMessages(newMessageList);
     } catch (error) {
       throw new Error('메세지 삭제에 실패했습니다.', error);
     }
@@ -99,7 +103,6 @@ function CardItems({ data }) {
   }, [offset, target]);
 
   return (
-    // eslint-disable-next-line
     <CardContainer id="observer" className="card-container">
       <CardAdd
         onClick={() => navigate(`/post/${data.id}/message`)}
@@ -109,7 +112,6 @@ function CardItems({ data }) {
           <img src="/img/plusIcon.svg" alt="" />
         </PlusIcon>
       </CardAdd>
-      {/* refactoring : undefined 처리 최적화 */}
       {messages &&
         messages.map((message) => (
           <Card
