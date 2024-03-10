@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import { useRef, useEffect, useState } from 'react';
-import DeleteMessageButton from '../common/Buttons/DeleteMessageButton';
-import ModalPortal from '../modal/ModalPortal';
-import CardModal from '../modal/CardModal';
+import DeleteMessageButton from '../../common/Buttons/DeleteMessageButton';
+import ModalPortal from '../../modal/ModalPortal';
+import CardModal from '../../modal/CardModal';
 import {
   regular12,
   regular14,
   regular18,
   regular20,
-} from '../../styles/fontStyle';
-import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
-import { USER_STATE } from '../../constants/COLOR_SET';
+} from '../../../styles/fontStyle';
+import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
+import { USER_STATE } from '../../../constants/COLOR_SET';
 
 export const CardContentWrapper = styled.div`
   position: relative;

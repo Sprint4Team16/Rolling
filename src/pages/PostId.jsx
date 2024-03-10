@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
-import SubHeader from '../components/post/SubHeader';
+import SubHeader from '../components/post/subheader/SubHeader';
 import { getRecipientData } from '../api/GetApi';
 import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
@@ -35,7 +35,7 @@ export const PostIdWrapper = styled.div`
 
 export const ButtonSection = styled.div`
   display: flex;
-  margin: 6.3rem auto 1rem;
+  margin: 6.3rem auto 2.5rem;
   max-width: 120rem;
   justify-content: end;
   align-items: center;
