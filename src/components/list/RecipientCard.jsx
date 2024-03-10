@@ -27,7 +27,9 @@ function RecipientCard({ recipient }) {
           </RecipientText>
           <WrittenBy>
             <WrittenByIcons
-              messages={recipient.recentMessages}
+              profileUrl={recipient.recentMessages.map(
+                (message) => message.profileImageURL,
+              )}
               peopleNum={recipient.messageCount}
             />
           </WrittenBy>
