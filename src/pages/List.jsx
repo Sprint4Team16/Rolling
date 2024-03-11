@@ -93,7 +93,7 @@ function List() {
       <Header showButton />
       <ListContent title="인기 롤링 페이퍼 🔥" recipients={popularRecipients} />
       <ListContent
-        title="최근에 만든 롤링 페이퍼️️"
+        title="최근에 만든 롤링 페이퍼️️ ⭐"
         recipients={recentRecipients}
         lastRecipientRef={lastRecipientRef}
       />
