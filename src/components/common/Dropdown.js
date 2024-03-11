@@ -13,7 +13,6 @@ const DropdownContainer = styled.button`
   width: 32rem;
   padding: 1.2rem 1.6rem;
   align-items: center;
-  /* gap: 19.2rem; */
   border-radius: 0.8rem;
   border: 0.1rem solid var(--gray300);
   justify-content: space-between;
@@ -21,11 +20,9 @@ const DropdownContainer = styled.button`
   &:focus,
   &:active {
     border: 0.2rem solid var(--gray500);
-    /* gap: 18.9rem; */
   }
 
   &:hover {
-    /* gap: 18.9rem; */
     border: 0.1rem solid var(--gray500);
   }
 
@@ -59,9 +56,6 @@ const TextContainer = styled.p`
 const ListContainer = styled.div`
   position: ${({ $state }) =>
     statePosition[$state] ? statePosition[$state].position : 'absolute'};
-  /* position: absolute; */
-  /* top: ${({ $state }) =>
-    statePosition[$state] ? '0' : statePosition[$state].top}; */
   display: inline-flex;
   overflow-y: auto;
   z-index: 1;

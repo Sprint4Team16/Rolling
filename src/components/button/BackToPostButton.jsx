@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Primary56 } from '../../../styles/ButtonStyle';
+import { Primary56 } from '../../styles/ButtonStyle';
 
 function BackToPostButton({ moveLink, btnName }) {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function BackToPostButton({ moveLink, btnName }) {
   return <Button onClick={handleClickButton}>{btnName}</Button>;
 }
 const Button = styled(Primary56)`
-  margin: 0 1.5rem;
+  margin-right: 1.5rem;
   cursor: pointer;
 `;
 export default BackToPostButton;

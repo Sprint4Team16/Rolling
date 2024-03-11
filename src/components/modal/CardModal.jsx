@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import ModalWindow from './ModalWindow';
-import EditMessageButton from '../common/Buttons/EditMessageButton';
 import {
   bold20,
   regular12,
@@ -12,6 +11,7 @@ import {
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 import { FONTS } from '../../constants/TEXT_SET';
 import { USER_STATE } from '../../constants/COLOR_SET';
+import EditButton from '../button/EditButton';
 
 function CardModal({
   id,
@@ -41,7 +41,7 @@ function CardModal({
             <UserState $state={userState}>{userState}</UserState>
           </UserText>
           {isEditRoute ? (
-            <EditMessageButton messageID={id} />
+            <EditButton messageId={id} />
           ) : (
             <CardCreatedAt>
               {`${createdDays.getFullYear()}. ${

@@ -90,7 +90,6 @@ const RecipientTextColor = ({ backgroundImage }) =>
 const WriterTextColor = ({ backgroundImage }) =>
   backgroundImage ? 'var(--gray200)' : 'var(--gray700)';
 
-/* eslint-disable */
 const CardWrapper = styled.a`
   position: relative;
   width: 27.5rem;
@@ -159,7 +158,6 @@ const CardWrapper = styled.a`
           `}
   }
 `;
-/* eslint-enable */
 
 const CardContent = styled.div`
   display: flex;

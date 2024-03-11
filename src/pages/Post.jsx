@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
 import SelectSection from '../components/post/postmake/SelectSection';
-import PostButton from '../components/common/Buttons/PostButton';
 import PostInputSection from '../components/post/postmake/PostInputSection';
 import ColorSelection from '../components/post/postmake/ColorSelection';
 import ImageSelection from '../components/post/postmake/ImageSelection';
 import ToggleButton from '../components/post/postmake/ToggleButton';
+import SubmitButton from '../components/button/SubmitButton';
 import { getBackground } from '../api/GetApi';
 import { submitRollingPost } from '../api/PostApi';
 import { DISPLAY_SIZE } from '../constants/SIZE_SET';
@@ -106,7 +106,7 @@ function Post() {
             ))}
           </Select>
         )}
-        <PostButton
+        <SubmitButton
           onSubmit={async () => {
             const data = {
               name: inputUser,
@@ -117,6 +117,7 @@ function Post() {
             return response.id;
           }}
           btnDisable={btnDisable}
+          btnName="생성하기"
         />
       </PostSection>
     </PostPage>
