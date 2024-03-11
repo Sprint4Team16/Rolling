@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-function CheckIcon({ imgSrc }) {
-  return (
-    <Icon>
-      <img src={imgSrc} alt="선택" />
-    </Icon>
-  );
-}
-
 const Icon = styled.div`
   position: absolute;
   transform: translate(-50%, -50%);
@@ -21,5 +13,13 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+function CheckIcon({ imgSrc }) {
+  return (
+    <Icon>
+      <img src={imgSrc} alt="선택" />
+    </Icon>
+  );
+}
 
 export default CheckIcon;

@@ -13,6 +13,7 @@ export async function fetchImages(endpoint) {
   }
 }
 
+// recipients, messages data fetch
 export async function fetchRecipients(endpoint) {
   try {
     const response = await axios.get(`${BASE_URL}${TEAM}${endpoint}`, {

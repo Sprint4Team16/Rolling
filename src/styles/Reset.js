@@ -41,7 +41,7 @@ const reset = css`
   input[type='search']::-webkit-search-results-decoration {
     display: none;
   }
-  
+
   .align-right {
     text-align: right;
   }
@@ -63,7 +63,7 @@ const reset = css`
   }
 
   .noto-sans {
-  font-family: 'Noto Sans', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
   }
 
   .pretendard {
@@ -77,7 +77,6 @@ const reset = css`
   .nanum-myeongjo {
     font-family: 'Nanum Myeongjo', serif !important;
   }
-
 `;
 
 export default reset;

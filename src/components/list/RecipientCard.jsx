@@ -1,72 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import styled, { css } from 'styled-components';
-import WrittenByIcons from '../post/subheader/WrittenByIcons';
-import { getAllMessages } from '../../api/GetApi';
-import { bold18, bold24, regular14, regular16 } from '../../styles/fontStyle';
+import WrittenByIcons from '../post/subHeader/WrittenByIcons';
+import { bold18, bold24, regular14, regular16 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
-
-function RecipientCard({ recipient }) {
-  const backgroundColor = recipient.backgroundColor || 'beige';
-  const backgroundImage = recipient.backgroundImageURL;
-  const navigate = useNavigate();
-  const [messages, setMessages] = useState(null);
-
-  const handleCardClick = () => {
-    navigate(`/post/${recipient.id}`);
-  };
-
-  useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const result = await getAllMessages(recipient.id);
-        setMessages(result.results);
-      } catch (error) {
-        throw new Error('메시지를 불러오는데 실패했습니다:', error);
-      }
-    };
-
-    fetchMessages();
-  }, [recipient.id]);
-
-  return (
-    <CardWrapper
-      onClick={handleCardClick}
-      $backgroundColor={backgroundColor}
-      $backgroundImage={backgroundImage}
-    >
-      <CardContent>
-        <RecipientInfo>
-          <RecipientText $backgroundImage={backgroundImage}>
-            To. {recipient.name}
-          </RecipientText>
-          <WrittenBy>
-            <WrittenByIcons
-              messages={messages}
-              peopleNum={recipient.messageCount}
-            />
-          </WrittenBy>
-          <WriterText $backgroundImage={backgroundImage}>
-            <WriterNumText>{recipient.messageCount}</WriterNumText>명이
-            작성했어요!
-          </WriterText>
-        </RecipientInfo>
-        <Division />
-        <EmojiGroup>
-          {recipient.topReactions.map((reaction) => (
-            <EmojiCount key={reaction.id}>
-              <Emoji>{reaction.emoji}</Emoji>
-              <span>{reaction.count}</span>
-            </EmojiCount>
-          ))}
-        </EmojiGroup>
-      </CardContent>
-    </CardWrapper>
-  );
-}
-
-export default RecipientCard;
 
 const getColor = (backgroundColor) => {
   switch (backgroundColor) {
@@ -104,7 +41,6 @@ const RecipientTextColor = ({ backgroundImage }) =>
 const WriterTextColor = ({ backgroundImage }) =>
   backgroundImage ? 'var(--gray200)' : 'var(--gray700)';
 
-/* eslint-disable */
 const CardWrapper = styled.a`
   position: relative;
   width: 27.5rem;
@@ -120,7 +56,11 @@ const CardWrapper = styled.a`
   ${({ $backgroundImage, $backgroundColor }) =>
     $backgroundImage
       ? css`
-          background-image: url(${$backgroundImage});
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.3),
+              rgba(0, 0, 0, 0.3)
+            ),
+            url(${$backgroundImage});
           background-size: cover;
           background-repeat: no-repeat;
         `
@@ -146,7 +86,11 @@ const CardWrapper = styled.a`
     ${({ $backgroundImage, $backgroundColor }) =>
       $backgroundImage
         ? css`
-            background-image: url(${$backgroundImage});
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+              ),
+              url(${$backgroundImage});
             background-size: cover;
             background-repeat: no-repeat;
           `
@@ -165,7 +109,6 @@ const CardWrapper = styled.a`
           `}
   }
 `;
-/* eslint-enable */
 
 const CardContent = styled.div`
   display: flex;
@@ -258,6 +201,7 @@ const EmojiCount = styled.div`
   ${regular16}
 
   @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    height: 3.2rem;
     padding: 0.6rem 0.8rem;
     ${regular14}
   }
@@ -272,3 +216,52 @@ const Emoji = styled.span`
     margin-right: 0;
   }
 `;
+
+function RecipientCard({ recipient }) {
+  const backgroundColor = recipient.backgroundColor || 'beige';
+  const backgroundImage = recipient.backgroundImageURL;
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/post/${recipient.id}`);
+  };
+
+  return (
+    <CardWrapper
+      onClick={handleCardClick}
+      $backgroundColor={backgroundColor}
+      $backgroundImage={backgroundImage}
+    >
+      <CardContent>
+        <RecipientInfo>
+          <RecipientText $backgroundImage={backgroundImage}>
+            To. {recipient.name}
+          </RecipientText>
+          <WrittenBy>
+            <WrittenByIcons
+              profileUrl={recipient.recentMessages.map(
+                (message) => message.profileImageURL,
+              )}
+              peopleNum={recipient.messageCount}
+            />
+          </WrittenBy>
+          <WriterText $backgroundImage={backgroundImage}>
+            <WriterNumText>{recipient.messageCount}</WriterNumText>명이
+            작성했어요!
+          </WriterText>
+        </RecipientInfo>
+        <Division />
+        <EmojiGroup>
+          {recipient.topReactions.map((reaction) => (
+            <EmojiCount key={reaction.id}>
+              <Emoji>{reaction.emoji}</Emoji>
+              <span>{reaction.count}</span>
+            </EmojiCount>
+          ))}
+        </EmojiGroup>
+      </CardContent>
+    </CardWrapper>
+  );
+}
+
+export default RecipientCard;

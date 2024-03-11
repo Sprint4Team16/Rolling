@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
-import SubHeader from '../components/post/subheader/SubHeader';
+import SubHeader from '../components/post/subHeader/SubHeader';
 import { getRecipientData } from '../api/GetApi';
-import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
 import { DISPLAY_SIZE } from '../constants/SIZE_SET';
 import { BACKGROUND_COLOR } from '../constants/COLOR_SET';
+import EditButton from '../components/button/EditButton';
 
 export const HeaderWrapper = styled.div`
   position: sticky;
@@ -41,11 +41,13 @@ export const ButtonSection = styled.div`
   align-items: center;
 
   @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
-    margin: 6.3rem 2.4rem 1.5rem;
+    margin: 6.3rem 2.4rem 2.5rem;
+  }
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    margin: 3rem 2.4rem 2.4rem;
   }
 `;
 
-// eslint-disable-next-line
 export const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -79,6 +81,12 @@ function PostId() {
     handleIdData();
   }, []);
 
+  let profileUrl = [];
+
+  if (data && data.recentMessages?.length > 0) {
+    profileUrl = data.recentMessages.map((message) => message.profileImageURL);
+  }
+
   return (
     <PostIdWrapper color={data.backgroundColor} image={data.backgroundImageURL}>
       <HeaderWrapper>
@@ -87,6 +95,7 @@ function PostId() {
       <SubHeader
         name={data ? data.name : ''}
         peopleNum={data ? data.messageCount : 0}
+        profileUrl={profileUrl}
       />
       <ButtonSection>
         <EditButton />

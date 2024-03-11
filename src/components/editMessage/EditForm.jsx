@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
-import EditorBox from '../WritingMessage/TextEditor';
+import EditorBox from '../writingMessage/TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getMessage, getProfile } from '../../api/GetApi';
-import PutPatchButton from '../common/Buttons/PutPatchButton';
 import { patchMessage, putMessage } from '../../api/PutPatchApi';
-import { bold24, regular16 } from '../../styles/fontStyle';
+import { bold24, regular16 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
+import { FONT_LIST, RELATION_LIST } from '../../constants/OPTION_SET';
+import SubmitButton from '../button/SubmitButton';
 
 const FormPage = styled.div`
   max-width: 720px;
@@ -173,7 +174,6 @@ function EditForm({ isBtnDisabled }) {
     e.preventDefault();
   };
 
-  // 수정 전 기존 데이터 선언
   useEffect(() => {
     const fetchMessage = async () => {
       try {
@@ -274,7 +274,7 @@ function EditForm({ isBtnDisabled }) {
           <IndexMessage>상대와의 관계</IndexMessage>
           <Dropdown
             $state="0"
-            options={['지인', '친구', '동료', '가족']}
+            options={RELATION_LIST}
             placeholder={relation}
             onChange={(selectedOption) => setRelation(selectedOption)}
           />
@@ -289,17 +289,12 @@ function EditForm({ isBtnDisabled }) {
           <IndexMessage>폰트 선택</IndexMessage>
           <Dropdown
             $state="1"
-            options={[
-              'Noto Sans',
-              'Pretendard',
-              '나눔명조',
-              '나눔손글씨 손편지체',
-            ]}
+            options={FONT_LIST}
             placeholder={fonts}
             onChange={(selectedOption) => handleFontChange(selectedOption)}
           />
         </FormSubject>
-        <PutPatchButton
+        <SubmitButton
           onSubmit={async () => {
             const data = {
               team: '4-16',
@@ -318,15 +313,14 @@ function EditForm({ isBtnDisabled }) {
               originalData.content !== data.content &&
               originalData.font !== data.font
             ) {
-              // 모든 데이터 변경에 의한 PUT Request
               const response = await putMessage(messageid, data);
               return response.recipientId;
             }
-            // 일부 데이터 변경에 의한 PATCH Request
             const response = await patchMessage(messageid, data);
             return response.recipientId;
           }}
           btnDisable={!isContent}
+          btnName="수정하기"
         />
       </MainForm>
     </FormPage>

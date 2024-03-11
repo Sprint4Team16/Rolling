@@ -1,35 +1,36 @@
 import styled from 'styled-components';
 import ModalWindow from './ModalWindow';
 
+const ShareContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--gray100);
+  border-radius: 2rem;
+`;
+
+const KakaoImg = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 20%;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    width: 40%;
+    height: 40%;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+`;
+
 function KakaoModal() {
-  const ShareContainer = styled.div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: #ffeea3;
-  `;
-
-  const KakaoImg = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 20%;
-    align-items: center;
-    cursor: pointer;
-
-    img {
-      width: 40%;
-      height: 40%;
-      margin-bottom: 2rem;
-    }
-
-    h2 {
-      font-size: 1.6rem;
-    }
-  `;
-
   const KakaoButton = () => {
     if (window.Kakao) {
       const kakao = window.Kakao;

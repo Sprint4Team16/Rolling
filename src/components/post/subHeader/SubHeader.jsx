@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import EmojiDropDown from './EmojiDropDown';
 import WrittenByIcons from './WrittenByIcons';
@@ -9,8 +8,7 @@ import KakaoModal from '../../modal/KakaoModal';
 import ModalPortal from '../../modal/ModalPortal';
 import Toast from '../../common/Toast';
 import { Outlined36 } from '../../../styles/ButtonStyle';
-import { getAllMessages } from '../../../api/GetApi';
-import { bold18, bold28 } from '../../../styles/fontStyle';
+import { bold18, bold28 } from '../../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 
 const FlexCenter = css`
@@ -23,7 +21,7 @@ const SubHeaderWrapper = styled.div`
   width: 100%;
   background-color: var(--white);
   position: sticky;
-  top: 6.2rem;
+  top: 6.25rem;
   z-index: 99999;
 
   @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
@@ -58,7 +56,7 @@ const Name = styled.div`
   }
   @media (max-width: 469px) {
     padding: 1.2rem 2rem;
-    color: var(--gray-800, #2b2b2b);
+    color: var(--gray800);
 
     ${bold18}
   }
@@ -79,13 +77,16 @@ const PostIdSetting = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  justify-content: flex-end;
 
   @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     margin-left: 2.4rem;
+    margin-right: 2.4rem;
     padding: 0.8rem 0rem;
   }
   @media (max-width: 469px) {
     margin-left: 2rem;
+    margin-right: 2rem;
   }
 `;
 
@@ -117,12 +118,20 @@ const SplitBarVertical1 = styled(SplitBarVertical)`
 
 const SplitBarVertical2 = styled(SplitBarVertical)`
   margin: 0 1.3rem;
+  @media (max-width: 469px) {
+    margin: 0 0.5rem;
+    background-color: var(--white);
+  }
 `;
 
 const ShareButton = styled(Outlined36)`
   padding: 0.6rem 1.6rem;
+
   @media (max-width: 470px) {
     padding: 0.6rem 0.8rem;
+  }
+  @media (max-width: 371px) {
+    padding: 0.5rem;
   }
 `;
 
@@ -155,22 +164,11 @@ const Container = styled(ToastContainer)`
   }
 `;
 
-function SubHeader({ name, peopleNum }) {
+function SubHeader({ name, peopleNum, profileUrl }) {
   const [shareToggle, setShareToggle] = useState(false);
   const [isKakaoOpen, setIsKakaoOpen] = useState(false);
   const [isUrlCopy, setIsUrlCopy] = useState(false);
-  const [messages, setMessages] = useState(null);
-  const { id } = useParams();
   const ref = useRef();
-
-  const handleMessages = async () => {
-    try {
-      const result = await getAllMessages(id);
-      setMessages(result.results);
-    } catch (error) {
-      throw new Error('데이터를 불러오지 못했습니다.', error);
-    }
-  };
 
   const handleOutsideClick = (e) => {
     if (shareToggle && (!ref.current || !ref.current.contains(e.target))) {
@@ -185,10 +183,6 @@ function SubHeader({ name, peopleNum }) {
     };
   }, [shareToggle]);
 
-  useEffect(() => {
-    handleMessages(id);
-  }, []);
-
   const handleClickShare = (e) => {
     e.preventDefault();
     setShareToggle(!shareToggle);
@@ -201,7 +195,7 @@ function SubHeader({ name, peopleNum }) {
         <SplitBarHorizontal />
         <PostIdSetting>
           <WrittenBy>
-            <WrittenByIcons messages={messages} peopleNum={peopleNum} />
+            <WrittenByIcons profileUrl={profileUrl} peopleNum={peopleNum} />
             {peopleNum}명이 작성했어요!
           </WrittenBy>
           <SplitBarVertical1 />

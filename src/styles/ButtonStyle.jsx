@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bold18, regular16 } from './fontStyle';
+import { bold18, regular16 } from './FontStyle';
 
 export const ButtonCommon = styled.button`
   display: flex;
@@ -14,7 +14,6 @@ const PrimaryBtn = styled(ButtonCommon)`
   background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
   color: var(--white);
 
-  // active 여부
   &:hover:enabled {
     background: var(--purple700);
   }
@@ -24,7 +23,6 @@ const PrimaryBtn = styled(ButtonCommon)`
   }
 
   &:focus:enabled {
-    /* border: 2px solid var(--purple900); */
     background: var(--purple800);
   }
 `;

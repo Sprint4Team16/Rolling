@@ -5,9 +5,9 @@ import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 const StyledNav = styled.nav`
   width: 100%;
-  background: #fff;
+  background: var(--white);
   position: sticky;
-  border-bottom: 0.1rem solid #ccc;
+  border-bottom: 0.1rem solid var(--gray300);
   top: 0;
   left: 0;
   right: 0;

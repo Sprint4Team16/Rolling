@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { bold14, bold24, regular18 } from '../../styles/fontStyle';
+import { bold14, bold24, regular18 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
-import MovePageButton from '../common/Buttons/MovePageButton';
+import MovePageButton from '../button/MovePageButton';
 
 const StyledSection = styled.section`
   display: flex;

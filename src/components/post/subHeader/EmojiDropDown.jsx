@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { submitEmojiPost } from '../../../api/PostApi';
 import { getEmojiData } from '../../../api/GetApi';
-import { Outlined36 } from '../../../styles/ButtonStyle';
-import { regular16 } from '../../../styles/fontStyle';
+import { regular16 } from '../../../styles/FontStyle';
 
 const FlexCenter = css`
   display: flex;
@@ -40,7 +39,7 @@ const Emoji = styled.span`
 `;
 
 const DownArrow = styled.button`
-  width: 2.4rem;
+  min-width: 2.4rem;
   height: 2.4rem;
   box-sizing: border-box;
   margin: 0.6rem 1.4rem 0.6rem 0.6rem;
@@ -48,6 +47,8 @@ const DownArrow = styled.button`
 
   @media (max-width: 470px) {
     margin-right: 0.8rem;
+    min-width: 1.6rem;
+    height: 1.6rem;
   }
 `;
 
@@ -77,6 +78,10 @@ const DropdownMenu = styled.div`
 
   align-items: flex-start;
   gap: 1rem;
+
+  @media (max-width: 570px) {
+    right: -90px;
+  }
 `;
 
 const EmojiGroupInDropDown = styled(EmojiGroup)`
@@ -85,15 +90,43 @@ const EmojiGroupInDropDown = styled(EmojiGroup)`
   grid-template-columns: 6.3rem 6.3rem 6.3rem 6.3rem;
 `;
 
-const EmojiAddButton = styled(Outlined36)`
+const EmojiAddButton = styled.div`
   position: relative;
   padding: 0.6rem 1.6rem;
+  cursor: pointer;
+  border-radius: 0.6rem;
+  background: var(--${({ disabled }) => (disabled ? 'gray300' : 'white')});
+  color: var(--${({ disabled }) => (disabled ? 'white' : 'gray900')});
+  border: 1px solid var(--gray300);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+
+  cursor: ${({ disabled }) => disabled && 'not-allowed'};
+  ${regular16}
+
+  &:hover {
+    background: var(--gray100);
+  }
+
+  &:active {
+    background: var(--gray100);
+  }
+
+  &:focus {
+    border: 1px solid var(--gray500);
+  }
 
   @media (max-width: 470px) {
     span {
       display: none;
     }
     padding: 0.6rem 0.8rem;
+  }
+
+  @media (max-width: 371px) {
+    padding: 0.5rem;
   }
 `;
 
@@ -102,6 +135,10 @@ const EmojiPickerWrapper = styled.div`
   top: 4.5rem;
   right: 0;
   z-index: 9999;
+
+  @media (max-width: 447px) {
+    right: -60px;
+  }
 `;
 
 function EmojiDropDown() {
@@ -131,6 +168,43 @@ function EmojiDropDown() {
     }
   };
 
+  const openEmojiPicker = (emojiData) => {
+    const updateBadges = async () => {
+      let newCount = 0;
+
+      setBadges((prevBadges) => {
+        let newBadges;
+        const exists = prevBadges.some(
+          (badge) => badge.emoji === emojiData.emoji,
+        );
+        if (exists) {
+          newBadges = prevBadges.map((badge) => {
+            if (badge.emoji === emojiData.emoji) {
+              newCount = badge.count + 1;
+              return { ...badge, count: newCount };
+            }
+            return badge;
+          });
+        } else {
+          newCount = 1;
+          newBadges = [...prevBadges, { ...emojiData, count: newCount }];
+        }
+        newBadges.sort((a, b) => b.count - a.count);
+        return newBadges;
+      });
+      const data = {
+        emoji: emojiData.emoji,
+        type: 'increase',
+      };
+
+      await submitEmojiPost(recipient_id, data);
+    };
+
+    updateBadges().then(() => {
+      setIsOpen(false);
+    });
+  };
+
   useEffect(() => {
     handleEmojiData();
   }, []);
@@ -145,29 +219,26 @@ function EmojiDropDown() {
           </EmojiBadge>
         ))}
       </EmojiGroup>
-      {
-        // eslint-disable-next-line
-        badges.length > 0 &&
-          (badges.length > 3 ? (
-            <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
-              <ArrowImage src="/img/arrow_down.svg" alt="" />
-              {isDropDownOpen && (
-                <DropdownMenu>
-                  <EmojiGroupInDropDown>
-                    {badges.slice(3, 11).map((badge) => (
-                      <EmojiBadge key={badge.unified}>
-                        <Emoji>{badge.emoji}</Emoji>
-                        <span>{badge.count}</span>
-                      </EmojiBadge>
-                    ))}
-                  </EmojiGroupInDropDown>
-                </DropdownMenu>
-              )}
-            </DownArrow>
-          ) : (
-            <MarginRight />
-          ))
-      }
+      {badges.length > 0 &&
+        (badges.length > 3 ? (
+          <DownArrow onClick={() => setIsDropDownOpen((prev) => !prev)}>
+            <ArrowImage src="/img/arrow_down.svg" alt="" />
+            {isDropDownOpen && (
+              <DropdownMenu>
+                <EmojiGroupInDropDown>
+                  {badges.slice(3, 11).map((badge) => (
+                    <EmojiBadge key={badge.unified}>
+                      <Emoji>{badge.emoji}</Emoji>
+                      <span>{badge.count}</span>
+                    </EmojiBadge>
+                  ))}
+                </EmojiGroupInDropDown>
+              </DropdownMenu>
+            )}
+          </DownArrow>
+        ) : (
+          <MarginRight />
+        ))}
       {badges.length === 0 && <div />}
 
       <EmojiAddButton onClick={handleEmojiPicker}>
@@ -176,44 +247,9 @@ function EmojiDropDown() {
         {isOpen && (
           <EmojiPickerWrapper onClick={stopPropagation}>
             <EmojiPicker
+              emojiStyle="native"
               onEmojiClick={(emojiData) => {
-                const updateBadges = async () => {
-                  let newCount = 0;
-
-                  setBadges((prevBadges) => {
-                    let newBadges;
-                    const exists = prevBadges.some(
-                      (badge) => badge.emoji === emojiData.emoji,
-                    );
-                    if (exists) {
-                      newBadges = prevBadges.map((badge) => {
-                        if (badge.emoji === emojiData.emoji) {
-                          newCount = badge.count + 1;
-                          return { ...badge, count: newCount };
-                        }
-                        return badge;
-                      });
-                    } else {
-                      newCount = 1;
-                      newBadges = [
-                        ...prevBadges,
-                        { ...emojiData, count: newCount },
-                      ];
-                    }
-                    newBadges.sort((a, b) => b.count - a.count);
-                    return newBadges;
-                  });
-                  const data = {
-                    emoji: emojiData.emoji,
-                    type: 'increase',
-                  };
-
-                  await submitEmojiPost(recipient_id, data);
-                };
-
-                updateBadges().then(() => {
-                  setIsOpen(false);
-                });
+                openEmojiPicker(emojiData);
               }}
             />
           </EmojiPickerWrapper>
