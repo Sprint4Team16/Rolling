@@ -8,7 +8,7 @@ import {
   regular14,
   regular18,
   regular20,
-} from '../../../styles/fontStyle';
+} from '../../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 import { USER_STATE } from '../../../constants/COLOR_SET';
 

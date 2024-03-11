@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { submitEmojiPost } from '../../../api/PostApi';
 import { getEmojiData } from '../../../api/GetApi';
-
-import { regular16 } from '../../../styles/fontStyle';
+import { regular16 } from '../../../styles/FontStyle';
 
 const FlexCenter = css`
   display: flex;

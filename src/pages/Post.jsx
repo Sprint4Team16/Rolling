@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
-import SelectSection from '../components/post/postmake/SelectSection';
-import PostInputSection from '../components/post/postmake/PostInputSection';
-import ColorSelection from '../components/post/postmake/ColorSelection';
-import ImageSelection from '../components/post/postmake/ImageSelection';
-import ToggleButton from '../components/post/postmake/ToggleButton';
+import SelectSection from '../components/post/postMake/SelectSection';
+import PostInputSection from '../components/post/postMake/PostInputSection';
+import ColorSelection from '../components/post/postMake/ColorSelection';
+import ImageSelection from '../components/post/postMake/ImageSelection';
+import ToggleButton from '../components/post/postMake/ToggleButton';
 import SubmitButton from '../components/button/SubmitButton';
 import { getBackground } from '../api/GetApi';
 import { submitRollingPost } from '../api/PostApi';

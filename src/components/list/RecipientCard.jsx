@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import WrittenByIcons from '../post/subheader/WrittenByIcons';
-import { bold18, bold24, regular14, regular16 } from '../../styles/fontStyle';
+import WrittenByIcons from '../post/subHeader/WrittenByIcons';
+import { bold18, bold24, regular14, regular16 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 function RecipientCard({ recipient }) {

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
-import SubHeader from '../components/post/subheader/SubHeader';
+import SubHeader from '../components/post/subHeader/SubHeader';
 import { getRecipientData } from '../api/GetApi';
 import CardItems from '../components/post/card/CardItems';
 import { DISPLAY_SIZE } from '../constants/SIZE_SET';

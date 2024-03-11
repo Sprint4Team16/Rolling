@@ -5,7 +5,7 @@ import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getProfile } from '../../api/GetApi';
 import { submitMessagePost } from '../../api/PostApi';
-import { bold24, regular16 } from '../../styles/fontStyle';
+import { bold24, regular16 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 import { FONT_LIST, RELATION_LIST } from '../../constants/OPTION_SET';
 import SubmitButton from '../button/SubmitButton';

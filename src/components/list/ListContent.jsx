@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import RecipientCardList from './RecipientCardList';
-import { bold24 } from '../../styles/fontStyle';
+import { bold24 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 function ListContent({ title, recipients }) {

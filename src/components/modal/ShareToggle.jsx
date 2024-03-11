@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
-import { bold16 } from '../../styles/fontStyle';
+import { bold16 } from '../../styles/FontStyle';
 
 const ShareBox = styled.div`
   display: inline-flex;

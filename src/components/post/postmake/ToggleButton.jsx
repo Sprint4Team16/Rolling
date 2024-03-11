@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Secondary } from '../../../styles/ButtonStyle';
-import { bold16, regular16 } from '../../../styles/fontStyle';
+import { bold16, regular16 } from '../../../styles/FontStyle';
 
 function ToggleButton({ state, handler, text1, text2 }) {
   return state ? (

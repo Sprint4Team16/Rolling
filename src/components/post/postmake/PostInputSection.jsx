@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bold24, regular12, regular16 } from '../../../styles/fontStyle';
+import { bold24, regular12, regular16 } from '../../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 
 function PostInputSection({ user, handleInput, handleBlur, inputError }) {

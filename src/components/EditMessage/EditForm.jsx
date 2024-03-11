@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
-import EditorBox from '../WritingMessage/TextEditor';
+import EditorBox from '../writingMessage/TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getMessage, getProfile } from '../../api/GetApi';
 import { patchMessage, putMessage } from '../../api/PutPatchApi';
-import { bold24, regular16 } from '../../styles/fontStyle';
+import { bold24, regular16 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 import SubmitButton from '../button/SubmitButton';
 
