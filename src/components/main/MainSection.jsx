@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bold14, bold24, regular18 } from '../../styles/fontStyle';
+import { bold14, bold24, regular18 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 import MovePageButton from '../button/MovePageButton';
 

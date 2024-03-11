@@ -1,4 +1,4 @@
-import EditMessage from '../components/EditMessage/EditMessage';
+import EditMessage from '../components/editMessage/EditMessage';
 
 function MessageEdit() {
   return <EditMessage />;

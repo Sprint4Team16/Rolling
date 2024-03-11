@@ -2,6 +2,14 @@ import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Primary56 } from '../../styles/ButtonStyle';
 
+const Button = styled(Primary56)`
+  width: 72rem;
+  @media (max-width: 76.8rem) {
+    min-width: 32rem;
+    width: 100%;
+  }
+`;
+
 function SubmitButton({ onSubmit, btnDisable, btnName }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,13 +30,5 @@ function SubmitButton({ onSubmit, btnDisable, btnName }) {
     </Button>
   );
 }
-
-const Button = styled(Primary56)`
-  width: 72rem;
-  @media (max-width: 76.8rem) {
-    min-width: 32rem;
-    width: 100%;
-  }
-`;
 
 export default SubmitButton;

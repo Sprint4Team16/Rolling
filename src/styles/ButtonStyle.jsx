@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bold18, regular16 } from './fontStyle';
+import { bold18, regular16 } from './FontStyle';
 
 export const ButtonCommon = styled.button`
   display: flex;

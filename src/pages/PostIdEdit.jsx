@@ -4,7 +4,7 @@ import DeleteRecipientButton from '../components/button/DeleteRecipientButton';
 import { getRecipientData } from '../api/GetApi';
 import { PostIdWrapper, HeaderWrapper, ButtonSection } from './PostId';
 import Header from '../components/common/Header';
-import SubHeader from '../components/post/subheader/SubHeader';
+import SubHeader from '../components/post/subHeader/SubHeader';
 import CardItems from '../components/post/card/CardItems';
 import BackToPostButton from '../components/button/BackToPostButton';
 

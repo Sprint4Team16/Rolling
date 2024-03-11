@@ -1,58 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import WrittenByIcons from '../post/subheader/WrittenByIcons';
-import { bold18, bold24, regular14, regular16 } from '../../styles/fontStyle';
+import WrittenByIcons from '../post/subHeader/WrittenByIcons';
+import { bold18, bold24, regular14, regular16 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
-
-function RecipientCard({ recipient }) {
-  const backgroundColor = recipient.backgroundColor || 'beige';
-  const backgroundImage = recipient.backgroundImageURL;
-  const navigate = useNavigate();
-
-  const handleCardClick = () => {
-    navigate(`/post/${recipient.id}`);
-  };
-
-  return (
-    <CardWrapper
-      onClick={handleCardClick}
-      $backgroundColor={backgroundColor}
-      $backgroundImage={backgroundImage}
-    >
-      <CardContent>
-        <RecipientInfo>
-          <RecipientText $backgroundImage={backgroundImage}>
-            To. {recipient.name}
-          </RecipientText>
-          <WrittenBy>
-            <WrittenByIcons
-              profileUrl={recipient.recentMessages.map(
-                (message) => message.profileImageURL,
-              )}
-              peopleNum={recipient.messageCount}
-            />
-          </WrittenBy>
-          <WriterText $backgroundImage={backgroundImage}>
-            <WriterNumText>{recipient.messageCount}</WriterNumText>명이
-            작성했어요!
-          </WriterText>
-        </RecipientInfo>
-        <Division />
-        <EmojiGroup>
-          {recipient.topReactions.map((reaction) => (
-            <EmojiCount key={reaction.id}>
-              <Emoji>{reaction.emoji}</Emoji>
-              <span>{reaction.count}</span>
-            </EmojiCount>
-          ))}
-        </EmojiGroup>
-      </CardContent>
-    </CardWrapper>
-  );
-}
-
-export default RecipientCard;
 
 const getColor = (backgroundColor) => {
   switch (backgroundColor) {
@@ -265,3 +216,52 @@ const Emoji = styled.span`
     margin-right: 0;
   }
 `;
+
+function RecipientCard({ recipient }) {
+  const backgroundColor = recipient.backgroundColor || 'beige';
+  const backgroundImage = recipient.backgroundImageURL;
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/post/${recipient.id}`);
+  };
+
+  return (
+    <CardWrapper
+      onClick={handleCardClick}
+      $backgroundColor={backgroundColor}
+      $backgroundImage={backgroundImage}
+    >
+      <CardContent>
+        <RecipientInfo>
+          <RecipientText $backgroundImage={backgroundImage}>
+            To. {recipient.name}
+          </RecipientText>
+          <WrittenBy>
+            <WrittenByIcons
+              profileUrl={recipient.recentMessages.map(
+                (message) => message.profileImageURL,
+              )}
+              peopleNum={recipient.messageCount}
+            />
+          </WrittenBy>
+          <WriterText $backgroundImage={backgroundImage}>
+            <WriterNumText>{recipient.messageCount}</WriterNumText>명이
+            작성했어요!
+          </WriterText>
+        </RecipientInfo>
+        <Division />
+        <EmojiGroup>
+          {recipient.topReactions.map((reaction) => (
+            <EmojiCount key={reaction.id}>
+              <Emoji>{reaction.emoji}</Emoji>
+              <span>{reaction.count}</span>
+            </EmojiCount>
+          ))}
+        </EmojiGroup>
+      </CardContent>
+    </CardWrapper>
+  );
+}
+
+export default RecipientCard;

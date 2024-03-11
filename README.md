@@ -131,6 +131,7 @@ URL: https://sp4-team16-rolling.netlify.app
   - Size, Color, Font, Option 등 상수화 작업 및 적용
   - 일부 수치조정 과정에서 발생하는 디자인 오류 수정 및 개선
   - 코드 스타일링: 불필요한 코드 제거 및 error 반환 방식 통일
+  - 파일명 및 디렉토리(폴더)명 형식 통일, 코드 형식 통일
 - 팀 repository 생성 및 issues, label 등 초기 세팅 설정
   - issues 항목 설정
   - label 카테고리 생성

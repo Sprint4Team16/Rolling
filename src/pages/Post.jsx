@@ -1,16 +1,51 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
-import SelectSection from '../components/post/postmake/SelectSection';
-import PostInputSection from '../components/post/postmake/PostInputSection';
-import ColorSelection from '../components/post/postmake/ColorSelection';
-import ImageSelection from '../components/post/postmake/ImageSelection';
-import ToggleButton from '../components/post/postmake/ToggleButton';
+import SelectSection from '../components/post/postMake/SelectSection';
+import PostInputSection from '../components/post/postMake/PostInputSection';
+import ColorSelection from '../components/post/postMake/ColorSelection';
+import ImageSelection from '../components/post/postMake/ImageSelection';
+import ToggleButton from '../components/post/postMake/ToggleButton';
 import SubmitButton from '../components/button/SubmitButton';
 import { getBackground } from '../api/GetApi';
 import { submitRollingPost } from '../api/PostApi';
 import { DISPLAY_SIZE } from '../constants/SIZE_SET';
 import { COLOR_LIST } from '../constants/OPTION_SET';
+
+const PostPage = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const PostSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+  background: var(--white);
+  margin: 5.7rem auto;
+  width: 72rem;
+  text-align: left;
+
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 32rem;
+  }
+`;
+
+const Select = styled.div`
+  width: 72rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex-shrink: 0;
+
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 32rem;
+  }
+`;
 
 function Post() {
   const [isColor, setIsColor] = useState(true);
@@ -123,40 +158,5 @@ function Post() {
     </PostPage>
   );
 }
-
-const PostPage = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const PostSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: left;
-  background: var(--white);
-  margin: 5.7rem auto;
-  width: 72rem;
-  text-align: left;
-
-  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
-    width: 32rem;
-  }
-`;
-
-const Select = styled.div`
-  width: 72rem;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 4.5rem;
-  margin-bottom: 4.5rem;
-  flex-wrap: wrap;
-  flex-direction: row;
-  flex-shrink: 0;
-
-  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
-    width: 32rem;
-  }
-`;
 
 export default Post;

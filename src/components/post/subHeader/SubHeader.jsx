@@ -8,7 +8,7 @@ import KakaoModal from '../../modal/KakaoModal';
 import ModalPortal from '../../modal/ModalPortal';
 import Toast from '../../common/Toast';
 import { Outlined36 } from '../../../styles/ButtonStyle';
-import { bold18, bold28 } from '../../../styles/fontStyle';
+import { bold18, bold28 } from '../../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 
 const FlexCenter = css`
@@ -56,7 +56,7 @@ const Name = styled.div`
   }
   @media (max-width: 469px) {
     padding: 1.2rem 2rem;
-    color: var(--gray-800, #2b2b2b);
+    color: var(--gray800);
 
     ${bold18}
   }

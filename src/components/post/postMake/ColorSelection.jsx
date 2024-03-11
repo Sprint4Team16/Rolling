@@ -2,18 +2,6 @@ import styled from 'styled-components';
 import CheckIcon from '../../common/CheckIcon';
 import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 
-function ColorSelection({ color, handleFunction, checkSelected }) {
-  return (
-    <ColorOption
-      color={color}
-      onClick={handleFunction}
-      selected={checkSelected}
-    >
-      {checkSelected && <CheckIcon imgSrc="/img/check.svg" />}
-    </ColorOption>
-  );
-}
-
 const ColorOption = styled.div`
   position: relative;
   width: 16.8rem;
@@ -34,5 +22,17 @@ const ColorOption = styled.div`
     margin: 1.2rem 0;
   }
 `;
+
+function ColorSelection({ color, handleFunction, checkSelected }) {
+  return (
+    <ColorOption
+      color={color}
+      onClick={handleFunction}
+      selected={checkSelected}
+    >
+      {checkSelected && <CheckIcon imgSrc="/img/check.svg" />}
+    </ColorOption>
+  );
+}
 
 export default ColorSelection;

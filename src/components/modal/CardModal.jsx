@@ -7,62 +7,11 @@ import {
   regular14,
   regular18,
   regular20,
-} from '../../styles/fontStyle';
+} from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 import { FONTS } from '../../constants/TEXT_SET';
 import { USER_STATE } from '../../constants/COLOR_SET';
 import EditButton from '../button/EditButton';
-
-function CardModal({
-  id,
-  src,
-  name,
-  cardFont,
-  userState,
-  cardContent,
-  cardCreatedAt,
-}) {
-  const location = useLocation();
-  const isEditRoute = location.pathname.includes('/edit');
-
-  const createdDays = new Date(cardCreatedAt);
-
-  const font = FONTS[cardFont] || '';
-
-  const newCardContent = cardContent.replace(/ql-/g, '');
-
-  const Card = (
-    <Container onClick={(e) => e.stopPropagation()}>
-      <CardContent>
-        <UserInfo>
-          <UserPicture src={src} alt="프로필" />
-          <UserText>
-            From. <UserName>{name}</UserName>
-            <UserState $state={userState}>{userState}</UserState>
-          </UserText>
-          {isEditRoute ? (
-            <EditButton messageId={id} />
-          ) : (
-            <CardCreatedAt>
-              {`${createdDays.getFullYear()}. ${
-                createdDays.getMonth() + 1
-              }. ${createdDays.getDate()}`}
-            </CardCreatedAt>
-          )}
-        </UserInfo>
-        <SplitHorizontal />
-        <CardContentTextContainer>
-          <CardContentText
-            dangerouslySetInnerHTML={{ __html: newCardContent }}
-            className={font}
-          />
-        </CardContentTextContainer>
-      </CardContent>
-    </Container>
-  );
-
-  return <ModalWindow children={Card} />;
-}
 
 const Container = styled.div`
   position: relative;
@@ -186,5 +135,56 @@ const CardCreatedAt = styled.div`
   color: var(--gray400);
   ${regular12}
 `;
+
+function CardModal({
+  id,
+  src,
+  name,
+  cardFont,
+  userState,
+  cardContent,
+  cardCreatedAt,
+}) {
+  const location = useLocation();
+  const isEditRoute = location.pathname.includes('/edit');
+
+  const createdDays = new Date(cardCreatedAt);
+
+  const font = FONTS[cardFont] || '';
+
+  const newCardContent = cardContent.replace(/ql-/g, '');
+
+  const Card = (
+    <Container onClick={(e) => e.stopPropagation()}>
+      <CardContent>
+        <UserInfo>
+          <UserPicture src={src} alt="프로필" />
+          <UserText>
+            From. <UserName>{name}</UserName>
+            <UserState $state={userState}>{userState}</UserState>
+          </UserText>
+          {isEditRoute ? (
+            <EditButton messageId={id} />
+          ) : (
+            <CardCreatedAt>
+              {`${createdDays.getFullYear()}. ${
+                createdDays.getMonth() + 1
+              }. ${createdDays.getDate()}`}
+            </CardCreatedAt>
+          )}
+        </UserInfo>
+        <SplitHorizontal />
+        <CardContentTextContainer>
+          <CardContentText
+            dangerouslySetInnerHTML={{ __html: newCardContent }}
+            className={font}
+          />
+        </CardContentTextContainer>
+      </CardContent>
+    </Container>
+  );
+
+  return <ModalWindow children={Card} />;
+}
 
 export default CardModal;

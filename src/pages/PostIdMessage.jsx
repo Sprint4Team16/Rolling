@@ -1,9 +1,7 @@
-import WritingMessage from '../components/WritingMessage/WritingMessage';
+import WritingMessage from '../components/writingMessage/WritingMessage';
 
 function PostIdMessage() {
-  return (
-    <WritingMessage />
-  );
+  return <WritingMessage />;
 }
 
 export default PostIdMessage;

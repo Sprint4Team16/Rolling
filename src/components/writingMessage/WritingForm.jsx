@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
-import EditorBox from '../WritingMessage/TextEditor';
+import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
-import { getMessage, getProfile } from '../../api/GetApi';
-import { patchMessage, putMessage } from '../../api/PutPatchApi';
-import { bold24, regular16 } from '../../styles/fontStyle';
+import { getProfile } from '../../api/GetApi';
+import { submitMessagePost } from '../../api/PostApi';
+import { bold24, regular16 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
+import { FONT_LIST, RELATION_LIST } from '../../constants/OPTION_SET';
 import SubmitButton from '../button/SubmitButton';
 
 const FormPage = styled.div`
-  max-width: 720px;
+  max-width: 72rem;
   width: 100%;
   margin: 0 auto;
   padding: 0 auto;
@@ -123,7 +124,7 @@ const ProfileImage = styled.img`
   align-items: center;
   flex-shrink: 0;
   border-radius: 10rem;
-  border: 1px solid var(--gray200);
+  border: 0.1rem solid var(--gray200);
   background: var(--white);
 
   @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
@@ -132,7 +133,7 @@ const ProfileImage = styled.img`
   }
 `;
 
-function EditForm({ isBtnDisabled }) {
+function WritingForm({ isBtnDisabled }) {
   const nonProfileImage = ['/img/nonSelected.svg'];
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState(false);
@@ -142,15 +143,7 @@ function EditForm({ isBtnDisabled }) {
   const [contents, setContents] = useState('');
   const [isContent, setIsContent] = useState(true);
   const [profileImages, setProfileImages] = useState([]);
-  const [originalData, setOriginalData] = useState({
-    sender: '',
-    profileImageURL: '',
-    relationship: '',
-    content: '',
-    font: '',
-  });
   const { id: recipientID } = useParams();
-  const { messageid } = useParams();
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -172,32 +165,6 @@ function EditForm({ isBtnDisabled }) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
-  useEffect(() => {
-    const fetchMessage = async () => {
-      try {
-        const response = await getMessage(messageid);
-        const message = response;
-
-        setName(message.sender);
-        setProfile(message.profileImageURL);
-        setRelation(message.relationship);
-        setContents(message.content);
-        setFonts(message.font);
-        setOriginalData({
-          sender: message.sender,
-          profileImageURL: message.profileImageURL,
-          relationship: message.relationship,
-          content: message.content,
-          font: message.font,
-        });
-      } catch (error) {
-        throw new Error('데이터를 불러오지 못했습니다.', error);
-      }
-    };
-
-    fetchMessage();
-  }, [messageid]);
 
   useEffect(() => {
     const handleImageLoad = async () => {
@@ -273,62 +240,46 @@ function EditForm({ isBtnDisabled }) {
           <IndexMessage>상대와의 관계</IndexMessage>
           <Dropdown
             $state="0"
-            options={['지인', '친구', '동료', '가족']}
-            placeholder={relation}
+            options={RELATION_LIST}
+            placeholder={RELATION_LIST[0]}
             onChange={(selectedOption) => setRelation(selectedOption)}
           />
         </FormSubject>
 
         <FormSubject>
           <IndexMessage>내용을 입력해 주세요</IndexMessage>
-          <EditorBox content={contents} onContentChange={handleContentChange} />
+          <EditorBox onContentChange={handleContentChange} />
         </FormSubject>
 
         <FormSubject>
           <IndexMessage>폰트 선택</IndexMessage>
           <Dropdown
             $state="1"
-            options={[
-              'Noto Sans',
-              'Pretendard',
-              '나눔명조',
-              '나눔손글씨 손편지체',
-            ]}
-            placeholder={fonts}
+            options={FONT_LIST}
+            placeholder={FONT_LIST[0]}
             onChange={(selectedOption) => handleFontChange(selectedOption)}
           />
         </FormSubject>
         <SubmitButton
           onSubmit={async () => {
             const data = {
-              team: '4-16',
-              recipientId: recipientID,
+              team: '16',
+              recipientId: Number(recipientID),
               sender: name,
               profileImageURL: profile,
               relationship: relation,
               content: contents,
               font: fonts,
             };
-
-            if (
-              originalData.sender !== data.sender &&
-              originalData.profileImageURL !== data.profileImageURL &&
-              originalData.relationship !== data.relationship &&
-              originalData.content !== data.content &&
-              originalData.font !== data.font
-            ) {
-              const response = await putMessage(messageid, data);
-              return response.recipientId;
-            }
-            const response = await patchMessage(messageid, data);
+            const response = await submitMessagePost(recipientID, data);
             return response.recipientId;
           }}
           btnDisable={!isContent}
-          btnName="수정하기"
+          btnName="생성하기"
         />
       </MainForm>
     </FormPage>
   );
 }
 
-export default EditForm;
+export default WritingForm;

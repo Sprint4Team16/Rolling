@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { regular16 } from '../../styles/fontStyle';
+import { regular16 } from '../../styles/FontStyle';
 
 const statePosition = {
   0: { position: 'absolute' },

@@ -1,20 +1,6 @@
 import styled from 'styled-components';
 import { Secondary } from '../../../styles/ButtonStyle';
-import { bold16, regular16 } from '../../../styles/fontStyle';
-
-function ToggleButton({ state, handler, text1, text2 }) {
-  return state ? (
-    <SelectToggle onClick={handler}>
-      <OnButton disabled>{text1}</OnButton>
-      <OffButton>{text2}</OffButton>
-    </SelectToggle>
-  ) : (
-    <SelectToggle onClick={handler}>
-      <OffButton>{text1}</OffButton>
-      <OnButton disabled>{text2}</OnButton>
-    </SelectToggle>
-  );
-}
+import { bold16, regular16 } from '../../../styles/FontStyle';
 
 const SelectToggle = styled.div`
   display: inline-flex;
@@ -51,5 +37,19 @@ const OffButton = styled(BtnCommon)`
   text-align: center;
   ${regular16}
 `;
+
+function ToggleButton({ state, handler, text1, text2 }) {
+  return state ? (
+    <SelectToggle onClick={handler}>
+      <OnButton disabled>{text1}</OnButton>
+      <OffButton>{text2}</OffButton>
+    </SelectToggle>
+  ) : (
+    <SelectToggle onClick={handler}>
+      <OffButton>{text1}</OffButton>
+      <OnButton disabled>{text2}</OnButton>
+    </SelectToggle>
+  );
+}
 
 export default ToggleButton;
