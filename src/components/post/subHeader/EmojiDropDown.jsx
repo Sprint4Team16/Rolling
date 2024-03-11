@@ -25,6 +25,7 @@ const EmojiBadge = styled.div`
   border-radius: 3.2rem;
   background: rgba(0, 0, 0, 0.54);
   color: var(--white);
+
   ${regular16}
 
   @media (max-width: 470px) {
