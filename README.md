@@ -1,4 +1,4 @@
-## SP4 Rolling-Project-Team-16
+# 🎊 SP4 Rolling Project-Team16 🎊
 
 > 코드잇 스프린트 : 프론트 엔드 4기 Part2 - 16팀
 >
