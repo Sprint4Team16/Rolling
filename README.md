@@ -9,20 +9,22 @@ URL: https://sp4-team16-rolling.netlify.app
 ## 🚩프로젝트 목표
 
 ### 💻 협업 잘 하는 개발자로 성장한다.
-  - `git`과 `GitHub`를 사용하여 팀 프로젝트를 효율적으로 수행하도록 한다.
-  - 팀 Repository를 생성하여 공동으로 프로젝트 repository를 관리한다.
-  - issues 및 PR rulesets을 설정하고, PR 템플릿을 설정하여 팀 프로젝트 진행 시 혼동할 수 있는 상황을 방지한다.
-  - Commit Message 방식, 기술 스택, 효율적인 의사 소통 방식등을 설정하여 원활한 프로젝트 환경을 구성한다.
+
+- `git`과 `GitHub`를 사용하여 팀 프로젝트를 효율적으로 수행하도록 한다.
+- 팀 Repository를 생성하여 공동으로 프로젝트 repository를 관리한다.
+- issues 및 PR rulesets을 설정하고, PR 템플릿을 설정하여 팀 프로젝트 진행 시 혼동할 수 있는 상황을 방지한다.
+- Commit Message 방식, 기술 스택, 효율적인 의사 소통 방식등을 설정하여 원활한 프로젝트 환경을 구성한다.
 
 ### 🎖️ 최선의 팀 프로젝트 결과물을 완성한다.
-  - Figma 디자인 시안과 기획 요구사항, API 명세가 정리된 문서를 바탕으로 프로젝트를 수행한다.
-  - 요구사항을 이외에도 디자인적으로 개선할 사항이나 기능적으로 추가 할만한 사항들을 파악하고 구현한다.
-  - 팀원들이 수행한 PR에 대하여 살펴본 뒤, 문제점 및 개선사항에 대하여 피드백을 진행하고 해당 내용들을 즉각 반영한다.
 
+- Figma 디자인 시안과 기획 요구사항, API 명세가 정리된 문서를 바탕으로 프로젝트를 수행한다.
+- 요구사항을 이외에도 디자인적으로 개선할 사항이나 기능적으로 추가 할만한 사항들을 파악하고 구현한다.
+- 팀원들이 수행한 PR에 대하여 살펴본 뒤, 문제점 및 개선사항에 대하여 피드백을 진행하고 해당 내용들을 즉각 반영한다.
 
 ### 🎯 좋은 동료를 얻어가며 함께 성장한다.
-  - 팀 미팅 및 코어 타임 설정을 통하여 꾸준한 소통을 진행한다.
-  - 역할 수행 중 어려운 사항 발생 시, 팀원들에게 도움을 요청하여 다함께 문제를 해결하여 성장한다.
+
+- 팀 미팅 및 코어 타임 설정을 통하여 꾸준한 소통을 진행한다.
+- 역할 수행 중 어려운 사항 발생 시, 팀원들에게 도움을 요청하여 다함께 문제를 해결하여 성장한다.
 
 ## 💡프로젝트 소개
 
@@ -43,6 +45,7 @@ URL: https://sp4-team16-rolling.netlify.app
 - `리액션` 친구의 롤링페이퍼에 이모지로 공감해 주세요.
 
 ### 💡팀원 소개
+
 <table>
   <tbody>
     <tr>
@@ -64,7 +67,6 @@ URL: https://sp4-team16-rolling.netlify.app
     </tr>
   </tbody>
 </table>
-
 
 ## 💡 기술 스택
 
@@ -151,6 +153,8 @@ URL: https://sp4-team16-rolling.netlify.app
 - 롤링페이퍼 카드 목록 정렬 방식 구현
   - 인기순 : emoji(이모지)를 많이 받은 롤링페이퍼를 기준으로 정렬
   - 최신순 : 최근 생성된 롤링페이퍼를 기준으로 정렬
+- 카드 무한 스크롤 구현
+  - Intersection Observer 사용하여 구현
 - Mobile, Tablet 환경에서의 터치 슬라이드 구현
 
 #### 🪄 기타 수행 사항
@@ -259,26 +263,21 @@ URL: https://sp4-team16-rolling.netlify.app
 
 ![main](https://github.com/Hooni07/Rolling/assets/79882248/68ff7ef6-b2bb-44f0-854b-eb56650adf26)
 
-
 ### 롤링페이퍼 목록 페이지
 
 ![list_shortcut](https://github.com/Hooni07/Rolling/assets/79882248/0930ce8d-9ab6-4083-93ea-195e76d77c84)
-
 
 ### 롤링페이퍼 만들기 페이지
 
 ![post](https://github.com/Hooni07/Rolling/assets/79882248/584e5688-ab65-496e-bc5b-52361ed1120f)
 
-
 ### 롤링페이퍼 페이지
 
 ![postid](https://github.com/Hooni07/Rolling/assets/79882248/564f0930-8888-49c0-b302-7345db7a2515)
 
-
 ### 롤링페이퍼 수정 페이지
 
 ![postid_edit(edit)](https://github.com/Hooni07/Rolling/assets/79882248/43cb38ad-de7a-4705-bf4b-2752083453b4)
-
 
 ### 롤링페이퍼 메세지 페이지
 
@@ -287,7 +286,6 @@ URL: https://sp4-team16-rolling.netlify.app
 ### 롤링페이퍼 메세지 수정 페이지
 
 ![postid_edit(message_edit](https://github.com/Hooni07/Rolling/assets/79882248/b1fdb02e-bb25-455c-92be-fd357f18eb7e)
-
 
 ## 🎚️ 기능별 preview
 
@@ -306,5 +304,3 @@ URL: https://sp4-team16-rolling.netlify.app
 ### 롤링페이퍼 페이지 삭제
 
 ![postid_edit(page_delete)](https://github.com/Hooni07/Rolling/assets/79882248/f7fd33c0-1057-4b38-993d-f1b9bcabbf36)
-
-

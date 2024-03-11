@@ -105,7 +105,11 @@ const CardWrapper = styled.a`
   ${({ $backgroundImage, $backgroundColor }) =>
     $backgroundImage
       ? css`
-          background-image: url(${$backgroundImage});
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.3),
+              rgba(0, 0, 0, 0.3)
+            ),
+            url(${$backgroundImage});
           background-size: cover;
           background-repeat: no-repeat;
         `
@@ -131,7 +135,11 @@ const CardWrapper = styled.a`
     ${({ $backgroundImage, $backgroundColor }) =>
       $backgroundImage
         ? css`
-            background-image: url(${$backgroundImage});
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+              ),
+              url(${$backgroundImage});
             background-size: cover;
             background-repeat: no-repeat;
           `
@@ -242,6 +250,7 @@ const EmojiCount = styled.div`
   ${regular16}
 
   @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    height: 3.2rem;
     padding: 0.6rem 0.8rem;
     ${regular14}
   }

@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import Header from '../components/common/Header';
 import ListContent from '../components/list/ListContent';
-import { getRecipients } from '../api/GetApi';
 import MovePageButton from '../components/button/MovePageButton';
+import { getAllRecipients } from '../api/GetApi';
 
 function List() {
   const [popularRecipients, setPopularRecipients] = useState([]);
   const [recentRecipients, setRecentRecipients] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const observer = useRef();
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!hasMore) return;
+
       try {
-        const response = await getRecipients();
+        const response = await getAllRecipients(offset);
         const data = response.results;
 
-        // 좋아요순
         const sortedByPopularity = [...data].sort((a, b) => {
           const sumA = a.topReactions.reduce(
             (acc, curr) => acc + curr.count,
@@ -28,25 +32,70 @@ function List() {
           return sumB - sumA;
         });
 
-        // 최신순
         const sortedByRecent = [...data].sort((a, b) => b.id - a.id);
 
-        setPopularRecipients(sortedByPopularity);
-        setRecentRecipients(sortedByRecent);
+        setPopularRecipients((prevRecipients) => {
+          const updatedRecipients = [...prevRecipients, ...sortedByPopularity];
+          return updatedRecipients.sort((a, b) => {
+            const sumA = a.topReactions.reduce(
+              (acc, curr) => acc + curr.count,
+              0,
+            );
+            const sumB = b.topReactions.reduce(
+              (acc, curr) => acc + curr.count,
+              0,
+            );
+            return sumB - sumA;
+          });
+        });
+        setRecentRecipients((prevRecipients) => [
+          ...prevRecipients,
+          ...sortedByRecent,
+        ]);
+
+        if (!response.next) {
+          setHasMore(false);
+        } else {
+          setOffset((prevOffset) => prevOffset + 8);
+        }
       } catch (error) {
         throw new Error('롤링페이퍼를 불러오지 못했습니다.', error);
       }
     };
 
     fetchData();
+  }, [offset, hasMore]);
+
+  const lastRecipientRef = useRef();
+  useEffect(() => {
+    if (observer.current) {
+      observer.current.disconnect();
+    }
+
+    observer.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setOffset((prevOffset) => prevOffset + 8);
+      }
+    });
+
+    if (lastRecipientRef.current) {
+      observer.current.observe(lastRecipientRef.current);
+    }
+
+    // eslint-disable-next-line
+    return () => {
+      observer.current.disconnect();
+    };
   }, []);
+
   return (
     <>
       <Header showButton />
       <ListContent title="인기 롤링 페이퍼 🔥" recipients={popularRecipients} />
       <ListContent
-        title="최근에 만든 롤링 페이퍼 ⭐️️"
+        title="최근에 만든 롤링 페이퍼️️"
         recipients={recentRecipients}
+        lastRecipientRef={lastRecipientRef}
       />
       <ButtonContainer>
         <MovePageButton moveLink="/post" btnName="나도 만들어보기" />

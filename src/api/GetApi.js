@@ -10,9 +10,9 @@ export function getProfile() {
   return fetchImages('/profile-images/');
 }
 
-// card 데이터 가져오기
-export function getRecipients() {
-  return fetchRecipients('/recipients/');
+// card 데이터 모두 가져오기
+export function getAllRecipients(offset) {
+  return fetchRecipients(`/recipients/?limit=8&offset=${offset}`);
 }
 
 // parameter로 입력한 id에 해당하는 recipient 데이터 가져오기
@@ -27,9 +27,8 @@ export function getMessage(id) {
 
 // 롤링페이퍼 대상이 받은 모든 메세지 데이터 가져오기
 export function getAllMessages(recipientID, offset) {
-  const effectiveOffset = offset ?? 0;
   return fetchRecipients(
-    `/recipients/${recipientID}/messages/?limit=8&offset=${effectiveOffset}`,
+    `/recipients/${recipientID}/messages/?limit=8&offset=${offset}`,
   );
 }
 
