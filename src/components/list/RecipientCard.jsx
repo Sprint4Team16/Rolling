@@ -106,7 +106,11 @@ const CardWrapper = styled.a`
   ${({ $backgroundImage, $backgroundColor }) =>
     $backgroundImage
       ? css`
-          background-image: url(${$backgroundImage});
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.3),
+              rgba(0, 0, 0, 0.3)
+            ),
+            url(${$backgroundImage});
           background-size: cover;
           background-repeat: no-repeat;
         `
@@ -132,7 +136,11 @@ const CardWrapper = styled.a`
     ${({ $backgroundImage, $backgroundColor }) =>
       $backgroundImage
         ? css`
-            background-image: url(${$backgroundImage});
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)
+              ),
+              url(${$backgroundImage});
             background-size: cover;
             background-repeat: no-repeat;
           `
