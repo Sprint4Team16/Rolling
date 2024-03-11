@@ -18,8 +18,13 @@ const CardContainer = styled.div`
     margin-left: 2.4rem;
     margin-right: 2.4rem;
   }
-  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and(max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
-    margin: 9.3rem 2.4rem 0rem;
+  @media (min-width: ${DISPLAY_SIZE.MIN_TABLET}px) and (max-width: 1024px) {
+    /* margin: 9.3rem 2.4rem 0rem; */
+    /* gap: 2.4rem 2%; */
+    /* margin: 0rem 10rem; */
+  }
+  @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    margin: 0rem 2.4rem 0rem;
   }
 `;
 
