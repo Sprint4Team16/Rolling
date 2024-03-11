@@ -252,6 +252,7 @@ const EmojiCount = styled.div`
   ${regular16}
 
   @media (min-width: ${DISPLAY_SIZE.MIN_MOBILE}px) and (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    height: 3.2rem;
     padding: 0.6rem 0.8rem;
     ${regular14}
   }
