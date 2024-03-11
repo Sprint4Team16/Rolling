@@ -30,10 +30,13 @@ export const CardContentWrapper = styled.div`
     transform: translateY(-1.2rem);
   }
 
-  @media (max-width: 1023px) {
-    width: 50%;
+  @media (min-width: ${DISPLAY_SIZE.MIN_TABLET}px) and (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
+    max-width: ${DISPLAY_SIZE.MAX_TABLET}px;
+    width: 49%;
   }
-  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+  @media (max-width: ${DISPLAY_SIZE.MIN_TABLET}px) {
+    max-width: ${DISPLAY_SIZE.MIN_TABLET}px;
+    min-width: 32rem;
     width: 100%;
   }
 `;

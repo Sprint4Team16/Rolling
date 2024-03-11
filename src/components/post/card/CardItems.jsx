@@ -27,9 +27,19 @@ const CardAdd = styled(CardContentWrapper)`
   display: ${({ $isDisplay }) => ($isDisplay ? ' none' : 'block')};
   justify-content: center;
   position: relative;
-  transition: all 0.4s ease-out;
+  transition: all 0.5s ease-out;
   &:hover {
     transform: translateY(-1.2rem);
+  }
+
+  @media (min-width: ${DISPLAY_SIZE.MIN_TABLET}px) and (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
+    max-width: ${DISPLAY_SIZE.MAX_TABLET}px;
+    width: 49%;
+  }
+  @media (max-width: ${DISPLAY_SIZE.MIN_TABLET}px) {
+    max-width: ${DISPLAY_SIZE.MIN_TABLET}px;
+    min-width: 32rem;
+    width: 100%;
   }
 `;
 
