@@ -2,13 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import Header from '../components/common/Header';
 import ListContent from '../components/list/ListContent';
-<<<<<<< HEAD:src/pages/List.js
-import MovePageButton from '../components/common/Buttons/MovePageButton';
-import { getAllRecipients } from '../api/GetApi';
-=======
-import { getRecipients } from '../api/GetApi';
 import MovePageButton from '../components/button/MovePageButton';
->>>>>>> 90e26c5c3fc7711551b7b04340f65f142d92aa1c:src/pages/List.jsx
+import { getAllRecipients } from '../api/GetApi';
 
 function List() {
   const [popularRecipients, setPopularRecipients] = useState([]);
