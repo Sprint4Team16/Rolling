@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getProfile } from '../../api/GetApi';
-import PostButton from '../common/Buttons/PostButton';
 import { submitMessagePost } from '../../api/PostApi';
 import { bold24, regular16 } from '../../styles/fontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 import { FONT_LIST, RELATION_LIST } from '../../constants/OPTION_SET';
+import SubmitButton from '../button/SubmitButton';
 
 const FormPage = styled.div`
   max-width: 72rem;
@@ -262,7 +262,7 @@ function WritingForm({ isBtnDisabled }) {
             onChange={(selectedOption) => handleFontChange(selectedOption)}
           />
         </FormSubject>
-        <PostButton
+        <SubmitButton
           onSubmit={async () => {
             const data = {
               team: '16',
@@ -277,6 +277,7 @@ function WritingForm({ isBtnDisabled }) {
             return response.recipientId;
           }}
           btnDisable={!isContent}
+          btnName="생성하기"
         />
       </MainForm>
     </FormPage>

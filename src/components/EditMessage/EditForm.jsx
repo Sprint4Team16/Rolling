@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import EditorBox from '../WritingMessage/TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getMessage, getProfile } from '../../api/GetApi';
-import PutPatchButton from '../common/Buttons/PutPatchButton';
 import { patchMessage, putMessage } from '../../api/PutPatchApi';
 import { bold24, regular16 } from '../../styles/fontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
+import SubmitButton from '../button/SubmitButton';
 
 const FormPage = styled.div`
   max-width: 720px;
@@ -299,7 +299,7 @@ function EditForm({ isBtnDisabled }) {
             onChange={(selectedOption) => handleFontChange(selectedOption)}
           />
         </FormSubject>
-        <PutPatchButton
+        <SubmitButton
           onSubmit={async () => {
             const data = {
               team: '4-16',
@@ -327,6 +327,7 @@ function EditForm({ isBtnDisabled }) {
             return response.recipientId;
           }}
           btnDisable={!isContent}
+          btnName="수정하기"
         />
       </MainForm>
     </FormPage>

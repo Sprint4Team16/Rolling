@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Primary56 } from '../../../styles/ButtonStyle';
-import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
+import { Primary56 } from '../../styles/ButtonStyle';
+import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
 function MovePageButton({ moveLink, btnName }) {
   const navigate = useNavigate();

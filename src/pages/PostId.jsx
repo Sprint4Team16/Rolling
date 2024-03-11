@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/subheader/SubHeader';
 import { getRecipientData } from '../api/GetApi';
-import EditButton from '../components/common/Buttons/EditButton';
 import CardItems from '../components/post/card/CardItems';
 import { DISPLAY_SIZE } from '../constants/SIZE_SET';
 import { BACKGROUND_COLOR } from '../constants/COLOR_SET';
+import EditButton from '../components/button/EditButton';
 
 export const HeaderWrapper = styled.div`
   position: sticky;

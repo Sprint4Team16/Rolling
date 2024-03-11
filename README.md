@@ -215,9 +215,9 @@ URL: https://sp4-team16-rolling.netlify.app
 
 ## 👀 페이지 preview
 
-### 홈페이지
+### 홈페이지(main 및 list 페이지)
 
-![KakaoTalk_Image_2023-12-22-05-27-54_001](https://github.com/Rolling-Project-Team-9/rolling/assets/148737398/2bd87d33-4134-4568-a74e-a8cb4d7a12a8)
+![main](https://github.com/Hooni07/Rolling/assets/79882248/f087718e-77b5-4e88-8cde-6418511ffd8c)
 
 ### 롤링페이퍼 리스트 페이지
 

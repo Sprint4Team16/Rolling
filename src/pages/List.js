@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from '../components/common/Header';
 import ListContent from '../components/list/ListContent';
 import { getRecipients } from '../api/GetApi';
-import MovePageButton from '../components/common/Buttons/MovePageButton';
+import MovePageButton from '../components/button/MovePageButton';
 
 function List() {
   const [popularRecipients, setPopularRecipients] = useState([]);
