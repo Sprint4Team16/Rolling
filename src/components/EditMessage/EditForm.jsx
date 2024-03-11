@@ -173,7 +173,6 @@ function EditForm({ isBtnDisabled }) {
     e.preventDefault();
   };
 
-  // 수정 전 기존 데이터 선언
   useEffect(() => {
     const fetchMessage = async () => {
       try {
@@ -318,11 +317,9 @@ function EditForm({ isBtnDisabled }) {
               originalData.content !== data.content &&
               originalData.font !== data.font
             ) {
-              // 모든 데이터 변경에 의한 PUT Request
               const response = await putMessage(messageid, data);
               return response.recipientId;
             }
-            // 일부 데이터 변경에 의한 PATCH Request
             const response = await patchMessage(messageid, data);
             return response.recipientId;
           }}
