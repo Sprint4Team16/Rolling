@@ -217,14 +217,52 @@ URL: https://sp4-team16-rolling.netlify.app
 
 ### 홈페이지(main 및 list 페이지)
 
-![main](https://github.com/Hooni07/Rolling/assets/79882248/f087718e-77b5-4e88-8cde-6418511ffd8c)
+![main](https://github.com/Hooni07/Rolling/assets/79882248/68ff7ef6-b2bb-44f0-854b-eb56650adf26)
 
-### 롤링페이퍼 리스트 페이지
+
+### 롤링페이퍼 목록 페이지
+
+![list_shortcut](https://github.com/Hooni07/Rolling/assets/79882248/0930ce8d-9ab6-4083-93ea-195e76d77c84)
+
 
 ### 롤링페이퍼 만들기 페이지
 
+![post](https://github.com/Hooni07/Rolling/assets/79882248/584e5688-ab65-496e-bc5b-52361ed1120f)
+
+
 ### 롤링페이퍼 페이지
+
+![postid](https://github.com/Hooni07/Rolling/assets/79882248/12475f1f-4bde-4823-9dfd-8a5815058a6e)
 
 ### 롤링페이퍼 수정 페이지
 
+![postid_edit(message_edit](https://github.com/Hooni07/Rolling/assets/79882248/d1fef80b-fabf-4fcc-b8fb-af116c25ed3d)
+
 ### 롤링페이퍼 메세지 페이지
+
+![postid_message](https://github.com/Hooni07/Rolling/assets/79882248/1984ec98-c3d1-4924-9249-329affdd95e4)
+
+### 롤링페이퍼 메세지 수정 페이지
+
+![postid_edit(message_edit](https://github.com/Hooni07/Rolling/assets/79882248/b1fdb02e-bb25-455c-92be-fd357f18eb7e)
+
+
+## 🎚️ 기능별 preview
+
+### 이모지 추가, 정렬
+
+![add_emoji](https://github.com/Hooni07/Rolling/assets/79882248/dcff1370-673a-413c-8196-666b86b12fbe)
+
+### 무한 스크롤
+
+![infinite_scroll](https://github.com/Hooni07/Rolling/assets/79882248/6874cf8b-88d7-4e0f-ae5b-4f2cdcb85d70)
+
+### 롤링페이퍼 메세지 삭제
+
+![postid_edit(message_delete)](https://github.com/Hooni07/Rolling/assets/79882248/ece87711-f7ca-4f03-b922-57893cbe599a)
+
+### 롤링페이퍼 페이지 삭제
+
+![postid_edit(page_delete)](https://github.com/Hooni07/Rolling/assets/79882248/f7fd33c0-1057-4b38-993d-f1b9bcabbf36)
+
+
