@@ -3,21 +3,6 @@ import RecipientCardList from './RecipientCardList';
 import { bold24 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
 
-function ListContent({ title, recipients }) {
-  return (
-    <Section>
-      <TitleContainer>
-        <Title>{title}</Title>
-      </TitleContainer>
-      <RecipientCardListContainer>
-        <RecipientCardList recipients={recipients} />
-      </RecipientCardListContainer>
-    </Section>
-  );
-}
-
-export default ListContent;
-
 const Section = styled.section`
   display: column;
   width: 100%;
@@ -57,3 +42,18 @@ const Title = styled.h2`
     line-height: 3rem;
   }
 `;
+
+function ListContent({ title, recipients }) {
+  return (
+    <Section>
+      <TitleContainer>
+        <Title>{title}</Title>
+      </TitleContainer>
+      <RecipientCardListContainer>
+        <RecipientCardList recipients={recipients} />
+      </RecipientCardListContainer>
+    </Section>
+  );
+}
+
+export default ListContent;

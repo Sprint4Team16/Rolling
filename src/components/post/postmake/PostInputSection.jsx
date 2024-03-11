@@ -2,22 +2,6 @@ import styled from 'styled-components';
 import { bold24, regular12, regular16 } from '../../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 
-function PostInputSection({ user, handleInput, handleBlur, inputError }) {
-  return (
-    <InputSection>
-      <InputTitle>To.</InputTitle>
-      <Input
-        placeholder="받는 사람 이름을 입력해 주세요"
-        value={user}
-        onChange={handleInput}
-        onBlur={handleBlur}
-        error={inputError}
-      />
-      {inputError && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}
-    </InputSection>
-  );
-}
-
 const InputSection = styled.div`
   display: inline-flex;
   flex-direction: column;
@@ -60,5 +44,21 @@ const ErrorMessage = styled.p`
   color: var(--error);
   ${regular12}
 `;
+
+function PostInputSection({ user, handleInput, handleBlur, inputError }) {
+  return (
+    <InputSection>
+      <InputTitle>To.</InputTitle>
+      <Input
+        placeholder="받는 사람 이름을 입력해 주세요"
+        value={user}
+        onChange={handleInput}
+        onBlur={handleBlur}
+        error={inputError}
+      />
+      {inputError && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}
+    </InputSection>
+  );
+}
 
 export default PostInputSection;

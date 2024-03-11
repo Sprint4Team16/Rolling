@@ -2,15 +2,6 @@ import styled from 'styled-components';
 import { bold24, regular16 } from '../../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../../constants/SIZE_SET';
 
-function SelectSection() {
-  return (
-    <Section>
-      <Title>배경화면을 선택해 주세요.</Title>
-      <Content>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</Content>
-    </Section>
-  );
-}
-
 const Section = styled.div`
   width: 72rem;
   display: inline-flex;
@@ -32,5 +23,14 @@ const Content = styled.p`
   color: var(--gray500);
   ${regular16}
 `;
+
+function SelectSection() {
+  return (
+    <Section>
+      <Title>배경화면을 선택해 주세요.</Title>
+      <Content>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</Content>
+    </Section>
+  );
+}
 
 export default SelectSection;

@@ -7,6 +7,7 @@ import { getMessage, getProfile } from '../../api/GetApi';
 import { patchMessage, putMessage } from '../../api/PutPatchApi';
 import { bold24, regular16 } from '../../styles/FontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';
+import { FONT_LIST, RELATION_LIST } from '../../constants/OPTION_SET';
 import SubmitButton from '../button/SubmitButton';
 
 const FormPage = styled.div`
@@ -273,7 +274,7 @@ function EditForm({ isBtnDisabled }) {
           <IndexMessage>상대와의 관계</IndexMessage>
           <Dropdown
             $state="0"
-            options={['지인', '친구', '동료', '가족']}
+            options={RELATION_LIST}
             placeholder={relation}
             onChange={(selectedOption) => setRelation(selectedOption)}
           />
@@ -288,12 +289,7 @@ function EditForm({ isBtnDisabled }) {
           <IndexMessage>폰트 선택</IndexMessage>
           <Dropdown
             $state="1"
-            options={[
-              'Noto Sans',
-              'Pretendard',
-              '나눔명조',
-              '나눔손글씨 손편지체',
-            ]}
+            options={FONT_LIST}
             placeholder={fonts}
             onChange={(selectedOption) => handleFontChange(selectedOption)}
           />

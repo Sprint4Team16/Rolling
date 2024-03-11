@@ -56,7 +56,7 @@ const Name = styled.div`
   }
   @media (max-width: 469px) {
     padding: 1.2rem 2rem;
-    color: var(--gray-800, #2b2b2b);
+    color: var(--gray800);
 
     ${bold18}
   }

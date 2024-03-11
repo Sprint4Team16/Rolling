@@ -35,7 +35,7 @@ function ShareToggle({ setIsKakaoOpen, setIsUrlCopy }) {
     try {
       await navigator.clipboard.writeText(text);
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   };
 

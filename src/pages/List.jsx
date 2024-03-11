@@ -5,6 +5,13 @@ import ListContent from '../components/list/ListContent';
 import MovePageButton from '../components/button/MovePageButton';
 import { getAllRecipients } from '../api/GetApi';
 
+const ButtonContainer = styled.div`
+  display: flex;
+  margin-top: 4rem;
+  align-items: center;
+  justify-content: center;
+`;
+
 function List() {
   const [popularRecipients, setPopularRecipients] = useState([]);
   const [recentRecipients, setRecentRecipients] = useState([]);
@@ -105,10 +112,3 @@ function List() {
 }
 
 export default List;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  margin-top: 4rem;
-  align-items: center;
-  justify-content: center;
-`;

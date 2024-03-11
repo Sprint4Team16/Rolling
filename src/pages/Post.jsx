@@ -12,6 +12,41 @@ import { submitRollingPost } from '../api/PostApi';
 import { DISPLAY_SIZE } from '../constants/SIZE_SET';
 import { COLOR_LIST } from '../constants/OPTION_SET';
 
+const PostPage = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const PostSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+  background: var(--white);
+  margin: 5.7rem auto;
+  width: 72rem;
+  text-align: left;
+
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 32rem;
+  }
+`;
+
+const Select = styled.div`
+  width: 72rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex-shrink: 0;
+
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    width: 32rem;
+  }
+`;
+
 function Post() {
   const [isColor, setIsColor] = useState(true);
   const [selectColor, setSelectColor] = useState(COLOR_LIST[0]);
@@ -123,40 +158,5 @@ function Post() {
     </PostPage>
   );
 }
-
-const PostPage = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const PostSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: left;
-  background: var(--white);
-  margin: 5.7rem auto;
-  width: 72rem;
-  text-align: left;
-
-  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
-    width: 32rem;
-  }
-`;
-
-const Select = styled.div`
-  width: 72rem;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 4.5rem;
-  margin-bottom: 4.5rem;
-  flex-wrap: wrap;
-  flex-direction: row;
-  flex-shrink: 0;
-
-  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
-    width: 32rem;
-  }
-`;
 
 export default Post;
