@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import EditorBox from './TextEditor';
 import Dropdown from '../common/Dropdown';
 import { getProfile } from '../../api/GetApi';
-import PostButton from '../common/Buttons/PostButton';
+import PostButton from '../button/PostButton';
 import { submitMessagePost } from '../../api/PostApi';
 import { bold24, regular16 } from '../../styles/fontStyle';
 import { DISPLAY_SIZE } from '../../constants/SIZE_SET';

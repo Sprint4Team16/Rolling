@@ -219,7 +219,6 @@ URL: https://sp4-team16-rolling.netlify.app
 
 ![main](https://github.com/Hooni07/Rolling/assets/79882248/f087718e-77b5-4e88-8cde-6418511ffd8c)
 
-
 ### 롤링페이퍼 리스트 페이지
 
 ### 롤링페이퍼 만들기 페이지

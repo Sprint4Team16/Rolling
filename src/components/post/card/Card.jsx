@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useRef, useEffect, useState } from 'react';
-import DeleteMessageButton from '../../common/Buttons/DeleteMessageButton';
+import DeleteMessageButton from '../../button/DeleteMessageButton';
 import ModalPortal from '../../modal/ModalPortal';
 import CardModal from '../../modal/CardModal';
 import {

@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import DeleteRecipientButton from '../components/common/Buttons/DeleteRecipientButton';
+import DeleteRecipientButton from '../components/button/DeleteRecipientButton';
 import { getRecipientData } from '../api/GetApi';
 import { PostIdWrapper, HeaderWrapper, ButtonSection } from './PostId';
 import Header from '../components/common/Header';
 import SubHeader from '../components/post/subheader/SubHeader';
 import CardItems from '../components/post/card/CardItems';
-import BackToPostButton from '../components/common/Buttons/BackToPostButton';
+import BackToPostButton from '../components/button/BackToPostButton';
 
 function PostIdEdit() {
   const { id } = useParams();

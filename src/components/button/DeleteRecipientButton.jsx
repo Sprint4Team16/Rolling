@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
-import { deleteRecipient } from '../../../api/DeleteApi';
-import { Primary56 } from '../../../styles/ButtonStyle';
+import { deleteRecipient } from '../../api/DeleteApi';
+import { Primary56 } from '../../styles/ButtonStyle';
 
 function DeleteRecipientButton() {
   const navigate = useNavigate();
