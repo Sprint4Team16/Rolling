@@ -37,5 +37,6 @@ module.exports = {
     'function-paren-newline': 'off',
     'object-curly-newline': 'off',
     'react/no-children-prop': 'off',
+    indent: 'off',
   },
 };

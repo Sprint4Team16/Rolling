@@ -6,7 +6,8 @@ function KakaoModal() {
     position: relative;
     width: 100%;
     height: 100%;
-    background: #ffeea3;
+    background: var(--gray100);
+    border-radius: 2rem;
   `;
 
   const KakaoImg = styled.div`

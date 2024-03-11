@@ -79,14 +79,12 @@ const UserState = styled.div`
   overflow-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* display: flex; */
   padding: 0.15rem 0.8rem 0;
   margin-top: 0.6rem;
   width: 4.1rem;
   height: 2rem;
   text-align: center;
   align-items: center;
-
   border-radius: 0.4rem;
   background: ${({ $state }) =>
     USER_STATE[$state] ? USER_STATE[$state].background : 'defaultColor'};

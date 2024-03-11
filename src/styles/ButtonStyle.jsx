@@ -14,7 +14,6 @@ const PrimaryBtn = styled(ButtonCommon)`
   background: var(--${({ disabled }) => (disabled ? 'gray300' : 'purple600')});
   color: var(--white);
 
-  // active 여부
   &:hover:enabled {
     background: var(--purple700);
   }
@@ -24,7 +23,6 @@ const PrimaryBtn = styled(ButtonCommon)`
   }
 
   &:focus:enabled {
-    /* border: 2px solid var(--purple900); */
     background: var(--purple800);
   }
 `;

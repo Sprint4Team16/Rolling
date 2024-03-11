@@ -41,7 +41,10 @@ export const ButtonSection = styled.div`
   align-items: center;
 
   @media (max-width: ${DISPLAY_SIZE.MAX_TABLET}px) {
-    margin: 6.3rem 2.4rem 1.5rem;
+    margin: 6.3rem 2.4rem 2.5rem;
+  }
+  @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
+    margin: 3rem 2.4rem 2.4rem;
   }
 `;
 
@@ -82,7 +85,6 @@ function PostId() {
 
   if (data && data.recentMessages?.length > 0) {
     profileUrl = data.recentMessages.map((message) => message.profileImageURL);
-    console.log(profileUrl);
   }
 
   return (
