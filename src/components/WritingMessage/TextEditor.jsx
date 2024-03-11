@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-// import styled from 'styled-components';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { TEXT_FORMAT } from '../../constants/TEXT_SET';

@@ -29,7 +29,6 @@ function PostIdEdit() {
 
   if (data && data.recentMessages?.length > 0) {
     profileUrl = data.recentMessages.map((message) => message.profileImageURL);
-    console.log(profileUrl);
   }
 
   return (

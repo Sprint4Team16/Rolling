@@ -21,7 +21,7 @@ const SubHeaderWrapper = styled.div`
   width: 100%;
   background-color: var(--white);
   position: sticky;
-  top: 6.2rem;
+  top: 6.25rem;
   z-index: 99999;
 
   @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
@@ -77,13 +77,16 @@ const PostIdSetting = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  justify-content: flex-end;
 
   @media (max-width: ${DISPLAY_SIZE.MAX_MOBILE}px) {
     margin-left: 2.4rem;
+    margin-right: 2.4rem;
     padding: 0.8rem 0rem;
   }
   @media (max-width: 469px) {
     margin-left: 2rem;
+    margin-right: 2rem;
   }
 `;
 
@@ -115,12 +118,20 @@ const SplitBarVertical1 = styled(SplitBarVertical)`
 
 const SplitBarVertical2 = styled(SplitBarVertical)`
   margin: 0 1.3rem;
+  @media (max-width: 469px) {
+    margin: 0 0.5rem;
+    background-color: var(--white);
+  }
 `;
 
 const ShareButton = styled(Outlined36)`
   padding: 0.6rem 1.6rem;
+
   @media (max-width: 470px) {
     padding: 0.6rem 0.8rem;
+  }
+  @media (max-width: 371px) {
+    padding: 0.5rem;
   }
 `;
 

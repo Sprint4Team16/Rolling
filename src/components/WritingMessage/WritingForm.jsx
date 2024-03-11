@@ -248,9 +248,7 @@ function WritingForm({ isBtnDisabled }) {
 
         <FormSubject>
           <IndexMessage>내용을 입력해 주세요</IndexMessage>
-          {/* <TextAreaDevice> */}
           <EditorBox onContentChange={handleContentChange} />
-          {/* </TextAreaDevice> */}
         </FormSubject>
 
         <FormSubject>

@@ -15,6 +15,11 @@ function DeleteRecipientButton() {
   return <Button onClick={handleButtonClick}>롤링페이퍼 삭제하기</Button>;
 }
 
-const Button = styled(Primary56)``;
+const Button = styled(Primary56)`
+  white-space: nowrap;
+  @media (max-width: 470px) {
+    width: 56%;
+  }
+`;
 
 export default DeleteRecipientButton;
