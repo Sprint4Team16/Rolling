@@ -43,6 +43,28 @@ URL: https://sp4-team16-rolling.netlify.app
 - `리액션` 친구의 롤링페이퍼에 이모지로 공감해 주세요.
 
 ### 💡팀원 소개
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/gaeaeg">
+      <img width=200px src="https://github.com/Hooni07/Rolling/assets/79882248/b2d355ae-4264-4b2a-bb3a-6f0f8c3e567d" alt=""/><br />
+      <sub><b>[FE] 김경주</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/youth-o">
+      <img width=200px src="https://github.com/Hooni07/Rolling/assets/79882248/1874290d-8a99-4c65-9683-75ce2acc2615" alt=""/><br />
+      <sub><b>[FE] 이유승</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/mangang0713">
+      <img width=200px src="https://github.com/Hooni07/Rolling/assets/79882248/dd37743b-6cd8-4349-ad30-0a49c4655caa" alt=""/><br />
+      <sub><b>[FE] 이주형</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/minjo0n61">
+      <img width=200px src="https://github.com/Hooni07/Rolling/assets/79882248/395a8089-fad9-4b60-b954-0ca1ad5f3bf3" alt=""/><br />
+      <sub><b>[FE] 최민준</b></sub></a><br /></td>
+       <td align="center"><a href="https://github.com/Hooni07">
+      <img width=200px src="https://github.com/Hooni07/Rolling/assets/79882248/0ceb7aa5-595a-467e-8b06-caa156c4b58a" alt=""/><br />
+      <sub><b>[FE] 하태훈</b></sub></a><br /></td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## 💡 기술 스택
 
@@ -66,7 +88,7 @@ URL: https://sp4-team16-rolling.netlify.app
 
 ## 💡 역할분담
 
-### 하태훈(팀장)
+### 🎾 하태훈(팀장)
 
 #### 🖥️ 페이지 구현 내용
 
@@ -113,7 +135,7 @@ URL: https://sp4-team16-rolling.netlify.app
 - 팀 회의 기록 정리
 - README 파일 생성 및 내용 정리
 
-### 김경주
+### 🏸 김경주
 
 #### 🖥️ 페이지 구현 내용
 
@@ -136,7 +158,7 @@ URL: https://sp4-team16-rolling.netlify.app
 - Refactoring
   - font 설정과 관련하여 발생하던 warning에 대한 문제 해결 및 refactoring 진행
 
-### 이유승
+### 🎸 이유승
 
 #### 🖥️ 페이지 구현 내용
 
@@ -163,7 +185,7 @@ URL: https://sp4-team16-rolling.netlify.app
 
 - 팀 프로젝트 발표를 위한 발표자료(ppt) 제작
 
-### 이주형
+### 🏓 이주형
 
 #### 🖥️ 페이지 구현 내용
 
@@ -187,7 +209,7 @@ URL: https://sp4-team16-rolling.netlify.app
   - font, color 공통화 작업
   - Dropdown을 컴포넌트화 한 후 상이한 역할을 하도록 구현
 
-### 최민준
+### 🏑 최민준
 
 #### 🖥️ 페이지 구현 내용
 
