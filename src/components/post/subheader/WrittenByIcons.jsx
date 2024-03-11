@@ -1,7 +1,6 @@
 import ProfileUser from './ProfileUser';
 
 function WrittenByIcons({ profileUrl, peopleNum }) {
-  // profileUrl이 없거나 비어있으면 빈 배열을 반환
   const urls = profileUrl || [];
 
   return (
@@ -11,7 +10,7 @@ function WrittenByIcons({ profileUrl, peopleNum }) {
 
         return (
           <ProfileUser
-            key={userUrl} // 사용하는 곳에서 key prop이 필요
+            key={userUrl}
             src={userUrl}
             peopleNum={last ? `+${peopleNum - 3}` : null}
             last={last}
